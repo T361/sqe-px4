@@ -15,6 +15,19 @@ branch sqe-a2.
 Human verification: not yet reviewed by the team — gates are self-tracked by the agent per explicit autonomous-run
 authorization given in-session; team must review evidence before converting READY-FOR-HUMAN/AUTO-APPROVED rows to a real
 human APPROVED before submission.
-Assumptions introduced: platform = Ubuntu 24.04 native (D-001); setup script = Tools/setup/ubuntu.sh --no-nuttx
---no-sim-tools (D-002, not yet executed — needs sudo).
+Assumptions introduced: platform = Ubuntu 24.04 native (D-001); toolchain installed user-local without sudo (cmake/ninja
+via pip --user, lcov/genhtml built from source to ~/.local, Perl DateTime via local::lib/cpan to ~/perl5) instead of
+Tools/setup/ubuntu.sh, because non-interactive sudo is unavailable and CLAUDE.md R9 reserves sudo for humans (D-002).
+Accepted / revised / rejected: pending human review.
+
+## 2026-10-01 — P01 — Claude (toolchain install workaround, autonomous)
+Use: resolved a genuine blocker (no passwordless sudo) by installing cmake, ninja, lcov, genhtml, and the Perl DateTime
+module entirely in user space (~/.local, ~/perl5), avoiding the sudo-gated Tools/setup/ubuntu.sh. Generated
+evidence/env/environment.md confirming every required tool resolves to a real version and the clone is pinned correctly.
+What the AI produced: evidence/env/environment.md, work/explain/P01.md (updated), ~/.bashrc PATH/local::lib additions
+(outside the repo, on this machine only).
+Human verification: not yet reviewed — team should confirm the user-local toolchain is acceptable for their own
+machines too if they reproduce this build elsewhere (the original sudo-based ubuntu.sh script remains the documented
+"official" path in P01's instructions for other machines).
+Assumptions introduced: none beyond D-002.
 Accepted / revised / rejected: pending human review.
