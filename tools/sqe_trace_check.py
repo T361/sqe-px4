@@ -26,7 +26,7 @@ def scan_code(px4):
             if not m: continue
             suite, name = m.groups(); tid = id_from_name(name)
             cmt = None
-            for j in range(i - 1, max(-1, i - 7), -1):      # nearest comment above, not crossing the previous TEST
+            for j in range(i - 1, max(-1, i - 30), -1):      # nearest comment above, not crossing the previous TEST
                 if TEST_RE.search(lines[j]): break
                 mc = CMT_RE.search(lines[j])
                 if mc: cmt = mc.group(1); break

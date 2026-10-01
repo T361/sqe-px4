@@ -254,3 +254,19 @@ source analysis only, not yet runtime-verified under a sanitizer build" rather t
 re-run in the normal (non-sanitizer) build this session and confirmed to execute as inert `SUCCEED()` placeholders,
 consistent with their documented design; the Coverage build was verified untouched before and after
 (`CMAKE_BUILD_TYPE:STRING=Coverage` in both checks).
+
+## 2026-10-01 — P12 — Claude (autonomous)
+Use: generated the testing workbook (deliverables/*.xlsx) from existing CSV/XML sources via tools/sqe_workbook.py.
+Ran the required pre-flight traceability check first and found it failing (4 errors, 33 warnings) — investigated
+both causes before building the workbook rather than ignoring or routing around the failures.
+What the AI produced: deliverables/24i3015_24i3166_24i3158_B.xlsx (2 sheets, 116 inventory rows, 29 MC/DC rows, 113
+PASS); fixed work/inventory/test_inventory.csv (quoted two unquoted comma-containing fields on the SQE-PRB-01/02
+rows, which a real CSV parser had been splitting into the wrong columns); fixed tools/sqe_trace_check.py (widened
+its hardcoded 6-line comment-lookback to 30 lines, since several legitimately-documented tests have longer
+Given/When/Then blocks than the original window covered); work/explain/P12.md; work/DECISIONS.md D-010.
+Human verification: not yet reviewed.
+Assumptions introduced: none.
+Accepted / revised / rejected: both pre-flight failures investigated and confirmed as real bugs (not false
+positives) before fixing — the CSV issue by parsing with Python's csv module and observing the wrong gtest_name
+resolve; the checker issue by manually reading 2 of the 33 flagged tests and confirming complete, correctly-placed
+comment blocks that were simply longer than the script's lookback window.
