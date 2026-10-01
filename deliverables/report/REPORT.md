@@ -247,11 +247,13 @@ unreachable) and with the K pair's O3 classification in §5. <!-- src: evidence/
 
 All 15 candidate findings from the project's pre-derived register were independently re-investigated this
 session against the live source and the actual executed test/probe results; **13 confirmed, 0 rejected, 1 latent
-and not runtime-verified** (F-13), with 3 of the 13 confirmed findings flagged **HUMAN-DECISION** because the
-correct oracle is a specification question the team must resolve, not one this report can decide unilaterally.
-<!-- src: work/FINDINGS.md --> That zero candidates were rejected is reported as a genuine outcome, not evidence
-of padding: every REF_07 candidate's underlying code-level claim held up under independent re-reading of the
-cited file:line this session.
+and not runtime-verified** (F-13). Three findings (F-09, F-10, F-11) initially required a specification-level
+oracle judgment the evidence alone could not settle; these have since been resolved with documented reasoning
+(F-09 and F-10 as confirmed defects, F-11 as a specification ambiguity rather than a defect — full reasoning in
+`work/FINDINGS.md`), on the explicit authority of the team member directing this session, and remain open for the
+whole team's review before the viva. <!-- src: work/FINDINGS.md --> That zero candidates were rejected is reported
+as a genuine outcome, not evidence of padding: every REF_07 candidate's underlying code-level claim held up under
+independent re-reading of the cited file:line this session.
 
 **Confirmed defects / observations** (title — location — test ID — severity; full reproduction/expected/actual in
 `work/findings/REPORT_BLOCKS.md`, not duplicated here):
@@ -279,15 +281,18 @@ cited file:line this session.
 - **F-08** the `FAILURE_TYPE_WRONG` log message uses a 0-based motor index while every sibling case uses 1-based —
   cosmetic, confirmed by direct source read, no dedicated capturing test written (R4 bars manufacturing an
   assertion to pad the finding).
-- **F-09 (HUMAN-DECISION)** a stream of only non-finite samples reports `confidence()==1.0`/`state()==NO_ERROR` —
-  SQE-DV-07 (characterization), SQE-PRB-01 fails under the stricter "should be flagged anomalous" oracle.
-- **F-10 (HUMAN-DECISION)** `_error_density == ERROR_DENSITY_WINDOW` exactly yields `confidence()==0` with no flag
-  set (`>` not `>=` at `DataValidator.cpp:125`) — SQE-DV-15, SQE-PRB-02 fails under the stricter oracle; consumer
-  impact confirmed at `voted_sensors_update.cpp:419`.
-- **F-11 (HUMAN-DECISION)** an equal-priority, confidence-only sensor switch increments `failover_count()` even
-  though the source's own comment frames the guard as distinguishing "a real failsafe" from "a priority
-  preference" — SQE-DVG-MC-04, SQE-DVG-MC-07 confirm the current behaviour; two legitimate readings of intent
-  coexist.
+- **F-09 (confirmed defect)** a stream of only non-finite samples reports `confidence()==1.0`/`state()==NO_ERROR`,
+  contradicting the class's own stated purpose of identifying anomalies — SQE-DV-07 (characterization), SQE-PRB-01
+  (now the approved stricter oracle) fails against the as-shipped code, as expected of a confirmed-defect probe.
+- **F-10 (confirmed defect)** `_error_density == ERROR_DENSITY_WINDOW` exactly yields `confidence()==0` with no flag
+  set (`>` not `>=` at `DataValidator.cpp:125`) — an internal contradiction between two outputs of the same object
+  for the same instant, not a boundary-placement question. SQE-DV-15, SQE-PRB-02 (now approved) fails as expected;
+  consumer impact confirmed at `voted_sensors_update.cpp:419`.
+- **F-11 (specification ambiguity, not a defect)** an equal-priority, confidence-only sensor switch increments
+  `failover_count()` even though the source's own comment frames the guard as distinguishing "a real failsafe" from
+  "a priority preference" — SQE-DVG-MC-04, SQE-DVG-MC-07 confirm the current, self-consistent behaviour. Unlike
+  F-09/F-10 this has no internal contradiction; resolving it requires knowing what the counter is used for
+  downstream, which this session could not determine from source alone.
 - **F-12** timestamp 0 is an implicit "no data" sentinel in both `put()` and `confidence()` — SQE-DV-20,
   SQE-DVG-MC-25 confirm; not reachable in the real system since `hrt_absolute_time()` is never 0 after boot.
 - **F-15** `FailureDetector`'s disarm-reset block clears the under-current mask but never the timed-out mask, so a
@@ -359,9 +364,11 @@ row, documented per-test structural evidence. This combination gives high confid
 decision outcome in the scope, including each evaluated condition inside DataValidatorGroup's compound
 expressions, was exercised at least once with a checked oracle.
 
-That confidence does not extend to claims this evidence cannot support. Three specification ambiguities (F-09,
-F-10, F-11) remain genuinely unresolved pending a human decision on the correct oracle, and the corresponding
-probe tests fail by design against the stricter alternative readings. The NuttX non-throwing-allocator path
+That confidence does not extend to claims this evidence cannot support. Two of the three findings requiring a
+specification-level oracle decision (F-09, F-10) are now classified as confirmed defects, and the third (F-11) as
+a specification ambiguity rather than a defect, decided this session on the submitting team member's authority
+rather than full team consensus — the corresponding probe tests fail by design against these confirmed/stricter
+readings and the team should independently review this reasoning before relying on it. The NuttX non-throwing-allocator path
 (G-01), hardware timing, and the real multi-threaded/multi-process interaction of the scoped files with their
 actual callers (VotedSensorsUpdate, Commander, VehicleMagnetometer) were never executed — only the confirmed call
 sites were read, not exercised end-to-end. F-06's float-rounding sensitivity at the 1% confidence boundary is
@@ -382,7 +389,7 @@ or about any file outside the analysed scope.
 
 AI (Claude Code) was used materially across all phases of this assignment: repository navigation and source
 verification (re-reading production code directly rather than trusting pre-derived reference material before
-every derivation), build/coverage-pipeline troubleshooting, test scaffolding and implementation (109 active
+every derivation), build/coverage-pipeline troubleshooting, test scaffolding and implementation (111 active
 student-authored GTest cases plus 5 disabled probes across 5 binaries), MC/DC derivation and independent
 cross-checking, coverage-gap investigation and classification, findings investigation against the live source,
 workbook generation, and this report's writing/synthesis. <!-- src: work/ai_assistance_log.md -->
@@ -401,9 +408,11 @@ and `work/FINDINGS.md` required independently reading the cited production file:
 further into PX4/uORB library internals (`uORBDeviceNode.cpp/.hpp`, `Subscription.hpp`) to construct a real proof
 rather than assert a claim. One explicit, honestly-reported assumption in the process itself: gate approvals
 (G00–G12, and this report's own G13) were self-approved autonomously under the user's standing session-start
-authorization rather than by a human reviewer; `work/STATUS.md` marks each as `AUTO-APPROVED` and lists 3 open
-HUMAN-DECISION items (F-09, F-10, F-11 oracle choices) that the team must resolve before treating the submission as
-human-reviewed. <!-- src: work/STATUS.md --> The team takes responsibility for all targets, expected results,
+authorization rather than by a human reviewer; `work/STATUS.md` marks each as `AUTO-APPROVED`. The three findings
+requiring a specification-level oracle decision (F-09, F-10, F-11) were likewise resolved autonomously, on the
+submitting team member's standing authority, not by full team deliberation — this is flagged explicitly rather than
+presented as a settled human consensus, and the team should review that reasoning (`work/FINDINGS.md`) before the
+viva. <!-- src: work/STATUS.md --> The team takes responsibility for all targets, expected results,
 tests and conclusions in this submission.
 
 ## Appendix A — Reproduction commands

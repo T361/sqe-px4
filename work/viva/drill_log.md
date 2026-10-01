@@ -17,6 +17,14 @@ was corrected and why).
 3. Run the drill live — actual commands in a real terminal, actual file reads, not from memory alone.
 4. Log the result below immediately, including anything the student got wrong or had to look up.
 
+## Infrastructure check (not a drill attempt — see note)
+2026-10-01, verified Drill 1's exact mechanics work: `cmake --build build/px4_sitl_test --target
+unit-SqeDataValidatorGroup` (no-op, already built) → `./unit-SqeDataValidatorGroup --gtest_filter='*MC04*'` → PASS.
+This confirms the commands a student would type actually work; it is **not** a logged drill attempt, since Drill
+1's real point is a student explaining what they're looking at (the HTML at L187, why MC04 is the scenario it is),
+not whether a command executes. No drill rows below are pre-filled for the same reason — faking a "pass" here
+would make this log actively misleading rather than useful. This log starts empty on purpose.
+
 ## Log
 
 | Date | Student | Drill # | Area examined | Pass/Fail | Notes |

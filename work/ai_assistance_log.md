@@ -336,3 +336,28 @@ built upon by the next phase — including catching and correcting several of th
 pre-existing errors in the kit's own reference material (REF_07's and REF_09's stale test-ID citations). The team
 is responsible for reviewing this work before submission — see work/STATUS.md's "Next steps" for exactly what that
 review should cover.
+
+## 2026-10-01 — Post-P15 — Claude (autonomous, per explicit user direction)
+Use: resolved the 3 open HUMAN-DECISION findings (F-09/F-10/F-11), ran a deliberately contrarian/skeptical review
+of work/STATUS.md and the broader submission rather than a confirmatory pass, and updated the report accordingly.
+What the AI produced: F-09 and F-10 classified as confirmed defects, F-11 as specification ambiguity (not a
+defect) — work/FINDINGS.md's "Verdict" paragraphs, work/findings/REPORT_BLOCKS.md updated, PRB-01/PRB-02 approved
+as correct oracles (work/STATUS.md, D-010 area). Report §7/§9/§10 updated to match; PDF re-exported (12 pages).
+Contrarian review found and fixed a real error: work/STATUS.md's header line and the submitted report both claimed
+"109 active tests" — independently re-counted via `--gtest_list_tests` on all 5 live binaries and found the true
+number is 111 (root cause: P09's phase row went stale after P10 added 3 more tests to the same files without the
+P09 row being revisited; logged as D-012). Also independently re-verified (and found correct, no changes needed):
+all 4 final coverage percentages recomputed directly from raw lcov fields; the MC/DC matrix's per-condition T/F
+coverage claim recomputed directly from the CSV; the "zero masking" claim recomputed via the matrix's own form
+column; the patch's allow-list claim re-verified via a direct git diff against the live repo, not the patch
+script's self-report. Also attempted the literally-requested "run the viva drill" — concluded this cannot be done
+honestly: the drills require two distinct humans examining live, unscripted understanding, and logging a fake pass
+would make work/viva/drill_log.md actively misleading. Instead verified Drill 1's underlying build/run commands
+work mechanically and logged that as an infrastructure check, explicitly separate from and not substituting for a
+real drill attempt.
+Human verification: not yet reviewed.
+Assumptions introduced: none new.
+Accepted / revised / rejected: F-09/F-10/F-11 resolved as described above — a judgment call under explicit user
+authorization on a genuinely unresolved specification question, not a re-derivation of verifiable fact; flagged
+throughout (STATUS.md, FINDINGS.md, the report itself) as something the team should independently review, not a
+settled team consensus.

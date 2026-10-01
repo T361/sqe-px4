@@ -143,37 +143,43 @@ pad the finding)
 
 ---
 
-## Block 10 -- F-09: NaN-only stream reports as fully healthy (HUMAN-DECISION)
+## Block 10 -- F-09: NaN-only stream reports as fully healthy (confirmed defect)
 **Title:** a stream of only non-finite samples is reported as `confidence()==1.0`, `state()==NO_ERROR`
 **Source location:** `DataValidator.cpp:68` (per-axis finiteness guard), `:97` (`_time_last` updated unconditionally)
 **Reproduction conditions:** `put(t, {NaN,NaN,NaN}, 0, 1)` x10
 **Expected (per file header "identify anomalies in data streams"):** a NaN-only stream flagged as anomalous
 **Actual:** `used()==true`, `value()=={0,0,0}` (never written), `confidence()==1.0`, `state()==0`
-**Test ID:** SQE-DV-07 (confirms the characterization); SQE-PRB-01 (disabled, fails under the stricter oracle)
+**Test ID:** SQE-DV-07 (confirms the characterization); SQE-PRB-01 (disabled, now approved as the correct stricter
+oracle — see below)
 **Evidence path:** `evidence/tests/xml/unit-SqeDataValidator.xml`, `evidence/tests/probes/unit-SqeDataValidator.xml`
-**Severity rationale:** candidate defect vs. documented purpose -- **HUMAN-DECISION required**. This session's
+**Severity rationale:** **confirmed defect.** `confidence()==1.0`/`state()==NO_ERROR` on the most anomalous possible
+input (never finite) directly contradicts the class's own stated purpose; "NaN is ignored per-axis" is a defensible
+filtering choice but does not justify also reporting full health as an unexamined side effect. This session's
 reading of `VehicleIMU.cpp`/`voted_sensors_update.cpp` found no explicit upstream NaN rejection before data reaches
 `put()`, but did not exhaustively trace every sensor driver (out of scope). If reachable in a live system, a NaN
 sensor would remain selectable by `get_best()`.
 
 ---
 
-## Block 11 -- F-10: Error density at exact window boundary gives zero confidence with no flag (HUMAN-DECISION)
+## Block 11 -- F-10: Error density at exact window boundary gives zero confidence with no flag (confirmed defect)
 **Title:** `_error_density == ERROR_DENSITY_WINDOW` (100) yields `confidence()==0` but no `HIGH_ERRDENSITY` flag
 **Source location:** `DataValidator.cpp:125` (`>` not `>=`)
 **Reproduction conditions:** `put(T0, v, error_count=100, 0)`
 **Expected:** a confidence-zero result explained by a non-zero state flag
 **Actual:** `confidence()==0`, `state()==0` (NO_ERROR) -- the minimum confidence score is indistinguishable from
 "healthy" by flag inspection
-**Test ID:** SQE-DV-15 (confirms); SQE-PRB-02 (disabled, fails under the stricter oracle)
+**Test ID:** SQE-DV-15 (confirms); SQE-PRB-02 (disabled, now approved as the correct stricter oracle — see below)
 **Evidence path:** `evidence/tests/xml/unit-SqeDataValidator.xml`, `evidence/tests/probes/unit-SqeDataValidator.xml`
-**Severity rationale:** boundary inconsistency -- **HUMAN-DECISION required**. Confirmed consumer impact at
-`voted_sensors_update.cpp:419`: `status.accel_healthy[i]` reports `true` for one cycle at this exact boundary
-despite zero confidence.
+**Severity rationale:** **confirmed defect.** `confidence()==0` and `state()==NO_ERROR` simultaneously is an
+internal contradiction between two outputs of the same object describing the same instant, not a boundary-placement
+question — the density-cap-and-decay arithmetic and the flag-setting `>` comparison silently disagree. Confirmed
+consumer impact at `voted_sensors_update.cpp:419`: `status.accel_healthy[i]` reports `true` for one cycle at this
+exact boundary despite zero confidence. Fix would be a one-line `>` → `>=` at L125 — not applied (R2, no
+production-code changes in this assignment).
 
 ---
 
-## Block 12 -- F-11: Equal-priority confidence switch counted as a failover (HUMAN-DECISION)
+## Block 12 -- F-11: Equal-priority confidence switch counted as a failover (specification ambiguity, not a defect)
 **Title:** a confidence-only switch between two equal-priority, healthy sensors increments `failover_count()`
 **Source location:** `DataValidatorGroup.cpp:207-227`
 **Reproduction conditions:** sensor 0 best (conf .95, prio 50); sensor 1 appears with higher confidence (.97),
@@ -184,9 +190,15 @@ sensor"):** ambiguous for the equal-priority case -- not explicitly described ei
 equal-priority improvement falls through and increments `failover_count()`
 **Test ID:** SQE-DVG-MC-04, SQE-DVG-MC-07
 **Evidence path:** `evidence/tests/xml/unit-SqeDataValidatorGroup.xml`
-**Severity rationale:** classification semantics -- **HUMAN-DECISION required**; two legitimate readings of intent
-coexist (see work/FINDINGS.md for both). `failover_index()` returns -1 for this case, so no sensor is blamed by
-name, but the aggregate count is affected.
+**Severity rationale:** **specification ambiguity, resolved as not a defect.** Unlike F-09/F-10, this behavior is
+fully self-consistent — there is no internal API contradiction. Whether an equal-priority confidence-driven switch
+should count as a "failover" depends entirely on what `failover_count()` is used for downstream (safety-critical
+alerting vs. a logging statistic), which this session could not determine from the source. Both readings remain
+legitimate: the guard's literal scope (priority-driven switches only) is correctly implemented; a monitoring-focused
+reading would exclude equal-priority improvements from the count. `failover_index()` returns -1 for this case, so
+no specific sensor is blamed by name, but the aggregate count is affected. Decided as ambiguity rather than defect
+because resolving it one way requires product knowledge outside this codebase — the team should form their own
+view before the viva, since this is a natural line of examiner questioning.
 
 ---
 

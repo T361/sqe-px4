@@ -12,9 +12,15 @@ the expected-vs-actual disagreement and citing the finding it probes). Independe
 `ctest -R Sqe` -> 5/5 binaries, 100% passed (`evidence/tests/logs/P11_ctest_confirm.log`).
 
 Verdict counts: 13 confirmed, 0 rejected, 1 latent/unverified-at-runtime (F-13), 0 outright false.
-Of the 13 confirmed, 3 are explicitly flagged HUMAN-DECISION (F-09, F-10, F-11) because the correct oracle is a
-specification question, not something this session can resolve unilaterally (R4, R7). F-07a/F-07b are confirmed by
-static source analysis only; no sanitizer build was attempted this session (see "Sanitizer evidence" note below).
+F-07a/F-07b are confirmed by static source analysis only; no sanitizer build was attempted this session (see
+"Sanitizer evidence" note below).
+
+**2026-10-01 update:** F-09, F-10, and F-11 were originally left as open HUMAN-DECISION items pending the team's
+own review. Per explicit user authorization in this session, they have since been resolved autonomously with
+documented reasoning (see each finding's "Verdict" paragraph below): **F-09 confirmed defect**, **F-10 confirmed
+defect**, **F-11 confirmed specification ambiguity (not a defect)**. These are judgment calls on unresolved
+specification questions, not re-derivations of verifiable fact — the team should still review the reasoning before
+the viva and is free to disagree; they are not binding in the way a re-run test result is.
 
 ---
 
@@ -248,7 +254,21 @@ numbering. Confirmed by direct source read this session. Cosmetic only -- the ac
 
 ---
 
-### F-09 Non-finite (NaN) stream stays "healthy" (confidence 1.0, NO_ERROR)   Status: confirmed -- HUMAN-DECISION (defect vs. specification ambiguity)
+### F-09 Non-finite (NaN) stream stays "healthy" (confidence 1.0, NO_ERROR)   Status: confirmed defect
+
+**Verdict (resolved 2026-10-01):** classified as a **defect**, not specification ambiguity. Rationale: the class's
+own file-header purpose statement is "identify anomalies in data streams" (`DataValidator.hpp`); a stream that has
+*never once* produced a single finite value across 10 calls is the most anomalous input this class could receive,
+and it is reported as the maximally healthy state (`confidence()==1.0`, `state()==NO_ERROR`) with no distinguishing
+signal anywhere in the public API. The counter-argument considered — "NaN is deliberately ignored per-axis, not
+treated as an error, so this is by design" — does not survive scrutiny: *ignoring* a bad sample (not corrupting
+`_value`/`_mean` with it) is a defensible filtering choice, but *also* reporting full confidence as a side effect of
+that ignoring is a separate, unjustified choice that actively misleads any consumer relying on `confidence()`/
+`state()` to assess sensor health (e.g. `DataValidatorGroup::get_best()`, which would happily select this sensor).
+This session's source read of `VehicleIMU.cpp`/`voted_sensors_update.cpp` found no upstream NaN filter guaranteeing
+this path is unreachable in practice (not exhaustive — hardware drivers are out of scope — but no positive evidence
+of a safety net either). Decided autonomously per the user's explicit authorization to resolve this finding rather
+than leave it open; not a substitute for the team's own review before final submission.
 Location: DataValidator.cpp:68 (`if (PX4_ISFINITE(val[i]))` -- guards the per-axis update body; `_time_last` is set
 unconditionally at L97, outside that per-axis guard), L100-142 (`confidence()`)
 Related tests: SQE-DV-07 (`DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence`), SQE-PRB-01 (disabled probe)
@@ -286,7 +306,22 @@ anomalies in data streams" (file header) a binding contract this violates, or is
 
 ---
 
-### F-10 Error density exactly at window boundary -> confidence 0, no flag   Status: confirmed -- HUMAN-DECISION (defect vs. specification ambiguity)
+### F-10 Error density exactly at window boundary -> confidence 0, no flag   Status: confirmed defect
+
+**Verdict (resolved 2026-10-01):** classified as a **defect**, not an intentional one-count gap. Rationale: at
+`_error_density == ERROR_DENSITY_WINDOW` exactly, `confidence()` and `state()` — two outputs of the same object
+describing the same instant — directly contradict each other: confidence reports the worst possible score (0.0,
+meaning "do not trust this sensor at all") while state reports zero flags (meaning "nothing is wrong"). This is
+not a question of where to draw a boundary; it is two code paths (the density-cap-and-decay arithmetic at L132-138
+vs. the flag-setting `>` comparison at L125) silently disagreeing about the same data point, which is an internal
+consistency defect in the class's own contract, not a specification question answerable either way. Confirmed
+concrete consumer impact: `voted_sensors_update.cpp:419` uses `state() == NO_ERROR` as its "healthy" predicate, so
+this boundary produces one real cycle of `accel_healthy[i] == true` reporting on a sensor whose own confidence is
+simultaneously zero — a self-contradictory status reaching a real caller, not a theoretical edge case. The fix
+would be changing L125's `>` to `>=` (or decaying the density to equal the window one step earlier), a one-line,
+low-risk correction — out of scope to apply here under R2 (no production-code changes), but worth flagging as
+low-effort if the team chooses to report it upstream. Decided autonomously per the user's explicit authorization;
+not a substitute for the team's own review before final submission.
 Location: DataValidator.cpp:125 (`else if (_error_density > ERROR_DENSITY_WINDOW)` -- strict `>`, not `>=`)
 Related tests: SQE-DV-15 (`DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag`), SQE-PRB-02 (disabled probe)
 Evidence: `evidence/tests/xml/unit-SqeDataValidator.xml` (DV15 PASS this session), `evidence/tests/probes/unit-SqeDataValidator.xml`
@@ -315,7 +350,25 @@ produces one cycle of `accel_healthy[i] == true` reporting alongside zero confid
 
 ---
 
-### F-11 Equal-priority confidence-driven switch counted as a failover   Status: confirmed -- HUMAN-DECISION (classification semantics)
+### F-11 Equal-priority confidence-driven switch counted as a failover   Status: confirmed, specification ambiguity (not a defect)
+
+**Verdict (resolved 2026-10-01):** classified as **specification ambiguity**, explicitly not a defect — this
+finding is different in kind from F-09/F-10. Neither of those involved a genuine design choice: F-09/F-10 are
+internal contradictions (the API disagreeing with itself or with its own stated purpose) that any reasonable
+reading of the code would flag as wrong. F-11 has no such contradiction: `failover_count()` incrementing on an
+equal-priority, confidence-driven switch is fully self-consistent with the code as written — it's a question of
+what the *word* "failover" should mean to a telemetry/ops consumer, and that depends entirely on externally-defined
+product intent this session has no authority to invent. Both readings considered remain equally defensible on the
+evidence alone: (1) the guard at L207-208 only exists to suppress counting when a *strictly higher-priority* sensor
+takes over, so an equal-priority confidence improvement was plausibly never meant to be excluded — current behaviour
+is consistent; (2) from a pure monitoring standpoint, two healthy, equal-priority sensors trading places on a small
+confidence delta is arguably not what an operator means by "failsafe event," and inflating the counter could distort
+failure-rate statistics over a long flight log. Resolving this one way or the other requires knowing what
+`failover_count()` is actually consumed for downstream (logging dashboard? safety-critical alerting? neither file
+read this session answered that) — genuinely outside what source-code reading alone can settle, so it is left as a
+specification ambiguity rather than forced into a defect/non-defect verdict. Decided autonomously per the user's
+explicit authorization; the team should still form their own view before the viva, since this is the kind of
+question an examiner is likely to probe directly.
 Location: DataValidatorGroup.cpp:207-227 (the "check whether the switch was a failsafe or preferring a higher
 priority sensor" block)
 Related tests: SQE-DVG-MC-04 (`MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover`), SQE-DVG-MC-07
@@ -476,13 +529,33 @@ consistent with their documented design (UB only manifests, and is only detected
 build was not touched and remains verified Coverage (`grep CMAKE_BUILD_TYPE PX4-Autopilot/build/px4_sitl_test/CMakeCache.txt`
 -> `Coverage`, checked both before and after this session's work).
 
-## HUMAN-DECISION items (this phase)
-- F-09 -- defect (NaN stream reported healthy) vs. specification ambiguity (per-axis NaN-ignoring is by design;
-  `error_count` is the intended anomaly-signalling channel, not finiteness).
-- F-10 -- defect (`>` should be `>=` at L125) vs. specification ambiguity (intentional one-count gap between the
-  density cap and the flag threshold).
-- F-11 -- classification semantics: should an equal-priority, confidence-only sensor switch count as a
-  `failover_count()` event, or only priority-driven/true-failsafe switches?
-- (Carried from P04, unrelated to this phase's own findings, listed in STATUS for completeness) D-004 exclusions
-  list, and probe oracles PRB-01/02/03 themselves (the three probes above are the concrete artefacts of the F-09/
-  F-10/F-02 human-decision items -- approving an oracle for a probe is resolving the corresponding classification).
+## HUMAN-DECISION items — resolution (2026-10-01)
+F-09, F-10, and F-11 were resolved autonomously per explicit user authorization (full reasoning in each finding's
+"Verdict" paragraph above, not repeated here):
+- **F-09 → defect.** `confidence()==1.0`/`state()==NO_ERROR` on a stream that has never once been finite directly
+  contradicts the class's own stated purpose ("identify anomalies"), and the "NaN-ignoring by design" counter-reading
+  doesn't justify *also* reporting full health as an unexamined side effect.
+- **F-10 → defect.** `confidence()==0` and `state()==NO_ERROR` simultaneously is an internal contradiction in the
+  object's own API at the same instant for the same input — not a boundary-placement question. One-line fix
+  (`>` → `>=` at L125), not applied here (R2, no production-code changes).
+- **F-11 → specification ambiguity, not a defect.** Self-consistent behavior; resolving "should this count as a
+  failover" requires knowing what `failover_count()` is actually used for downstream, which this session could not
+  determine from the source alone.
+
+**Probe oracle approvals, following directly from the above (approving an oracle for a probe is the same decision
+as resolving its finding):**
+- **PRB-01 (F-09's stricter oracle, "NaN stream should reduce confidence"): APPROVED.** Consistent with the F-09
+  defect verdict. PRB-01 currently FAILS against the as-shipped code (expected — that's what makes it a probe for
+  a confirmed defect, not a passing characterization test). It should remain `DISABLED_PRB01_*` and continue to be
+  run explicitly via `tools/sqe_run_tests.sh probes` as a standing regression marker until/unless the production
+  code is actually changed (out of this assignment's scope, R2) — it is not meant to be re-enabled as a normal
+  passing test.
+- **PRB-02 (F-10's stricter oracle, "density-at-window should set a flag"): APPROVED.** Same reasoning as PRB-01,
+  tied to the F-10 defect verdict. Remains `DISABLED_PRB02_*`, run explicitly as a standing regression marker.
+- **PRB-03 (F-02's stricter oracle, "total failure should return nullptr"): left as previously resolved in P11 —
+  not part of this HUMAN-DECISION set.** F-02 was already classified "confirmed" (API-inconsistency observation,
+  not flagged ambiguous) before this update; not revisited here since the user's instruction to resolve the open
+  human-decision items referred specifically to F-09/F-10/F-11.
+
+(Carried from P04, unrelated to this phase's findings: D-004's exclusions list remains a separate open item for
+the team's review, listed in `work/STATUS.md`.)
