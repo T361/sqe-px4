@@ -1,0 +1,15 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+Note: Google Test filter = SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
+[----------] 1 test from SqeFailureDetectorTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.

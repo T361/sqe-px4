@@ -1,0 +1,28 @@
+$ ./functional-SqeFailureDetectorImu --gtest_output=xml:… (20261001T145015Z)
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI08_InstanceAdvertisedButNeverPublished_CopyFailsSearchContinues
+[       OK ] SqeFailureDetectorImuTest.FDI08_InstanceAdvertisedButNeverPublished_CopyFailsSearchContinues (1 ms)
+[----------] 8 tests from SqeFailureDetectorImuTest (15 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 1 test suite ran. (16 ms total)
+[  PASSED  ] 8 tests.

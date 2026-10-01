@@ -1,0 +1,14 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+Note: Google Test filter = SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
+[----------] 1 test from SqeFailureDetectorTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.

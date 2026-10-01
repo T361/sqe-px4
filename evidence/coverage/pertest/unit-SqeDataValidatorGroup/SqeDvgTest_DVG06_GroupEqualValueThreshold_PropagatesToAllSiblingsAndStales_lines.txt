@@ -1,0 +1,432 @@
+## /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/FailureDetector.cpp
+L45: 0
+L46: 0  branches taken: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+L48: 0
+L50: 0
+L52: 0  branches taken: [0, 0]
+L54: 0
+L56: 0  branches taken: [0, 0]
+L57: 0  branches taken: [0, 0]
+L59: 0  branches taken: [0, 0]
+L60: 0  branches taken: [0, 0]
+L64: 0
+L65: 0
+L66: 0
+L67: 0
+L73: 0  branches taken: [0, 0, 0, 0]
+L74: 0  branches taken: [0, 0]
+L76: 0  branches taken: [0, 0]
+L77: 0  branches taken: [0, 0]
+L80: 0  branches taken: [0, 0]
+L81: 0  branches taken: [0, 0]
+L85: 0  branches taken: [0, 0]
+L86: 0  branches taken: [0, 0]
+L89: 0
+L92: 0
+L96: 0  branches taken: [0, 0, 0, 0]
+L98: 0  branches taken: [0, 0, 0, 0]
+L99: 0  branches taken: [0, 0]
+L100: 0  branches taken: [0, 0]
+L103: 0  branches taken: [0, 0]
+L104: 0  branches taken: [0, 0]
+L106: 0
+L107: 0
+L109: 0  branches taken: [0, 0]
+L111: 0  branches taken: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+L112: 0  branches taken: [0, 0]
+L113: 0  branches taken: [0, 0]
+L114: 0  branches taken: [0, 0]
+L118: 0
+L119: 0
+L120: 0
+L121: 0
+L123: 0  branches taken: [0, 0, 0, 0]
+L124: 0  branches taken: [0, 0, 0, 0]
+L126: 0  branches taken: [0, 0]
+L129: 0  branches taken: [0, 0]
+L130: 0  branches taken: [0, 0]
+L131: 0  branches taken: [0, 0]
+L132: 0  branches taken: [0, 0]
+L135: 0
+L136: 0
+L138: 0
+L140: 0
+L144: 0  branches taken: [0, 0, 0, 0]
+L146: 0
+L147: 0  branches taken: [0, 0, 0, 0]
+L149: 0  branches taken: [0, 0]
+L152: 0  branches taken: [0, 0]
+L153: 0  branches taken: [0, 0]
+L155: 0
+L157: 0
+L159: 0
+L161: 0  branches taken: [0, 0]
+L163: 0  branches taken: [0, 0]
+L164: 0
+L165: 0
+L166: 0
+L168: 0
+L170: 0  branches taken: [0, 0]
+L171: 0  branches taken: [0, 0, 0, 0]
+L174: 0  branches taken: [0, 0]
+L175: 0  branches taken: [0, 0]
+L177: 0  branches taken: [0, 0]
+L178: 0
+L183: 0  branches taken: [0, 0]
+L184: 0
+L186: 0
+L188: 0
+L191: 0  branches taken: [0, 0, 0, 0]
+L194: 0  branches taken: [0, 0, 0, 0]
+L195: 0
+L199: 0  branches taken: [0, 0]
+L202: 0
+L203: 0  branches taken: [0, 0]
+L205: 0  branches taken: [0, 0]
+L207: 0  branches taken: [0, 0]
+L208: 0  branches taken: [0, 0, 0, 0]
+L209: 0
+L212: 0  branches taken: [0, 0]
+L213: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L215: 0
+L220: 0  branches taken: [0, 0]
+L222: 0  branches taken: [0, 0, 0, 0]
+L224: 0  branches taken: [0, 0]
+L225: 0  branches taken: [0, 0]
+L226: 0
+L227: 0
+L229: 0  branches taken: [0, 0]
+L231: 0
+L232: 0
+L233: 0
+L236: 0
+L237: 0  branches taken: [0, 0]
+L239: 0
+L240: 0
+L244: 0
+L246: 0
+L259: 0  branches taken: [0, 0]
+L260: 0  branches taken: [0, 0]
+L261: 0
+L263: 0
+L264: 0  branches taken: [0, 0]
+L267: 0  branches taken: [0, 0]
+L269: 0
+L272: 0
+L274: 0  branches taken: [0, 0]
+L275: 0
+L279: 0  branches taken: [0, 0, 0, 0]
+L280: 0
+L284: 0
+L285: 0
+L286: 0
+L288: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L290: 0
+L292: 0  branches taken: [0, 0, 0, 0]
+L294: 0
+L298: 0  branches taken: [0, 0]
+L299: 0
+L302: 0  branches taken: [0, 0]
+L303: 0
+L305: 0  branches taken: [0, 0]
+L306: 0
+L309: 0
+L310: 0
+L311: 0
+L313: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L314: 0  branches taken: [0, 0]
+L315: 0
+L319: 0  branches taken: [0, 0]
+L320: 0
+L324: 0
+L325: 0  branches taken: [0, 0]
+L326: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L328: 0
+L334: 0  branches taken: [0, 0, 0, 0]
+L336: 0  branches taken: [0, 0, 0, 0]
+L338: 0
+L340: 0  branches taken: [0, 0, 0, 0]
+L342: 0
+L347: 0  branches taken: [0, 0]
+L348: 0
+L351: 0
+L352: 0
+L354: 0
+## /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/FailureInjector.cpp
+L39: 0
+L41: 0
+L43: 0  branches taken: [0, 0, 0, 0]
+L44: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L45: 0
+L47: 0
+L49: 0
+L51: 0  branches taken: [0, 0]
+L55: 0  branches taken: [0, 0, 0, 0]
+L56: 0
+L57: 0
+L59: 0  branches taken: [0, 0]
+L60: 0  branches taken: [0, 0]
+L61: 0
+L64: 0
+L65: 0
+L67: 0  branches taken: [0, 0]
+L68: 0  branches taken: [0, 0, 0, 0]
+L69: 0
+L72: 0  branches taken: [0, 0, 0, 0, 0]
+L73: 0
+L74: 0
+L75: 0  branches taken: [0, 0]
+L76: 0
+L77: 0
+L78: 0
+L79: 0
+L81: 0
+L82: 0
+L83: 0  branches taken: [0, 0]
+L84: 0
+L85: 0
+L87: 0
+L88: 0
+L89: 0  branches taken: [0, 0]
+L90: 0
+L91: 0
+L93: 0
+L94: 0
+L95: 0  branches taken: [0, 0]
+L96: 0
+L97: 0
+L101: 0
+L102: 0
+L103: 0
+L104: 0  branches taken: [0, 0]
+L107: 0  branches taken: [0, 0]
+L108: 0  branches taken: [0, 0]
+L112: 0
+L114: 0  branches taken: [0, 0]
+L116: 0  branches taken: [0, 0, 0, 0]
+L117: 0  branches taken: [0, 0]
+L118: 0
+L120: 0  branches taken: [0, 0]
+L121: 0
+L122: 0
+L123: 0
+L124: 0
+L126: 0  branches taken: [0, 0]
+L128: 0
+L129: 0
+L130: 0
+## /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidator.cpp
+L47: 0
+L49: 0
+L50: 0
+L51: 0
+L53: 6
+L55: 6
+L57: 6  branches taken: [0, 6]
+L58: 0
+L60: 6  branches taken: [0, 6]
+L61: 0
+L64: 6
+L65: 6
+L67: 24  branches taken: [18, 6]
+L68: 18  branches taken: [18, 0]
+L69: 18  branches taken: [6, 12]
+L70: 6
+L71: 6
+L72: 6
+L75: 12
+L77: 12
+L78: 12
+L79: 12
+L80: 12
+L82: 12  branches taken: [12, 0]
+L83: 12
+L86: 0
+L91: 18
+L93: 18
+L97: 6
+L98: 6
+L100: 2
+L103: 2
+L106: 2  branches taken: [0, 2]
+L107: 0
+L108: 0
+L110: 2  branches taken: [0, 2]
+L112: 0
+L113: 0
+L115: 2  branches taken: [2, 0]
+L117: 2
+L118: 2
+L120: 0  branches taken: [0, 0]
+L122: 0
+L123: 0
+L125: 0  branches taken: [0, 0]
+L127: 0
+L128: 0
+L132: 2  branches taken: [0, 2]
+L134: 0
+L136: 0  branches taken: [0, 0]
+L137: 0
+L141: 2
+L144: 0
+L146: 0  branches taken: [0, 0]
+L147: 0
+L148: 0
+L151: 0  branches taken: [0, 0]
+L152: 0
+## /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.cpp
+L48: 1
+L51: 1
+L52: 1
+L54: 3  branches taken: [2, 1]
+L55: 2  branches taken: [2, 0]
+L57: 2  branches taken: [1, 1]
+L58: 1
+L61: 1
+L64: 2
+L67: 1
+L69: 1  branches taken: [1, 0]
+L70: 1
+L72: 1
+L74: 1
+L76: 3  branches taken: [2, 1]
+L77: 2
+L78: 2  branches taken: [2, 0]
+L79: 2
+L81: 1
+L83: 0
+L86: 0  branches taken: [0, 0]
+L88: 0  branches taken: [0, 0]
+L89: 0
+L92: 0
+L93: 0
+L94: 0
+L95: 0
+L98: 0
+L101: 0
+L103: 0  branches taken: [0, 0]
+L104: 0
+L105: 0
+L108: 0
+L109: 0
+L111: 1
+L114: 1
+L116: 3  branches taken: [2, 1]
+L117: 2
+L118: 2
+L120: 1
+L122: 6
+L126: 6
+L127: 6
+L129: 9  branches taken: [9, 0]
+L130: 9  branches taken: [6, 3]
+L131: 6
+L132: 6
+L135: 3
+L136: 3
+L138: 6
+L140: 1
+L143: 1
+L146: 1
+L147: 1
+L148: 1
+L149: 1
+L150: 1
+L151: 1
+L152: 1
+L154: 1
+L157: 3  branches taken: [2, 1]
+L158: 2  branches taken: [0, 2]
+L159: 0
+L160: 0
+L162: 0
+L163: 0
+L165: 0
+L166: 0
+L167: 0
+L168: 0
+L169: 0
+L172: 2
+L173: 2
+L176: 1
+L177: 1
+L179: 3  branches taken: [2, 1]
+L180: 2
+L187: 2  branches taken: [2, 0, 2, 0]
+L188: 2  branches taken: [0, 2]
+L189: 4  branches taken: [2, 0, 0, 0, 0, 0, 0, 2, 0, 2]
+L191: 0
+L192: 0
+L193: 0
+L194: 0
+L197: 2
+L198: 2
+L203: 1  branches taken: [1, 0, 1, 0, 0, 1]
+L204: 0
+L207: 0  branches taken: [0, 0, 0, 0]
+L208: 0  branches taken: [0, 0]
+L210: 0
+L213: 0  branches taken: [0, 0]
+L214: 0
+L219: 0  branches taken: [0, 0]
+L220: 0
+L224: 0
+L226: 0  branches taken: [0, 0]
+L227: 0
+L230: 0  branches taken: [0, 0]
+L231: 0
+L234: 0  branches taken: [0, 0]
+L235: 0
+L241: 0
+L244: 1
+L245: 1  branches taken: [0, 1]
+L248: 0
+L250: 0  branches taken: [0, 0]
+L253: 0
+L254: 0
+L256: 0  branches taken: [0, 0]
+L257: 0  branches taken: [0, 0]
+L258: 0
+L260: 0  branches taken: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+L268: 0
+L271: 0
+L272: 0
+L274: 0
+L276: 0
+L278: 0
+L279: 0
+L281: 0  branches taken: [0, 0]
+L282: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L283: 0  branches taken: [0, 0]
+L284: 0
+L287: 0
+L288: 0
+L291: 0
+L294: 0
+L297: 0
+L298: 0
+L300: 0  branches taken: [0, 0]
+L301: 0  branches taken: [0, 0, 0, 0, 0, 0]
+L302: 0  branches taken: [0, 0]
+L303: 0
+L306: 0
+L307: 0
+L310: 0
+L313: 2
+L315: 2
+L316: 2
+L318: 3  branches taken: [3, 0]
+L319: 3  branches taken: [2, 1]
+L320: 2
+L323: 1
+L324: 1
+L328: 0
+L331: 0
+L333: 0
+L334: 0
+L336: 0  branches taken: [0, 0]
+L337: 0  branches taken: [0, 0]
+L338: 0
+L341: 0
+L342: 0
+L346: 0

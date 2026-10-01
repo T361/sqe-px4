@@ -1,0 +1,11 @@
+Note: Google Test filter = SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[----------] 1 test from SqeDvgMcdcTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.

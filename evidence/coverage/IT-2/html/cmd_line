@@ -1,0 +1,1 @@
+genhtml /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/IT-2/scope.info --branch-coverage --legend --prefix /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot --title 'SQE A2 IT-2' -o /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/IT-2/html --rc branch_coverage=1 --ignore-errors mismatch

@@ -1,0 +1,14 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+Note: Google Test filter = SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
+[----------] 1 test from SqeFailureDetectorTest (351 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (351 ms total)
+[  PASSED  ] 1 test.

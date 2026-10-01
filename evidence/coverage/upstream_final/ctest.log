@@ -1,0 +1,299 @@
+Test project /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test
+        Start   1: functional-AdsbConflict
+  1/147 Test   #1: functional-AdsbConflict ..............................   Passed    0.03 sec
+        Start   2: unit-test_atmosphere
+  2/147 Test   #2: unit-test_atmosphere .................................   Passed    0.03 sec
+        Start   3: functional-CollisionPrevention
+  3/147 Test   #3: functional-CollisionPrevention .......................   Passed    0.33 sec
+        Start   4: unit-ObstacleMath
+  4/147 Test   #4: unit-ObstacleMath ....................................   Passed    0.04 sec
+        Start   5: unit-ControlAllocationPseudoInverse
+  5/147 Test   #5: unit-ControlAllocationPseudoInverse ..................   Passed    0.03 sec
+        Start   6: functional-ControlAllocationSequentialDesaturation
+  6/147 Test   #6: functional-ControlAllocationSequentialDesaturation ...   Passed    0.07 sec
+        Start   7: unit-Rotation
+  7/147 Test   #7: unit-Rotation ........................................   Passed    0.04 sec
+        Start   8: unit-FieldSensorBiasEstimator
+  8/147 Test   #8: unit-FieldSensorBiasEstimator ........................   Passed    0.05 sec
+        Start   9: unit-test_geo
+  9/147 Test   #9: unit-test_geo ........................................   Passed    0.04 sec
+        Start  10: unit-Hysteresis
+ 10/147 Test  #10: unit-Hysteresis ......................................   Passed    0.04 sec
+        Start  11: unit-test_lat_lon_alt
+ 11/147 Test  #11: unit-test_lat_lon_alt ................................   Passed    0.04 sec
+        Start  12: unit-MatrixAssignment
+ 12/147 Test  #12: unit-MatrixAssignment ................................   Passed    0.03 sec
+        Start  13: unit-MatrixAttitude
+ 13/147 Test  #13: unit-MatrixAttitude ..................................   Passed    0.03 sec
+        Start  14: unit-MatrixCopyTo
+ 14/147 Test  #14: unit-MatrixCopyTo ....................................   Passed    0.03 sec
+        Start  15: unit-MatrixDcm2
+ 15/147 Test  #15: unit-MatrixDcm2 ......................................   Passed    0.04 sec
+        Start  16: unit-MatrixDual
+ 16/147 Test  #16: unit-MatrixDual ......................................   Passed    0.04 sec
+        Start  17: unit-MatrixFilter
+ 17/147 Test  #17: unit-MatrixFilter ....................................   Passed    0.04 sec
+        Start  18: unit-MatrixHatvee
+ 18/147 Test  #18: unit-MatrixHatvee ....................................   Passed    0.04 sec
+        Start  19: unit-MatrixHelper
+ 19/147 Test  #19: unit-MatrixHelper ....................................   Passed    0.03 sec
+        Start  20: unit-MatrixIntegral
+ 20/147 Test  #20: unit-MatrixIntegral ..................................   Passed    0.06 sec
+        Start  21: unit-MatrixInverse
+ 21/147 Test  #21: unit-MatrixInverse ...................................   Passed    0.82 sec
+        Start  22: unit-MatrixLeastSquares
+ 22/147 Test  #22: unit-MatrixLeastSquares ..............................   Passed    0.04 sec
+        Start  23: unit-MatrixMultiplication
+ 23/147 Test  #23: unit-MatrixMultiplication ............................   Passed    0.04 sec
+        Start  24: unit-MatrixPseudoInverse
+ 24/147 Test  #24: unit-MatrixPseudoInverse .............................   Passed    0.14 sec
+        Start  25: unit-MatrixScalarMultiplication
+ 25/147 Test  #25: unit-MatrixScalarMultiplication ......................   Passed    0.04 sec
+        Start  26: unit-MatrixSetIdentity
+ 26/147 Test  #26: unit-MatrixSetIdentity ...............................   Passed    0.05 sec
+        Start  27: unit-MatrixSlice
+ 27/147 Test  #27: unit-MatrixSlice .....................................   Passed    0.05 sec
+        Start  28: unit-MatrixSparseVector
+ 28/147 Test  #28: unit-MatrixSparseVector ..............................   Passed    0.03 sec
+        Start  29: unit-MatrixSquare
+ 29/147 Test  #29: unit-MatrixSquare ....................................   Passed    0.03 sec
+        Start  30: unit-MatrixTranspose
+ 30/147 Test  #30: unit-MatrixTranspose .................................   Passed    0.03 sec
+        Start  31: unit-MatrixVector
+ 31/147 Test  #31: unit-MatrixVector ....................................   Passed    0.03 sec
+        Start  32: unit-MatrixUnwrap
+ 32/147 Test  #32: unit-MatrixUnwrap ....................................   Passed    0.04 sec
+        Start  33: unit-MatrixUpperRightTriangle
+ 33/147 Test  #33: unit-MatrixUpperRightTriangle ........................   Passed    0.03 sec
+        Start  34: unit-MatrixVector2
+ 34/147 Test  #34: unit-MatrixVector2 ...................................   Passed    0.03 sec
+        Start  35: unit-MatrixVector3
+ 35/147 Test  #35: unit-MatrixVector3 ...................................   Passed    0.03 sec
+        Start  36: unit-MatrixVectorAssignment
+ 36/147 Test  #36: unit-MatrixVectorAssignment ..........................   Passed    0.03 sec
+        Start  37: unit-LowPassFilter2pVector3f
+ 37/147 Test  #37: unit-LowPassFilter2pVector3f .........................   Passed    0.20 sec
+        Start  38: unit-AlphaFilter
+ 38/147 Test  #38: unit-AlphaFilter .....................................   Passed    0.04 sec
+        Start  39: unit-MedianFilter
+ 39/147 Test  #39: unit-MedianFilter ....................................   Passed    0.03 sec
+        Start  40: unit-NotchFilter
+ 40/147 Test  #40: unit-NotchFilter .....................................   Passed    0.05 sec
+        Start  41: unit-second_order_reference_model_test
+ 41/147 Test  #41: unit-second_order_reference_model_test ...............   Passed    0.04 sec
+        Start  42: unit-Functions
+ 42/147 Test  #42: unit-Functions .......................................   Passed    0.03 sec
+        Start  43: unit-Utilities
+ 43/147 Test  #43: unit-Utilities .......................................   Passed    0.03 sec
+        Start  44: unit-WelfordMean
+ 44/147 Test  #44: unit-WelfordMean .....................................   Passed    0.03 sec
+        Start  45: unit-WelfordMeanVector
+ 45/147 Test  #45: unit-WelfordMeanVector ...............................   Passed    0.03 sec
+        Start  46: unit-MaxDistanceToCircle
+ 46/147 Test  #46: unit-MaxDistanceToCircle .............................   Passed    0.03 sec
+        Start  47: functional-mixer_module_tests
+ 47/147 Test  #47: functional-mixer_module_tests ........................   Passed    0.73 sec
+        Start  48: unit-VelocitySmoothing
+ 48/147 Test  #48: unit-VelocitySmoothing ...............................   Passed    0.04 sec
+        Start  49: unit-PositionSmoothing
+ 49/147 Test  #49: unit-PositionSmoothing ...............................   Passed    0.11 sec
+        Start  50: unit-HeadingSmoothing
+ 50/147 Test  #50: unit-HeadingSmoothing ................................   Passed    0.03 sec
+        Start  51: unit-Npfg
+ 51/147 Test  #51: unit-Npfg ............................................   Passed    0.03 sec
+        Start  52: unit-PID
+ 52/147 Test  #52: unit-PID .............................................   Passed    0.04 sec
+        Start  53: unit-pid_design_test
+ 53/147 Test  #53: unit-pid_design_test .................................   Passed    0.03 sec
+        Start  54: unit-PurePursuit
+ 54/147 Test  #54: unit-PurePursuit .....................................   Passed    0.04 sec
+        Start  55: unit-rate_control_test
+ 55/147 Test  #55: unit-rate_control_test ...............................   Passed    0.03 sec
+        Start  56: unit-Ringbuffer
+ 56/147 Test  #56: unit-Ringbuffer ......................................   Passed    0.03 sec
+        Start  57: unit-RoverControl
+ 57/147 Test  #57: unit-RoverControl ....................................   Passed    0.03 sec
+        Start  58: unit-SlewRate
+ 58/147 Test  #58: unit-SlewRate ........................................   Passed    0.04 sec
+        Start  59: unit-SlewRateYaw
+ 59/147 Test  #59: unit-SlewRateYaw .....................................   Passed    0.03 sec
+        Start  60: unit-arx_rls_test
+ 60/147 Test  #60: unit-arx_rls_test ....................................   Passed    0.03 sec
+        Start  61: unit-system_identification_test
+ 61/147 Test  #61: unit-system_identification_test ......................   Passed    0.07 sec
+        Start  62: unit-VariableLengthRingbuffer
+ 62/147 Test  #62: unit-VariableLengthRingbuffer ........................   Passed    0.03 sec
+        Start  63: unit-test_airspeed_fusion
+ 63/147 Test  #63: unit-test_airspeed_fusion ............................   Passed    0.03 sec
+        Start  64: unit-test_geo_lookup
+ 64/147 Test  #64: unit-test_geo_lookup .................................   Passed    0.05 sec
+        Start  65: functional-lockstep_scheduler_test
+ 65/147 Test  #65: functional-lockstep_scheduler_test ...................   Passed    2.00 sec
+        Start  66: unit-board_identity_test
+ 66/147 Test  #66: unit-board_identity_test .............................   Passed    0.03 sec
+        Start  67: functional-uORBMessageFields
+ 67/147 Test  #67: functional-uORBMessageFields .........................   Passed    0.08 sec
+        Start  68: functional-uORBSubscription
+ 68/147 Test  #68: functional-uORBSubscription ..........................   Passed    0.05 sec
+        Start  69: functional-septentrio_fuzz_tests
+ 69/147 Test  #69: functional-septentrio_fuzz_tests .....................   Passed    2.06 sec
+        Start  70: unit-MessageDisplay
+ 70/147 Test  #70: unit-MessageDisplay ..................................   Passed    0.03 sec
+        Start  71: unit-mag_calibration_test
+ 71/147 Test  #71: unit-mag_calibration_test ............................   Passed    0.07 sec
+        Start  72: functional-ModeManagement
+ 72/147 Test  #72: functional-ModeManagement ............................   Passed    0.03 sec
+        Start  73: functional-failsafe_test
+ 73/147 Test  #73: functional-failsafe_test .............................   Passed    0.04 sec
+        Start  74: functional-HealthAndArmingChecks
+ 74/147 Test  #74: functional-HealthAndArmingChecks .....................   Passed    0.04 sec
+        Start  75: functional-ActuatorEffectivenessHelicopter
+ 75/147 Test  #75: functional-ActuatorEffectivenessHelicopter ...........   Passed    0.03 sec
+        Start  76: functional-ActuatorEffectivenessRotors
+ 76/147 Test  #76: functional-ActuatorEffectivenessRotors ...............   Passed    0.03 sec
+        Start  77: unit-test_EKF_accelerometer
+ 77/147 Test  #77: unit-test_EKF_accelerometer ..........................   Passed   82.11 sec
+        Start  78: unit-test_EKF_airspeed
+ 78/147 Test  #78: unit-test_EKF_airspeed ...............................   Passed   15.71 sec
+        Start  79: unit-test_EKF_basics
+ 79/147 Test  #79: unit-test_EKF_basics .................................   Passed   16.66 sec
+        Start  80: unit-test_EKF_externalVision
+ 80/147 Test  #80: unit-test_EKF_externalVision .........................   Passed   12.79 sec
+        Start  81: unit-test_EKF_fake_pos
+ 81/147 Test  #81: unit-test_EKF_fake_pos ...............................   Passed   12.92 sec
+        Start  82: unit-test_EKF_flow
+ 82/147 Test  #82: unit-test_EKF_flow ...................................   Passed   15.54 sec
+        Start  83: unit-test_EKF_flow_generated
+ 83/147 Test  #83: unit-test_EKF_flow_generated .........................   Passed    0.03 sec
+        Start  84: unit-test_EKF_gyroscope
+ 84/147 Test  #84: unit-test_EKF_gyroscope ..............................   Passed   34.36 sec
+        Start  85: unit-test_EKF_fusionLogic
+ 85/147 Test  #85: unit-test_EKF_fusionLogic ............................   Passed   46.45 sec
+        Start  86: unit-test_EKF_gps
+ 86/147 Test  #86: unit-test_EKF_gps ....................................   Passed   38.74 sec
+        Start  87: unit-test_EKF_gnss_yaw
+ 87/147 Test  #87: unit-test_EKF_gnss_yaw ...............................   Passed   48.74 sec
+        Start  88: unit-test_EKF_gnss_yaw_generated
+ 88/147 Test  #88: unit-test_EKF_gnss_yaw_generated .....................   Passed    0.03 sec
+        Start  89: unit-test_EKF_height_fusion
+ 89/147 Test  #89: unit-test_EKF_height_fusion ..........................   Passed   71.17 sec
+        Start  90: unit-test_EKF_imuSampling
+ 90/147 Test  #90: unit-test_EKF_imuSampling ............................   Passed    0.07 sec
+        Start  91: unit-test_EKF_initialization
+ 91/147 Test  #91: unit-test_EKF_initialization .........................   Passed   14.95 sec
+        Start  92: unit-test_EKF_mag
+ 92/147 Test  #92: unit-test_EKF_mag ....................................   Passed    6.56 sec
+        Start  93: unit-test_EKF_mag_declination_generated
+ 93/147 Test  #93: unit-test_EKF_mag_declination_generated ..............   Passed    0.04 sec
+        Start  94: unit-test_EKF_measurementSampling
+ 94/147 Test  #94: unit-test_EKF_measurementSampling ....................   Passed    0.03 sec
+        Start  95: unit-test_EKF_ringbuffer
+ 95/147 Test  #95: unit-test_EKF_ringbuffer .............................   Passed    0.05 sec
+        Start  96: unit-test_EKF_terrain
+ 96/147 Test  #96: unit-test_EKF_terrain ................................   Passed   11.77 sec
+        Start  97: unit-test_EKF_utils
+ 97/147 Test  #97: unit-test_EKF_utils ..................................   Passed    0.04 sec
+        Start  98: unit-test_EKF_withReplayData
+ 98/147 Test  #98: unit-test_EKF_withReplayData .........................   Passed    8.98 sec
+        Start  99: unit-test_EKF_yaw_estimator
+ 99/147 Test  #99: unit-test_EKF_yaw_estimator ..........................   Passed    1.04 sec
+        Start 100: unit-test_EKF_yaw_fusion_generated
+100/147 Test #100: unit-test_EKF_yaw_fusion_generated ...................   Passed    0.03 sec
+        Start 101: unit-test_SensorRangeFinder
+101/147 Test #101: unit-test_SensorRangeFinder ..........................   Passed    0.04 sec
+        Start 102: unit-test_EKF_drag_fusion
+102/147 Test #102: unit-test_EKF_drag_fusion ............................   Passed   66.05 sec
+        Start 103: unit-test_EKF_grounded
+103/147 Test #103: unit-test_EKF_grounded ...............................   Passed   12.62 sec
+        Start 104: functional-StickTiltXY
+104/147 Test #104: functional-StickTiltXY ...............................   Passed    0.05 sec
+        Start 105: functional-ManualControl
+105/147 Test #105: functional-ManualControl .............................   Passed    0.05 sec
+        Start 106: unit-ManualControlSelector
+106/147 Test #106: unit-ManualControlSelector ...........................   Passed    0.04 sec
+        Start 107: unit-MavlinkStatustextHandler
+107/147 Test #107: unit-MavlinkStatustextHandler ........................   Passed    0.03 sec
+        Start 108: unit-AttitudeControl
+108/147 Test #108: unit-AttitudeControl .................................   Passed    0.10 sec
+        Start 109: unit-AttitudeControlMath
+109/147 Test #109: unit-AttitudeControlMath .............................   Passed    0.03 sec
+        Start 110: unit-zero_order_hover_thrust_ekf_test
+110/147 Test #110: unit-zero_order_hover_thrust_ekf_test ................   Passed    0.05 sec
+        Start 111: unit-ControlMath
+111/147 Test #111: unit-ControlMath .....................................   Passed    0.06 sec
+        Start 112: unit-PositionControl
+112/147 Test #112: unit-PositionControl .................................   Passed    0.08 sec
+        Start 113: unit-Takeoff
+113/147 Test #113: unit-Takeoff .........................................   Passed    0.05 sec
+        Start 114: functional-GeofenceBreachAvoidance
+114/147 Test #114: functional-GeofenceBreachAvoidance ...................   Passed    4.05 sec
+        Start 115: functional-FeasibilityChecker
+115/147 Test #115: functional-FeasibilityChecker ........................   Passed    0.06 sec
+        Start 116: functional-RCUpdate
+116/147 Test #116: functional-RCUpdate ..................................   Passed    0.06 sec
+        Start 117: unit-gps_blending_test
+117/147 Test #117: unit-gps_blending_test ...............................   Passed    0.07 sec
+        Start 118: functional-VehicleOpticalFlow
+118/147 Test #118: functional-VehicleOpticalFlow ........................   Passed    0.07 sec
+        Start 119: functional-Parameter
+119/147 Test #119: functional-Parameter .................................   Passed    0.05 sec
+        Start 120: sitl-atomic_bitset
+120/147 Test #120: sitl-atomic_bitset ...................................   Passed    0.43 sec
+        Start 121: sitl-bitset
+121/147 Test #121: sitl-bitset ..........................................   Passed    0.36 sec
+        Start 122: sitl-bson
+122/147 Test #122: sitl-bson ............................................   Passed    0.39 sec
+        Start 123: sitl-dataman
+123/147 Test #123: sitl-dataman .........................................   Passed    4.74 sec
+        Start 124: sitl-file2
+124/147 Test #124: sitl-file2 ...........................................   Passed    0.46 sec
+        Start 125: sitl-float
+125/147 Test #125: sitl-float ...........................................   Passed    0.53 sec
+        Start 126: sitl-hrt
+126/147 Test #126: sitl-hrt .............................................   Passed    5.44 sec
+        Start 127: sitl-int
+127/147 Test #127: sitl-int .............................................   Passed    0.43 sec
+        Start 128: sitl-IntrusiveQueue
+128/147 Test #128: sitl-IntrusiveQueue ..................................   Passed    0.38 sec
+        Start 129: sitl-IntrusiveSortedList
+129/147 Test #129: sitl-IntrusiveSortedList .............................   Passed    0.37 sec
+        Start 130: sitl-List
+130/147 Test #130: sitl-List ............................................   Passed    0.40 sec
+        Start 131: sitl-mathlib
+131/147 Test #131: sitl-mathlib .........................................   Passed    0.94 sec
+        Start 132: sitl-matrix
+132/147 Test #132: sitl-matrix ..........................................   Passed    0.49 sec
+        Start 133: sitl-param
+133/147 Test #133: sitl-param ...........................................   Passed    0.39 sec
+        Start 134: sitl-parameters
+134/147 Test #134: sitl-parameters ......................................   Passed    1.42 sec
+        Start 135: sitl-perf
+135/147 Test #135: sitl-perf ............................................   Passed    0.40 sec
+        Start 136: sitl-search_min
+136/147 Test #136: sitl-search_min ......................................   Passed    0.45 sec
+        Start 137: sitl-sleep
+137/147 Test #137: sitl-sleep ...........................................   Passed    2.41 sec
+        Start 138: sitl-versioning
+138/147 Test #138: sitl-versioning ......................................   Passed    0.40 sec
+        Start 139: sitl-controllib_test
+139/147 Test #139: sitl-controllib_test .................................   Passed    0.46 sec
+        Start 140: sitl-lightware_laser_test
+140/147 Test #140: sitl-lightware_laser_test ............................   Passed    0.43 sec
+        Start 141: sitl-rc_tests
+141/147 Test #141: sitl-rc_tests ........................................   Passed    0.53 sec
+        Start 142: sitl-uorb_tests
+142/147 Test #142: sitl-uorb_tests ......................................   Passed    5.11 sec
+        Start 143: sitl-imu_filtering
+143/147 Test #143: sitl-imu_filtering ...................................   Passed   11.73 sec
+        Start 144: dyn
+144/147 Test #144: dyn ..................................................   Passed    0.17 sec
+        Start 145: posix_hrt_test
+145/147 Test #145: posix_hrt_test .......................................   Passed    2.83 sec
+        Start 146: posix_cdev_test
+146/147 Test #146: posix_cdev_test ......................................   Passed    2.84 sec
+        Start 147: posix_wqueue_test
+147/147 Test #147: posix_wqueue_test ....................................   Passed    2.91 sec
+
+100% tests passed out of 147
+
+Total Test time (real) = 579.31 sec

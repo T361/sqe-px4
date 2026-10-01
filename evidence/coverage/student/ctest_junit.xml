@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="5"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="dns-HP-EliteBook-640-14-inch-G10-Notebook-PC"
+	time="6"
+	timestamp="2026-10-01T20:14:57"
+	>
+	<testcase name="functional-SqeFailureDetector" classname="functional-SqeFailureDetector" time="4.63447" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 36 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailur...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureDetectorImu" classname="functional-SqeFailureDetectorImu" time="0.0518745" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDet...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureInjector" classname="functional-SqeFailureInjector" time="0.0472881" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 13 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 13 tests from SqeFailureInjectorTest
+[ RUN      ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck
+[       OK ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck (1 ms)
+[ RUN      ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted (1 ms)
+[ RUN      ] SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 3 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 4 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 5...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="unit-SqeDataValidator" classname="unit-SqeDataValidator" time="0.0529276" status="run">
+		<properties/>
+		<system-out>[==========] Running 20 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 20 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (1 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataV...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="unit-SqeDataValidatorGroup" classname="unit-SqeDataValidatorGroup" time="1.21489" status="run">
+		<properties/>
+		<system-out>[==========] Running 34 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (1169 ms)
+[----------] 1 test from SqeDvgDeathTest (1169 ms total)
+
+[----------] 11 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

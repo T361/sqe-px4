@@ -1,0 +1,15 @@
+Found 4 entries.
+Using user-specified filename prefix "/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot"
+Generating output.
+Processing file src/modules/commander/failure_detector/FailureInjector.cpp
+  lines=62 hit=62 functions=3 hit=3 branches=57 hit=47
+Processing file src/modules/commander/failure_detector/FailureDetector.cpp
+  lines=153 hit=153 functions=7 hit=7 branches=254 hit=189
+Processing file src/modules/sensors/data_validator/DataValidatorGroup.cpp
+  lines=155 hit=154 functions=12 hit=12 branches=116 hit=110
+Processing file src/modules/sensors/data_validator/DataValidator.cpp
+  lines=58 hit=58 functions=4 hit=4 branches=30 hit=30
+Overall coverage rate:
+  lines......: 99.8% (427 of 428 lines)
+  functions......: 100.0% (26 of 26 functions)
+  branches......: 82.3% (376 of 457 branches)

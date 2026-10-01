@@ -1,0 +1,12 @@
+Note: Google Test filter = SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (1189 ms)
+[----------] 1 test from SqeDvgDeathTest (1189 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1189 ms total)
+[  PASSED  ] 1 test.

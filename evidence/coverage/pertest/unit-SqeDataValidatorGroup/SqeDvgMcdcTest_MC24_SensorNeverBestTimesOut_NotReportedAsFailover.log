@@ -1,0 +1,11 @@
+Note: Google Test filter = SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[----------] 1 test from SqeDvgMcdcTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.

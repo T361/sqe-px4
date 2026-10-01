@@ -3,3 +3,5 @@ evidence/tmp/
 *.gcda
 *.gcno
 deliverables/*.zip
+__pycache__/
+*.pyc

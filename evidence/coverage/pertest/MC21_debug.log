@@ -1,0 +1,13 @@
++ cd /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test
++ ./unit-SqeDataValidatorGroup --gtest_filter=SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+Note: Google Test filter = SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[----------] 1 test from SqeDvgMcdcTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.

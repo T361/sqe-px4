@@ -1,0 +1,11 @@
+Note: Google Test filter = SqeDvgTest.DVG12_ConstructDestroyVariousSizes_NoCrash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_NoCrash
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_NoCrash (0 ms)
+[----------] 1 test from SqeDvgTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.

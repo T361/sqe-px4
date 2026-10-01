@@ -1,0 +1,15 @@
+Test project /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test
+    Start  75: functional-SqeFailureDetector
+1/5 Test  #75: functional-SqeFailureDetector ......   Passed    4.60 sec
+    Start  76: functional-SqeFailureDetectorImu
+2/5 Test  #76: functional-SqeFailureDetectorImu ...   Passed    0.05 sec
+    Start  77: functional-SqeFailureInjector
+3/5 Test  #77: functional-SqeFailureInjector ......   Passed    0.07 sec
+    Start 121: unit-SqeDataValidator
+4/5 Test #121: unit-SqeDataValidator ..............   Passed    0.07 sec
+    Start 122: unit-SqeDataValidatorGroup
+5/5 Test #122: unit-SqeDataValidatorGroup .........   Passed    1.39 sec
+
+100% tests passed out of 5
+
+Total Test time (real) =   6.18 sec
