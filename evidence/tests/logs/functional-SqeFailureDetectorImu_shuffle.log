@@ -1,0 +1,245 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 84538 .
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (2 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (14 ms total)
+
+[==========] 7 tests from 1 test suite ran. (15 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 84539 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (11 ms total)
+
+[==========] 7 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 84540 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (10 ms total)
+
+[==========] 7 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 84541 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (10 ms total)
+
+[==========] 7 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 84542 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (10 ms total)
+
+[==========] 7 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 84543 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (10 ms total)
+
+[==========] 7 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 84544 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (8 ms total)
+
+[==========] 7 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 84545 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (8 ms total)
+
+[==========] 7 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 84546 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (8 ms total)
+
+[==========] 7 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 7 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 84547 .
+[==========] Running 7 tests from 1 test suite.
+[----------] 7 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection
+[       OK ] SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged
+[       OK ] SqeFailureDetectorImuTest.FDI07_NoNewImuOrSelection_MetricUnchanged (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation
+[       OK ] SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation (1 ms)
+[----------] 7 tests from SqeFailureDetectorImuTest (8 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 7 tests.

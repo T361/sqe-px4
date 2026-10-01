@@ -141,3 +141,47 @@ single `confidence()` call, which failed on first real execution; SPEC_10 steps 
 product defect) and the test's `put()` script was corrected to use three separate sensors instead of changing any
 expected value. **Net result: all 34 active tests pass (build warning-free, individually, together, shuffled x5),
 the 1 disabled probe fails as intentionally designed, both checkers are green — G08 is APPROVED, not BLOCKED.**
+
+## 2026-10-01 — P09 — Claude Sonnet 5 (autonomous per P09 task authorization)
+Use: turned the three-group catalogue in docs/plan/P09_IMPL_C_FAILUREDETECTOR_INJECTOR.md (SQE-FD-01..33,
+SQE-FDI-01..07, SQE-FI-01..13 + 2 disabled sanitizer-only probes) into three real GTest functional-test files:
+PX4-Autopilot/src/modules/commander/failure_detector/{SqeFailureDetectorTest.cpp (34 tests; FD10 split into
+FD10/FD34 to give each TEST_F a distinct traceable ID — ctest functional-SqeFailureDetector),
+SqeFailureDetectorImuTest.cpp (7 tests, own binary for multi-instance vehicle_imu_status — ctest
+functional-SqeFailureDetectorImu), SqeFailureInjectorTest.cpp (13 tests + 2 DISABLED_PRBnn probes — ctest
+functional-SqeFailureInjector)} + one appended CMakeLists.txt block (3 px4_add_functional_gtest lines,
+LINKLIBS modules__commander worked on first try, no fallback needed). Every oracle (quaternion-derived roll/pitch
+limits, hysteresis timing with >=1.5x margins, bitmask arithmetic, AlphaFilter metric via independently-computed
+alpha=dt/(tau+dt), FailureInjector mask semantics) was hand-derived from the live FailureDetector.cpp/.hpp +
+FailureInjector.cpp/.hpp source and cross-checked against work/basis/INVENTORY_FailureDetector_Injector.md,
+CFG_FailureDetector_updateMotorStatus.md and SETUP_MAP.md.
+What the AI produced: the 3 test files above, +3 CMakeLists.txt lines (to be committed on sqe-a2),
+work/inventory/test_inventory.csv (56 new rows: 34 FD + 7 FDI + 13 FI + 2 PRB), work/explain/P09.md,
+work/STATUS.md P09 row (APPROVED), evidence/tests/xml/functional-SqeFailure{Detector,DetectorImu,Injector}.xml,
+evidence/tests/logs/functional-SqeFailure{Detector,DetectorImu,Injector}_{run1,shuffle}.log,
+evidence/tests/logs/P09_clean_rebuild.log (clean object-file rebuild confirming zero compiler warnings under -Werror).
+Human verification: not yet reviewed by the team — self-verified via clean rebuild (0 warnings) + run (all 3
+binaries green: 34/7/13 PASS, 2 correctly DISABLED) + tools/sqe_run_tests.sh {run,shuffle,isolation} (shuffle x10
+stable for all 3 with fresh random seeds; every test also passes run alone: 34/7/15) + tools/sqe_trace_check.py
+(0 errors attributable to P09; the 4 pre-existing errors are P07's DV-PRB-01/02 inventory rows, untouched by this
+session).
+Assumptions introduced: none beyond the documented isolation defaults in the P09 task brief.
+Accepted / revised / rejected: no oracle bending; two issues were found and corrected, both in our own test code,
+neither in production:
+(1) FD31 failed under --gtest_shuffle --gtest_repeat=10 from iteration 2 onward (passed alone and on iteration 1).
+Investigated per SPEC_10 before changing anything: vehicle_command is a queued uORB topic (ORB_QUEUE_LENGTH=8);
+a freshly-constructed uORB::Subscription starts one generation behind the latest publication by design
+(uORBDeviceNode::get_initial_generation(), "allow the subscriber to read" the most recent message) — the exact
+"new subscriber sees the last message as updated" semantics SETUP_MAP.md documents. Because FD31 was the only test
+publishing vehicle_command and SetUp() never cleared that slot, the next FailureDetector's FailureInjector consumed
+the *previous iteration's* leftover STUCK command during its warm-up update(), before our own command was
+published, corrupting the warm-up and preventing the real FD-D33 timeout branch from ever firing later in that
+iteration. Fixed by publishing one neutral vehicle_command (DO_SET_MODE) in SqeFailureDetectorTest::SetUp(),
+mirroring the pattern SqeFailureInjectorTest::SetUp() already used. Confirmed stable after the fix (shuffle x10,
+0 failures; run-alone 34/34). No production code touched.
+(2) FI05's expected esc_online_flags was first written as 0x0D, inconsistent with the test's own 0xFF seed
+(0xFF & ~(1<<1) = 0xFD, not 0x0D) — a plain arithmetic slip in our own catalogue-to-code translation, caught by the
+first real test run and corrected to 0xFD after re-deriving it independently against the real
+manipulateEscStatus() source. Confirmed F-07a/F-07b (esc_count clamp, unguarded shift) and F-08 (WRONG-case log
+off-by-one) were left as findings only (DISABLED_PRB05/PRB06 probes + a comment note on FI06) — no change to
+FailureInjector.cpp.
