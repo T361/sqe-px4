@@ -575,6 +575,9 @@ python3 tools/sqe_word_count.py deliverables/report/REPORT.md
 | `evidence/repro_independent/` | independent second-machine reproduction (baseline/student/final `.info`, shuffle and probe logs) |
 | `work/inventory/test_inventory.csv` | full test-to-decision mapping (120 rows) |
 | `deliverables/24i3015_24i3166_24i3158_B.xlsx` | testing workbook (2 sheets) |
+| `deliverables/24i3015_24i3166_24i3158_B.patch` | git patch against v1.17.0 (tests + CMake registration only) |
+| `deliverables/test_source/` | the 6 student test files and 2 modified `CMakeLists.txt`, at their PX4 paths (identical to applying the patch) |
+| `deliverables/24i3015_24i3166_24i3158_B.zip` | single submission archive: report, workbook, patch, test sources, baseline/final coverage, execution evidence (`tools/sqe_package.py`) |
 | `work/ai_assistance_log.md` | full AI-assistance log |
 | `work/STATUS.md` | phase/gate table, HUMAN-DECISION items |
 | `work/DECISIONS.md` | ADR-lite decision log (D-002, D-004, D-008, D-009, D-010 cited above) |
