@@ -122,6 +122,18 @@ observable effect on any getter** in that case (the `true_failsafe`/`best->reset
 not reached when K=F, but the outer bookkeeping at L219-220 doesn't depend on `true_failsafe` either way). This K=F
 row is therefore **O3** evidence (structural: show L210 was not executed in that test's per-test coverage), not O1/O2.
 
+**Why no API-level oracle can exist for the K pair (post-audit addition).** D15's outcome has exactly two effects:
+(1) `true_failsafe = false` (L210) and (2) `best->reset_state()` (L214). Effect (1) is read only at L226, on the
+`_curr_best >= 0` path; K=False means `pre_check_prio == -1`, which only happens when `_curr_best == -1`, so L226 is
+never reached in a K=False call and (1) cannot be seen. Effect (2) is a no-op in every reachable call: when D15 is
+True, L requires `pre_check_prio < max_priority`, so `best` was selected in Loop 2 by D13, whose G condition means
+`best->confidence(timestamp) > 0` was returned in this same call. `DataValidator::confidence()` sets
+`_error_mask = ERROR_FLAG_NO_ERROR` whenever it returns a value > 0 (DataValidator.cpp L134-138), so `reset_state()`
+writes the value the mask already has. With both effects unobservable, no getter can distinguish D15=True from
+D15=False in the K pair, and per-test structural coverage is the strongest evidence that can exist.
+**Reproduced independently:** running only MC01, then only MC21, with counters zeroed in between, gives L207 hits
+2 / 1 (D15 evaluated in both), L210 hits 1 / 0, L214 hits 1 / 0 — D15 True in MC01, False in MC21.
+
 ### DVG-D32 / DVG-D34 — `failover_index()` / `failover_state()`, L282-283 / L301-302
 ```
 if (next->used() && (next->state() != DataValidator::ERROR_FLAG_NO_ERROR) &&

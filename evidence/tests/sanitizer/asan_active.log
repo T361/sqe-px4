@@ -5,10 +5,10 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 13 tests from SqeFailureInjectorTest
 [ RUN      ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck
-[       OK ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck (0 ms)
+[       OK ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck (1 ms)
 [ RUN      ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
-[       OK ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted (0 ms)
+[       OK ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted (1 ms)
 [ RUN      ] SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 off
@@ -18,16 +18,16 @@ INFO  [failure_detector] CMD_INJECT_FAILURE, motor 5 off
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 6 off
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 7 off
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 8 off
-[       OK ] SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs (0 ms)
+[       OK ] SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs (4 ms)
 [ RUN      ] SqeFailureInjectorTest.FI04_OkAfterOffAndStuck_ClearsMasksAndStopsManipulation
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 ok
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 no esc telemetry
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 ok
-[       OK ] SqeFailureInjectorTest.FI04_OkAfterOffAndStuck_ClearsMasksAndStopsManipulation (0 ms)
+[       OK ] SqeFailureInjectorTest.FI04_OkAfterOffAndStuck_ClearsMasksAndStopsManipulation (2 ms)
 [ RUN      ] SqeFailureInjectorTest.FI05_InjectStuckMotor2_BlanksThatEscOnly
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 no esc telemetry
-[       OK ] SqeFailureInjectorTest.FI05_InjectStuckMotor2_BlanksThatEscOnly (0 ms)
+[       OK ] SqeFailureInjectorTest.FI05_InjectStuckMotor2_BlanksThatEscOnly (1 ms)
 [ RUN      ] SqeFailureInjectorTest.FI06_InjectWrongMotor1_ScalesTelemetry
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 0 esc telemetry wrong
 [       OK ] SqeFailureInjectorTest.FI06_InjectWrongMotor1_ScalesTelemetry (0 ms)
@@ -46,13 +46,13 @@ INFO  [failure_detector] CMD_INJECT_FAILURE, motor 0 esc telemetry wrong
 [ RUN      ] SqeFailureInjectorTest.FI13_TwoQueuedCommands_BothAppliedInOneUpdate
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 no esc telemetry
-[       OK ] SqeFailureInjectorTest.FI13_TwoQueuedCommands_BothAppliedInOneUpdate (0 ms)
+[       OK ] SqeFailureInjectorTest.FI13_TwoQueuedCommands_BothAppliedInOneUpdate (1 ms)
 [ DISABLED ] SqeFailureInjectorTest.DISABLED_PRB05_EscCountAboveMax
 [ DISABLED ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift
-[----------] 13 tests from SqeFailureInjectorTest (3 ms total)
+[----------] 13 tests from SqeFailureInjectorTest (30 ms total)
 
 [----------] Global test environment tear-down
-[==========] 13 tests from 1 test suite ran. (4 ms total)
+[==========] 13 tests from 1 test suite ran. (32 ms total)
 [  PASSED  ] 13 tests.
 
   YOU HAVE 2 DISABLED TESTS

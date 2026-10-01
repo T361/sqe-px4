@@ -7,9 +7,9 @@ Note: Google Test filter = *PRB06*
 [----------] 1 test from SqeFailureInjectorTest
 [ RUN      ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift (0 ms)
-[----------] 1 test from SqeFailureInjectorTest (0 ms total)
+[       OK ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift (1 ms)
+[----------] 1 test from SqeFailureInjectorTest (3 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
+[==========] 1 test from 1 test suite ran. (5 ms total)
 [  PASSED  ] 1 test.

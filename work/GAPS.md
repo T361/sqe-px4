@@ -8,12 +8,24 @@ per-item "Why" for the exact reproduction command / evidence path.
 
 Summary of outcome: of the 57 items open after IT-1, **5 genuine decisions (10 branch outcomes across FD-D25,
 FD-D38, FD-D41) were closed by 3 new tests** (SQE-FD-36, SQE-FD-37, SQE-FDI-08) in IT-2. Every remaining item is one
-of: environment-limited (1 cluster), infeasible (2 clusters, proofs below), or tool-artefact (3 clusters, proofs
-below). No item was excluded merely to raise the percentage; no `LCOV_EXCL_*` marker was added to production code.
+of: infeasible (2 clusters, proofs below), single-thread-infeasible (G-07) or tool-artefact (3 clusters, proofs
+below). G-01 (environment-limited) was closed in the post-audit revision by a dedicated allocation-failure test binary. No item was excluded merely to raise the percentage; no `LCOV_EXCL_*` marker was added to production code.
 
 ---
 
-### G-01 DataValidatorGroup.cpp:88 `if (!validator)` True — and the paired `-fcheck-new` null-check edges at
+### G-01 — CLOSED in the post-audit revision (was: environment-limited)
+DataValidatorGroup.cpp:88 `if (!validator)` True, L89 `return nullptr;`, and the `-fcheck-new` null checks after
+`new DataValidator()` at L55 and L86. These are now covered by three tests in a separate binary,
+`unit-SqeDataValidatorGroupAlloc` (`SqeDataValidatorGroupAllocTest.cpp`): SQE-DVG-AF-01 (add_new_validator() with a
+failed allocation returns nullptr, group unchanged), SQE-DVG-AF-02 (constructor whose only allocation fails yields an
+empty group) and SQE-DVG-AF-03 (constructor whose middle allocation fails crashes: F-13, now runtime-confirmed).
+How: the test binary replaces the global `operator new` with a malloc-backed version that returns nullptr for one
+chosen call and otherwise behaves normally. This reproduces the NuttX behaviour that `-fcheck-new` exists for
+(PX4 compiles all C++ with `-fcheck-new`, `cmake/px4_add_common_flags.cmake:135`); no production code or build flag
+was changed. Result: DataValidatorGroup.cpp lines 155/155, and the L55/L86/L88 branches are taken
+(`evidence/coverage/final/scope.info`).
+
+Original analysis (kept for traceability):
 L55 branch 1 (`next = new DataValidator()`) and L86 branch 2 (`DataValidator *validator = new DataValidator()`),
 plus L89 (`return nullptr;`, "line not executed")
 Class: environment-limited
@@ -36,7 +48,8 @@ session — judged not worth a new sanitizer/allocator build for a single compil
 budget; flagged here rather than silently dropped. If pursued in a later session, a dedicated
 `SqeDataValidatorAllocFaultTest.cpp` in its own binary (separate CMake target, not mixed into the existing 5
 binaries since it would need different build flags) is the documented strategy.
-Counted in feasible coverage? no (flagged, not silently excluded)
+Counted in feasible coverage? n/a — closed
+
 
 ### G-02 DataValidatorGroup.cpp:78 `delete (_first);` branch 1 (0 hits)
 Class: tool-artefact
@@ -72,7 +85,18 @@ other write to `best` in the function except L168 and the Loop 2 update at L191-
 non-null `next`).
 Counted in feasible coverage? no
 
-### G-04 DataValidatorGroup.cpp:260 — all 6 ternary branch-pairs in `print()`'s `PX4_INFO_RAW(...)` call
+### G-04 — CLOSED in the post-audit revision; the original "tool-artefact" diagnosis was WRONG
+DataValidatorGroup.cpp:260, `print()`'s six flag ternaries (L261-266). The 12 lcov branch records on L260 are the six
+ternaries in **argument-evaluation order**, which for GCC on x86-64 is right to left: records 0/1 = " OK", 2/3 =
+" EDNST", 4/5 = " ECNT", 6/7 = " TOUT", 8/9 = " STALE", 10/11 = " OFF". Read that way the final counts are fully
+consistent with the tests (8 printed sensor lines in total; " OK" True 4×; EDNST/ECNT/TOUT/STALE True once each, from
+DVG-08/DVG-09) and show one real gap: record 10, the **" OFF" True side, was never executed** — no test printed a used
+sensor whose error mask still held NO_DATA. The original analysis below assumed left-to-right mapping (record 10 =
+" OK") and therefore misread a genuine missing test as a measurement artefact.
+Closed by SQE-DVG-13 (`DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff`): query an unfed sensor (sets NO_DATA),
+feed it once, print() -> "state: OFF". All 12 L260 records are now taken (`evidence/coverage/final_post_audit/`).
+
+Original (incorrect) analysis, kept for traceability:
 (L261 NO_DATA, L262 STALE_DATA, L263 TIMEOUT, L264 HIGH_ERRCOUNT, L265 HIGH_ERRDENSITY, L266 NO_ERROR/"OK";
 gcov/lcov branch indices b0.0..b0.11 on L260, since all 6 pairs are mis-attributed to the call's first line)
 Class: tool-artefact
@@ -208,15 +232,16 @@ latched mask (FD37) respectively.
 
 ## Reporting note (SPEC_03 / P10 "raw vs feasible" rule)
 - **Raw tool numbers** (as `genhtml`/lcov report them, no filtering): see `evidence/coverage/final/per_file.md`.
-- **Exception-filtered numbers** (G-05 removed: every `BRDA` entry whose block ID starts with `e` excluded,
-  computed from `evidence/coverage/final/scope.info`; the same figures are in `evidence/coverage/compare_baseline_final.md`
-  and report §6): DataValidator.cpp 30/30, DataValidatorGroup.cpp 110/116, FailureDetector.cpp 189/190,
-  FailureInjector.cpp 47/48 — **scope total 376/384 (97.9%)**. The 8 uncovered source-level branches are exactly
-  G-01 (DataValidatorGroup.cpp:55, :86, :88), G-02 (:78), G-03 (:213), G-04 (:260), G-06 (FailureInjector.cpp:44)
-  and G-07 (FailureDetector.cpp:194).
-- **Fully feasible view** (also removing those 8 justified branches): 376/376. This is deliberately *not* used as a
-  headline figure, because it depends on accepting every proof above, and G-01 is reachable with a different
-  allocator configuration. (Correction, post-audit revision: an earlier version of this note said feasible numbers
-  were "computed by hand" in the comparison file and the report; neither file contained one at the time.)
+- **Source-level numbers (current, after IT-4)** — G-05's exception edges removed (BRDA block IDs starting with `e`),
+  computed by `tools/sqe_branch_split.py` from `evidence/coverage/final_post_audit/scope.info`: DataValidator.cpp 30/30,
+  DataValidatorGroup.cpp 114/116, FailureDetector.cpp 189/190, FailureInjector.cpp 47/48 — **total 380/384 (99.0%)**;
+  lines 428/428. The 4 uncovered source-level branches are exactly G-02 (DataValidatorGroup.cpp:78), G-03 (:213),
+  G-06 (FailureInjector.cpp:44) and G-07 (FailureDetector.cpp:194).
+- Before IT-4 (IT-3 capture, `evidence/coverage/final/scope.info`): 376/384 (97.9%), lines 427/428; the extra 4
+  uncovered branches were G-01 (L55, L86, L88) and G-04 (L260), both closed in IT-4.
+- **Fully feasible view** (also removing the 4 proven-infeasible branches): 380/380. Not used as a headline figure,
+  because it depends on accepting every proof above. (Correction, post-audit revision: an earlier version of this
+  note said feasible numbers were "computed by hand" in the comparison file and the report; neither file contained
+  one at the time.)
 - gcov's branch-coverage number is condition-level coverage of *evaluated* operands for short-circuit `&&`/`||`
   (CLAUDE.md §8 pitfall 6) — stated once here per SPEC_03's reporting rule, not repeated at every line.

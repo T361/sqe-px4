@@ -12,6 +12,7 @@ the expected-vs-actual disagreement and citing the finding it probes). Independe
 `ctest -R Sqe` -> 5/5 binaries, 100% passed (`evidence/tests/logs/P11_ctest_confirm.log`).
 
 Verdict counts: 13 confirmed, 0 rejected, 1 latent/unverified-at-runtime (F-13), 0 outright false.
+(Post-audit: F-13 now runtime-confirmed for the constructor and *refuted* for add_new_validator(), see F-13.)
 F-07a/F-07b were first confirmed by static source analysis; the post-audit revision then confirmed both at runtime
 under ASan/UBSan (see "Sanitizer evidence" below).
 
@@ -439,6 +440,19 @@ flagged as a boundary characteristic, not a live risk.
 
 ---
 
+### F-13 Constructor not robust to a failed middle allocation   Status: confirmed at runtime (post-audit), latent on POSIX
+**Post-audit revision (runtime evidence).** `unit-SqeDataValidatorGroupAlloc` replaces the global `operator new` so
+that one chosen allocation returns nullptr, which is what NuttX's allocator does under `-fcheck-new`:
+- SQE-DVG-AF-03: `DataValidatorGroup(3)` whose 2nd allocation fails **crashes** (EXPECT_DEATH passes): at i=1
+  `prev = next` stores nullptr, then at i=2 `prev->setSibling(next)` (L61) dereferences it. Confirmed defect.
+- SQE-DVG-AF-02: if the *only* allocation of `DataValidatorGroup(1)` fails, construction is safe (empty group).
+- SQE-DVG-AF-01: `add_new_validator()` with a failed allocation is safe (returns nullptr, group unchanged), so that
+  half of the original claim is refuted: `add_new_validator()` *is* robust.
+Severity: only reachable on a target whose allocator returns nullptr (NuttX) and only if memory is exhausted while
+a group of 3 or more sensors is being constructed at start-up; all 3 production construction sites use `{1}` and grow
+with `add_new_validator()`, which is the robust path. Latent, low severity.
+
+Original entry (kept for traceability):
 ### F-13 Constructor/`add_new_validator()` not robust to allocation failure   Status: confirmed -- latent, not runtime-verified this session
 Location: DataValidatorGroup.cpp:55 (`next = new DataValidator();`, constructor), L86-92 (`add_new_validator()`)
 Related tests: none in the submitted suite -- the optional `AF02` allocation-fault-injection test was judged in

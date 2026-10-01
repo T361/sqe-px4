@@ -62,7 +62,8 @@ not exist — see G15's row and the note below.
 **Post-audit revision (2026-10-01):** independent reproduction confirmed all results; F-07a/b now runtime-confirmed
 under ASan/UBSan; F-09/F-10 relabelled candidate defects pending team review; DVG-12 strengthened; exception-filtered
 branch coverage (97.9%) reported. Details: `work/ai_assistance_log.md` (last entry). The team still needs to agree
-on F-09/F-10 before the viva.
+on F-09/F-10 before the viva. Second pass (IT-4): G-01 and G-04 closed by new tests; final coverage 428/428 lines,
+380/384 source-level branches (99.0%); 115 active tests in 6 binaries; see `work/coverage_iterations.md` IT-4.
 
 ## Next steps — one genuinely live item remains
 1. **Run the 8 live viva drills** (`docs/plan/P15_VIVA_PREP.md`) and fill `work/viva/drill_log.md` for real,

@@ -407,3 +407,20 @@ Human verification: still required — the team must re-read the changed report 
 Assumptions introduced: that a sanitizer report from a partially-instrumented build (only the code under test and
 the probe) is valid runtime evidence for F-07a/F-07b; that the plain-build PASS of PRB-05/06 should not be reported
 as an execution result because the probe's oracle is the sanitizer.
+
+## 2026-10-01 — Post-audit revision, second pass — Claude (requested by the team)
+Use: closing the remaining audit deductions that were technical.
+What the AI produced: `SqeDataValidatorGroupAllocTest.cpp` (new binary; global `operator new` that returns nullptr for
+one chosen call, reproducing NuttX `-fcheck-new` behaviour) → G-01 closed, F-13 confirmed for the constructor and
+refuted for `add_new_validator()`; SQE-DVG-13 → G-04 closed after showing the original "gcov artefact" diagnosis
+mapped lcov's branch records in the wrong order (GCC evaluates call arguments right to left); real oracle for
+SQE-DVG-03; positive controls for ten "stays false" FailureDetector tests, one of which (SQE-FD-07) showed the
+original 170° pitch stimulus could never trip the pitch check (Euler pitch spans ±90°) and was corrected to 80°;
+SQE-FD-26 redesigned (1000ms timeout, measured bracketing timestamps, asserted timing preconditions); exact decision
+counts in report §3 (superseding grep estimates, which had e.g. 7 instead of 5 compound decisions for
+DataValidatorGroup); K-pair unobservability proof (report §5, MCDC_ANALYSIS.md); `tools/sqe_branch_split.py`;
+report §2/§4/§6/§7/§8/§9 rewritten for the new evidence; IT-4 capture.
+Human verification: required — the team must re-read the new tests and the rewritten report sections before the viva.
+Assumptions introduced: that replacing global `operator new` in a separate test binary is a faithful model of the
+NuttX allocator for these code paths (it exercises the same compiled `-fcheck-new` checks); that bounding wall-clock
+waits with measured preconditions is an acceptable substitute for simulated time, which this board does not have.

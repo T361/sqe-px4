@@ -1,0 +1,17 @@
+Test project /root/audit/PX4-Autopilot/build/px4_sitl_test
+    Start  75: functional-SqeFailureDetector
+1/6 Test  #75: functional-SqeFailureDetector ......   Passed    8.03 sec
+    Start  76: functional-SqeFailureDetectorImu
+2/6 Test  #76: functional-SqeFailureDetectorImu ...   Passed    0.02 sec
+    Start  77: functional-SqeFailureInjector
+3/6 Test  #77: functional-SqeFailureInjector ......   Passed    0.02 sec
+    Start 121: unit-SqeDataValidator
+4/6 Test #121: unit-SqeDataValidator ..............   Passed    0.02 sec
+    Start 122: unit-SqeDataValidatorGroup
+5/6 Test #122: unit-SqeDataValidatorGroup .........   Passed    0.05 sec
+    Start 123: unit-SqeDataValidatorGroupAlloc
+6/6 Test #123: unit-SqeDataValidatorGroupAlloc ....   Passed    0.04 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   8.19 sec
