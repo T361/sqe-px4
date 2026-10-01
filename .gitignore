@@ -1,0 +1,5 @@
+PX4-Autopilot/
+evidence/tmp/
+*.gcda
+*.gcno
+deliverables/*.zip
