@@ -1,0 +1,167 @@
+Test project /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test
+Could not find executable antlr4_tests_NOT_BUILT
+Looked in the following places:
+antlr4_tests_NOT_BUILT
+antlr4_tests_NOT_BUILT
+Release/antlr4_tests_NOT_BUILT
+Release/antlr4_tests_NOT_BUILT
+Debug/antlr4_tests_NOT_BUILT
+Debug/antlr4_tests_NOT_BUILT
+MinSizeRel/antlr4_tests_NOT_BUILT
+MinSizeRel/antlr4_tests_NOT_BUILT
+RelWithDebInfo/antlr4_tests_NOT_BUILT
+RelWithDebInfo/antlr4_tests_NOT_BUILT
+Deployment/antlr4_tests_NOT_BUILT
+Deployment/antlr4_tests_NOT_BUILT
+Development/antlr4_tests_NOT_BUILT
+Development/antlr4_tests_NOT_BUILT
+  Test   #1: antlr4_tests_NOT_BUILT
+  Test   #2: functional-AdsbConflict
+  Test   #3: unit-test_atmosphere
+  Test   #4: functional-CollisionPrevention
+  Test   #5: unit-ObstacleMath
+  Test   #6: unit-ControlAllocationPseudoInverse
+  Test   #7: functional-ControlAllocationSequentialDesaturation
+  Test   #8: unit-Rotation
+  Test   #9: unit-FieldSensorBiasEstimator
+  Test  #10: unit-test_geo
+  Test  #11: unit-Hysteresis
+  Test  #12: unit-test_lat_lon_alt
+  Test  #13: unit-MatrixAssignment
+  Test  #14: unit-MatrixAttitude
+  Test  #15: unit-MatrixCopyTo
+  Test  #16: unit-MatrixDcm2
+  Test  #17: unit-MatrixDual
+  Test  #18: unit-MatrixFilter
+  Test  #19: unit-MatrixHatvee
+  Test  #20: unit-MatrixHelper
+  Test  #21: unit-MatrixIntegral
+  Test  #22: unit-MatrixInverse
+  Test  #23: unit-MatrixLeastSquares
+  Test  #24: unit-MatrixMultiplication
+  Test  #25: unit-MatrixPseudoInverse
+  Test  #26: unit-MatrixScalarMultiplication
+  Test  #27: unit-MatrixSetIdentity
+  Test  #28: unit-MatrixSlice
+  Test  #29: unit-MatrixSparseVector
+  Test  #30: unit-MatrixSquare
+  Test  #31: unit-MatrixTranspose
+  Test  #32: unit-MatrixVector
+  Test  #33: unit-MatrixUnwrap
+  Test  #34: unit-MatrixUpperRightTriangle
+  Test  #35: unit-MatrixVector2
+  Test  #36: unit-MatrixVector3
+  Test  #37: unit-MatrixVectorAssignment
+  Test  #38: unit-LowPassFilter2pVector3f
+  Test  #39: unit-AlphaFilter
+  Test  #40: unit-MedianFilter
+  Test  #41: unit-NotchFilter
+  Test  #42: unit-second_order_reference_model_test
+  Test  #43: unit-Functions
+  Test  #44: unit-Utilities
+  Test  #45: unit-WelfordMean
+  Test  #46: unit-WelfordMeanVector
+  Test  #47: unit-MaxDistanceToCircle
+  Test  #48: functional-mixer_module_tests
+  Test  #49: unit-VelocitySmoothing
+  Test  #50: unit-PositionSmoothing
+  Test  #51: unit-HeadingSmoothing
+  Test  #52: unit-Npfg
+  Test  #53: unit-PID
+  Test  #54: unit-pid_design_test
+  Test  #55: unit-PurePursuit
+  Test  #56: unit-rate_control_test
+  Test  #57: unit-Ringbuffer
+  Test  #58: unit-RoverControl
+  Test  #59: unit-SlewRate
+  Test  #60: unit-SlewRateYaw
+  Test  #61: unit-arx_rls_test
+  Test  #62: unit-system_identification_test
+  Test  #63: unit-VariableLengthRingbuffer
+  Test  #64: unit-test_airspeed_fusion
+  Test  #65: unit-test_geo_lookup
+  Test  #66: functional-lockstep_scheduler_test
+  Test  #67: unit-board_identity_test
+  Test  #68: functional-uORBMessageFields
+  Test  #69: functional-uORBSubscription
+  Test  #70: functional-septentrio_fuzz_tests
+  Test  #71: unit-MessageDisplay
+  Test  #72: unit-mag_calibration_test
+  Test  #73: functional-ModeManagement
+  Test  #74: functional-failsafe_test
+  Test  #75: functional-HealthAndArmingChecks
+  Test  #76: functional-ActuatorEffectivenessHelicopter
+  Test  #77: functional-ActuatorEffectivenessRotors
+  Test  #78: unit-test_EKF_accelerometer
+  Test  #79: unit-test_EKF_airspeed
+  Test  #80: unit-test_EKF_basics
+  Test  #81: unit-test_EKF_externalVision
+  Test  #82: unit-test_EKF_fake_pos
+  Test  #83: unit-test_EKF_flow
+  Test  #84: unit-test_EKF_flow_generated
+  Test  #85: unit-test_EKF_gyroscope
+  Test  #86: unit-test_EKF_fusionLogic
+  Test  #87: unit-test_EKF_gps
+  Test  #88: unit-test_EKF_gnss_yaw
+  Test  #89: unit-test_EKF_gnss_yaw_generated
+  Test  #90: unit-test_EKF_height_fusion
+  Test  #91: unit-test_EKF_imuSampling
+  Test  #92: unit-test_EKF_initialization
+  Test  #93: unit-test_EKF_mag
+  Test  #94: unit-test_EKF_mag_declination_generated
+  Test  #95: unit-test_EKF_measurementSampling
+  Test  #96: unit-test_EKF_ringbuffer
+  Test  #97: unit-test_EKF_terrain
+  Test  #98: unit-test_EKF_utils
+  Test  #99: unit-test_EKF_withReplayData
+  Test #100: unit-test_EKF_yaw_estimator
+  Test #101: unit-test_EKF_yaw_fusion_generated
+  Test #102: unit-test_SensorRangeFinder
+  Test #103: unit-test_EKF_drag_fusion
+  Test #104: unit-test_EKF_grounded
+  Test #105: functional-StickTiltXY
+  Test #106: functional-ManualControl
+  Test #107: unit-ManualControlSelector
+  Test #108: unit-MavlinkStatustextHandler
+  Test #109: unit-AttitudeControl
+  Test #110: unit-AttitudeControlMath
+  Test #111: unit-zero_order_hover_thrust_ekf_test
+  Test #112: unit-ControlMath
+  Test #113: unit-PositionControl
+  Test #114: unit-Takeoff
+  Test #115: functional-GeofenceBreachAvoidance
+  Test #116: functional-FeasibilityChecker
+  Test #117: functional-RCUpdate
+  Test #118: unit-gps_blending_test
+  Test #119: functional-VehicleOpticalFlow
+  Test #120: functional-Parameter
+  Test #121: sitl-atomic_bitset
+  Test #122: sitl-bitset
+  Test #123: sitl-bson
+  Test #124: sitl-dataman
+  Test #125: sitl-file2
+  Test #126: sitl-float
+  Test #127: sitl-hrt
+  Test #128: sitl-int
+  Test #129: sitl-IntrusiveQueue
+  Test #130: sitl-IntrusiveSortedList
+  Test #131: sitl-List
+  Test #132: sitl-mathlib
+  Test #133: sitl-matrix
+  Test #134: sitl-param
+  Test #135: sitl-parameters
+  Test #136: sitl-perf
+  Test #137: sitl-search_min
+  Test #138: sitl-sleep
+  Test #139: sitl-versioning
+  Test #140: sitl-controllib_test
+  Test #141: sitl-lightware_laser_test
+  Test #142: sitl-rc_tests
+  Test #143: sitl-uorb_tests
+  Test #144: sitl-imu_filtering
+  Test #145: dyn
+  Test #146: posix_hrt_test
+  Test #147: posix_cdev_test
+  Test #148: posix_wqueue_test
+
+Total Tests: 148

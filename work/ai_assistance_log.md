@@ -31,3 +31,19 @@ machines too if they reproduce this build elsewhere (the original sudo-based ubu
 "official" path in P01's instructions for other machines).
 Assumptions introduced: none beyond D-002.
 Accepted / revised / rejected: pending human review.
+
+## 2026-10-01 — P02+P04+P05(partial) — Claude (autonomous)
+Use: ran baseline build/test (`make tests`), extracted/verified evidence; independently re-verified the scope
+candidate matrix and all three pre-derived decision inventories (REF_03/04/05) line-by-line against the live v1.17.0
+source rather than trusting them; wrote SCOPE_RECORD.md and CANDIDATES.md from that verification.
+What the AI produced: evidence/baseline/{make_tests.log,ctest_list.txt,LastTest_baseline.log,summary.txt},
+work/explain/P02.md, work/scope/{upstream_gtests.txt,SCOPE_RECORD.md,CANDIDATES.md},
+work/basis/INVENTORY_{DataValidator,DataValidatorGroup,FailureDetector_Injector}.md (copied from REF_03/04/05 with
+added verification notes).
+Human verification: not yet reviewed. One correction made during verification: REF_02 claimed `Safety.cpp`/
+`UserModeIntention.cpp` had upstream tests ("yes (dir)") — re-checked, found no dedicated gtest registration for
+either, corrected in CANDIDATES.md (doesn't change the rejection verdict, just the stated reason).
+Assumptions introduced: none new.
+Accepted / revised / rejected: REF_02's Safety.cpp/UserModeIntention.cpp upstream-test claim revised (see above); all
+other pre-derived content (REF_02 candidate metrics, REF_03/04/05 decision inventories, reachability proofs,
+flagged defects F-07/F-08) independently confirmed accurate against the live source, accepted as-is.
