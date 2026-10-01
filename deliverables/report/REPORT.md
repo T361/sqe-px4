@@ -121,9 +121,11 @@ oracles, and are cross-referenced to their corresponding findings in §7.
 Independence and repeatability were demonstrated per binary with `--gtest_shuffle` and repeat counts of 5 for the
 two unit binaries and 10 for the three functional binaries; every shuffle run reports zero failures:
 `unit-SqeDataValidator` 20/20 PASSED ×5, `unit-SqeDataValidatorGroup` 34/34 PASSED ×5,
-`functional-SqeFailureDetector` 34/34 PASSED ×10, `functional-SqeFailureDetectorImu` 7/7 PASSED ×10,
-`functional-SqeFailureInjector` 13/13 PASSED ×10. <!-- src: evidence/tests/logs/*_shuffle.log --> Each test also
-passes individually under `--gtest_filter`.
+`functional-SqeFailureDetector` 36/36 PASSED ×10, `functional-SqeFailureDetectorImu` 8/8 PASSED ×10,
+`functional-SqeFailureInjector` 13/13 PASSED ×10 (the FailureDetector/Imu counts reflect SQE-FD-36/37 and
+SQE-FDI-08, added in the P10 coverage-iteration phase after the original P09 shuffle evidence was captured; the
+logs cited here were re-run against the final test set, not left stale). <!-- src: evidence/tests/logs/*_shuffle.log -->
+Each test also passes individually under `--gtest_filter`.
 
 The full 1:1 test-to-decision mapping (116 inventory rows: 20 SQE-DV, 12 SQE-DVG, 22 SQE-DVG-MC, 36 SQE-FD, 8
 SQE-FDI, 13 SQE-FI, 5 SQE-PRB probes) is not duplicated here — see `work/inventory/test_inventory.csv` and the
@@ -387,33 +389,29 @@ or about any file outside the analysed scope.
 
 ## 10. AI-assistance record
 
-AI (Claude Code) was used materially across all phases of this assignment: repository navigation and source
-verification (re-reading production code directly rather than trusting pre-derived reference material before
-every derivation), build/coverage-pipeline troubleshooting, test scaffolding and implementation (111 active
-student-authored GTest cases plus 5 disabled probes across 5 binaries), MC/DC derivation and independent
-cross-checking, coverage-gap investigation and classification, findings investigation against the live source,
-workbook generation, and this report's writing/synthesis. <!-- src: work/ai_assistance_log.md -->
+AI (Claude Code) was used materially across all phases: source verification (re-reading production code directly
+rather than trusting pre-derived reference material before every derivation), build/coverage troubleshooting, test
+implementation (111 active GTest cases + 5 disabled probes), MC/DC derivation and independent cross-checking,
+coverage-gap classification, findings investigation, workbook generation, and this report's writing.
+<!-- src: work/ai_assistance_log.md -->
 
-Verification practice followed throughout: every test traces to a specific decision ID checked by
-`tools/sqe_trace_check.py` (clean, 0 errors/warnings after two tooling fixes documented in D-010); every MC/DC
-pair was independently recomputed by hand and cross-checked against a standalone Python mirror of the exact
-C++ operator/short-circuit order; every coverage number and finding in this report was re-read from its evidence
-file in this session rather than carried over from memory of an earlier phase. No test assertion was weakened to
-make a test pass (R4); the one test-design error found (SQE-FD-36/37's first draft, wrong assumption about ESC
-failure-mask bit layout) was corrected by rewriting the test before any coverage capture used it, not by loosening
-the oracle. <!-- src: work/DECISIONS.md D-008, D-009, D-010; work/ai_assistance_log.md -->
+Verification practice: every test traces to a decision ID checked by `tools/sqe_trace_check.py` (clean, 0
+errors/warnings); every MC/DC pair was independently recomputed against a standalone Python mirror of C++
+operator/short-circuit order; every number in this report was re-read from its evidence file this session, not
+carried from memory. No assertion was weakened to pass a test (R4); the one test-design error found (an early
+draft's wrong assumption about ESC failure-mask bit layout) was fixed by rewriting the test before any coverage
+capture used it. <!-- src: work/DECISIONS.md D-008, D-010; work/ai_assistance_log.md -->
 
-Key assumptions introduced and how they were checked: none were taken on faith — each classification in `work/GAPS.md`
-and `work/FINDINGS.md` required independently reading the cited production file:line and, in several cases, tracing
-further into PX4/uORB library internals (`uORBDeviceNode.cpp/.hpp`, `Subscription.hpp`) to construct a real proof
-rather than assert a claim. One explicit, honestly-reported assumption in the process itself: gate approvals
-(G00–G12, and this report's own G13) were self-approved autonomously under the user's standing session-start
-authorization rather than by a human reviewer; `work/STATUS.md` marks each as `AUTO-APPROVED`. The three findings
-requiring a specification-level oracle decision (F-09, F-10, F-11) were likewise resolved autonomously, on the
-submitting team member's standing authority, not by full team deliberation — this is flagged explicitly rather than
-presented as a settled human consensus, and the team should review that reasoning (`work/FINDINGS.md`) before the
-viva. <!-- src: work/STATUS.md --> The team takes responsibility for all targets, expected results,
-tests and conclusions in this submission.
+Key assumptions and how they were checked: none taken on faith — every classification in `work/GAPS.md` and
+`work/FINDINGS.md` required independently reading the cited file:line, tracing further into PX4/uORB internals
+where needed to construct a real proof. Two explicit, honestly-reported process assumptions: gate approvals
+(G00–G14) were self-approved autonomously under the user's standing session-start authorization, then later
+converted to a named human batch sign-off at session end (`work/STATUS.md`'s note states plainly this was a
+summary-level approval, not sequential per-gate review as intended); the three findings requiring a
+specification-level oracle decision (F-09, F-10, F-11) were resolved autonomously on one team member's authority,
+not full team deliberation — flagged for review before the viva, not presented as settled consensus.
+<!-- src: work/STATUS.md --> The team takes responsibility for all targets, expected results, tests and
+conclusions in this submission.
 
 ## Appendix A — Reproduction commands
 

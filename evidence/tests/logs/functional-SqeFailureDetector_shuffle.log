@@ -4,792 +4,832 @@ ERROR [px4_work_queue] init failed
 
 Repeating all tests (iteration 1) . . .
 
-Note: Randomizing tests' orders with a seed of 30614 .
-[==========] Running 34 tests from 1 test suite.
+Note: Randomizing tests' orders with a seed of 38337 .
+[==========] Running 36 tests from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
+[----------] 36 tests from SqeFailureDetectorTest
 [ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
 [       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
 [ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
 [       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
 [ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (453 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
 [ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
 [       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (61 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
 [ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
 [       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (702 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (43 ms)
 [ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4533 ms total)
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4616 ms total)
 
-[==========] 34 tests from 1 test suite ran. (4533 ms total)
-[  PASSED  ] 34 tests.
+[==========] 36 tests from 1 test suite ran. (4616 ms total)
+[  PASSED  ] 36 tests.
 
 Repeating all tests (iteration 2) . . .
 
-Note: Randomizing tests' orders with a seed of 30615 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
+Note: Randomizing tests' orders with a seed of 38338 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
 [ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
 [       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (601 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
 [ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
 [       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (3 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (453 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
 [ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (703 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4549 ms total)
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (154 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (62 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4625 ms total)
 
-[==========] 34 tests from 1 test suite ran. (4550 ms total)
-[  PASSED  ] 34 tests.
+[==========] 36 tests from 1 test suite ran. (4625 ms total)
+[  PASSED  ] 36 tests.
 
 Repeating all tests (iteration 3) . . .
 
-Note: Randomizing tests' orders with a seed of 30616 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
+Note: Randomizing tests' orders with a seed of 38339 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
 [ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
 [       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
 [ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
 [       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (63 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (702 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4625 ms total)
+
+[==========] 36 tests from 1 test suite ran. (4625 ms total)
+[  PASSED  ] 36 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 38340 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (62 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (702 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (3 ms)
 [ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (350 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (0 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4621 ms total)
+
+[==========] 36 tests from 1 test suite ran. (4621 ms total)
+[  PASSED  ] 36 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 38341 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (350 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
 [ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
 [       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (151 ms)
 [ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
 [       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (63 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
 [ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (41 ms)
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (150 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (0 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4613 ms total)
+
+[==========] 36 tests from 1 test suite ran. (4613 ms total)
+[  PASSED  ] 36 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 38342 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (601 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (43 ms)
 [ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
 [       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
 [ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
 [       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
 [ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (151 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (153 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (62 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (453 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (45 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (33 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (2 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4625 ms total)
+
+[==========] 36 tests from 1 test suite ran. (4625 ms total)
+[  PASSED  ] 36 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 38343 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (702 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (153 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (153 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (44 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (44 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
 [ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
 INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
 [       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (62 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
 [ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4544 ms total)
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (44 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4634 ms total)
 
-[==========] 34 tests from 1 test suite ran. (4544 ms total)
-[  PASSED  ] 34 tests.
+[==========] 36 tests from 1 test suite ran. (4634 ms total)
+[  PASSED  ] 36 tests.
 
-Repeating all tests (iteration 4) . . .
+Repeating all tests (iteration 8) . . .
 
-Note: Randomizing tests' orders with a seed of 30617 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (33 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (46 ms)
+Note: Randomizing tests' orders with a seed of 38344 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
 [ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
 [       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (703 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
 [ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (153 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (153 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (33 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (3 ms)
 [ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
 [       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (350 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
 [ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
 [       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (153 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (61 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (153 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4633 ms total)
+
+[==========] 36 tests from 1 test suite ran. (4633 ms total)
+[  PASSED  ] 36 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 38345 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
+[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (44 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (154 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (62 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
+[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
+[----------] 36 tests from SqeFailureDetectorTest (4630 ms total)
+
+[==========] 36 tests from 1 test suite ran. (4630 ms total)
+[  PASSED  ] 36 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 38346 .
+[==========] Running 36 tests from 1 test suite.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
+[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (0 ms)
+[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
+[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
+[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
+[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
+[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
+[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (703 ms)
+[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
+[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
+[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
+[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
+[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
+[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (353 ms)
+[ RUN      ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck
+[       OK ] SqeFailureDetectorTest.FD34_TailsitterRotaryWing_NoRotationAppliedToCheck (43 ms)
+[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
+[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
+[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
+[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
+[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
+[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
+[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
+[ RUN      ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent
+[       OK ] SqeFailureDetectorTest.FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent (2 ms)
+[ RUN      ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp
+[       OK ] SqeFailureDetectorTest.FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp (62 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
+[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (42 ms)
+[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
+[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (153 ms)
+[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
+[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
+[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
+[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
 [ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
 [       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (2 ms)
 [ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
 [       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (3 ms)
+[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
+[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (152 ms)
 [ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
 [       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (603 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (42 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4581 ms total)
-
-[==========] 34 tests from 1 test suite ran. (4582 ms total)
-[  PASSED  ] 34 tests.
-
-Repeating all tests (iteration 5) . . .
-
-Note: Randomizing tests' orders with a seed of 30618 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (3 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (32 ms)
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (703 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
 [ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
 [       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (32 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (153 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (453 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (33 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (604 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (153 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (42 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4576 ms total)
-
-[==========] 34 tests from 1 test suite ran. (4576 ms total)
-[  PASSED  ] 34 tests.
-
-Repeating all tests (iteration 6) . . .
-
-Note: Randomizing tests' orders with a seed of 30619 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (153 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (33 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (152 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4553 ms total)
-
-[==========] 34 tests from 1 test suite ran. (4554 ms total)
-[  PASSED  ] 34 tests.
-
-Repeating all tests (iteration 7) . . .
-
-Note: Randomizing tests' orders with a seed of 30620 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4537 ms total)
-
-[==========] 34 tests from 1 test suite ran. (4537 ms total)
-[  PASSED  ] 34 tests.
-
-Repeating all tests (iteration 8) . . .
-
-Note: Randomizing tests' orders with a seed of 30621 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (5 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (33 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (32 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (153 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (3 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (353 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (43 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4550 ms total)
-
-[==========] 34 tests from 1 test suite ran. (4550 ms total)
-[  PASSED  ] 34 tests.
-
-Repeating all tests (iteration 9) . . .
-
-Note: Randomizing tests' orders with a seed of 30622 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (701 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4534 ms total)
-
-[==========] 34 tests from 1 test suite ran. (4534 ms total)
-[  PASSED  ] 34 tests.
-
-Repeating all tests (iteration 10) . . .
-
-Note: Randomizing tests' orders with a seed of 30623 .
-[==========] Running 34 tests from 1 test suite.
-[----------] 34 tests from SqeFailureDetectorTest
-[ RUN      ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange
-[       OK ] SqeFailureDetectorTest.FD32_UpdateReturnValue_ReflectsStatusChange (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed
-[       OK ] SqeFailureDetectorTest.FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed (702 ms)
-[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis (152 ms)
-[ RUN      ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported
-[       OK ] SqeFailureDetectorTest.FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled
-[       OK ] SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet
-[       OK ] SqeFailureDetectorTest.FD21_EscsCheckDisabled_ArmEscsNeverSet (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask
-[       OK ] SqeFailureDetectorTest.FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet
-[       OK ] SqeFailureDetectorTest.FD13_ExternalAtsDisabled_ExtFlagNeverSet (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer
-[       OK ] SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse (351 ms)
-[ RUN      ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged
-[       OK ] SqeFailureDetectorTest.FD14_NoNewPwm_ExtFlagUnchanged (151 ms)
-[ RUN      ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask
-[       OK ] SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse
-[       OK ] SqeFailureDetectorTest.FD19_Disarmed_ArmEscsStaysFalse (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout
-[       OK ] SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout (31 ms)
-[ RUN      ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization
-[       OK ] SqeFailureDetectorTest.FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout
-INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
-[       OK ] SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
-[ RUN      ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen
-[       OK ] SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen (602 ms)
-[ RUN      ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag
-[       OK ] SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard
-[       OK ] SqeFailureDetectorTest.FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD30_MotorCheckDisabled_MotorLogicSkipped (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis (352 ms)
-[ RUN      ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped
-[       OK ] SqeFailureDetectorTest.FD22_NoNewEscStatus_EscAndMotorLogicSkipped (1 ms)
-[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (41 ms)
-[ RUN      ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag
-[       OK ] SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag (2 ms)
-[ RUN      ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle
-[       OK ] SqeFailureDetectorTest.FD27_NanControl_TreatedAsZeroThrottle (32 ms)
-[ RUN      ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck
-[       OK ] SqeFailureDetectorTest.FD10_TailsitterRotaryWing_NoRotationAppliedToCheck (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled (42 ms)
-[ RUN      ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight
-[       OK ] SqeFailureDetectorTest.FD20_EscCountAboveMax_ClampedToEight (352 ms)
-[----------] 34 tests from SqeFailureDetectorTest (4547 ms total)
+[----------] 36 tests from SqeFailureDetectorTest (4633 ms total)
 
 [----------] Global test environment tear-down
-[==========] 34 tests from 1 test suite ran. (4547 ms total)
-[  PASSED  ] 34 tests.
+[==========] 36 tests from 1 test suite ran. (4634 ms total)
+[  PASSED  ] 36 tests.
