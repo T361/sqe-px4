@@ -223,3 +223,34 @@ source beyond the scope files themselves (uORBDeviceNode.cpp/.hpp, uORBManager.c
 PublicationMulti.hpp) to construct real proofs rather than assertions — flagged here since this is a wider read
 than prior phases, done to satisfy R3/R4's evidence-over-guessing requirement for every infeasibility claim in
 work/GAPS.md.
+
+## 2026-10-01 — P11 — Claude (autonomous, per explicit user authorization; fresh retry after a prior attempt this
+session hit a tooling failure and correctly aborted without writing anything)
+Use: investigated and confirmed/rejected all 15 REF_07 candidate findings (F-01..F-15) against the real PX4 GTest
+suite and live v1.17.0 source this session; re-ran `ctest -R Sqe` and all 5 `DISABLED_PRBnn` probes explicitly; drew
+up the findings register and report-ready text blocks.
+What the AI produced: work/FINDINGS.md (16 entries, F-01..F-15 with F-07 split a/b), work/findings/REPORT_BLOCKS.md
+(14 report-ready blocks for confirmed findings, F-13/F-14 explicitly excluded with rationale), work/explain/P11.md,
+evidence/tests/logs/P11_ctest_confirm.log, evidence/tests/probes/{unit-SqeDataValidator.xml,
+unit-SqeDataValidatorGroup.xml, functional-SqeFailureInjector_PRB0506.{xml,log}} (fresh probe-run evidence this
+session, all 5 probes), this STATUS.md update (P11/G11 row + HUMAN-DECISION list).
+Human verification: not yet reviewed — gates are self-tracked per the same autonomous-run authorization used for
+P00-P10; team must review work/FINDINGS.md's 3 HUMAN-DECISION items (F-09, F-10, F-11) and approve/reject the
+probe oracles (PRB-01/02/03) before submission.
+Assumptions introduced: none new. Confirmed via re-reading, this session, every file:line REF_07 cites (both
+production source and consumer call sites: voted_sensors_update.cpp, VehicleMagnetometer.cpp, sensors.cpp,
+VehicleIMU.cpp) rather than trusting the register's claims — this is the explicit point of P11, not a shortcut.
+Accepted / revised / rejected: no finding was manufactured or oracle-bent (R4); 13/15 candidates confirmed as-is,
+0 rejected, F-13 downgraded from REF_07's "pre-verified: SIGSEGV" framing to "latent, not runtime-verified this
+session" because that pre-verification was done outside the PX4 GTest suite per REF_07's own header disclaimer and
+was not independently reproduced here (no AF*-series test exists in the submitted suite). Two citation corrections
+were made to REF_07's claims and documented explicitly in work/FINDINGS.md rather than silently fixed: F-02's cited
+evidence test "MC18" is actually a stable no-failover control row with no bearing on F-02 (the real evidence is
+MC19, confirmed by reading both tests' bodies); F-12's cited "MC17" does not exist in the suite at all (the real
+DVG-level evidence is MC25). The optional ASan/UBSan rebuild for F-07a/F-07b (SPEC_10 step 5) was deliberately
+**not** attempted this session, per the task's own risk/time guidance (full rebuild replacing the working Coverage
+build, 15-20+ min, real risk to other phases' build state) — F-07a/F-07b are reported as "confirmed via static
+source analysis only, not yet runtime-verified under a sanitizer build" rather than overclaimed. PRB05/PRB06 were
+re-run in the normal (non-sanitizer) build this session and confirmed to execute as inert `SUCCEED()` placeholders,
+consistent with their documented design; the Coverage build was verified untouched before and after
+(`CMAKE_BUILD_TYPE:STRING=Coverage` in both checks).

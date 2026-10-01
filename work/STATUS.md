@@ -1,7 +1,8 @@
 # STATUS — SQE A2 (update every session)
 Baseline: PX4-Autopilot v1.17.0 @ d6f12ad1c4f70ad3230afd7d86e971421e02fef4 · branch `sqe-a2`
-Build type in use: Coverage (since P03) · Last full test run: 2026-10-01 (ctest -R Sqe: 5/5 binaries passed, 108
-active tests incl. unit-SqeDataValidatorGroup 34/34; ctest full tree: 152/152 passed) · Current phase: P10 complete
+Build type in use: Coverage (since P03) · Last full test run: 2026-10-01 (ctest -R Sqe: 5/5 binaries passed, 111
+active tests [116 total incl. 5 by-design DISABLED probes] re-confirmed this session, evidence/tests/logs/P11_ctest_confirm.log)
+· Current phase: P11 complete
 
 | Phase | Gate | Status (TODO / IN-PROGRESS / READY-FOR-HUMAN / APPROVED / BLOCKED) | Evidence | Approved by / date |
 |---|---|---|---|---|
@@ -16,7 +17,7 @@ active tests incl. unit-SqeDataValidatorGroup 34/34; ctest full tree: 152/152 pa
 | P08 Impl B DataValidatorGroup | G08 | APPROVED | PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp (35 TEST_F: structural DVG01-12 incl. death test DVG10, MC/DC MC01-25 = 22 distinct test IDs per work/mcdc/mcdc_matrix.csv, 1 DISABLED probe PRB03), +1 CMakeLists.txt line (LINKLIBS reused from D-006), committed PX4-Autopilot f435aa045c; evidence/tests/xml/unit-SqeDataValidatorGroup.xml (34/34 PASS, 1 DISABLED); evidence/tests/logs/unit-SqeDataValidatorGroup_shuffle.log (x5 stable, all 34 PASS each repeat); isolation check (35/35 tests pass run alone); `ctest -R Sqe` 5/5 binaries pass tree-wide; `tools/sqe_mcdc_check.py work/mcdc/mcdc_matrix.csv` → ALL DECISIONS COMPLETE; `tools/sqe_trace_check.py` → 0 errors for SQE-DVG*/SQE-PRB-03 rows; probe PRB03 executed explicitly and FAILS as expected (confirms F-02); work/inventory/test_inventory.csv rows added (manual_status=PASS); work/explain/P08.md; one test-design error found and fixed during verification (DVG09, see work/DECISIONS.md D-007) | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
 | P09 Impl C FailureDetector/Injector | G09 | APPROVED | PX4-Autopilot/src/modules/commander/failure_detector/{SqeFailureDetectorTest.cpp (34 tests, ctest `functional-SqeFailureDetector`), SqeFailureDetectorImuTest.cpp (7 tests, `functional-SqeFailureDetectorImu`), SqeFailureInjectorTest.cpp (13 tests + 2 DISABLED_PRB probes, `functional-SqeFailureInjector`)}; CMakeLists.txt +3 lines (LINKLIBS modules__commander, no fallback needed); evidence/tests/xml/functional-SqeFailure{Detector,DetectorImu,Injector}.xml (34/7/13 PASS, 2 NOT EXECUTED as designed); evidence/tests/logs/functional-SqeFailure{Detector,DetectorImu,Injector}_shuffle.log (shuffle x10 stable, 0 failures across all 3) + `tools/sqe_run_tests.sh isolation` (34/7/15 pass run alone) + evidence/tests/logs/P09_clean_rebuild.log (clean rebuild, zero compiler warnings under -Werror); `tools/sqe_trace_check.py` clean (0 errors attributable to P09); work/inventory/test_inventory.csv rows added (56); work/explain/P09.md. Coverage % not measured this session (deferred to P10, same as P07/P08). One test-isolation bug found and fixed in our own fixture (FD31 leftover queued vehicle_command across --gtest_repeat iterations — see work/explain/P09.md); one arithmetic slip in our own FI05 oracle corrected (0x0D -> 0xFD). F-07a/F-07b/F-08 left as findings, not patched. | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
 | P10 Coverage iteration | G10 | APPROVED | 3 iterations (work/coverage_iterations.md: IT-1 investigation, IT-2 closed 3 gaps with 3 new tests SQE-FDI-08/SQE-FD-36/SQE-FD-37, IT-3 confirmatory re-run, byte-identical gap list); final coverage (all 152 tests, evidence/coverage/final/: DataValidator 100.0%/100.0%, DataValidatorGroup 99.4%/94.8%, FailureDetector 100.0%/74.4%, FailureInjector 100.0%/82.5%); student-only (evidence/coverage/student/, identical numbers — confirms Sqe suite alone drives all scope coverage); upstream_final (evidence/coverage/upstream_final/, 147 tests, exactly matches P03 baseline: DataValidator 74.1%/70.0%, DataValidatorGroup 65.2%/46.6%, FailureDetector/Injector 0%/0% — confirms no drift); evidence/coverage/compare_baseline_final.md; work/GAPS.md (7 gap clusters G-01..G-07, every remaining uncovered item classified infeasible/environment-limited/tool-artefact with a written proof, no LCOV_EXCL markers added to production code); work/gaps_IT-1.md, work/gaps_IT-2.md, work/gaps_IT-3.md; MC21 O3 evidence (evidence/coverage/pertest/MC21_O3_EVIDENCE.md + MC21_evidence.info/MC01_evidence.info showing DataValidatorGroup.cpp:210 hit 0 vs 1 times); unique-coverage analysis for unit-SqeDataValidatorGroup (evidence/coverage/pertest/unit-SqeDataValidatorGroup/unique_coverage.md, 35 tests) and bonus functional-SqeFailureDetector (evidence/coverage/pertest/functional-SqeFailureDetector/unique_coverage.md); `tools/sqe_trace_check.py`/`tools/sqe_mcdc_check.py` clean for all P10 additions (2 pre-existing SQE-PRB-01/02 errors from P07, not introduced this phase); work/inventory/test_inventory.csv +3 rows; work/explain/P10.md; committed PX4-Autopilot `0b026417397` (2 new test files' worth of additions, no production code touched); 2 EKF2 CSV drift files reverted per D-005 precedent | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
-| P11 Findings | G11 | TODO | work/FINDINGS.md | |
+| P11 Findings | G11 | APPROVED | work/FINDINGS.md (16 entries: F-01..F-15, F-07 split a/b; 13 confirmed, 1 latent/unverified-at-runtime F-13, 0 rejected, 3 HUMAN-DECISION: F-09/F-10/F-11); `python3 tools/sqe_trace_check.py --results evidence/tests/xml/*.xml` → 116 results, 5 not PASS, all 5 are by-design DISABLED probes (0 un-investigated non-PASS results); `ctest -R Sqe` re-run this session → 5/5 binaries, 100% passed (evidence/tests/logs/P11_ctest_confirm.log); all 5 DISABLED_PRBnn probes re-run explicitly this session (evidence/tests/probes/: PRB01/02/03 FAIL as designed confirming the oracle disagreements, PRB05/06 PASS as inert SUCCEED() placeholders in the normal non-sanitizer build — ASan/UBSan rebuild deliberately not attempted, see work/FINDINGS.md "Sanitizer evidence" note); work/findings/REPORT_BLOCKS.md (14 report-ready blocks); work/GAPS.md reviewed, consistent, no changes needed; work/explain/P11.md; build verified still Coverage before and after (CMakeCache.txt CMAKE_BUILD_TYPE=Coverage, checked both times) | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
 | P12 Workbook | G12 | TODO | deliverables/*.xlsx | |
 | P13 Report | G13 | TODO | deliverables/report/ | |
 | P14 Packaging | G14 | TODO | deliverables/ | |
@@ -33,10 +34,22 @@ active tests incl. unit-SqeDataValidatorGroup 34/34; ctest full tree: 152/152 pa
   outside P08's own scope. See D-007 for the full corrected account.)
 
 ## HUMAN-DECISION items (open)
-- D-004 exclusions list (P04) · probe oracles PRB-01/02/03 (P11) · classification of F-09/F-10/F-11 (P11)
+- D-004 exclusions list (P04)
+- Probe oracles PRB-01/PRB-02/PRB-03 (P11): each probe encodes a stricter alternative oracle that currently
+  disagrees with the implemented, PASSing characterization test (DV07/DV15/DVG11 respectively). A human must pick
+  which oracle is correct — PRB-01 (F-09, NaN stream should reduce confidence), PRB-02 (F-10, density-at-window
+  should set a flag), PRB-03 (F-02, total failure should return nullptr). All 3 re-run this session and confirmed
+  to FAIL exactly as designed (evidence/tests/probes/).
+- Classification of F-09 (NaN-only stream reported healthy — defect vs. per-axis-ignore-by-design), F-10 (density-
+  at-window boundary — `>` vs `>=` defect vs. intentional one-count gap), F-11 (equal-priority confidence switch
+  counted as failover — classification semantics, two readings of the code's own comment presented in
+  work/FINDINGS.md, neither asserted as correct).
 
 ## Next steps
-1. P09 (FailureDetector/FailureInjector, in progress concurrently — its test files/CMake lines exist in the
-   PX4-Autopilot worktree but were not committed by P08 and are outside this phase's scope).
-2. P10 coverage iteration, including capturing the MC21 O3 per-test evidence (line 210 not-executed vs MC01) that
-   was deferred from P08.
+1. P12 Workbook (deliverables/*.xlsx, ≤2 sheets) — map 1:1 to the 116 tests in work/inventory/test_inventory.csv
+   and the 16 findings in work/FINDINGS.md.
+2. P13 Report — pull defect text directly from work/findings/REPORT_BLOCKS.md (14 ready-made blocks); the judgment
+   section must stay within 300-400 words (tools/sqe_word_count.py) and reflect only what P02-P11 actually
+   measured/confirmed (R12).
+3. Humans: review and decide the 3 open HUMAN-DECISION classifications (F-09/F-10/F-11) and the 3 probe oracles
+   (PRB-01/02/03) before P13 finalizes report language around them.

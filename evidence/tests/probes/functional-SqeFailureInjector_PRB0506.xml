@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="0" disabled="2" errors="0" time="0.007" timestamp="2026-10-01T20:45:55.296" name="AllTests">
+  <testsuite name="SqeFailureInjectorTest" tests="2" failures="0" disabled="2" skipped="0" errors="0" time="0.007" timestamp="2026-10-01T20:45:55.297">
+    <testcase name="DISABLED_PRB05_EscCountAboveMax" file="/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp" line="376" status="run" result="completed" time="0.003" timestamp="2026-10-01T20:45:55.297" classname="SqeFailureInjectorTest" />
+    <testcase name="DISABLED_PRB06_NonMotorFunctionShift" file="/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp" line="397" status="run" result="completed" time="0.002" timestamp="2026-10-01T20:45:55.301" classname="SqeFailureInjectorTest" />
+  </testsuite>
+</testsuites>
