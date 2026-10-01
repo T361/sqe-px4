@@ -1,0 +1,69 @@
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/abseil-cpp-src/absl/base/fast_type_id.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/flag.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/gtest-assertion-result.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/gtest-message.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/gtest-printers.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/gtest.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+Excluding /tmp/sqe-dryrun/build/px4_sitl_test/_deps/re2-src/re2/re2.h
+Excluding /tmp/sqe-dryrun/platforms/common/include/px4_platform_common/defines.h
+Excluding /tmp/sqe-dryrun/platforms/common/include/px4_platform_common/module_params.h
+Excluding /tmp/sqe-dryrun/platforms/common/include/px4_platform_common/param.h
+Excluding /tmp/sqe-dryrun/platforms/common/uORB/Publication.hpp
+Excluding /tmp/sqe-dryrun/platforms/common/uORB/PublicationMulti.hpp
+Excluding /tmp/sqe-dryrun/platforms/common/uORB/Subscription.hpp
+Excluding /tmp/sqe-dryrun/src/drivers/drv_hrt.h
+Excluding /tmp/sqe-dryrun/src/include/containers/List.hpp
+Excluding /tmp/sqe-dryrun/src/lib/hysteresis/hysteresis.h
+Excluding /tmp/sqe-dryrun/src/lib/mathlib/math/Limits.hpp
+Excluding /tmp/sqe-dryrun/src/lib/mathlib/math/filter/AlphaFilter.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/Dcm.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/Euler.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/Matrix.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/Quaternion.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/SquareMatrix.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/Vector.hpp
+Excluding /tmp/sqe-dryrun/src/lib/matrix/matrix/Vector4.hpp
+Excluding /tmp/sqe-dryrun/src/lib/parameters/param.h
+Excluding /tmp/sqe-dryrun/src/modules/commander/failure_detector/FailureDetector.hpp
+Excluding /tmp/sqe-dryrun/src/modules/commander/failure_detector/FailureInjector.hpp
+Excluding /tmp/sqe-dryrun/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp
+Excluding /tmp/sqe-dryrun/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
+Excluding /tmp/sqe-dryrun/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
+Excluding /tmp/sqe-dryrun/src/modules/sensors/data_validator/DataValidator.hpp
+Excluding /tmp/sqe-dryrun/src/modules/sensors/data_validator/DataValidatorGroup.hpp
+Excluding /tmp/sqe-dryrun/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
+Excluding /tmp/sqe-dryrun/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp
+Excluding /usr/include/c++/13/atomic
+Excluding /usr/include/c++/13/bits/allocator.h
+Excluding /usr/include/c++/13/bits/atomic_base.h
+Excluding /usr/include/c++/13/bits/basic_string.h
+Excluding /usr/include/c++/13/bits/basic_string.tcc
+Excluding /usr/include/c++/13/bits/char_traits.h
+Excluding /usr/include/c++/13/bits/chrono.h
+Excluding /usr/include/c++/13/bits/ios_base.h
+Excluding /usr/include/c++/13/bits/move.h
+Excluding /usr/include/c++/13/bits/new_allocator.h
+Excluding /usr/include/c++/13/bits/shared_ptr.h
+Excluding /usr/include/c++/13/bits/shared_ptr_base.h
+Excluding /usr/include/c++/13/bits/stl_iterator_base_funcs.h
+Excluding /usr/include/c++/13/bits/stl_iterator_base_types.h
+Excluding /usr/include/c++/13/bits/this_thread_sleep.h
+Excluding /usr/include/c++/13/bits/unique_ptr.h
+Excluding /usr/include/c++/13/cmath
+Excluding /usr/include/c++/13/ext/atomicity.h
+Excluding /usr/include/c++/13/limits
+Excluding /usr/include/c++/13/string_view
+Excluding /usr/include/c++/13/tuple
+Excluding /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+Removed 63 files
+Writing data to /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/final/scope.info
+Summary coverage rate:
+  lines......: 99.8% (427 of 428 lines)
+  functions..: 100.0% (26 of 26 functions)
+  branches...: 82.3% (376 of 457 branches)

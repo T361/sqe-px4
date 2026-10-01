@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "file": "/tmp/sqe-dryrun/src/modules/commander/failure_detector/FailureDetector.cpp",
+      "lines_found": 153,
+      "lines_hit": 153,
+      "branches_found": 254,
+      "branches_hit": 189,
+      "functions_found": 7,
+      "functions_hit": 7
+    },
+    {
+      "file": "/tmp/sqe-dryrun/src/modules/commander/failure_detector/FailureInjector.cpp",
+      "lines_found": 62,
+      "lines_hit": 62,
+      "branches_found": 57,
+      "branches_hit": 47,
+      "functions_found": 3,
+      "functions_hit": 3
+    },
+    {
+      "file": "/tmp/sqe-dryrun/src/modules/sensors/data_validator/DataValidator.cpp",
+      "lines_found": 58,
+      "lines_hit": 58,
+      "branches_found": 30,
+      "branches_hit": 30,
+      "functions_found": 4,
+      "functions_hit": 4
+    },
+    {
+      "file": "/tmp/sqe-dryrun/src/modules/sensors/data_validator/DataValidatorGroup.cpp",
+      "lines_found": 155,
+      "lines_hit": 154,
+      "branches_found": 116,
+      "branches_hit": 110,
+      "functions_found": 12,
+      "functions_hit": 12
+    }
+  ],
+  "total": {
+    "lines_found": 428,
+    "lines_hit": 427,
+    "branches_found": 457,
+    "branches_hit": 376,
+    "functions_found": 26,
+    "functions_hit": 26
+  }
+}

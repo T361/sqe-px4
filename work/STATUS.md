@@ -1,8 +1,9 @@
 # STATUS — SQE A2 (update every session)
 Baseline: PX4-Autopilot v1.17.0 @ d6f12ad1c4f70ad3230afd7d86e971421e02fef4 · branch `sqe-a2`
-Build type in use: Coverage (since P03) · Last full test run: 2026-10-01 (ctest -R Sqe: 5/5 binaries passed, 111
-active tests [116 total incl. 5 by-design DISABLED probes] re-confirmed this session, evidence/tests/logs/P11_ctest_confirm.log)
-· Current phase: P11 complete
+Build type in use: Coverage (since P03) · Last full test run: 2026-10-01 (ctest -R Sqe: 5/5 binaries passed, 109
+active tests [116 total incl. 5 by-design DISABLED probes] re-confirmed independently on a fresh v1.17.0 worktree
+during the P14 dry-run — see evidence/dryrun/DRYRUN_COMPARISON.md)
+· Current phase: P00-P14 complete; P15 materials ready, live drills pending the team
 
 | Phase | Gate | Status (TODO / IN-PROGRESS / READY-FOR-HUMAN / APPROVED / BLOCKED) | Evidence | Approved by / date |
 |---|---|---|---|---|
@@ -20,7 +21,7 @@ active tests [116 total incl. 5 by-design DISABLED probes] re-confirmed this ses
 | P11 Findings | G11 | APPROVED | work/FINDINGS.md (16 entries: F-01..F-15, F-07 split a/b; 13 confirmed, 1 latent/unverified-at-runtime F-13, 0 rejected, 3 HUMAN-DECISION: F-09/F-10/F-11); `python3 tools/sqe_trace_check.py --results evidence/tests/xml/*.xml` → 116 results, 5 not PASS, all 5 are by-design DISABLED probes (0 un-investigated non-PASS results); `ctest -R Sqe` re-run this session → 5/5 binaries, 100% passed (evidence/tests/logs/P11_ctest_confirm.log); all 5 DISABLED_PRBnn probes re-run explicitly this session (evidence/tests/probes/: PRB01/02/03 FAIL as designed confirming the oracle disagreements, PRB05/06 PASS as inert SUCCEED() placeholders in the normal non-sanitizer build — ASan/UBSan rebuild deliberately not attempted, see work/FINDINGS.md "Sanitizer evidence" note); work/findings/REPORT_BLOCKS.md (14 report-ready blocks); work/GAPS.md reviewed, consistent, no changes needed; work/explain/P11.md; build verified still Coverage before and after (CMakeCache.txt CMAKE_BUILD_TYPE=Coverage, checked both times) | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
 | P12 Workbook | G12 | APPROVED | deliverables/24i3015_24i3166_24i3158_B.xlsx (2 sheets: "Test Inventory" 116 rows, "MC-DC Evidence" 29 rows; validated by tools/sqe_workbook.py: 113 PASS, 3 NOT EXECUTED by-design probes); found+fixed 2 real bugs first (CSV quoting on SQE-PRB-01/02 rows, sqe_trace_check.py's comment-lookback window — see D-010); `tools/sqe_trace_check.py` now TRACEABILITY OK (0 errors, 0 warnings, was 4 errors+33 warnings); `tools/sqe_mcdc_check.py` reconfirmed ALL DECISIONS COMPLETE; work/explain/P12.md | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
 | P13 Report | G13 | APPROVED | deliverables/report/REPORT.md (4325 prose words excl. appendices, judgment §9 346 words — both within SPEC_06 budgets per `python3 tools/sqe_word_count.py`), deliverables/report/24i3015_24i3166_24i3158_B.pdf (10 pages, exported via a user-locally-installed pandoc 3.12 + weasyprint 68.1, no sudo — same D-002 pattern; no LaTeX engine was available or installed). All 10 SPEC_06 sections + Appendix A/B present; every number cites an `evidence/`/`work/` path inline; raw (99.8% line/82.3% branch, `evidence/coverage/final/per_file.md`) vs feasible (work/GAPS.md's 7 justified clusters) coverage explicitly distinguished in §6; no "PX4 is high quality/fully tested" language, all claims scoped to "the analysed scope" (R12); findings use confirmed/candidate/characterization/specification-ambiguity vocabulary precisely per work/FINDINGS.md's own classifications | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
-| P14 Packaging | G14 | IN-PROGRESS | deliverables/24i3015_24i3166_24i3158_B.patch (verified applies cleanly to a fresh v1.17.0 worktree, 7 files, allow-list respected, evidence/gates/G14/patch_verify.log); dry-run rebuild in progress (evidence/dryrun/) | |
+| P14 Packaging | G14 | APPROVED | deliverables/24i3015_24i3166_24i3158_B.{patch,xlsx,zip}, deliverables/report/24i3015_24i3166_24i3158_B.pdf (all 4 top-level artefacts present, naming convention respected); patch verified on a fresh v1.17.0 worktree (evidence/gates/G14/patch_verify.log, 7 files, allow-list respected, zero production code); full dry-run in a second independent worktree (/tmp/sqe-dryrun, cleaned up after): fresh clone+submodules+Coverage build (3m49s, 1696/1696 targets) + `ctest -R Sqe` (5/5 binaries, 100%) + full coverage capture — numbers byte-identical to the submitted evidence (evidence/dryrun/DRYRUN_COMPARISON.md: `diff per_file.md per_file.md` → no output); zip contains tests/, coverage/{baseline,student,final}/, logs/, scripts/, README_REPRODUCE.md, ai_assistance_record.md per SPEC_07 §4 | AUTO-APPROVED (autonomous run per user direction 2026-10-01) |
 | P15 Viva | G15 | READY-FOR-HUMAN (materials prepared; drills themselves are a live human exercise, not completable by this session) | docs/reference/REF_09_VIVA_QUESTION_BANK.md (corrected against the final implemented suite — see D-011), work/viva/drill_log.md (ready, 0 attempts logged), work/explain/P15.md, evidence/coverage/pertest/*/unique_coverage.md (the "coverage lost if removed" evidence the drills reference) | |
 
 ## Blockers
@@ -45,10 +46,21 @@ active tests [116 total incl. 5 by-design DISABLED probes] re-confirmed this ses
   counted as failover — classification semantics, two readings of the code's own comment presented in
   work/FINDINGS.md, neither asserted as correct).
 
-## Next steps
-1. P13 Report — pull defect text directly from work/findings/REPORT_BLOCKS.md (14 ready-made blocks); the judgment
-   section must stay within 300-400 words (tools/sqe_word_count.py) and reflect only what P02-P11 actually
-   measured/confirmed (R12).
-2. P14 Packaging + P15 Viva prep.
-3. Humans: review and decide the 3 open HUMAN-DECISION classifications (F-09/F-10/F-11) and the 3 probe oracles
-   (PRB-01/02/03) before P13 finalizes report language around them.
+## Next steps — everything the agent can do is done; what's left is yours
+All 16 phases (P00-P15) have real, evidence-backed artefacts. P15's materials are ready but its drills are a live
+human exercise by design (`docs/plan/P15_VIVA_PREP.md`) — nothing left for the agent to produce there.
+1. **Fill `work/viva/drill_log.md`** by actually running the 8 drills from `docs/plan/P15_VIVA_PREP.md`, rotating
+   students across areas they did not personally implement. Use `docs/reference/REF_09_VIVA_QUESTION_BANK.md`
+   (corrected this session, see D-011) and `work/explain/P*.md` as study material.
+2. **Resolve the 3 open HUMAN-DECISION items** (F-09/F-10/F-11 oracle classification, and the matching PRB-01/02/03
+   probe oracles) — read `work/FINDINGS.md`'s presentation of both readings for each and pick one as a team; this
+   changes report §7/§9 language if your conclusion differs from what's currently written as "unresolved."
+3. **Review the gate table above.** Every gate G00-G14 is marked `AUTO-APPROVED` under the autonomous-run
+   authorization given at the start of this session — not by a human. Before this is submitted, at least one team
+   member should actually read the evidence for each gate and change `AUTO-APPROVED` to a real name + date once
+   satisfied, per CLAUDE.md R7's actual intent (gates protect *you* for the viva, not just the submission).
+4. **Rename placeholders if anything changed**: `BASE=24i3015_24i3166_24i3158_B` in `work/TEAM.md` — confirm this
+   is still correct (real roll numbers, section B) before the final upload.
+5. Optional, not required for submission: the sanitizer (ASan/UBSan) runtime verification of F-07a/F-07b was
+   deliberately not attempted (time/risk vs. the working Coverage build) — see `work/FINDINGS.md`'s "Sanitizer
+   evidence" note if you want to pursue it for extra credit/thoroughness.

@@ -305,3 +305,34 @@ Accepted / revised / rejected: found and fixed 2 stale test-ID citations in REF_
 "MC17") that referenced an earlier MC/DC derivation draft rather than the final implemented matrix — same class of
 error P11 independently found and fixed in REF_07. Filled in 2 placeholders left in the original kit template
 (Q12 coverage numbers, Q23 F-09 classification) with real values.
+
+## 2026-10-01 — P14+P15 (completed) — Claude (autonomous)
+Use: completed the dry-run (full rebuild+test+coverage capture from the patch alone, in a second independent
+worktree), assembled the final deliverables/*.zip, and finished P15's materials.
+What the AI produced: evidence/dryrun/ (final/ per_file.md + supporting files, DRYRUN_COMPARISON.md);
+deliverables/24i3015_24i3166_24i3158_B.zip (tests/, coverage/{baseline,student,final}/, logs/, scripts/,
+README_REPRODUCE.md, ai_assistance_record.md per SPEC_07 §4); work/STATUS.md's P14/P15 rows and a rewritten
+"Next steps" section listing exactly what remains for the team.
+Human verification: not yet reviewed.
+Assumptions introduced: none new.
+Accepted / revised / rejected: a real process mistake was caught mid-phase and corrected before anything was
+committed — `tools/sqe_coverage.sh final` ignores `PX4_DIR` for its output location and briefly overwrote the
+already-committed `evidence/coverage/final/` with the dry-run's own capture. Caught immediately via `git status`,
+the dry-run output was copied to its own directory and the original evidence restored with `git checkout --`
+before committing (confirmed clean via git status beforehand). The numbers were byte-identical either way (the
+actual point of the dry-run), but the overwrite itself was not an intended action and is documented in
+evidence/dryrun/DRYRUN_COMPARISON.md as a process note for anyone re-running this pipeline.
+
+**Session-level summary — P00-P15, all phases:** this entire assignment (environment setup, baseline verification,
+coverage pipeline, scope selection, structural test-basis derivation, MC/DC derivation and implementation,
+functional test implementation, coverage iteration to near-100%, findings investigation, workbook generation,
+report writing, and packaging/dry-run) was completed autonomously in one continuous session under the user's
+explicit, repeated, in-session authorization for full autonomous operation with self-approved gates — given
+directly by the user after the agent twice declined to proceed on a subagent's second-hand claim of authorization,
+and only acted on once that authorization came directly from the user in this conversation. Every phase's
+output was independently verified against real command output, real source files, or both before being trusted or
+built upon by the next phase — including catching and correcting several of the agent's own mistakes along the way
+(a near-revert of legitimate concurrent work in P08, a mis-attributed coverage-tool overwrite in P14) and two real
+pre-existing errors in the kit's own reference material (REF_07's and REF_09's stale test-ID citations). The team
+is responsible for reviewing this work before submission — see work/STATUS.md's "Next steps" for exactly what that
+review should cover.
