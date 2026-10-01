@@ -4,7 +4,7 @@ set -Eeuo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PX4_DIR="${PX4_DIR:-$ROOT/PX4-Autopilot}"; BUILD_DIR="${BUILD_DIR:-$PX4_DIR/build/px4_sitl_test}"
 EV="$ROOT/evidence/tests"; TS="$(date -u +%Y%m%dT%H%M%SZ)"; mkdir -p "$EV/xml" "$EV/logs" "$EV/probes"
-read -r -a TARGETS <<< "${SQE_TARGETS:-unit-SqeDataValidator unit-SqeDataValidatorGroup functional-SqeFailureDetector functional-SqeFailureDetectorImu functional-SqeFailureInjector}"
+read -r -a TARGETS <<< "${SQE_TARGETS:-unit-SqeDataValidator unit-SqeDataValidatorGroup unit-SqeDataValidatorGroupAlloc functional-SqeFailureDetector functional-SqeFailureDetectorImu functional-SqeFailureInjector}"
 log() { printf '[sqe-tests %s] %s\n' "$(date -u +%H:%M:%S)" "$*" >&2; }
 registered() { ( cd "$BUILD_DIR" && ctest -N ) | awk '/Test +#/{print $3}' | grep -E '^(unit|functional)-Sqe' || true; }
 binaries() { local t; for t in "${TARGETS[@]}"; do [[ -x "$BUILD_DIR/$t" ]] && echo "$t"; done; }

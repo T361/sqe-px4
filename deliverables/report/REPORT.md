@@ -155,7 +155,7 @@ Independence and repeatability: every one of the 6 binaries was run with `--gtes
 zero failures: `unit-SqeDataValidator` 20 active tests, `unit-SqeDataValidatorGroup` 35, `unit-SqeDataValidatorGroupAlloc`
 3, `functional-SqeFailureDetector` 36, `functional-SqeFailureDetectorImu` 8, `functional-SqeFailureInjector` 13 —
 115 active tests in total, 10/10 shuffled repeats each. <!-- src: evidence/tests/logs/shuffle_post_audit/ -->
-Each test also passes individually under `--gtest_filter`.
+Each of the 115 tests also passes when run alone under `--gtest_filter`. <!-- src: evidence/tests/logs/individual_post_audit.log -->
 
 The full 1:1 test-to-decision mapping (120 inventory rows: 20 SQE-DV, 13 SQE-DVG, 3 SQE-DVG-AF, 22 SQE-DVG-MC, 36
 SQE-FD, 8 SQE-FDI, 13 SQE-FI, 5 SQE-PRB probes) is not duplicated here — see `work/inventory/test_inventory.csv` and
@@ -191,10 +191,10 @@ sensor 0 at confidence 0.95/priority 50, then introduces sensor 1 at confidence 
 (`|0.93-0.95|=0.02f≥0.01f`, E=False), holding every other condition's evaluated value fixed, and the decision
 outcome flips (switch vs no switch). <!-- src: work/mcdc/mcdc_matrix.csv rows SQE-DVG-MC-01/03 -->
 
-The **K pair** (DVG-D15, `pre_check_prio != -1`): when K=False (no prior "best" was ever seeded), the outer `if
-(best != nullptr)` guard at L213 is structurally forced reachable-but-always-True by a separate dominance proof
-(see §6 G-03), and `_curr_best<0` at L219 makes the `true_failsafe` value irrelevant to any getter — so the K=False
-row (SQE-DVG-MC-21) cannot be distinguished from its True counterpart (SQE-DVG-MC-01) by any API return value.
+The **K pair** (DVG-D15, `pre_check_prio != -1`): K=False happens only when `_curr_best` is -1 at entry — on the
+first `get_best()` call, or after a total failure has reset it to -1 (L235, L241). D15 is then False, so its body (L210-215) is skipped, and `_curr_best < 0` at L219 sends
+the call down the initial-bookkeeping branch, which never reads `true_failsafe` — so the K=False row
+(SQE-DVG-MC-21) cannot be distinguished from its True counterpart (SQE-DVG-MC-01) by any API return value.
 This row is classified **O3** (structural evidence only): line 210 (`true_failsafe = false;`) shows 0 hits for
 MC21 versus 1 hit for MC01 in their respective per-test `.info` captures (line 207, where D15 is evaluated, is hit in
 both), reproduced independently on the second machine. This is not a weaker choice but the strongest evidence
@@ -221,13 +221,13 @@ stable across runs. <!-- src: work/mcdc/MCDC_ANALYSIS.md §4 -->
 The matrix was independently re-derived by hand and cross-checked with a standalone Python mirror of the exact
 C++ operator/short-circuit order; `tools/sqe_mcdc_check.py` reports `ALL DECISIONS COMPLETE` for all 5 decisions,
 confirming every condition has both a True-outcome and False-outcome evaluation with a traced unique-cause
-independence pair. <!-- src: work/mcdc/mcdc_check_report.md -->
+independence pair (short-circuit form, as defined above). <!-- src: work/mcdc/mcdc_check_report.md -->
 
 ## 6. Coverage analysis (baseline vs final, raw vs source-level)
 
 Baseline (upstream tests only, before any student test code): DataValidator.cpp 43/58 lines (74.1%), 21/30
 branches (70.0%); DataValidatorGroup.cpp 101/155 lines (65.2%), 54/116 branches (46.6%); FailureDetector.cpp and
-FailureInjector.cpp both 0/153 and 0/62 lines (0.0%/0.0%) and 0 branches, since no upstream test starts Commander.
+FailureInjector.cpp 0/153 and 0/62 lines and 0/254 and 0/57 branches, since no upstream test exercises them.
 Scope total: 144/428 lines (33.6%), 75/457 raw branches (16.4%), 75/384 source-level branches (19.5%).
 <!-- src: evidence/coverage/baseline/per_file.md, evidence/coverage/final_post_audit/branch_split_baseline.md -->
 
@@ -293,9 +293,7 @@ behaviour really occurs; whether that behaviour is a defect is stated per findin
 that the evidence alone cannot settle. The reasoning in `work/FINDINGS.md` argues F-09 and F-10 are defects and
 F-11 a specification ambiguity, but that classification was proposed by one team member and has not yet been agreed
 by the whole team, so F-09 and F-10 are reported below as **candidate defects (pending team review)**, not as
-confirmed defects. <!-- src: work/FINDINGS.md --> That zero candidates were rejected is reported
-as a genuine outcome, not evidence of padding: every REF_07 candidate's underlying code-level claim held up under
-independent re-reading of the cited file:line this session.
+confirmed defects. <!-- src: work/FINDINGS.md -->
 
 **Confirmed defects / observations** (title — location — test ID — severity; full reproduction/expected/actual in
 `work/findings/REPORT_BLOCKS.md`, not duplicated here):
@@ -343,6 +341,10 @@ independent re-reading of the cited file:line this session.
   downstream, which this session could not determine from source alone.
 - **F-12** timestamp 0 is an implicit "no data" sentinel in both `put()` and `confidence()` — SQE-DV-20,
   SQE-DVG-MC-25 confirm; not reachable in the real system since `hrt_absolute_time()` is never 0 after boot.
+- **F-14** (testability observation) two effects in `get_best()` cannot be observed through the public API:
+  `_first_failover_time` has no getter, and `best->reset_state()` at L214 is always a no-op (the mask is already
+  `NO_ERROR`, see §5). This is why DVG-D19's True/False outcomes and the K pair of DVG-D15 rely on structural
+  (per-test coverage) evidence rather than a return value.
 - **F-15** `FailureDetector`'s disarm-reset block clears the under-current mask but never the timed-out mask, so a
   previously-timed-out motor still reports failed in `getMotorFailures()` after a clean disarm — SQE-FD-33
   (characterization). <!-- src: work/findings/REPORT_BLOCKS.md, work/FINDINGS.md -->
@@ -442,13 +444,14 @@ coverage-gap classification, findings investigation, workbook generation, and th
 Verification practice: every test traces to a decision ID checked by `tools/sqe_trace_check.py` (clean, 0
 errors/warnings); every MC/DC pair was independently recomputed against a standalone Python mirror of C++
 operator/short-circuit order; every number in this report was re-read from its evidence file this session, not
-carried from memory. No assertion was weakened to pass a test (R4); the one test-design error found (an early
-draft's wrong assumption about ESC failure-mask bit layout) was fixed by rewriting the test before any coverage
-capture used it. <!-- src: work/DECISIONS.md D-008, D-010; work/ai_assistance_log.md -->
+carried from memory. No assertion was weakened to pass a test (R4). Test-design errors found and fixed: an early draft's wrong assumption
+about the ESC failure-mask bit layout (fixed before any coverage capture used it), and, in the post-audit revision,
+SQE-FD-07's vacuous 170° pitch stimulus (exposed by the new positive control). <!-- src: work/DECISIONS.md D-008, D-010; work/ai_assistance_log.md -->
 
-Key assumptions and how they were checked: none taken on faith — every classification in `work/GAPS.md` and
-`work/FINDINGS.md` required independently reading the cited file:line, tracing further into PX4/uORB internals
-where needed to construct a real proof. Two explicit, honestly-reported process assumptions: gate approvals
+Key assumptions and how they were checked: every classification in `work/GAPS.md` and `work/FINDINGS.md` was
+checked by reading the cited file:line and, where needed, PX4/uORB internals. This was not infallible: the post-audit
+revision found that G-04 had been misclassified as a gcov artefact (the AI had read lcov's branch order left to
+right), and that F-13 was half wrong; both are corrected and documented. Two explicit, honestly-reported process assumptions: gate approvals
 (G00–G14) were self-approved autonomously under the user's standing session-start authorization, then later
 converted to a named human batch sign-off at session end (`work/STATUS.md`'s note states plainly this was a
 summary-level approval, not sequential per-gate review as intended); the three findings requiring a
@@ -557,8 +560,8 @@ python3 tools/sqe_word_count.py deliverables/report/REPORT.md
 | `evidence/coverage/final_post_audit/` (`scope.info`, `summary.txt`, `branch_split.md`, `html/`, `student/`) | **final coverage** after IT-4: 428/428 lines, 380/457 raw, 380/384 source-level branches |
 | `evidence/coverage/final/per_file.md`, `evidence/coverage/final/html/` | earlier final capture (IT-3), kept for the iteration history |
 | `evidence/coverage/compare_baseline_final.md` | baseline vs final comparison |
-| `work/coverage_iterations.md` | IT-0..IT-3 iteration history |
-| `work/GAPS.md` | 7 gap clusters with proofs |
+| `work/coverage_iterations.md` | IT-0..IT-4 iteration history |
+| `work/GAPS.md` | gap clusters G-01…G-07 with proofs (G-01 and G-04 closed in IT-4) |
 | `evidence/coverage/pertest/MC21_O3_EVIDENCE.md`, `MC21_evidence.info`, `MC01_evidence.info` | O3 structural-coverage evidence for the K pair |
 | `work/findings/REPORT_BLOCKS.md`, `work/FINDINGS.md` | findings register and report-ready text |
 | `evidence/tests/xml/*.xml` | per-binary GTest XML results |
@@ -567,6 +570,7 @@ python3 tools/sqe_word_count.py deliverables/report/REPORT.md
 | `evidence/tests/sanitizer/*.log` | ASan/UBSan runs of SQE-PRB-05/06 and of the 13 active FailureInjector tests |
 | `evidence/coverage/post_audit/` | intermediate re-capture after the first SQE-DVG-12 change (427/428, 376/457) |
 | `evidence/tests/logs/shuffle_post_audit/` | 10x shuffled-repeat logs and plain-run logs for all 6 binaries (post-audit) |
+| `evidence/tests/logs/individual_post_audit.log` | each of the 115 active tests run alone under `--gtest_filter` (115 pass) |
 | `tools/sqe_branch_split.py` | raw vs source-level branch split of any `.info` file |
 | `evidence/repro_independent/` | independent second-machine reproduction (baseline/student/final `.info`, shuffle and probe logs) |
 | `work/inventory/test_inventory.csv` | full test-to-decision mapping (120 rows) |
