@@ -208,9 +208,15 @@ latched mask (FD37) respectively.
 
 ## Reporting note (SPEC_03 / P10 "raw vs feasible" rule)
 - **Raw tool numbers** (as `genhtml`/lcov report them, no filtering): see `evidence/coverage/final/per_file.md`.
-- **Feasible numbers** (excluding G-01 through G-07's proven-infeasible/environment-limited/tool-artefact items,
-  but still counting G-05's exception edges as excluded per-file, consistent with
-  `SQE_LCOV_NO_EXCEPTION=1` semantics): computed by hand in `evidence/coverage/compare_baseline_final.md` and the
-  final report §6 — every exclusion is justified above, none is asserted without the proof shown.
+- **Exception-filtered numbers** (G-05 removed: every `BRDA` entry whose block ID starts with `e` excluded,
+  computed from `evidence/coverage/final/scope.info`; the same figures are in `evidence/coverage/compare_baseline_final.md`
+  and report §6): DataValidator.cpp 30/30, DataValidatorGroup.cpp 110/116, FailureDetector.cpp 189/190,
+  FailureInjector.cpp 47/48 — **scope total 376/384 (97.9%)**. The 8 uncovered source-level branches are exactly
+  G-01 (DataValidatorGroup.cpp:55, :86, :88), G-02 (:78), G-03 (:213), G-04 (:260), G-06 (FailureInjector.cpp:44)
+  and G-07 (FailureDetector.cpp:194).
+- **Fully feasible view** (also removing those 8 justified branches): 376/376. This is deliberately *not* used as a
+  headline figure, because it depends on accepting every proof above, and G-01 is reachable with a different
+  allocator configuration. (Correction, post-audit revision: an earlier version of this note said feasible numbers
+  were "computed by hand" in the comparison file and the report; neither file contained one at the time.)
 - gcov's branch-coverage number is condition-level coverage of *evaluated* operands for short-circuit `&&`/`||`
   (CLAUDE.md §8 pitfall 6) — stated once here per SPEC_03's reporting rule, not repeated at every line.

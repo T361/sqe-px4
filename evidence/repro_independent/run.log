@@ -1,0 +1,94 @@
+=== ENV
+Linux LifeLine 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+Description:	Ubuntu 24.04.5 LTS
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+cmake version 3.28.3
+lcov: LCOV version 2.0-1
+1.11.1
+=== BASELINE HEAD d6f12ad1c4f70ad3230afd7d86e971421e02fef4 v1.17.0 dirty=0
+=== STEP1 baseline build+run (unmodified v1.17.0, Coverage)
+Thu Oct  1 22:48:07 PKT 2026
+baseline make exit=0
+Thu Oct  1 22:55:53 PKT 2026
+100% tests passed, 0 tests failed out of 147
+Total Test time (real) = 251.18 sec
+Summary coverage rate:
+  lines......: 33.6% (144 of 428 lines)
+  functions..: 42.3% (11 of 26 functions)
+  branches...: 16.4% (75 of 457 branches)
+=== STEP2 apply patch
+PATCH_OK
+ M src/modules/commander/failure_detector/CMakeLists.txt
+ M src/modules/ekf2/test/change_indication/ekf_gsf_reset.csv
+ M src/modules/ekf2/test/change_indication/iris_gps.csv
+ M src/modules/sensors/data_validator/CMakeLists.txt
+?? src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp
+?? src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
+?? src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
+?? src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
+?? src/modules/sensors/data_validator/SqeDataValidatorTest.cpp
+=== STEP3 build with student tests
+student build exit=0
+-rwxr-xr-x 1 root root 28207384 Oct  1 22:57 /root/audit/PX4-Autopilot/build/px4_sitl_test/functional-SqeFailureDetector
+-rwxr-xr-x 1 root root 27701936 Oct  1 22:57 /root/audit/PX4-Autopilot/build/px4_sitl_test/functional-SqeFailureDetectorImu
+-rwxr-xr-x 1 root root 27461768 Oct  1 22:57 /root/audit/PX4-Autopilot/build/px4_sitl_test/functional-SqeFailureInjector
+-rwxr-xr-x 1 root root 26819872 Oct  1 22:57 /root/audit/PX4-Autopilot/build/px4_sitl_test/unit-SqeDataValidator
+-rwxr-xr-x 1 root root 27214720 Oct  1 22:57 /root/audit/PX4-Autopilot/build/px4_sitl_test/unit-SqeDataValidatorGroup
+=== STEP4 student-only coverage (zero counters, ctest -R Sqe)
+ctest student exit=0
+Test project /root/audit/PX4-Autopilot/build/px4_sitl_test
+    Start  75: functional-SqeFailureDetector
+1/5 Test  #75: functional-SqeFailureDetector ......   Passed    4.62 sec
+    Start  76: functional-SqeFailureDetectorImu
+2/5 Test  #76: functional-SqeFailureDetectorImu ...   Passed    0.04 sec
+    Start  77: functional-SqeFailureInjector
+3/5 Test  #77: functional-SqeFailureInjector ......   Passed    0.07 sec
+    Start 121: unit-SqeDataValidator
+4/5 Test #121: unit-SqeDataValidator ..............   Passed    0.05 sec
+    Start 122: unit-SqeDataValidatorGroup
+5/5 Test #122: unit-SqeDataValidatorGroup .........   Passed    0.12 sec
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =   4.92 sec
+Summary coverage rate:
+  lines......: 99.8% (427 of 428 lines)
+  functions..: 100.0% (26 of 26 functions)
+  branches...: 82.3% (376 of 457 branches)
+=== STEP5 full final coverage (zero counters, ALL tests)
+ctest full exit=8
+99% tests passed, 1 tests failed out of 153
+Total Test time (real) = 214.62 sec
+  1/153 Test   #1: antlr4_tests_NOT_BUILT ...............................***Not Run   0.00 sec
+	  1 - antlr4_tests_NOT_BUILT (Not Run)
+Summary coverage rate:
+  lines......: 99.8% (427 of 428 lines)
+  functions..: 100.0% (26 of 26 functions)
+  branches...: 82.3% (376 of 457 branches)
+=== STEP6 shuffle/repeat stability
+unit-SqeDataValidator shuffle exit=0 passed_lines=10 failed_lines=0
+unit-SqeDataValidator active test count: 22
+unit-SqeDataValidatorGroup shuffle exit=0 passed_lines=10 failed_lines=0
+unit-SqeDataValidatorGroup active test count: 35
+functional-SqeFailureDetector shuffle exit=0 passed_lines=10 failed_lines=0
+functional-SqeFailureDetector active test count: 36
+functional-SqeFailureDetectorImu shuffle exit=0 passed_lines=10 failed_lines=0
+functional-SqeFailureDetectorImu active test count: 8
+functional-SqeFailureInjector shuffle exit=0 passed_lines=10 failed_lines=0
+functional-SqeFailureInjector active test count: 15
+=== STEP7 disabled probes
+unit-SqeDataValidator probes exit=1
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence (7 ms)
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB02_DensityAtWindowShouldSetFlag (1 ms)
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB02_DensityAtWindowShouldSetFlag
+unit-SqeDataValidatorGroup probes exit=1
+[  FAILED  ] SqeDvgTest.DISABLED_PRB03_AllFailedShouldReturnNull (9 ms)
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeDvgTest.DISABLED_PRB03_AllFailedShouldReturnNull
+functional-SqeFailureInjector probes exit=0
+[       OK ] SqeFailureInjectorTest.DISABLED_PRB05_EscCountAboveMax (0 ms)
+[       OK ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift (0 ms)
+=== DONE
+Thu Oct  1 23:03:47 PKT 2026

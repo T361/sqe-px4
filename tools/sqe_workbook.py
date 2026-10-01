@@ -58,7 +58,12 @@ def main():
         for k in ('test_id', 'component', 'purpose', 'controlled_input', 'expected', 'coverage_target', 'gtest_name'):
             if not (r.get(k) or '').strip(): errors.append(f"{r.get('test_id')}: empty '{k}'")
         g = (r.get('gtest_name') or '').strip()
-        if g in res: status, ev = res[g]
+        # Sanitizer-only probes: the oracle (an ASan/UBSan report) only exists in a sanitizer build, so the plain-build
+        # XML result (an inert SUCCEED()) must not be reported; the result comes from the cited sanitizer log instead.
+        if (r.get('manual_status') or '').strip() == 'SANITIZER-FAIL':
+            status, ev = 'FAIL', f"sanitizer run: {(r.get('manual_note') or '').strip()}"
+            if not (r.get('manual_note') or '').strip(): errors.append(f"{r['test_id']}: SANITIZER-FAIL needs manual_note")
+        elif g in res: status, ev = res[g]
         elif (r.get('manual_status') or '').strip() in ('BLOCKED', 'NOT EXECUTED'):
             status, ev = f"{r['manual_status'].strip()} — {r.get('manual_note','').strip()}", 'no XML (manual status)'
             if not (r.get('manual_note') or '').strip(): errors.append(f"{r['test_id']}: manual status needs manual_note")

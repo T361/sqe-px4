@@ -380,3 +380,30 @@ Accepted / revised / rejected: did not attempt to fabricate a live viva drill se
 user why that specific request could not be honestly fulfilled by this session (requires two real humans
 examining live, unscripted understanding) and left work/viva/drill_log.md genuinely empty rather than writing a
 fake passing entry.
+
+## 2026-10-01 — Post-audit revision — Claude (requested by Taimoor Shaukat)
+Use: an examiner-style audit rebuilt the submission independently (fresh Ubuntu 24.04.5 WSL2, clean PX4 v1.17.0
+recursive clone, PX4's `Tools/setup/ubuntu.sh`, plain `make`/`ctest`/`lcov` commands rather than the project wrapper
+scripts). Baseline 147/147 upstream tests passed; student 111 active tests passed; 10x shuffle stable for all 5
+binaries; coverage per-line and per-branch hit sets identical to `evidence/coverage/final/scope.info`. The audit's
+recommended fixes were then applied:
+- SQE-PRB-05/06: ran under sanitizers. PX4's `AddressSanitizer`/`UndefinedBehaviorSanitizer` build types do not
+  compile on GCC 13 (abseil constexpr error, fuzztest `__sanitizer_cov_trace_switch` clash), so only the needed
+  objects were recompiled with a sanitizer (`tools/sqe_asan_probes.sh`, `tools/sqe_ubsan_probes.sh`). F-07a: ASan
+  stack-buffer-overflow READ at FailureInjector.cpp:118. F-07b: UBSan shift-exponent error at FailureInjector.cpp:120.
+  Workbook rows now FAIL (as expected for a defect probe) citing `evidence/tests/sanitizer/`, instead of the inert
+  plain-build PASS; `tools/sqe_workbook.py` gained a `SANITIZER-FAIL` manual status for this.
+- Coverage reporting: exception-filtered branch coverage (376/384, 97.9%) added next to the raw 82.3% in report §6,
+  `work/GAPS.md` and `evidence/coverage/compare_baseline_final.md`; GAPS.md's earlier claim that feasible numbers were
+  already computed in those files (they were not) corrected.
+- MC/DC wording: "unique-cause throughout, no masking" corrected to "unique-cause under short-circuit relaxation"
+  (report §5/§9, MCDC_ANALYSIS.md, matrix `form` column). Matrix values and pairs unchanged; checker still COMPLETE.
+- F-09/F-10: relabelled candidate defects pending team review in the deliverables (reasoning unchanged).
+- SQE-DVG-12: bare `SUCCEED()` replaced by real oracles (exactly n siblings linked; added validator reachable);
+  renamed `DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings`; coverage re-captured, unchanged (427/428,
+  376/457, `evidence/coverage/post_audit/`); patch regenerated from the PX4 tree (only the 7 student files).
+- `.gitattributes`: `*.patch -text` so the patch applies on Windows clones with `core.autocrlf=true`.
+Human verification: still required — the team must re-read the changed report sections and agree (or not) on F-09/F-10.
+Assumptions introduced: that a sanitizer report from a partially-instrumented build (only the code under test and
+the probe) is valid runtime evidence for F-07a/F-07b; that the plain-build PASS of PRB-05/06 should not be reported
+as an execution result because the probe's oracle is the sanitizer.

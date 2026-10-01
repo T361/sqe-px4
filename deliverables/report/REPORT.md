@@ -146,8 +146,13 @@ The 5 decisions: DVG-D13 (`get_best()` candidate-switch test, L187-190, 7 condit
 change", L203, 3 conditions H/I/J); DVG-D15 ("real failsafe vs priority preference", L207-208, 3 conditions K/L/M);
 DVG-D32/DVG-D34 (`failover_index()`/`failover_state()`, L282-283/L301-302, identical 3-condition pattern P/Q/R).
 <!-- src: work/mcdc/MCDC_ANALYSIS.md §2 --> 29 target-evaluation rows across 22 distinct test IDs implement these
-five decisions with unique-cause independence pairs throughout — no masking was needed anywhere in the matrix, a
-result worth noting as it indicates the short-circuit structure did not force a weaker masking-MC/DC argument.
+five decisions with **unique-cause independence pairs under short-circuit relaxation**: in every pair the target
+condition flips, the decision outcome flips, and every *other condition that is evaluated in both tests* holds the
+same value — but, because C++ `&&`/`||` short-circuit, a condition may be evaluated in one test of a pair and not
+evaluated at all in the other (recorded as `NE(x)` in the matrix). Example: in the A pair SQE-DVG-MC-07/08, C is not
+evaluated in MC07 (A&&B already true) but is evaluated True in MC08. This is the standard short-circuit form of
+unique-cause MC/DC (no condition that is evaluated in both tests changes), not strict unique-cause with all other
+conditions identical, and not masking MC/DC (which would allow evaluated conditions to change).
 <!-- src: work/mcdc/mcdc_matrix.csv, work/mcdc/MCDC_ANALYSIS.md §6 -->
 
 Three worked examples. The **E pair** (DVG-D13, `fabsf(confidence-max_confidence)<0.01f`): SQE-DVG-MC-01 seeds
@@ -203,6 +208,27 @@ condition-level coverage of *evaluated* operands for short-circuit `&&`/`||` exp
 short-circuit operand), not full MC/DC — the MC/DC matrix in §5 is the independent, stronger claim for
 `DataValidatorGroup` specifically.
 
+**Raw vs exception-filtered branch coverage.** Because the Coverage build has C++ exceptions enabled, GCC also
+instruments an exception-unwind edge after almost every function call (lcov block IDs `e0`; gap G-05 below). These
+are not decisions in the source. Counting only the source-level decision/condition branches (every `BRDA` entry whose
+block ID does not start with `e`, computed directly from the same `final/scope.info`):
+
+| File | Raw branches | Exception edges | Source-level branches |
+|---|---|---|---|
+| DataValidator.cpp | 30/30 (100.0%) | 0 | 30/30 (100.0%) |
+| DataValidatorGroup.cpp | 110/116 (94.8%) | 0 | 110/116 (94.8%) |
+| FailureDetector.cpp | 189/254 (74.4%) | 64 (0 hit) | 189/190 (99.5%) |
+| FailureInjector.cpp | 47/57 (82.5%) | 9 (0 hit) | 47/48 (97.9%) |
+| **Scope total** | **376/457 (82.3%)** | 73 (0 hit) | **376/384 (97.9%)** |
+
+<!-- src: evidence/coverage/final/scope.info (BRDA entries split by block-ID prefix) --> All 73 exception edges are
+uncovered (no PX4 call in the scope throws), and the 8 remaining uncovered source-level branches are exactly the
+items of G-01, G-02, G-03, G-04, G-06 and G-07 below. The raw 82.3% remains the tool's headline number; 97.9% is the
+figure that measures decision coverage of the source. Both numbers were independently reproduced on a second machine
+(fresh Ubuntu 24.04 WSL2 install, clean v1.17.0 clone, this patch applied, plain `make`/`ctest`/`lcov` commands
+rather than the project wrapper scripts): the per-line and per-branch hit sets were identical to
+`evidence/coverage/final/scope.info` for all four files. <!-- src: evidence/repro_independent/ -->
+
 Coverage was reached in three iterations after the IT-0 baseline. **IT-1** (first full capture with all 5
 binaries) investigated every uncovered item via raw `gcov -b -c` re-derivation (not just lcov's BRDA summary) and
 classified most as tool-artefact or infeasible, while identifying 3 genuine missing-test gaps (FD-D25, FD-D38,
@@ -229,11 +255,10 @@ G-04 (gcov's documented line-attribution collapse of 6 ternary conditions in `pr
 `PX4_INFO_RAW` call onto one source line — independently reproduced with a standalone minimal repro under the
 same coverage flags) and G-05 (GCC's per-call exception-unwind edges across `FailureDetector`/`FailureInjector`,
 confirmed via `gcov -b -c` showing `taken 0 (throw)` on every entry, for library calls that do not throw by PX4
-convention). <!-- src: work/GAPS.md --> Excluding these 7 clusters' items from the denominator (the "feasible"
-view) would bring both files' reachable branch coverage close to 100%, but this report states the raw number
-(above) as the primary figure and treats the feasible view as the explicitly-justified gap list in §8, per
-SPEC_03/P10's "report raw, then feasible" rule — a single feasible percentage figure is not synthesized here
-beyond what `work/GAPS.md` itself computes, to avoid an unverified rounding claim.
+convention). <!-- src: work/GAPS.md --> Removing G-05's exception edges gives the 376/384 (97.9%) source-level
+figure above. If the remaining 8 justified items were also removed, every remaining branch would be covered; that
+"100% of feasible branches" figure is not used as a headline here, because it depends on accepting each gap proof
+in `work/GAPS.md` and G-01 in particular is reachable on a different allocator configuration.
 
 **Annotated excerpts** (from `evidence/coverage/final/html/src/modules/sensors/data_validator/DataValidatorGroup.cpp.gcov.html`):
 at L187-190 (DVG-D13's 7-condition expression), the gcov branch-pair annotations show, e.g., branch 0 (A) taken
@@ -248,12 +273,13 @@ unreachable) and with the K pair's O3 classification in §5. <!-- src: evidence/
 ## 7. Findings
 
 All 15 candidate findings from the project's pre-derived register were independently re-investigated this
-session against the live source and the actual executed test/probe results; **13 confirmed, 0 rejected, 1 latent
-and not runtime-verified** (F-13). Three findings (F-09, F-10, F-11) initially required a specification-level
-oracle judgment the evidence alone could not settle; these have since been resolved with documented reasoning
-(F-09 and F-10 as confirmed defects, F-11 as a specification ambiguity rather than a defect — full reasoning in
-`work/FINDINGS.md`), on the explicit authority of the team member directing this session, and remain open for the
-whole team's review before the viva. <!-- src: work/FINDINGS.md --> That zero candidates were rejected is reported
+session against the live source and the actual executed test/probe results; **13 had their code-level claim
+confirmed, 0 rejected, 1 latent and not runtime-verified** (F-13). "Code-level claim confirmed" means the described
+behaviour really occurs; whether that behaviour is a defect is stated per finding below. Three findings (F-09, F-10, F-11) need a specification-level oracle judgment
+that the evidence alone cannot settle. The reasoning in `work/FINDINGS.md` argues F-09 and F-10 are defects and
+F-11 a specification ambiguity, but that classification was proposed by one team member and has not yet been agreed
+by the whole team, so F-09 and F-10 are reported below as **candidate defects (pending team review)**, not as
+confirmed defects. <!-- src: work/FINDINGS.md --> That zero candidates were rejected is reported
 as a genuine outcome, not evidence of padding: every REF_07 candidate's underlying code-level claim held up under
 independent re-reading of the cited file:line this session.
 
@@ -275,21 +301,27 @@ independent re-reading of the cited file:line this session.
 - **F-06** the 1% confidence tie-break is float-rounding/optimisation-level-sensitive (confirmed by direct float32
   arithmetic) — not exercised by the submitted suite's deliberately boundary-avoiding vectors; treated separately
   as an untested-interaction risk in §8.
-- **F-07a/F-07b** an unclamped ESC-count loop and an unguarded shift exponent in
-  `FailureInjector::manipulateEscStatus` — confirmed by static source analysis only; the corresponding probes
-  (SQE-PRB-05/06) run as inert `SUCCEED()` placeholders in this session's non-sanitizer build, since the undefined
-  behaviour is only detectable under ASan/UBSan, which was not built this session (risk/time judgment, documented
-  in `work/FINDINGS.md`'s "Sanitizer evidence" note).
+- **F-07a/F-07b (confirmed at runtime under sanitizers)** an unclamped ESC-count loop and an unguarded shift
+  exponent in `FailureInjector::manipulateEscStatus`. In the normal/Coverage build the probes SQE-PRB-05/06 are
+  inert `SUCCEED()` placeholders and prove nothing; they were therefore run in sanitizer builds of only
+  `FailureInjector.cpp` and the probe file (PX4's own `AddressSanitizer`/`UndefinedBehaviorSanitizer` build types
+  do not compile on GCC 13 because of the bundled Abseil/fuzztest dependencies). F-07a: ASan reports
+  `stack-buffer-overflow`, a READ at `FailureInjector.cpp:118` (`status.esc[8]`, one past the array) from
+  SQE-PRB-05. F-07b: UBSan reports `shift exponent 4294967195 is too large for 32-bit type 'int'` at
+  `FailureInjector.cpp:120` from SQE-PRB-06. The 13 active FailureInjector tests run clean under both sanitizers.
+  Reachable only through failure injection (`SYS_FAILURE_EN=1`), which is a test feature, so flight impact is
+  limited to injection sessions. <!-- src: evidence/tests/sanitizer/, tools/sqe_asan_probes.sh, tools/sqe_ubsan_probes.sh -->
 - **F-08** the `FAILURE_TYPE_WRONG` log message uses a 0-based motor index while every sibling case uses 1-based —
   cosmetic, confirmed by direct source read, no dedicated capturing test written (R4 bars manufacturing an
   assertion to pad the finding).
-- **F-09 (confirmed defect)** a stream of only non-finite samples reports `confidence()==1.0`/`state()==NO_ERROR`,
-  contradicting the class's own stated purpose of identifying anomalies — SQE-DV-07 (characterization), SQE-PRB-01
-  (now the approved stricter oracle) fails against the as-shipped code, as expected of a confirmed-defect probe.
-- **F-10 (confirmed defect)** `_error_density == ERROR_DENSITY_WINDOW` exactly yields `confidence()==0` with no flag
-  set (`>` not `>=` at `DataValidator.cpp:125`) — an internal contradiction between two outputs of the same object
-  for the same instant, not a boundary-placement question. SQE-DV-15, SQE-PRB-02 (now approved) fails as expected;
-  consumer impact confirmed at `voted_sensors_update.cpp:419`.
+- **F-09 (candidate defect, pending team review)** a stream of only non-finite samples reports
+  `confidence()==1.0`/`state()==NO_ERROR`, contradicting the class's own stated purpose of identifying anomalies —
+  SQE-DV-07 (characterization) records the as-shipped behaviour; SQE-PRB-01 encodes the proposed stricter oracle and
+  fails against the as-shipped code.
+- **F-10 (candidate defect, pending team review)** `_error_density == ERROR_DENSITY_WINDOW` exactly yields
+  `confidence()==0` with no flag set (`>` not `>=` at `DataValidator.cpp:125`) — two outputs of the same object
+  disagree at the same instant. SQE-DV-15 records the as-shipped behaviour; SQE-PRB-02 encodes the proposed
+  stricter oracle and fails; consumer impact traced to `voted_sensors_update.cpp:419`.
 - **F-11 (specification ambiguity, not a defect)** an equal-priority, confidence-only sensor switch increments
   `failover_count()` even though the source's own comment frames the guard as distinguishing "a real failsafe" from
   "a priority preference" — SQE-DVG-MC-04, SQE-DVG-MC-07 confirm the current, self-consistent behaviour. Unlike
@@ -342,10 +374,11 @@ the MC/DC matrix's 12 D13 vectors were deliberately kept away from this boundary
 the suite provides no evidence about behaviour exactly at that boundary under a different optimisation level
 (e.g. a `-O2`/`-O3` flight build) than the `-O0` Coverage build used throughout this session.
 
-**Concrete improvements** (not implemented this session, listed per SPEC_06 §8's guidance): (1) a dedicated
-allocation-fault-injection build (SPEC_02 §9's documented GCC/`-fcheck-new` technique, in its own CMake target)
-to close G-01 and give F-13 runtime evidence; (2) an ASan/UBSan rebuild to runtime-confirm F-07a/F-07b rather than
-leave them static-analysis-only; (3) a second optimisation-level build (`-O2`) to directly measure F-06's
+**Concrete improvements** (listed per SPEC_06 §8's guidance; (2) was carried out in the post-audit revision, the
+rest were not implemented): (1) a dedicated allocation-fault-injection build (SPEC_02 §9's documented
+GCC/`-fcheck-new` technique, in its own CMake target) to close G-01 and give F-13 runtime evidence; (2) **done:**
+sanitizer runs of the F-07 probes (§7), now with runtime ASan/UBSan reports; extending that to the whole suite would
+need PX4's sanitizer build types to be fixed for GCC 13, or a Clang toolchain; (3) a second optimisation-level build (`-O2`) to directly measure F-06's
 adjacent-step divergence instead of relying on hand float32 arithmetic; (4) dependency-level testability
 improvements such as splitting `print()`'s multi-ternary `PX4_INFO_RAW` call (G-04) into separate statements,
 which — if ever made as a production change outside this assignment's R2 constraint — would let gcov attribute
@@ -356,21 +389,20 @@ branches correctly per ternary.
 <!-- JUDGMENT-START -->
 The structural evidence in this report supports specific, bounded claims about the analysed scope — four files,
 DataValidator.cpp, DataValidatorGroup.cpp, FailureDetector.cpp and FailureInjector.cpp — and nothing broader.
-Measured raw coverage reached 99.8% lines and 82.3% branches across the scope, with DataValidator.cpp and
-DataValidatorGroup.cpp at 100.0%/100.0% and 99.4%/94.8% respectively, and every remaining uncovered item is
-classified with a written proof as infeasible, environment-limited, or a tool-measurement artefact rather than
-silently dropped. On DataValidatorGroup's five redundancy-selection decisions, full MC/DC was achieved using
-unique-cause independence pairs throughout (no masking needed anywhere), with every condition's True and False
-outcomes checked against an exact oracle — return values, state getters, or, for one structurally-unobservable
+Measured coverage reached 99.8% of lines and 82.3% of raw branches across the scope; excluding compiler-generated
+exception edges, 97.9% of source-level branches were covered. DataValidator.cpp reached 100.0%/100.0% and
+DataValidatorGroup.cpp 99.4%/94.8%, and every remaining uncovered item is classified with a written proof as
+infeasible, environment-limited, or a tool-measurement artefact rather than silently dropped. On
+DataValidatorGroup's five redundancy-selection decisions, full MC/DC was achieved using unique-cause independence
+pairs under short-circuit relaxation, with every condition's True and False outcomes checked against an exact oracle — return values, state getters, or, for one structurally-unobservable
 row, documented per-test structural evidence. This combination gives high confidence that every implemented
 decision outcome in the scope, including each evaluated condition inside DataValidatorGroup's compound
 expressions, was exercised at least once with a checked oracle.
 
-That confidence does not extend to claims this evidence cannot support. Two of the three findings requiring a
-specification-level oracle decision (F-09, F-10) are now classified as confirmed defects, and the third (F-11) as
-a specification ambiguity rather than a defect, decided this session on the submitting team member's authority
-rather than full team consensus — the corresponding probe tests fail by design against these confirmed/stricter
-readings and the team should independently review this reasoning before relying on it. The NuttX non-throwing-allocator path
+That confidence does not extend to claims this evidence cannot support. Two findings (F-09, F-10) depend on a
+specification-level judgment and are reported only as candidate defects pending team review; their probes fail
+against the proposed stricter oracle, which shows the behaviour but not that it is wrong. F-07a/F-07b, by contrast,
+are confirmed at runtime by ASan/UBSan. The NuttX non-throwing-allocator path
 (G-01), hardware timing, and the real multi-threaded/multi-process interaction of the scoped files with their
 actual callers (VotedSensorsUpdate, Commander, VehicleMagnetometer) were never executed — only the confirmed call
 sites were read, not exercised end-to-end. F-06's float-rounding sensitivity at the 1% confidence boundary is
@@ -410,8 +442,16 @@ converted to a named human batch sign-off at session end (`work/STATUS.md`'s not
 summary-level approval, not sequential per-gate review as intended); the three findings requiring a
 specification-level oracle decision (F-09, F-10, F-11) were resolved autonomously on one team member's authority,
 not full team deliberation — flagged for review before the viva, not presented as settled consensus.
-<!-- src: work/STATUS.md --> The team takes responsibility for all targets, expected results, tests and
-conclusions in this submission.
+<!-- src: work/STATUS.md -->
+
+Post-audit revision (also AI-assisted, Claude Code): an independent examiner-style audit rebuilt the submission on a
+second machine and confirmed every coverage number. It then led to these changes: F-07a/F-07b probes run under
+ASan/UBSan (now runtime-confirmed); exception-filtered branch coverage reported next to the raw figure; MC/DC wording
+corrected to "unique-cause under short-circuit relaxation"; F-09/F-10 downgraded to candidate defects pending team
+review; SQE-DVG-12 given real assertions in place of a bare `SUCCEED()`. Assumption introduced: the AI judged that
+the sanitizer reports are sufficient runtime evidence for F-07a/F-07b, and that the plain-build PASS of the two
+probes should not be reported. <!-- src: work/ai_assistance_log.md (post-audit entry) --> The team takes
+responsibility for all targets, expected results, tests and conclusions in this submission.
 
 ## Appendix A — Reproduction commands
 
@@ -454,6 +494,27 @@ tools/sqe_coverage.sh student <tag>       # student-suite-only capture
 tools/sqe_coverage.sh final <tag>         # full final capture (HTML + .info)
 ```
 
+Sanitizer runs of the F-07 probes (post-audit; run from the Coverage build directory after the build above —
+each script compiles only `FailureInjector.cpp` (+ the probe file for ASan) with the sanitizer into `/tmp`, links a
+separate test binary, and leaves the Coverage build untouched):
+```
+PX4_BUILD=PX4-Autopilot/build/px4_sitl_test bash tools/sqe_asan_probes.sh   # PRB-05 -> ASan overflow, L118
+PX4_BUILD=PX4-Autopilot/build/px4_sitl_test bash tools/sqe_ubsan_probes.sh  # PRB-06 -> UBSan shift, L120
+```
+
+Equivalent plain commands without the wrapper scripts (used for the independent re-run, `evidence/repro_independent/`):
+```
+make tests PX4_CMAKE_BUILD_TYPE=Coverage                          # baseline: clean v1.17.0, 147 upstream tests
+LC="--rc branch_coverage=1 --ignore-errors mismatch,inconsistent,unused,negative,empty,source,gcov"
+lcov $LC --capture --directory build/px4_sitl_test -o all.info
+lcov $LC --extract all.info '*/data_validator/DataValidator.cpp' '*/data_validator/DataValidatorGroup.cpp' \
+  '*/failure_detector/FailureDetector.cpp' '*/failure_detector/FailureInjector.cpp' -o scope.info
+git apply 24i3015_24i3166_24i3158_B.patch
+make tests PX4_CMAKE_BUILD_TYPE=Coverage TESTFILTER=__no_tests__   # build student tests
+lcov --zerocounters --directory build/px4_sitl_test
+(cd build/px4_sitl_test && ctest -R Sqe)                          # student-only run, then capture as above
+```
+
 MC/DC and traceability checks (P06, P12):
 ```
 python3 tools/sqe_mcdc_check.py work/mcdc/mcdc_matrix.csv
@@ -486,6 +547,9 @@ python3 tools/sqe_word_count.py deliverables/report/REPORT.md
 | `evidence/tests/xml/*.xml` | per-binary GTest XML results |
 | `evidence/tests/logs/*_shuffle.log` | shuffle/repeat stability logs |
 | `evidence/tests/probes/*` | disabled-probe execution evidence |
+| `evidence/tests/sanitizer/*.log` | ASan/UBSan runs of SQE-PRB-05/06 and of the 13 active FailureInjector tests |
+| `evidence/coverage/post_audit/` | coverage re-capture after the SQE-DVG-12 change (unchanged: 427/428, 376/457) |
+| `evidence/repro_independent/` | independent second-machine reproduction (baseline/student/final `.info`, shuffle and probe logs) |
 | `work/inventory/test_inventory.csv` | full test-to-decision mapping (116 rows) |
 | `deliverables/24i3015_24i3166_24i3158_B.xlsx` | testing workbook (2 sheets) |
 | `work/ai_assistance_log.md` | full AI-assistance log |

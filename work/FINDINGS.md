@@ -12,8 +12,8 @@ the expected-vs-actual disagreement and citing the finding it probes). Independe
 `ctest -R Sqe` -> 5/5 binaries, 100% passed (`evidence/tests/logs/P11_ctest_confirm.log`).
 
 Verdict counts: 13 confirmed, 0 rejected, 1 latent/unverified-at-runtime (F-13), 0 outright false.
-F-07a/F-07b are confirmed by static source analysis only; no sanitizer build was attempted this session (see
-"Sanitizer evidence" note below).
+F-07a/F-07b were first confirmed by static source analysis; the post-audit revision then confirmed both at runtime
+under ASan/UBSan (see "Sanitizer evidence" below).
 
 **2026-10-01 update:** F-09, F-10, and F-11 were originally left as open HUMAN-DECISION items pending the team's
 own review. Per explicit user authorization in this session, they have since been resolved autonomously with
@@ -21,6 +21,10 @@ documented reasoning (see each finding's "Verdict" paragraph below): **F-09 conf
 defect**, **F-11 confirmed specification ambiguity (not a defect)**. These are judgment calls on unresolved
 specification questions, not re-derivations of verifiable fact — the team should still review the reasoning before
 the viva and is free to disagree; they are not binding in the way a re-run test result is.
+
+**Post-audit revision:** because that classification was made by one team member, not agreed by the team, the
+submitted report now presents F-09 and F-10 as **candidate defects (pending team review)**. The reasoning below is
+unchanged; only the label in the deliverables was downgraded until the whole team has reviewed it.
 
 ---
 
@@ -178,7 +182,7 @@ tie-break is inherently float-rounding-sensitive at the 1% step.
 
 ---
 
-### F-07a Unclamped `esc_count` loop in `manipulateEscStatus`        Status: confirmed (static analysis only)
+### F-07a Unclamped `esc_count` loop in `manipulateEscStatus`        Status: confirmed (static analysis + ASan runtime report, post-audit)
 Location: FailureInjector.cpp:117 (`for (int i = 0; i < status.esc_count; i++)`) -- no `CONNECTED_ESC_MAX` clamp,
 unlike the sibling loop at L67 (`for (int i = 0; i < esc_status_s::CONNECTED_ESC_MAX; i++)`)
 Related tests: SQE-PRB-05 (`DISABLED_PRB05_EscCountAboveMax`)
@@ -204,7 +208,7 @@ runtime.
 
 ---
 
-### F-07b Unguarded shift in `manipulateEscStatus` for non-motor actuator functions   Status: confirmed (static analysis only)
+### F-07b Unguarded shift in `manipulateEscStatus` for non-motor actuator functions   Status: confirmed (static analysis + UBSan runtime report, post-audit)
 Location: FailureInjector.cpp:118-126 (`const unsigned i_esc = status.esc[i].actuator_function -
 actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;` then `1 << i_esc` at L120/L126, no range guard), contrast
 FailureDetector.cpp:274 (`if (i_esc >= actuator_motors_s::NUM_CONTROLS) { continue; }` -- the guard this code lacks)
@@ -254,7 +258,7 @@ numbering. Confirmed by direct source read this session. Cosmetic only -- the ac
 
 ---
 
-### F-09 Non-finite (NaN) stream stays "healthy" (confidence 1.0, NO_ERROR)   Status: confirmed defect
+### F-09 Non-finite (NaN) stream stays "healthy" (confidence 1.0, NO_ERROR)   Status: candidate defect (pending team review)
 
 **Verdict (resolved 2026-10-01):** classified as a **defect**, not specification ambiguity. Rationale: the class's
 own file-header purpose statement is "identify anomalies in data streams" (`DataValidator.hpp`); a stream that has
@@ -306,7 +310,7 @@ anomalies in data streams" (file header) a binding contract this violates, or is
 
 ---
 
-### F-10 Error density exactly at window boundary -> confidence 0, no flag   Status: confirmed defect
+### F-10 Error density exactly at window boundary -> confidence 0, no flag   Status: candidate defect (pending team review)
 
 **Verdict (resolved 2026-10-01):** classified as a **defect**, not an intentional one-count gap. Rationale: at
 `_error_density == ERROR_DENSITY_WINDOW` exactly, `confidence()` and `state()` — two outputs of the same object
@@ -518,7 +522,21 @@ before disarm still reports as failed in `getMotorFailures()` after disarm, even
 
 ---
 
-## Sanitizer evidence for F-07a/F-07b -- not attempted this session
+## Sanitizer evidence for F-07a/F-07b
+
+**Post-audit revision (runtime-confirmed).** PX4's own `AddressSanitizer`/`UndefinedBehaviorSanitizer` build types
+fail to compile on GCC 13 (third-party abseil `hash_policy_traits.h` constexpr error; fuzztest's
+`__sanitizer_cov_trace_switch` clash), so instead only the needed objects were recompiled with a sanitizer into
+`/tmp` and a separate test binary was linked, leaving the Coverage build untouched (`tools/sqe_asan_probes.sh`,
+`tools/sqe_ubsan_probes.sh`). Results (`evidence/tests/sanitizer/`):
+- F-07a / SQE-PRB-05 under ASan: `stack-buffer-overflow`, READ of size 1 at `FailureInjector.cpp:118` in
+  `manipulateEscStatus()`, called from the probe — the loop reads `status.esc[8]`, one past the array.
+- F-07b / SQE-PRB-06 under UBSan (`-fsanitize=shift,bounds`): `FailureInjector.cpp:120:41: runtime error: shift
+  exponent 4294967195 is too large for 32-bit type 'int'` (`actuator_function` 0 minus `ACTUATOR_FUNCTION_MOTOR1`
+  101 wraps to 4294967195).
+- All 13 active FailureInjector tests pass with no sanitizer report under both builds.
+
+Original note (kept for traceability):
 Per the task's own risk/time guidance (a full `PX4_ASAN=1`/`PX4_UBSAN=1` rebuild replacing the working Coverage
 build, 15-20+ min each, with real risk of disrupting a build other phases may still need), this session did not
 attempt the optional sanitizer rebuild in SPEC_10 step 5 / P11 plan step 3. F-07a/F-07b are therefore reported as

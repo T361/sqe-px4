@@ -1,8 +1,8 @@
 # REPORT_BLOCKS -- ready-to-use defect/finding text for the P13 report Sections 7-8
 Source: `work/FINDINGS.md` (SPEC_10 format), condensed per SPEC_10 step 7's defect-format fields: title, source
 location, reproduction conditions, expected, actual, test ID, evidence path, severity rationale. Only CONFIRMED
-findings are included below (13 of REF_07's 15 candidates; F-07a/F-07b included as "confirmed, static-analysis-only"
-since that is itself a defensible, non-overclaiming confirmed status per SPEC_10's classes). Language follows R12
+findings are included below (13 of REF_07's 15 candidates; F-07a/F-07b included as confirmed, first by static analysis
+and, after the post-audit revision, at runtime under ASan/UBSan; F-09/F-10 relabelled candidate defects pending team review). Language follows R12
 (no overclaiming; "candidate defect" / "confirmed defect" / "specification ambiguity" / "characterization" used
 distinctly, matching each finding's actual classification in work/FINDINGS.md).
 
@@ -99,18 +99,20 @@ not exercised by the submitted suite's stable test vectors.
 ---
 
 ## Block 7 -- F-07a: Unclamped ESC-count loop in `FailureInjector::manipulateEscStatus`
-**Title:** out-of-bounds array write possible when `esc_status.esc_count > CONNECTED_ESC_MAX`
+**Title:** out-of-bounds array access when `esc_status.esc_count > CONNECTED_ESC_MAX` (read at L118; a write via
+the `memset` at L122 follows if that index's bit is set in the blocked mask)
 **Source location:** `FailureInjector.cpp:117`
 **Reproduction conditions:** `SYS_FAILURE_EN=1`; inject a failure; publish `esc_status` with `esc_count=9` (fixed
 array is `esc[8]`)
 **Expected:** a clamp to `CONNECTED_ESC_MAX`, matching the sibling loop at `FailureInjector.cpp:67`
-**Actual:** no clamp; out-of-bounds write is undefined behaviour, undetected without a sanitizer
+**Actual:** no clamp; under ASan the probe aborts with `stack-buffer-overflow`, READ of size 1 at
+`FailureInjector.cpp:118` (`status.esc[8]`, one past the array)
 **Test ID:** SQE-PRB-06 is a different probe -- this is SQE-PRB-05 (disabled; runs as an inert `SUCCEED()` in the
 normal build, confirmed this session)
-**Evidence path:** `evidence/tests/probes/functional-SqeFailureInjector_PRB0506.xml`
-**Severity rationale:** robustness defect, confirmed by static source analysis only -- **not runtime-verified this
-session** (no ASan rebuild attempted, time/risk judgment call, see work/FINDINGS.md). Reachable only with failure
-injection active and an out-of-contract `esc_count`, not through normal flight paths.
+**Evidence path:** `evidence/tests/sanitizer/asan_PRB05.log` (reproduce: `tools/sqe_asan_probes.sh`); the
+normal-build run `evidence/tests/probes/functional-SqeFailureInjector_PRB0506.xml` is an inert `SUCCEED()`
+**Severity rationale:** robustness defect, confirmed by static analysis and at runtime under ASan (post-audit).
+Reachable only with failure injection active and an out-of-contract `esc_count`, not through normal flight paths.
 
 ---
 
@@ -122,9 +124,10 @@ injection active and an out-of-contract `esc_count`, not through normal flight p
 **Expected:** a range guard consistent with `FailureDetector.cpp:274`'s `i_esc >= NUM_CONTROLS` check
 **Actual:** no guard; `i_esc` underflows to a large unsigned value, producing an out-of-range shift (UB)
 **Test ID:** SQE-PRB-06 (disabled; inert `SUCCEED()` in the normal build, confirmed this session)
-**Evidence path:** `evidence/tests/probes/functional-SqeFailureInjector_PRB0506.xml`
-**Severity rationale:** undefined behaviour, confirmed by static source analysis only -- not runtime-verified this
-session. Same injection-only reachability constraint as F-07a.
+**Evidence path:** `evidence/tests/sanitizer/ubsan_PRB06.log` (reproduce: `tools/sqe_ubsan_probes.sh`): UBSan
+`FailureInjector.cpp:120:41: runtime error: shift exponent 4294967195 is too large for 32-bit type 'int'`
+**Severity rationale:** undefined behaviour, confirmed by static analysis and at runtime under UBSan (post-audit).
+Same injection-only reachability constraint as F-07a.
 
 ---
 
@@ -143,7 +146,7 @@ pad the finding)
 
 ---
 
-## Block 10 -- F-09: NaN-only stream reports as fully healthy (confirmed defect)
+## Block 10 -- F-09: NaN-only stream reports as fully healthy (candidate defect, pending team review)
 **Title:** a stream of only non-finite samples is reported as `confidence()==1.0`, `state()==NO_ERROR`
 **Source location:** `DataValidator.cpp:68` (per-axis finiteness guard), `:97` (`_time_last` updated unconditionally)
 **Reproduction conditions:** `put(t, {NaN,NaN,NaN}, 0, 1)` x10
@@ -152,7 +155,7 @@ pad the finding)
 **Test ID:** SQE-DV-07 (confirms the characterization); SQE-PRB-01 (disabled, now approved as the correct stricter
 oracle — see below)
 **Evidence path:** `evidence/tests/xml/unit-SqeDataValidator.xml`, `evidence/tests/probes/unit-SqeDataValidator.xml`
-**Severity rationale:** **confirmed defect.** `confidence()==1.0`/`state()==NO_ERROR` on the most anomalous possible
+**Severity rationale:** **candidate defect (pending team review).** `confidence()==1.0`/`state()==NO_ERROR` on the most anomalous possible
 input (never finite) directly contradicts the class's own stated purpose; "NaN is ignored per-axis" is a defensible
 filtering choice but does not justify also reporting full health as an unexamined side effect. This session's
 reading of `VehicleIMU.cpp`/`voted_sensors_update.cpp` found no explicit upstream NaN rejection before data reaches
@@ -161,7 +164,7 @@ sensor would remain selectable by `get_best()`.
 
 ---
 
-## Block 11 -- F-10: Error density at exact window boundary gives zero confidence with no flag (confirmed defect)
+## Block 11 -- F-10: Error density at exact window boundary gives zero confidence with no flag (candidate defect, pending team review)
 **Title:** `_error_density == ERROR_DENSITY_WINDOW` (100) yields `confidence()==0` but no `HIGH_ERRDENSITY` flag
 **Source location:** `DataValidator.cpp:125` (`>` not `>=`)
 **Reproduction conditions:** `put(T0, v, error_count=100, 0)`
@@ -170,7 +173,7 @@ sensor would remain selectable by `get_best()`.
 "healthy" by flag inspection
 **Test ID:** SQE-DV-15 (confirms); SQE-PRB-02 (disabled, now approved as the correct stricter oracle — see below)
 **Evidence path:** `evidence/tests/xml/unit-SqeDataValidator.xml`, `evidence/tests/probes/unit-SqeDataValidator.xml`
-**Severity rationale:** **confirmed defect.** `confidence()==0` and `state()==NO_ERROR` simultaneously is an
+**Severity rationale:** **candidate defect (pending team review).** `confidence()==0` and `state()==NO_ERROR` simultaneously is an
 internal contradiction between two outputs of the same object describing the same instant, not a boundary-placement
 question — the density-cap-and-decay arithmetic and the flag-setting `>` comparison silently disagree. Confirmed
 consumer impact at `voted_sensors_update.cpp:419`: `status.accel_healthy[i]` reports `true` for one cycle at this

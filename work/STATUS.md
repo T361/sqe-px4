@@ -59,6 +59,11 @@ not exist — see G15's row and the note below.
 - D-004 exclusions list (P04) — still open, not part of this session's resolution scope (the user's instruction
   was specifically about the 3 findings above).
 
+**Post-audit revision (2026-10-01):** independent reproduction confirmed all results; F-07a/b now runtime-confirmed
+under ASan/UBSan; F-09/F-10 relabelled candidate defects pending team review; DVG-12 strengthened; exception-filtered
+branch coverage (97.9%) reported. Details: `work/ai_assistance_log.md` (last entry). The team still needs to agree
+on F-09/F-10 before the viva.
+
 ## Next steps — one genuinely live item remains
 1. **Run the 8 live viva drills** (`docs/plan/P15_VIVA_PREP.md`) and fill `work/viva/drill_log.md` for real,
    rotating students across areas they did not personally implement. This is the one item in the whole assignment

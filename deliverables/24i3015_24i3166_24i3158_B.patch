@@ -1968,10 +1968,10 @@ index e60b18d4b3..88e77e261a 100644
 +	work_queue parameters events perf tinybson uorb_msgs test_stubs)
 diff --git a/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
 new file mode 100644
-index 0000000000..c3301a1a85
+index 0000000000..ce75002b90
 --- /dev/null
 +++ b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
-@@ -0,0 +1,899 @@
+@@ -0,0 +1,909 @@
 +/**
 + * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
 + * System under test : DataValidatorGroup.cpp / DataValidatorGroup.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
@@ -2307,22 +2307,32 @@ index 0000000000..c3301a1a85
 +	EXPECT_NE(best, nullptr);
 +}
 +
-+// SQE-DVG-12 | DVG-D04
++// SQE-DVG-12 | DVG-D01 DVG-D02 DVG-D04
 +// Given/When: construct and destroy DataValidatorGroup instances of sizes 0..5, calling add_new_validator() once
 +//             extra on the size-3 instance before it goes out of scope
-+// Then : no crash (destructor's while-loop walks and deletes every linked sibling, including the one added via
-+//        add_new_validator(), for every group size including the empty one)
-+TEST_F(SqeDvgTest, DVG12_ConstructDestroyVariousSizes_NoCrash)
++// Then : the constructor links exactly n siblings — get_sensor_state(i) is found (!= UINT32_MAX) for every i < n and
++//        not found (== UINT32_MAX) at i == n; after add_new_validator() the size-3 group has a 4th reachable sibling
++//        (index 3 found, index 4 not found). The destructor's while-loop (DVG-D04) then walks and deletes every linked
++//        sibling, including the added one, for every size including 0 — exercised here for coverage; freeing itself is
++//        not observable through the public API (a leak would need ASan/LeakSanitizer to detect), so the destructor part
++//        of this test is a smoke check, not an oracle
++TEST_F(SqeDvgTest, DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings)
 +{
 +	for (unsigned n = 0; n <= 5; n++) {
 +		DataValidatorGroup g(n);
 +
++		for (unsigned i = 0; i < n; i++) {
++			EXPECT_NE(g.get_sensor_state(i), UINT32_MAX) << "size " << n << ", index " << i;
++		}
++
++		EXPECT_EQ(g.get_sensor_state(n), UINT32_MAX) << "size " << n;
++
 +		if (n == 3) {
-+			g.add_new_validator();
++			ASSERT_NE(g.add_new_validator(), nullptr);
++			EXPECT_NE(g.get_sensor_state(3), UINT32_MAX);
++			EXPECT_EQ(g.get_sensor_state(4), UINT32_MAX);
 +		}
 +	}
-+
-+	SUCCEED();
 +}
 +
 +// ===========================================================================

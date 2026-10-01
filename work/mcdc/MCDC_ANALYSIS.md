@@ -177,11 +177,20 @@ float32 arithmetic (verified per-row, see notes column in `mcdc_matrix.csv`).
 ## 6. Minimum vs used evaluation count (SPEC_04 §6)
 
 D13 has 7 conditions → minimum 8 evaluations for unique-cause MC/DC; 12 are used (same count as REF_06) so that
-every independence pair differs in exactly one input dimension and is individually explainable in the viva, per
+every independence pair is individually explainable in the viva (see "Form of the independence pairs" below), per
 SPEC_04 §6's stated rationale (traceability over minimality). D14/D15/D32/D34 each have 3 conditions → minimum 4
 evaluations each; D14 uses 5 rows (REF_06's MC14/MC02/MC18c2/MC18c3/MC19 pattern, reused), D15 uses 4 rows, D32 and
 D34 each use 4 rows (sharing the same 4 underlying scenarios MC14/MC15/MC16/MC17, observed through two different
 getters).
+
+**Form of the independence pairs (corrected wording, post-audit revision).** The pairs are unique-cause **with
+short-circuit relaxation**, not strict unique-cause: within each pair the target condition flips, the outcome flips,
+and every other condition that is *evaluated in both tests* holds the same value — but a condition can be evaluated
+in one test and short-circuited (`NE(x)` in `mcdc_matrix.csv`) in the other. Example: the A pair MC07/MC08 — in MC07
+`A&&B` is true so C is never evaluated; in MC08 A is false so C is evaluated (True). No pair relies on a condition
+that is evaluated in both tests changing value, so none needs masking MC/DC. Earlier wording ("unique-cause
+throughout, no masking", "differs in exactly one input dimension") overstated this, because strict unique-cause
+would require every other condition to be identical, including the short-circuited ones.
 
 ## 7a. Test ID / gtest mapping (SPEC_01 §3) — for P08 implementation
 
