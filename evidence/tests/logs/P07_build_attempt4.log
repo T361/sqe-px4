@@ -1,0 +1,55 @@
+[0/1] Re-running CMake...
+-- PX4_GIT_TAG: v1.17.0
+CMake Warning (policy) at CMakeLists.txt:176 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+-- PX4 config file: /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/boards/px4/sitl/test.px4board
+-- PLATFORM posix
+-- NOLOCKSTEP y
+-- ROMFSROOT px4fmu_common
+-- TESTING y
+-- ETHERNET y
+-- ROOT_PATH .
+-- PARAM_FILE /fs/mtd_params
+-- PX4 config: px4_sitl_test
+-- PX4 platform: posix
+-- PX4 lockstep: disabled
+-- cmake build type: Coverage
+-- Building for code coverage
+-- Coverage instrumentation enabled with flags: --coverage;-fprofile-update=atomic
+-- ccache enabled (export CCACHE_DISABLE=1 to disable)
+-- Adding fuzztest
+CMake Warning at build/px4_sitl_test/_deps/abseil-cpp-src/CMakeLists.txt:177 (message):
+    The default and system-level install directories are unsupported except in LTS   releases of Abseil.  Please set CMAKE_INSTALL_PREFIX to install Abseil in your   source or build tree directly.    
+
+
+-- Building without demo. To enable demo build use: -DWITH_DEMO=True
+CMake Warning (deprecated) at platforms/posix/src/px4/common/lockstep_scheduler/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- ADDING TEST STUBS
+-- Could NOT find gz-transport (missing: gz-transport_DIR)
+-- Gazebo simulation bridge module disabled: missing dependencies
+-- Could NOT find Protobuf (missing: Protobuf_LIBRARIES Protobuf_INCLUDE_DIR) 
+-- Could NOT find gz-transport (missing: gz-transport_DIR)
+-- Could NOT find gz-sim (missing: gz-sim_DIR)
+-- Could NOT find gz-sensors (missing: gz-sensors_DIR)
+-- Could NOT find gz-plugin (missing: gz-plugin_DIR)
+-- ROMFS: ROMFS/px4fmu_common
+Architecture:  amd64
+==> CPACK_INSTALL_PREFIX = @DEB_INSTALL_PREFIX@
+-- Configuring done (2.4s)
+-- Generating done (1.5s)
+-- Build files have been written to: /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test
+[1/2] Linking CXX executable unit-SqeDataValidator

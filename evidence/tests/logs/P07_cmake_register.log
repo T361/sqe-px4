@@ -1,0 +1,70 @@
+[0/1] Re-running CMake...
+-- PX4_GIT_TAG: v1.17.0
+CMake Warning (policy) at CMakeLists.txt:176 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+-- PX4 config file: /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/boards/px4/sitl/test.px4board
+-- PLATFORM posix
+-- NOLOCKSTEP y
+-- ROMFSROOT px4fmu_common
+-- TESTING y
+-- ETHERNET y
+-- ROOT_PATH .
+-- PARAM_FILE /fs/mtd_params
+-- PX4 config: px4_sitl_test
+-- PX4 platform: posix
+-- PX4 lockstep: disabled
+-- cmake build type: Coverage
+-- Building for code coverage
+-- Coverage instrumentation enabled with flags: --coverage;-fprofile-update=atomic
+-- ccache enabled (export CCACHE_DISABLE=1 to disable)
+-- Adding fuzztest
+CMake Warning at build/px4_sitl_test/_deps/abseil-cpp-src/CMakeLists.txt:177 (message):
+    The default and system-level install directories are unsupported except in LTS   releases of Abseil.  Please set CMAKE_INSTALL_PREFIX to install Abseil in your   source or build tree directly.    
+
+
+-- Building without demo. To enable demo build use: -DWITH_DEMO=True
+CMake Warning (deprecated) at platforms/posix/src/px4/common/lockstep_scheduler/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- ADDING TEST STUBS
+-- Could NOT find gz-transport (missing: gz-transport_DIR)
+-- Gazebo simulation bridge module disabled: missing dependencies
+-- Could NOT find Protobuf (missing: Protobuf_LIBRARIES Protobuf_INCLUDE_DIR) 
+-- Could NOT find gz-transport (missing: gz-transport_DIR)
+-- Could NOT find gz-sim (missing: gz-sim_DIR)
+-- Could NOT find gz-sensors (missing: gz-sensors_DIR)
+-- Could NOT find gz-plugin (missing: gz-plugin_DIR)
+-- ROMFS: ROMFS/px4fmu_common
+Architecture:  amd64
+==> CPACK_INSTALL_PREFIX = @DEB_INSTALL_PREFIX@
+-- Configuring done (2.1s)
+-- Generating done (1.6s)
+-- Build files have been written to: /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test
+[1/4] Building CXX object src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidator.dir/SqeDataValidatorTest.cpp.o
+[2/4] Linking CXX executable unit-SqeDataValidator
+FAILED: [code=1] unit-SqeDataValidator 
+: && /usr/bin/c++ --coverage -ftest-coverage -fprofile-arcs -O0 -fno-default-inline -fno-inline -fno-elide-constructors -fuse-ld=gold --coverage -ftest-coverage -lgcov -Wl,--export-dynamic -rdynamic  --coverage -fprofile-update=atomic -Wl,--dependency-file=src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidator.dir/link.d src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidator.dir/SqeDataValidatorTest.cpp.o -o unit-SqeDataValidator -L/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/external/Install/lib -Wl,-rpath,/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/external/Install/lib  src/modules/sensors/libmodules__sensors.a  test/fuzztest/fuzztest/libfuzztest_fuzztest_gtest_main.a  src/lib/systemlib/libsystemlib.a  src/lib/events/libevents.a  src/lib/parameters/libparameters.a  platforms/common/libpx4_platform.a  src/lib/perf/libperf.a  src/lib/tinybson/libtinybson.a  platforms/common/uORB/libuORB.a  src/lib/cdev/libcdev.a  msg/libuorb_msgs.a  -lm  src/lib/heatshrink/libheatshrink.a  src/modules/sensors/vehicle_imu/libvehicle_imu.a  src/modules/sensors/vehicle_acceleration/libvehicle_acceleration.a  src/modules/sensors/vehicle_air_data/libvehicle_air_data.a  src/lib/airspeed/libairspeed.a  src/lib/atmosphere/libatmosphere.a  src/modules/sensors/vehicle_angular_velocity/libvehicle_angular_velocity.a  src/lib/mathlib/libmathlib.a  src/modules/sensors/vehicle_gps_position/libvehicle_gps_position.a  src/lib/geo/libgeo.a  src/modules/sensors/vehicle_magnetometer/libvehicle_magnetometer.a  src/modules/sensors/data_validator/libdata_validator.a  src/lib/sensor_calibration/libsensor_calibration.a  src/lib/conversion/libconversion.a  src/modules/sensors/vehicle_optical_flow/libvehicle_optical_flow.a  platforms/posix/src/px4/common/libpx4_layer.a  platforms/common/px4_work_queue/libpx4_work_queue.a  platforms/posix/src/px4/common/px4_daemon/libpx4_daemon.a  platforms/posix/src/px4/common/libpx4_layer.a  platforms/common/px4_work_queue/libpx4_work_queue.a  platforms/posix/src/px4/common/px4_daemon/libpx4_daemon.a  boards/px4/sitl/src/libdrivers_board.a  platforms/common/work_queue/libwork_queue.a  test/fuzztest/fuzztest/internal/domains/libfuzztest_in_grammar_impl.a  test/fuzztest/fuzztest/internal/domains/libfuzztest_in_regexp_impl.a  test/fuzztest/fuzztest/internal/domains/libfuzztest_regexp_dfa.a  test/fuzztest/fuzztest/libfuzztest_fuzztest_macros.a  test/fuzztest/fuzztest/libfuzztest_init_fuzztest.a  test/fuzztest/fuzztest/internal/libfuzztest_googletest_adaptor.a  test/fuzztest/fuzztest/internal/libfuzztest_registry.a  test/fuzztest/fuzztest/internal/libfuzztest_compatibility_mode.a  test/fuzztest/fuzztest/internal/libfuzztest_runtime.a  test/fuzztest/fuzztest/internal/libfuzztest_fixture_driver.a  test/fuzztest/fuzztest/internal/domains/libfuzztest_utf.a  test/fuzztest/fuzztest/internal/libfuzztest_coverage.a  test/fuzztest/fuzztest/internal/libfuzztest_serialization.a  test/fuzztest/fuzztest/internal/libfuzztest_status.a  test/fuzztest/fuzztest/libfuzztest_fuzzing_bit_gen.a  test/fuzztest/fuzztest/internal/libfuzztest_register_fuzzing_mocks.a  test/fuzztest/fuzztest/internal/libfuzztest_type_support.a  test/fuzztest/fuzztest/internal/libfuzztest_seed_seq.a  _deps/abseil-cpp-build/absl/random/libabsl_random_distributions.a  _deps/abseil-cpp-build/absl/random/libabsl_random_seed_sequences.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_entropy_pool.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_randen.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_randen_hwaes.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_randen_hwaes_impl.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_randen_slow.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_platform.a  _deps/abseil-cpp-build/absl/random/libabsl_random_internal_seed_material.a  _deps/abseil-cpp-build/absl/random/libabsl_random_seed_gen_exception.a  test/fuzztest/common/libfuzztest_bazel.a  test/fuzztest/fuzztest/internal/libfuzztest_corpus_database.a  test/fuzztest/fuzztest/internal/libfuzztest_configuration.a  test/fuzztest/fuzztest/internal/libfuzztest_io.a  test/fuzztest/fuzztest/internal/libfuzztest_logging.a  test/fuzztest/common/libfuzztest_blob_file.a  test/fuzztest/common/libfuzztest_hash.a  test/fuzztest/common/libfuzztest_sha1.a  test/fuzztest/common/libfuzztest_remote_file.a  _deps/abseil-cpp-build/absl/status/libabsl_statusor.a  _deps/abseil-cpp-build/absl/status/libabsl_status.a  lib/libgtest.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_parse.a  _deps/abseil-cpp-build/absl/debugging/libabsl_failure_signal_handler.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_usage.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_usage_internal.a  _deps/re2-build/libre2.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_reflection.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_private_handle_accessor.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_internal.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_commandlineflag.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_config.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_program_name.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_commandlineflag_internal.a  _deps/abseil-cpp-build/absl/flags/libabsl_flags_marshalling.a  _deps/abseil-cpp-build/absl/container/libabsl_raw_hash_set.a  _deps/abseil-cpp-build/absl/strings/libabsl_cord.a  _deps/abseil-cpp-build/absl/strings/libabsl_cordz_info.a  _deps/abseil-cpp-build/absl/strings/libabsl_cord_internal.a  _deps/abseil-cpp-build/absl/strings/libabsl_cordz_functions.a  _deps/abseil-cpp-build/absl/strings/libabsl_cordz_handle.a  _deps/abseil-cpp-build/absl/crc/libabsl_crc_cord_state.a  _deps/abseil-cpp-build/absl/crc/libabsl_crc32c.a  _deps/abseil-cpp-build/absl/crc/libabsl_crc_internal.a  _deps/abseil-cpp-build/absl/crc/libabsl_crc_cpu_detect.a  _deps/abseil-cpp-build/absl/container/libabsl_hashtablez_sampler.a  _deps/abseil-cpp-build/absl/profiling/libabsl_exponential_biased.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_check_op.a  _deps/abseil-cpp-build/absl/debugging/libabsl_leak_check.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_conditions.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_message.a  _deps/abseil-cpp-build/absl/base/libabsl_strerror.a  _deps/abseil-cpp-build/absl/debugging/libabsl_examine_stack.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_nullguard.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_format.a  _deps/abseil-cpp-build/absl/strings/libabsl_str_format_internal.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_structured_proto.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_proto.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_log_sink_set.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_globals.a  _deps/abseil-cpp-build/absl/log/libabsl_log_globals.a  _deps/abseil-cpp-build/absl/hash/libabsl_hash.a  _deps/abseil-cpp-build/absl/hash/libabsl_city.a  _deps/abseil-cpp-build/absl/hash/libabsl_low_level_hash.a  _deps/abseil-cpp-build/absl/log/libabsl_log_sink.a  _deps/abseil-cpp-build/absl/log/libabsl_vlog_config_internal.a  _deps/abseil-cpp-build/absl/synchronization/libabsl_synchronization.a  _deps/abseil-cpp-build/absl/debugging/libabsl_stacktrace.a  _deps/abseil-cpp-build/absl/debugging/libabsl_symbolize.a  _deps/abseil-cpp-build/absl/debugging/libabsl_debugging_internal.a  _deps/abseil-cpp-build/absl/debugging/libabsl_demangle_internal.a  _deps/abseil-cpp-build/absl/debugging/libabsl_demangle_rust.a  _deps/abseil-cpp-build/absl/debugging/libabsl_decode_rust_punycode.a  _deps/abseil-cpp-build/absl/debugging/libabsl_utf8_for_code_point.a  _deps/abseil-cpp-build/absl/synchronization/libabsl_graphcycles_internal.a  _deps/abseil-cpp-build/absl/base/libabsl_malloc_internal.a  _deps/abseil-cpp-build/absl/synchronization/libabsl_kernel_timeout_internal.a  _deps/abseil-cpp-build/absl/time/libabsl_time.a  _deps/abseil-cpp-build/absl/time/libabsl_civil_time.a  _deps/abseil-cpp-build/absl/time/libabsl_time_zone.a  _deps/abseil-cpp-build/absl/base/libabsl_tracing_internal.a  _deps/abseil-cpp-build/absl/log/libabsl_log_internal_fnmatch.a  _deps/abseil-cpp-build/absl/strings/libabsl_strings.a  _deps/abseil-cpp-build/absl/strings/libabsl_strings_internal.a  _deps/abseil-cpp-build/absl/strings/libabsl_string_view.a  _deps/abseil-cpp-build/absl/numeric/libabsl_int128.a  _deps/abseil-cpp-build/absl/base/libabsl_base.a  _deps/abseil-cpp-build/absl/base/libabsl_spinlock_wait.a  -lrt  _deps/abseil-cpp-build/absl/base/libabsl_throw_delegate.a  _deps/abseil-cpp-build/absl/base/libabsl_raw_logging_internal.a  _deps/abseil-cpp-build/absl/base/libabsl_log_severity.a && :
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidator.cpp:147: error: undefined reference to 'px4_log_raw'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidator.cpp:152: error: undefined reference to 'px4_log_raw'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/posix/src/px4/common/drv_hrt.cpp:227: error: undefined reference to 'px4_log_modulename'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/posix/src/px4/common/px4_sem.cpp:96: error: undefined reference to 'px4_log_modulename'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/posix/src/px4/common/px4_sem.cpp:151: error: undefined reference to 'px4_log_modulename'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/posix/src/px4/common/px4_sem.cpp:181: error: undefined reference to 'px4_log_modulename'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/work_queue/hrt_queue.c:128: error: undefined reference to 'px4_getpid'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/work_queue/hrt_queue.c:130: error: undefined reference to 'px4_task_kill'
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/work_queue/hrt_thread.c:292: error: undefined reference to 'px4_task_spawn_cmd'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+make: *** [Makefile:411: tests] Error 1

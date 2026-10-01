@@ -1,0 +1,37 @@
+Note: Google Test filter = *PRB*:-*PRB05*:*PRB06*
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp:457: Failure
+Expected: (_dv.confidence(T0 + 9000)) < (1.f), actual: 1 vs 1
+Stack trace:
+  0x58d704fdbcaf: SqeDataValidatorTest_DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence_Test::TestBody()
+  0x58d705144b43: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x58d7051002e5: testing::Test::Run()
+  0x58d705101598: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence (24 ms)
+[ RUN      ] SqeDataValidatorTest.DISABLED_PRB02_DensityAtWindowShouldSetFlag
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp:471: Failure
+Expected: (_dv.confidence(T0)) != (0.f), actual: 0 vs 0
+or a non-zero state() flag should be set
+Stack trace:
+  0x58d704fdbfa0: SqeDataValidatorTest_DISABLED_PRB02_DensityAtWindowShouldSetFlag_Test::TestBody()
+  0x58d705144b43: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x58d7051002e5: testing::Test::Run()
+  0x58d705101598: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB02_DensityAtWindowShouldSetFlag (4 ms)
+[----------] 2 tests from SqeDataValidatorTest (29 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (29 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence
+[  FAILED  ] SqeDataValidatorTest.DISABLED_PRB02_DensityAtWindowShouldSetFlag
+
+ 2 FAILED TESTS
