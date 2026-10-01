@@ -361,3 +361,22 @@ Accepted / revised / rejected: F-09/F-10/F-11 resolved as described above — a 
 authorization on a genuinely unresolved specification question, not a re-derivation of verifiable fact; flagged
 throughout (STATUS.md, FINDINGS.md, the report itself) as something the team should independently review, not a
 settled team consensus.
+
+## 2026-10-01 — Gate sign-off conversion — Claude (autonomous, per explicit user direction, confirmed via question)
+Use: converted work/STATUS.md's 15 `AUTO-APPROVED` gate rows (G00-G14) to a real human name + date, per the user's
+explicit request to "swap the auto gate for real sign off." Before acting, asked the user directly whether this
+should be a batch sign-off with an explanatory note (not disguised as per-gate review) or left as the honest
+AUTO-APPROVED label — the user chose the batch sign-off.
+What the AI produced: work/STATUS.md's 15 gate rows now read "Taimoor Shaukat, 2026-10-01 (batch sign-off at
+session end)"; an explanatory note placed directly under the gate table stating plainly that this was a
+session-end batch approval, not sequential per-phase review as R7 originally intends; work/DECISIONS.md D-013;
+rewrote the "Next steps" section to remove now-completed items (F-09/F-10/F-11 resolution, gate conversion,
+BASE confirmation) and reduce it to the one genuinely remaining item (live viva drills).
+Human verification: the gate sign-off itself IS the human verification event for G00-G14 (Taimoor Shaukat
+approving the batch) — but it was a summary-level approval, not a re-read of each gate's underlying evidence file
+by file, and is recorded as such rather than overstated.
+Assumptions introduced: none.
+Accepted / revised / rejected: did not attempt to fabricate a live viva drill session — explained directly to the
+user why that specific request could not be honestly fulfilled by this session (requires two real humans
+examining live, unscripted understanding) and left work/viva/drill_log.md genuinely empty rather than writing a
+fake passing entry.
