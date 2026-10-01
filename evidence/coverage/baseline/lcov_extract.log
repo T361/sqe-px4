@@ -1,0 +1,27 @@
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/include/px4_platform_common/defines.h
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/include/px4_platform_common/module_params.h
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/include/px4_platform_common/param.h
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/uORB/Publication.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/uORB/Subscription.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/drivers/drv_hrt.h
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/include/containers/List.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/hysteresis/hysteresis.h
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/mathlib/math/Limits.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/mathlib/math/filter/AlphaFilter.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/Dcm.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/Euler.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/Matrix.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/Quaternion.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/SquareMatrix.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/Vector.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/matrix/matrix/Vector4.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/lib/parameters/param.h
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/FailureDetector.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidator.hpp
+Excluding /usr/include/c++/13/cmath
+Removed 21 files
+Writing data to /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/baseline/scope.info
+Summary coverage rate:
+  lines......: 33.6% (144 of 428 lines)
+  functions..: 42.3% (11 of 26 functions)
+  branches...: 16.4% (75 of 457 branches)

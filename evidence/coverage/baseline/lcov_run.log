@@ -1,0 +1,15 @@
+Capturing coverage data from /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector
+geninfo cmd: '/home/dns/.local/bin/geninfo /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector --output-filename /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/baseline/run.info --gcov-tool gcov --base-directory /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test --ignore-errors mismatch --rc branch_coverage=1 --memory 0 --branch-coverage'
+Found gcov version: 13.3.0
+Using intermediate gcov format
+Writing temporary data to /tmp/geninfo_datNKl9
+Scanning /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator for .gcda files ...
+Found 2 data files in /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator
+Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator/CMakeFiles/data_validator.dir/DataValidatorGroup.cpp.gcda
+geninfo: WARNING: using JSON module "JSON::PP" - which is much slower than some alternatives.  Consider installing one of JSON::XS or Cpanel::JSON::XS
+Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator/CMakeFiles/data_validator.dir/DataValidator.cpp.gcda
+Scanning /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector for .gcda files ...
+Found 2 data files in /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector
+Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector/CMakeFiles/failure_detector.dir/FailureDetector.cpp.gcda
+Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector/CMakeFiles/failure_detector.dir/FailureInjector.cpp.gcda
+Finished .info-file creation

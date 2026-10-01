@@ -47,3 +47,14 @@ Assumptions introduced: none new.
 Accepted / revised / rejected: REF_02's Safety.cpp/UserModeIntention.cpp upstream-test claim revised (see above); all
 other pre-derived content (REF_02 candidate metrics, REF_03/04/05 decision inventories, reachability proofs,
 flagged defects F-07/F-08) independently confirmed accurate against the live source, accepted as-is.
+
+## 2026-10-01 — P03 — Claude (autonomous)
+Use: reconfigured build to Coverage type, ran the coverage pipeline's baseline capture (all 147 upstream tests under
+coverage instrumentation).
+What the AI produced: evidence/build/coverage_build.log, evidence/coverage/baseline/* (MANIFEST, scope.info,
+per_file.md, html/), work/explain/P03.md, work/coverage_iterations.md IT-0 row, work/DECISIONS.md D-005.
+Human verification: not yet reviewed.
+Assumptions introduced: none.
+Accepted / revised / rejected: found and reverted 2 files unintentionally modified by the EKF2 test suite's own
+golden-output regeneration as a side effect of running under Coverage build flags (not our edit, not R2-allowed) —
+see D-005.

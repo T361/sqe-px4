@@ -1,0 +1,9 @@
+Combining tracefiles.
+.. found 2 files to aggregate.
+Merging /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/baseline/initial.info..1 remaining
+Merging /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/baseline/run.info..0 remaining
+Writing data to /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/baseline/all.info
+Summary coverage rate:
+  lines......: 20.4% (151 of 741 lines)
+  functions..: 10.2% (18 of 176 functions)
+  branches...: 13.5% (75 of 557 branches)
