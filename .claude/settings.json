@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make tests:*)",
+      "Bash(make px4_sitl:*)",
+      "Bash(cmake --build:*)",
+      "Bash(ctest:*)",
+      "Bash(lcov:*)",
+      "Bash(genhtml:*)",
+      "Bash(gcov:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git describe:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(bash tools/:*)",
+      "Bash(tools/:*)",
+      "Bash(python3 tools/:*)",
+      "Bash(grep:*)",
+      "Bash(sed -n:*)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git checkout main:*)",
+      "Bash(git pull:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(sudo rm:*)",
+      "Bash(rm -rf /:*)",
+      "Bash(rm -rf ~:*)"
+    ]
+  }
+}
