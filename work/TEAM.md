@@ -1,8 +1,8 @@
-BASE=ROLL1_ROLL2_ROLL3_SECX
-# Team (PLACEHOLDER roll numbers/section — replace before submission; BASE line above is used by the packaging scripts)
+BASE=24i3015_24i3166_24i3158_SECX
+# Team (Section is still a PLACEHOLDER — replace SECX before submission; BASE line above is used by the packaging scripts)
 | Student | Name | Roll number | Primary area (AGENTS.md §4) |
 |---|---|---|---|
-| S1 | TBD | ROLL1 | environment, baseline, coverage, gaps |
-| S2 | TBD | ROLL2 | DataValidator + DataValidatorGroup, MC/DC |
-| S3 | TBD | ROLL3 | FailureDetector/Injector, findings, report |
+| S1 | Taimoor Shaukat | 24i3015 | environment, baseline, coverage, gaps |
+| S2 | Muhammad Bilal Tahir | 24i3166 | DataValidator + DataValidatorGroup, MC/DC |
+| S3 | Ali | 24i3158 | FailureDetector/Injector, findings, report |
 Section: SECX   Course: SE3002 Software Quality Engineering   Assignment 02
