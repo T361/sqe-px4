@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="1" disabled="1" errors="0" time="0.035" timestamp="2026-10-01T19:21:03.263" name="AllTests">
+  <testsuite name="SqeDvgTest" tests="1" failures="1" disabled="1" skipped="0" errors="0" time="0.034" timestamp="2026-10-01T19:21:03.263">
+    <testcase name="DISABLED_PRB03_AllFailedShouldReturnNull" file="/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp" line="887" status="run" result="completed" time="0.034" timestamp="2026-10-01T19:21:03.263" classname="SqeDvgTest">
+      <failure message="/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:898&#x0A;Expected equality of these values:&#x0A;  best&#x0A;    Which is: 0x654afb1d4e24&#x0A;  nullptr&#x0A;    Which is: (nullptr)" type=""><![CDATA[/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:898
+Expected equality of these values:
+  best
+    Which is: 0x654afb1d4e24
+  nullptr
+    Which is: (nullptr)
+Stack trace:
+  0x654af5365d39: SqeDvgTest_DISABLED_PRB03_AllFailedShouldReturnNull_Test::TestBody()
+  0x654af54d4ce1: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x654af5490483: testing::Test::Run()
+  0x654af5491736: testing::TestInfo::Run()
+... Google Test internal frames ...
+]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

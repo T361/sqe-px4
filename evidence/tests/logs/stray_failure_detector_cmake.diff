@@ -1,0 +1,13 @@
+diff --git a/src/modules/commander/failure_detector/CMakeLists.txt b/src/modules/commander/failure_detector/CMakeLists.txt
+index e6cd9d57c8..3222ae366a 100644
+--- a/src/modules/commander/failure_detector/CMakeLists.txt
++++ b/src/modules/commander/failure_detector/CMakeLists.txt
+@@ -35,3 +35,8 @@ px4_add_library(failure_detector
+ 	FailureDetector.cpp
+ 	FailureInjector.cpp
+ )
++
++# SQE A2 (student-authored tests)
++px4_add_functional_gtest(SRC SqeFailureDetectorTest.cpp LINKLIBS modules__commander)
++px4_add_functional_gtest(SRC SqeFailureDetectorImuTest.cpp LINKLIBS modules__commander)
++px4_add_functional_gtest(SRC SqeFailureInjectorTest.cpp LINKLIBS modules__commander)

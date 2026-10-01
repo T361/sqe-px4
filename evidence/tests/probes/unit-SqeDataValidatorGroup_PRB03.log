@@ -1,0 +1,28 @@
+Note: Google Test filter = *PRB03*
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgTest
+[ RUN      ] SqeDvgTest.DISABLED_PRB03_AllFailedShouldReturnNull
+/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:898: Failure
+Expected equality of these values:
+  best
+    Which is: 0x654afb1d4e24
+  nullptr
+    Which is: (nullptr)
+Stack trace:
+  0x654af5365d39: SqeDvgTest_DISABLED_PRB03_AllFailedShouldReturnNull_Test::TestBody()
+  0x654af54d4ce1: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x654af5490483: testing::Test::Run()
+  0x654af5491736: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeDvgTest.DISABLED_PRB03_AllFailedShouldReturnNull (34 ms)
+[----------] 1 test from SqeDvgTest (34 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (35 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeDvgTest.DISABLED_PRB03_AllFailedShouldReturnNull
+
+ 1 FAILED TEST
