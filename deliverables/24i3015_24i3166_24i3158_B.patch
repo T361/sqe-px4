@@ -1,0 +1,3351 @@
+diff --git a/src/modules/commander/failure_detector/CMakeLists.txt b/src/modules/commander/failure_detector/CMakeLists.txt
+index e6cd9d57c8..3222ae366a 100644
+--- a/src/modules/commander/failure_detector/CMakeLists.txt
++++ b/src/modules/commander/failure_detector/CMakeLists.txt
+@@ -35,3 +35,8 @@ px4_add_library(failure_detector
+ 	FailureDetector.cpp
+ 	FailureInjector.cpp
+ )
++
++# SQE A2 (student-authored tests)
++px4_add_functional_gtest(SRC SqeFailureDetectorTest.cpp LINKLIBS modules__commander)
++px4_add_functional_gtest(SRC SqeFailureDetectorImuTest.cpp LINKLIBS modules__commander)
++px4_add_functional_gtest(SRC SqeFailureInjectorTest.cpp LINKLIBS modules__commander)
+diff --git a/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp b/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp
+new file mode 100644
+index 0000000000..5c0d68f78f
+--- /dev/null
++++ b/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp
+@@ -0,0 +1,301 @@
++/**
++ * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
++ * System under test : FailureDetector.cpp / FailureDetector.hpp — updateImbalancedPropStatus() (PX4-Autopilot
++ *                      v1.17.0, d6f12ad1)
++ * Test level        : GTest functional — justification: imbalanced-prop detection needs real multi-instance
++ *                      vehicle_imu_status publications, which must be created once (PublicationMulti, fixed
++ *                      instance order) and persist for the whole process; kept in its own binary so no other
++ *                      FailureDetector test's IMU instances leak into these decisions.
++ * Decisions covered : see test_inventory.csv; each TEST names its decision IDs (FD-D06, FD-D20..D28, REF_05)
++ * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ */
++
++#include <gtest/gtest.h>
++
++#include <chrono>
++#include <thread>
++
++#include <parameters/param.h>
++#include <uORB/Publication.hpp>
++#include <uORB/PublicationMulti.hpp>
++#include <uORB/topics/sensor_selection.h>
++#include <uORB/topics/vehicle_imu_status.h>
++
++#include "FailureDetector.hpp"
++
++using namespace time_literals;
++
++namespace
++{
++// Two multi-instance publishers created once for the whole test binary (SetUpTestSuite), instance 0 then 1,
++// matching SPEC_02 §6's requirement that multi-instance topics be set up in a fixed order before any test runs.
++uORB::PublicationMulti<vehicle_imu_status_s> *g_imu_pub0{nullptr};
++uORB::PublicationMulti<vehicle_imu_status_s> *g_imu_pub1{nullptr};
++}
++
++class SqeFailureDetectorImuTest : public ::testing::Test
++{
++protected:
++	static void SetUpTestSuite()
++	{
++		g_imu_pub0 = new uORB::PublicationMulti<vehicle_imu_status_s>(ORB_ID(vehicle_imu_status));
++		vehicle_imu_status_s seed0{};
++		seed0.timestamp = hrt_absolute_time();
++		seed0.accel_device_id = 0; // neutral seed, instance 0 reserved
++		g_imu_pub0->publish(seed0);
++
++		g_imu_pub1 = new uORB::PublicationMulti<vehicle_imu_status_s>(ORB_ID(vehicle_imu_status));
++		vehicle_imu_status_s seed1{};
++		seed1.timestamp = hrt_absolute_time();
++		seed1.accel_device_id = 0; // neutral seed, instance 1 reserved
++		g_imu_pub1->publish(seed1);
++	}
++
++	static void TearDownTestSuite()
++	{
++		delete g_imu_pub0;
++		g_imu_pub0 = nullptr;
++		delete g_imu_pub1;
++		g_imu_pub1 = nullptr;
++	}
++
++	void SetUp() override
++	{
++		param_control_autosave(false);
++		param_reset_all();
++		ASSERT_GT(hrt_absolute_time(), 1_s);
++
++		_status = {};
++		_status.arming_state = vehicle_status_s::ARMING_STATE_ARMED;
++		_status.vehicle_type = vehicle_status_s::VEHICLE_TYPE_ROTARY_WING;
++
++		_mode = {};
++		_mode.flag_control_attitude_enabled = false; // isolate: no attitude subsystem in these tests
++		setParamInt("FD_ESCS_EN", 0);
++		setParamInt("FD_ACT_EN", 0);
++		setParamInt("FD_EXT_ATS_EN", 0);
++	}
++
++	static void setParamInt(const char *name, int32_t v)
++	{
++		ASSERT_EQ(param_set(param_find(name), &v), PX4_OK) << name;
++	}
++	static void setParamFloat(const char *name, float v)
++	{
++		ASSERT_EQ(param_set(param_find(name), &v), PX4_OK) << name;
++	}
++
++	void publishSelection(uint32_t accel_device_id)
++	{
++		sensor_selection_s sel{};
++		sel.timestamp = hrt_absolute_time();
++		sel.accel_device_id = accel_device_id;
++		_sel_pub.publish(sel);
++	}
++
++	void publishImu0(uint32_t accel_device_id, float var_x, float var_y, float var_z)
++	{
++		vehicle_imu_status_s imu{};
++		imu.timestamp = hrt_absolute_time();
++		imu.accel_device_id = accel_device_id;
++		imu.var_accel[0] = var_x;
++		imu.var_accel[1] = var_y;
++		imu.var_accel[2] = var_z;
++		g_imu_pub0->publish(imu);
++	}
++
++	void publishImu1(uint32_t accel_device_id, float var_x, float var_y, float var_z)
++	{
++		vehicle_imu_status_s imu{};
++		imu.timestamp = hrt_absolute_time();
++		imu.accel_device_id = accel_device_id;
++		imu.var_accel[0] = var_x;
++		imu.var_accel[1] = var_y;
++		imu.var_accel[2] = var_z;
++		g_imu_pub1->publish(imu);
++	}
++
++	uORB::Publication<sensor_selection_s> _sel_pub{ORB_ID(sensor_selection)};
++
++	vehicle_status_s _status{};
++	vehicle_control_mode_s _mode{};
++};
++
++// SQE-FDI-01 | FD-D06T FD-D20T FD-D21T FD-D22F FD-D26T FD-D27T FD-D28 (T∧T)
++// Given: FD_IMB_PROP_THR 30; sensor_selection id 1111 published; instance 0 publishes id 1111 with
++//        var_accel {40000,40000,0} and a timestamp 10s after epoch (first sample, so dt clamps to 1.0s,
++//        alpha = dt/(tau+dt) = 1/6 with the 5s time-constant)
++// When : update()
++// Then : imbalanced_prop flag true; getImbalancedPropMetric() ~= 200/6 ~= 33.33 — std_x=std_y=200 (sqrt(40000)),
++//        std_z=0, metric=(200+200)/2-0=200, filtered = 0 + alpha*(200-0) = 33.33 (independent arithmetic, not
++//        copied from the production expression)
++TEST_F(SqeFailureDetectorImuTest, FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	publishSelection(1111);
++	publishImu0(1111, 40000.f, 40000.f, 0.f);
++	publishImu1(0, 0.f, 0.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().imbalanced_prop);
++	EXPECT_NEAR(fd.getImbalancedPropMetric(), 33.3333f, 0.05f);
++}
++
++// SQE-FDI-02 | FD-D28 (T∧T), threshold comparison False
++// Given: FD_IMB_PROP_THR 30; selection id 2222; instance 0 publishes id 2222 with equal variances {100,100,100}
++// When : update()
++// Then : imbalanced_prop flag false — std_x=std_y=std_z=10, metric=(10+10)/2-10=0, well under the 30 threshold
++TEST_F(SqeFailureDetectorImuTest, FDI02_EqualVariances_MetricZero_FlagStaysFalse)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	publishSelection(2222);
++	publishImu0(2222, 100.f, 100.f, 100.f);
++	publishImu1(0, 0.f, 0.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().imbalanced_prop);
++	EXPECT_NEAR(fd.getImbalancedPropMetric(), 0.f, 1e-3f);
++}
++
++// SQE-FDI-03 | FD-D06F
++// Given: FD_IMB_PROP_THR 0 (disables the whole subroutine: updateImbalancedPropStatus() is never called)
++// When : update() with a selection + IMU publish that would otherwise clearly exceed any threshold
++// Then : the metric stays at its default-constructed 0 (AlphaFilter never updated) and the flag stays false,
++//        because FD-D06 is False and the subroutine body never runs
++TEST_F(SqeFailureDetectorImuTest, FDI03_ThresholdZero_SubroutineNeverRuns)
++{
++	setParamInt("FD_IMB_PROP_THR", 0);
++	FailureDetector fd{nullptr};
++
++	publishSelection(3333);
++	publishImu0(3333, 40000.f, 40000.f, 0.f);
++	publishImu1(0, 0.f, 0.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().imbalanced_prop);
++	EXPECT_FLOAT_EQ(fd.getImbalancedPropMetric(), 0.f);
++}
++
++// SQE-FDI-04 | FD-D22T FD-D23 FD-D24F FD-D25 (F then T)
++// Given: FD_IMB_PROP_THR 30; selection id 2222; instance 0 publishes an unrelated id 1111 (small variance);
++//        instance 1 publishes id 2222 (the selected id) with a large imbalance
++// When : update()
++// Then : the detector's instance-search loop (FD-D22 True because the just-copied imu_status.accel_device_id
++//        (1111, from the default/last-copied instance) != selected (2222)) scans instances until ChangeInstance
++//        lands on instance 1, whose id matches -> detected through instance 1 (imbalanced_prop true)
++TEST_F(SqeFailureDetectorImuTest, FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	publishSelection(2222);
++	publishImu0(1111, 100.f, 100.f, 100.f);
++	publishImu1(2222, 40000.f, 40000.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().imbalanced_prop);
++}
++
++// SQE-FDI-05 | FD-D24T FD-D28 (2nd operand False)
++// Given: FD_IMB_PROP_THR 30; selection id 3333, which is published on neither instance 0 nor instance 1
++// When : update()
++// Then : the instance search scans all ORB_MULTI_MAX_INSTANCES(10) instances; ChangeInstance() returns false for
++//        the non-existing instances 2..9 (FD-D24 True, continue), and neither instance 0 nor 1 match id 3333, so
++//        no update to imbalanced_prop/metric happens this call — the flag stays at its default-constructed false
++TEST_F(SqeFailureDetectorImuTest, FDI05_SelectedAccelOnNoInstance_NoDetection)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	publishSelection(3333);
++	publishImu0(1111, 40000.f, 40000.f, 0.f);
++	publishImu1(2222, 40000.f, 40000.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().imbalanced_prop);
++	EXPECT_FLOAT_EQ(fd.getImbalancedPropMetric(), 0.f);
++}
++
++// SQE-FDI-06 | FD-D22F FD-D28 (1st operand False — device id 0)
++// Given: FD_IMB_PROP_THR 30; selection accel_device_id 0 (never set, i.e. "no sensor selected" sentinel);
++//        instance 0 also publishes accel_device_id 0
++// When : update()
++// Then : imbalanced_prop stays false — FD-D28's first operand (imu_status.accel_device_id != 0) is False, so the
++//        metric computation is skipped even though the ids match
++TEST_F(SqeFailureDetectorImuTest, FDI06_DeviceIdZero_NoComputation)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	publishSelection(0);
++	publishImu0(0, 40000.f, 40000.f, 0.f);
++	publishImu1(0, 0.f, 0.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().imbalanced_prop);
++	EXPECT_FLOAT_EQ(fd.getImbalancedPropMetric(), 0.f);
++}
++
++// SQE-FDI-07 | FD-D20F FD-D26F
++// Given: FD_IMB_PROP_THR 30; selection + IMU instance 0 published once and consumed by an initial update() that
++//        establishes a nonzero metric
++// When : a second update() is called without publishing any new sensor_selection or vehicle_imu_status message
++// Then : the metric is unchanged (FD-D20/FD-D26 are both False — neither subscriber saw a new message, so the
++//        AlphaFilter is never re-updated)
++TEST_F(SqeFailureDetectorImuTest, FDI07_NoNewImuOrSelection_MetricUnchanged)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	publishSelection(1111);
++	publishImu0(1111, 40000.f, 40000.f, 0.f);
++	publishImu1(0, 0.f, 0.f, 0.f);
++	fd.update(_status, _mode);
++	const float metric_before = fd.getImbalancedPropMetric();
++	ASSERT_GT(metric_before, 0.f);
++
++	fd.update(_status, _mode);
++
++	EXPECT_FLOAT_EQ(fd.getImbalancedPropMetric(), metric_before);
++}
++
++// SQE-FDI-08 | FD-D25F (1st operand — copy(&imu_status) False — P10 gap closure: L212's branch had never been
++//            exercised; instances 0/1 are always publish()-ed before use by this fixture's SetUpTestSuite(), so
++//            copy() always succeeded on them. DataValidator::copy() can only return false when the uORB device
++//            node has been advertised (so ChangeInstance() succeeds — orb_device_node_exists() checks only
++//            advertisement) but never published (so DeviceNode::_data stays nullptr — allocated lazily inside
++//            DeviceNode::write(), only reached from publish()/orb_publish(), confirmed by reading
++//            uORBDeviceNode.cpp L60-90 and L140-176). A third PublicationMulti instance that calls advertise()
++//            but never publish() reproduces exactly that state on instance 2 (the next free slot after the
++//            fixture's 0 and 1).
++// Given: FD_IMB_PROP_THR 30; instance 2's vehicle_imu_status node is advertised (via advertise(), landing on
++//        instance 2 since 0/1 are already taken by the fixture) but never published to; selection id 9999, which
++//        matches neither instance 0 nor instance 1's published ids
++// When : update() — the instance-search loop reaches i=2: ChangeInstance(2) succeeds (the node exists), but
++//        copy(&imu_status) returns false (no data ever written) -> FD-D25's first operand is False -> the `if`
++//        body (L213-216, including the `break`) is skipped -> the loop continues to i=3..9 (ChangeInstance fails,
++//        FD-D24 True) -> loop ends with no match found
++// Then : no crash (copy() returning false on a never-published-but-advertised instance is handled, not
++//        dereferenced); imbalanced_prop stays false, matching the "no match found" outcome already characterized
++//        by FDI05 for the "never advertised at all" case — this test is the companion "advertised but empty" case
++TEST_F(SqeFailureDetectorImuTest, FDI08_InstanceAdvertisedButNeverPublished_CopyFailsSearchContinues)
++{
++	setParamInt("FD_IMB_PROP_THR", 30);
++	FailureDetector fd{nullptr};
++
++	uORB::PublicationMulti<vehicle_imu_status_s> imu_pub2{ORB_ID(vehicle_imu_status)};
++	ASSERT_TRUE(imu_pub2.advertise()) << "instance 2 must be advertised (node exists) but never published";
++
++	publishSelection(9999);
++	publishImu0(1111, 100.f, 100.f, 100.f);
++	publishImu1(2222, 40000.f, 40000.f, 0.f);
++
++	EXPECT_NO_FATAL_FAILURE(fd.update(_status, _mode));
++
++	EXPECT_FALSE(fd.getStatusFlags().imbalanced_prop);
++	EXPECT_FLOAT_EQ(fd.getImbalancedPropMetric(), 0.f);
++}
+diff --git a/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp b/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
+new file mode 100644
+index 0000000000..d70585171e
+--- /dev/null
++++ b/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
+@@ -0,0 +1,1210 @@
++/**
++ * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
++ * System under test : FailureDetector.cpp / FailureDetector.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
++ * Test level        : GTest functional — justification: FailureDetector reads params at construction and
++ *                      subscribes to uORB topics (vehicle_attitude, pwm_input, esc_status, actuator_motors,
++ *                      sensor_selection, vehicle_imu_status); vehicle_status/vehicle_control_mode are passed
++ *                      directly as update() arguments.
++ * Decisions covered : see test_inventory.csv; each TEST names its decision IDs (FD-D01..D45, REF_05)
++ * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ */
++
++#include <gtest/gtest.h>
++
++#include <chrono>
++#include <cmath>
++#include <limits>
++#include <thread>
++
++#include <parameters/param.h>
++#include <uORB/Publication.hpp>
++#include <uORB/topics/actuator_motors.h>
++#include <uORB/topics/esc_status.h>
++#include <uORB/topics/pwm_input.h>
++#include <uORB/topics/vehicle_attitude.h>
++#include <uORB/topics/vehicle_command.h>
++#include <uORB/topics/vehicle_control_mode.h>
++#include <uORB/topics/vehicle_status.h>
++
++#include "FailureDetector.hpp"
++
++using namespace time_literals;
++
++namespace
++{
++// q = [w,x,y,z] for a pure roll rotation of `roll_deg` degrees (pitch=yaw=0)
++void setRollQuaternion(float q[4], float roll_deg)
++{
++	const float half = math::radians(roll_deg) / 2.f;
++	q[0] = cosf(half);
++	q[1] = sinf(half);
++	q[2] = 0.f;
++	q[3] = 0.f;
++}
++
++// q = [w,x,y,z] for a pure pitch rotation of `pitch_deg` degrees (roll=yaw=0)
++void setPitchQuaternion(float q[4], float pitch_deg)
++{
++	const float half = math::radians(pitch_deg) / 2.f;
++	q[0] = cosf(half);
++	q[1] = 0.f;
++	q[2] = sinf(half);
++	q[3] = 0.f;
++}
++}
++
++class SqeFailureDetectorTest : public ::testing::Test
++{
++protected:
++	void SetUp() override
++	{
++		param_control_autosave(false);
++		param_reset_all();
++		ASSERT_GT(hrt_absolute_time(), 1_s);
++
++		_status = {};
++		_status.arming_state = vehicle_status_s::ARMING_STATE_ARMED;
++		_status.vehicle_type = vehicle_status_s::VEHICLE_TYPE_ROTARY_WING;
++
++		_mode = {};
++		_mode.flag_control_attitude_enabled = true;
++
++		// Default isolation: disable the subsystems not under test in a given test (overridden per test as needed)
++		setParamInt("FD_EXT_ATS_EN", 0);
++		setParamInt("FD_IMB_PROP_THR", 0);
++		setParamInt("SYS_FAILURE_EN", 0);
++
++		// vehicle_command is a queued uORB topic (ORB_QUEUE_LENGTH=8) that is never drained if a previous test's
++		// FailureDetector/FailureInjector was destroyed before consuming everything it published. A fresh
++		// subscription inside the next FailureDetector's FailureInjector would otherwise see that leftover command
++		// as "new" on its very first update() (uORB latest-sample semantics for the newest generation available).
++		// Publishing a neutral, non-INJECT_FAILURE command here guarantees every test starts from a clean slate,
++		// independent of execution order (R11).
++		vehicle_command_s neutral{};
++		neutral.timestamp = hrt_absolute_time();
++		neutral.command = vehicle_command_s::VEHICLE_CMD_DO_SET_MODE;
++		_cmd_pub.publish(neutral);
++	}
++
++	static void setParamInt(const char *name, int32_t v)
++	{
++		ASSERT_EQ(param_set(param_find(name), &v), PX4_OK) << name;
++	}
++	static void setParamFloat(const char *name, float v)
++	{
++		ASSERT_EQ(param_set(param_find(name), &v), PX4_OK) << name;
++	}
++
++	void publishAttitude(float roll_deg, float pitch_deg)
++	{
++		vehicle_attitude_s att{};
++		att.timestamp = hrt_absolute_time();
++		// combine roll then pitch (small-angle tests use one axis at a time so simple composition is fine)
++		float q_roll[4];
++		setRollQuaternion(q_roll, roll_deg);
++		float q_pitch[4];
++		setPitchQuaternion(q_pitch, pitch_deg);
++		const matrix::Quatf q = matrix::Quatf(q_roll) * matrix::Quatf(q_pitch);
++		q.copyTo(att.q);
++		_att_pub.publish(att);
++	}
++
++	void publishEscStatus(uint8_t esc_count, uint8_t armed_flags, uint8_t failures0 = 0)
++	{
++		esc_status_s esc{};
++		esc.timestamp = hrt_absolute_time();
++		esc.esc_count = esc_count;
++		esc.esc_armed_flags = armed_flags;
++
++		for (uint8_t i = 0; i < esc_count && i < esc_status_s::CONNECTED_ESC_MAX; i++) {
++			esc.esc[i].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1 + i;
++			esc.esc[i].timestamp = esc.timestamp;
++		}
++
++		if (esc_count > 0) {
++			esc.esc[0].failures = failures0;
++		}
++
++		_esc_pub.publish(esc);
++	}
++
++	uORB::Publication<vehicle_attitude_s> _att_pub{ORB_ID(vehicle_attitude)};
++	uORB::Publication<pwm_input_s> _pwm_pub{ORB_ID(pwm_input)};
++	uORB::Publication<esc_status_s> _esc_pub{ORB_ID(esc_status)};
++	uORB::Publication<actuator_motors_s> _act_pub{ORB_ID(actuator_motors)};
++	uORB::Publication<vehicle_command_s> _cmd_pub{ORB_ID(vehicle_command)};
++
++	vehicle_status_s _status{};
++	vehicle_control_mode_s _mode{};
++};
++
++// SQE-FD-01 | FD-D01 (T then F)
++// Given: attitude control enabled, roll 70° (> default FD_FAIL_R 60°), long enough hysteresis time (default 0.3s)
++// When : update() repeatedly for > 1.5x the 0.3s roll hysteresis, then flag_control_attitude_enabled=false, update()
++// Then : roll flag latches true once the hysteresis settles; once attitude control is disabled, roll/pitch/alt/ext
++//        are all reset false and update() reports a status change (return true)
++TEST_F(SqeFailureDetectorTest, FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags)
++{
++	FailureDetector fd{nullptr};
++
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(450)); // 1.5x 300ms default hysteresis
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++
++	ASSERT_TRUE(fd.getStatusFlags().roll);
++
++	_mode.flag_control_attitude_enabled = false;
++	const bool changed = fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().roll);
++	EXPECT_FALSE(fd.getStatusFlags().pitch);
++	EXPECT_FALSE(fd.getStatusFlags().alt);
++	EXPECT_FALSE(fd.getStatusFlags().ext);
++	EXPECT_TRUE(changed);
++}
++
++// SQE-FD-02 | FD-D08T FD-D12 (T∧T)
++// Given: FD_FAIL_R 60 (default), FD_FAIL_R_TTRI 0.02s (documented minimum); roll 70°
++// When : first update() (starts hysteresis); wait 40ms (2x the 0.02s trigger time); publish again; update()
++// Then : roll flag false right after the first update (hysteresis not yet elapsed), true after the second
++TEST_F(SqeFailureDetectorTest, FD02_RollBeyondLimit_FlagSetsAfterHysteresis)
++{
++	setParamFloat("FD_FAIL_R_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	EXPECT_FALSE(fd.getStatusFlags().roll);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(70.f, 0.f);
++	const bool changed = fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().roll);
++	EXPECT_TRUE(changed);
++}
++
++// SQE-FD-03 | FD-D12 (T∧F)
++// Given: FD_FAIL_R 60 (default), FD_FAIL_R_TTRI 0.02s; roll 50° (below the 60° limit)
++// When : update(); wait 40ms; publish again; update()
++// Then : roll flag stays false (fabsf(roll) > max_roll is False)
++TEST_F(SqeFailureDetectorTest, FD03_RollWithinLimit_FlagStaysFalse)
++{
++	setParamFloat("FD_FAIL_R_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(50.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(50.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().roll);
++}
++
++// SQE-FD-04 | FD-D12 (1st operand False — check disabled)
++// Given: FD_FAIL_R 0 (disables the roll check: max_roll > FLT_EPSILON is False); roll 170°
++// When : update() repeatedly past the default hysteresis time
++// Then : roll flag stays false regardless of the extreme roll angle, because the check is disabled at the source
++TEST_F(SqeFailureDetectorTest, FD04_RollLimitZero_ChecksDisabled)
++{
++	setParamInt("FD_FAIL_R", 0);
++	setParamFloat("FD_FAIL_R_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(170.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(170.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().roll);
++}
++
++// SQE-FD-05 | FD-D13 (pitch analogue of FD02)
++// Given: FD_FAIL_P 60 (default), FD_FAIL_P_TTRI 0.02s; pitch 70°
++// When : update(); wait 40ms; publish again; update()
++// Then : pitch flag true after the hysteresis settles
++TEST_F(SqeFailureDetectorTest, FD05_PitchBeyondLimit_FlagSetsAfterHysteresis)
++{
++	setParamFloat("FD_FAIL_P_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(0.f, 70.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, 70.f);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().pitch);
++}
++
++// SQE-FD-06 | FD-D13 (pitch analogue of FD03)
++// Given: FD_FAIL_P 60 (default), FD_FAIL_P_TTRI 0.02s; pitch 50°
++// When : update(); wait 40ms; publish again; update()
++// Then : pitch flag stays false (within limit)
++TEST_F(SqeFailureDetectorTest, FD06_PitchWithinLimit_FlagStaysFalse)
++{
++	setParamFloat("FD_FAIL_P_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(0.f, 50.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, 50.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().pitch);
++}
++
++// SQE-FD-07 | FD-D13 (pitch analogue of FD04)
++// Given: FD_FAIL_P 0 (disables the pitch check); pitch 170°
++// When : update() repeatedly past the default hysteresis time
++// Then : pitch flag stays false regardless of the extreme pitch, because the check is disabled at the source
++TEST_F(SqeFailureDetectorTest, FD07_PitchLimitZero_ChecksDisabled)
++{
++	setParamInt("FD_FAIL_P", 0);
++	setParamFloat("FD_FAIL_P_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(0.f, 170.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, 170.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().pitch);
++}
++
++// SQE-FD-08 | FD-D08F (second update without a new attitude publish)
++// Given: FD_FAIL_R_TTRI 0.02s; roll 70° published once, update() called to seed state
++// When : a second update() is called without publishing a new attitude message
++// Then : flags are unchanged (FD-D08's _vehicle_attitude_sub.update() returns false, body skipped) and the return
++//        value of update() is false (no status change)
++TEST_F(SqeFailureDetectorTest, FD08_NoNewAttitude_FlagsUnchangedAndNoChangeReported)
++{
++	setParamFloat("FD_FAIL_R_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	ASSERT_TRUE(fd.getStatusFlags().roll);
++
++	const bool changed = fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().roll);
++	EXPECT_FALSE(changed);
++}
++
++// SQE-FD-09 | FD-D09T FD-D10T
++// Given: tailsitter (is_vtol_tailsitter=true), in_transition_mode=true; roll 80° (beyond default limit)
++// When : update() repeatedly past the default hysteresis time
++// Then : during tailsitter transition the attitude check is disabled (roll/pitch forced to 0 before the limit
++//        comparison), so the roll flag stays false despite the large published roll
++TEST_F(SqeFailureDetectorTest, FD09_TailsitterInTransition_AttitudeCheckDisabled)
++{
++	setParamFloat("FD_FAIL_R_TTRI", 0.02f);
++	_status.is_vtol_tailsitter = true;
++	_status.in_transition_mode = true;
++	FailureDetector fd{nullptr};
++
++	publishAttitude(80.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(80.f, 0.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().roll);
++}
++
++// SQE-FD-10 | FD-D11T (FW: rotate +90° pitch)
++// Given: tailsitter, not in transition; a single attitude of pitch -80° published twice (hysteresis settled)
++// When : vehicle_type = FIXED_WING
++// Then : the attitude is rotated +90° about pitch before the limit check, turning pitch -80 into roll domain
++//        (euler_rotated.theta() ~ -(90-80)=... ) leaving the *pitch* flag false. Paired with SQE-FD-34 (FD-D11F,
++//        same input, ROTARY_WING) to cover both branches of the same decision.
++TEST_F(SqeFailureDetectorTest, FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck)
++{
++	setParamFloat("FD_FAIL_P_TTRI", 0.02f);
++	_status.is_vtol_tailsitter = true;
++	_status.in_transition_mode = false;
++	_status.vehicle_type = vehicle_status_s::VEHICLE_TYPE_FIXED_WING;
++	FailureDetector fd{nullptr};
++
++	publishAttitude(0.f, -80.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, -80.f);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().pitch);
++}
++
++// SQE-FD-34 | FD-D11F (MC: no rotation) — paired with SQE-FD-10 (same decision, True branch)
++// Given: tailsitter, not in transition; a single attitude of pitch -80° published twice (hysteresis settled)
++// When : vehicle_type = ROTARY_WING
++// Then : no rotation is applied so the raw -80° pitch exceeds the 60° limit and the pitch flag is true
++TEST_F(SqeFailureDetectorTest, FD34_TailsitterRotaryWing_NoRotationAppliedToCheck)
++{
++	setParamFloat("FD_FAIL_P_TTRI", 0.02f);
++	_status.is_vtol_tailsitter = true;
++	_status.in_transition_mode = false;
++	_status.vehicle_type = vehicle_status_s::VEHICLE_TYPE_ROTARY_WING;
++	FailureDetector fd{nullptr};
++
++	publishAttitude(0.f, -80.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, -80.f);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().pitch);
++}
++
++// SQE-FD-11 | FD-D02T FD-D14T FD-D15 (T∧T)
++// Given: FD_EXT_ATS_EN 1, FD_EXT_ATS_TRIG 1900; pulse 2000us (inside [1900,3000) window), ATS hysteresis fixed 100ms
++// When : update(); wait 150ms (1.5x 100ms); publish pwm_input again; update()
++// Then : ext flag becomes true once the hysteresis settles
++TEST_F(SqeFailureDetectorTest, FD11_ExternalAtsPulseInWindow_FlagSetsAfterHysteresis)
++{
++	setParamInt("FD_EXT_ATS_EN", 1);
++	FailureDetector fd{nullptr};
++
++	pwm_input_s pwm{};
++	pwm.timestamp = hrt_absolute_time();
++	pwm.pulse_width = 2000;
++	_pwm_pub.publish(pwm);
++	fd.update(_status, _mode);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(150));
++	pwm.timestamp = hrt_absolute_time();
++	_pwm_pub.publish(pwm);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().ext);
++}
++
++// SQE-FD-12 | FD-D15 boundaries [trig, 3000us)
++// Given: FD_EXT_ATS_EN 1, FD_EXT_ATS_TRIG 1900 (default); four independent detectors, one pulse width each
++// When : pulse 1899 / 1900 / 2999 / 3000, each settled past the 100ms ATS hysteresis
++// Then : 1899 -> false (below trig); 1900 -> true (>= trig); 2999 -> true (< 3000); 3000 -> false (not < 3000)
++TEST_F(SqeFailureDetectorTest, FD12_PulseWidthBoundaries_WindowIsHalfOpen)
++{
++	setParamInt("FD_EXT_ATS_EN", 1);
++
++	auto runWithPulse = [this](uint32_t pulse_width) {
++		FailureDetector fd{nullptr};
++		pwm_input_s pwm{};
++		pwm.timestamp = hrt_absolute_time();
++		pwm.pulse_width = pulse_width;
++		_pwm_pub.publish(pwm);
++		fd.update(_status, _mode);
++		std::this_thread::sleep_for(std::chrono::milliseconds(150));
++		pwm.timestamp = hrt_absolute_time();
++		_pwm_pub.publish(pwm);
++		fd.update(_status, _mode);
++		return fd.getStatusFlags().ext;
++	};
++
++	EXPECT_FALSE(runWithPulse(1899));
++	EXPECT_TRUE(runWithPulse(1900));
++	EXPECT_TRUE(runWithPulse(2999));
++	EXPECT_FALSE(runWithPulse(3000));
++}
++
++// SQE-FD-13 | FD-D02F
++// Given: FD_EXT_ATS_EN 0 (default); pulse 2000 (would trigger if enabled)
++// When : update() repeatedly past the ATS hysteresis time
++// Then : ext flag stays false because updateExternalAtsStatus() is never called (FD-D02 False)
++TEST_F(SqeFailureDetectorTest, FD13_ExternalAtsDisabled_ExtFlagNeverSet)
++{
++	FailureDetector fd{nullptr};
++
++	pwm_input_s pwm{};
++	pwm.timestamp = hrt_absolute_time();
++	pwm.pulse_width = 2000;
++	_pwm_pub.publish(pwm);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(150));
++	pwm.timestamp = hrt_absolute_time();
++	_pwm_pub.publish(pwm);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().ext);
++}
++
++// SQE-FD-14 | FD-D14F
++// Given: FD_EXT_ATS_EN 1; pwm published once and consumed by a first update() that settles the ext flag true
++// When : a second update() is called without a new pwm_input publish
++// Then : ext flag is unchanged from before (still true) — _pwm_input_sub.update() returns false so the hysteresis
++//        is never re-evaluated
++TEST_F(SqeFailureDetectorTest, FD14_NoNewPwm_ExtFlagUnchanged)
++{
++	setParamInt("FD_EXT_ATS_EN", 1);
++	FailureDetector fd{nullptr};
++
++	pwm_input_s pwm{};
++	pwm.timestamp = hrt_absolute_time();
++	pwm.pulse_width = 2000;
++	_pwm_pub.publish(pwm);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(150));
++	pwm.timestamp = hrt_absolute_time();
++	_pwm_pub.publish(pwm);
++	fd.update(_status, _mode);
++	ASSERT_TRUE(fd.getStatusFlags().ext);
++
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().ext);
++}
++
++// SQE-FD-15 | FD-D03T FD-D04T FD-D16T FD-D17 FD-D18F FD-D19F
++// Given: FD_ESCS_EN 1 (default); armed; 4 ESCs, all armed (flags 0x0F), no individual failures
++// When : update(); wait 350ms (1.5x the 300ms ESC hysteresis); publish esc_status again; update()
++// Then : arm_escs stays false — all ESCs armed and healthy means is_esc_failure is false throughout
++TEST_F(SqeFailureDetectorTest, FD15_AllEscsArmedNoFailures_ArmEscsStaysFalse)
++{
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x0F);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x0F);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++}
++
++// SQE-FD-16 | FD-D19T (300ms hysteresis)
++// Given: FD_ESCS_EN 1; armed; 4 ESCs expected but only 3 armed (flags 0x07, all_escs_armed_mask 0x0F mismatch)
++// When : update(); wait 350ms (1.5x 300ms); publish again; update()
++// Then : arm_escs becomes true once the hysteresis settles on the persistent mismatch
++TEST_F(SqeFailureDetectorTest, FD16_EscArmedMismatch_ArmEscsSetsAfterHysteresis)
++{
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x07);
++	const bool changed = fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().arm_escs);
++	EXPECT_TRUE(changed);
++}
++
++// SQE-FD-17 | FD-D18 (2nd operand True: per-ESC failures nonzero)
++// Given: FD_ESCS_EN 1; armed; 4 ESCs, all armed (flags 0x0F, mask matches) but esc[0].failures = 1
++// When : update(); wait 350ms; publish again; update()
++// Then : arm_escs becomes true via the per-ESC failures OR-term even though the armed mask matches exactly
++TEST_F(SqeFailureDetectorTest, FD17_PerEscFailureFlag_ArmEscsSetsEvenWithMatchingMask)
++{
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x0F, 1);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x0F, 1);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().arm_escs);
++}
++
++// SQE-FD-18 | FD-D19 (no else branch — latched while armed)
++// Given: after FD16-style trigger (arm_escs true), ESCs then report healthy (flags 0x0F, no failures) while armed
++// When : update() with the healthy report; wait 350ms; publish again; update()
++// Then : arm_escs stays true — FD-D19 only ever sets the flag to true (get_state()), there is no branch that resets
++//        it to false while armed; only the disarmed else-branch resets it (see FD19)
++TEST_F(SqeFailureDetectorTest, FD18_HealthyAfterTrigger_ArmEscsStaysLatchedWhileArmed)
++{
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x07); // trigger
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++	ASSERT_TRUE(fd.getStatusFlags().arm_escs);
++
++	publishEscStatus(4, 0x0F); // now healthy
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x0F);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().arm_escs);
++}
++
++// SQE-FD-19 | FD-D16F
++// Given: FD_ESCS_EN 1; vehicle disarmed; ESC mismatch that would trigger arm_escs if armed
++// When : update()
++// Then : arm_escs is false immediately — the disarmed else-branch resets the hysteresis and the flag synchronously
++TEST_F(SqeFailureDetectorTest, FD19_Disarmed_ArmEscsStaysFalse)
++{
++	_status.arming_state = vehicle_status_s::ARMING_STATE_DISARMED;
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++}
++
++// SQE-FD-20 | FD-D17 (esc_count clamp to CONNECTED_ESC_MAX=8)
++// Given: FD_ESCS_EN 1; armed; esc_count 12 (above CONNECTED_ESC_MAX), all 8 clamp-relevant bits in esc_armed_flags
++//        set (0xFF, matching the clamped 8-ESC mask), no per-ESC failures within the clamped range
++// When : update(); wait 350ms; publish again; update()
++// Then : arm_escs stays false — limited_esc_count is clamped to 8, so the extra (unclamped) ESCs beyond index 8
++//        are never iterated and the armed mask (0xFF for 8 ESCs) matches exactly
++TEST_F(SqeFailureDetectorTest, FD20_EscCountAboveMax_ClampedToEight)
++{
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(8, 0xFF); // esc_count field set to 12 below, but only 8 esc[] slots exist/clamp to 8
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 12;
++	esc.esc_armed_flags = 0xFF;
++
++	for (uint8_t i = 0; i < esc_status_s::CONNECTED_ESC_MAX; i++) {
++		esc.esc[i].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1 + i;
++		esc.esc[i].timestamp = esc.timestamp;
++	}
++
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	esc.timestamp = hrt_absolute_time();
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++}
++
++// SQE-FD-21 | FD-D04F
++// Given: FD_ESCS_EN 0; armed; ESC status reporting 0 armed ESCs (flags 0x00, which would trigger if the check ran)
++// When : update(); wait 350ms; publish again; update()
++// Then : arm_escs stays false because updateEscsStatus() is never called (FD-D04 False)
++TEST_F(SqeFailureDetectorTest, FD21_EscsCheckDisabled_ArmEscsNeverSet)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x00);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x00);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++}
++
++// SQE-FD-22 | FD-D03F
++// Given: FD_ESCS_EN 1, FD_ACT_EN 1; esc_status published once and consumed by an initial update()
++// When : a second update() is called without a new esc_status publish
++// Then : both ESC/motor subroutines are skipped (FD-D03 False — the shared esc_status subscriber sees no update),
++//        so getMotorFailures() stays 0 and arm_escs is unchanged from before
++TEST_F(SqeFailureDetectorTest, FD22_NoNewEscStatus_EscAndMotorLogicSkipped)
++{
++	setParamFloat("FD_ACT_MOT_TOUT", 10.f);
++	FailureDetector fd{nullptr};
++
++	publishEscStatus(4, 0x0F);
++	fd.update(_status, _mode);
++	ASSERT_EQ(fd.getMotorFailures(), 0u);
++
++	const bool changed = fd.update(_status, _mode);
++
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++	EXPECT_FALSE(changed);
++}
++
++// SQE-FD-23 | FD-D32 FD-D33T/F FD-D34T FD-D42 FD-D43T FD-D44T
++// Given: FD_ACT_EN 1 (default), FD_ESCS_EN 0 (isolate); armed; ESC0 reports current 5A fresh (warms up the
++//        has_current latch and marks valid_current_mask)
++// When : (1) esc[0].timestamp set to now-400ms (> 300ms timeout) with current still >0, update() -> times out;
++//        (2) immediately another stale update with the same old timestamp (esc_timeout_currently_flagged already
++//        true, FD-D33's 3rd operand is False so the flag is not re-set, but it is also not cleared) -> stays set;
++//        (3) a fresh (non-timed-out) esc_status update -> FD-D34 clears the timed-out bit
++// Then : (1) motor flag true and getMotorFailures()&1 == 1; (2) motor flag still true (latched, not re-triggered);
++//        (3) motor flag false once the timeout clears and under-current was never latched
++TEST_F(SqeFailureDetectorTest, FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	// Warm-up: fresh current reading, valid timestamp
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	ASSERT_EQ(fd.getMotorFailures(), 0u);
++
++	// Step 1: stale timestamp (400ms old, > 300ms timeout), still "valid" from warm-up
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = hrt_absolute_time() - 400_ms;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++
++	// Step 2: publish again with the same stale timestamp -> flag stays set (not re-triggered, not cleared)
++	esc.timestamp = hrt_absolute_time();
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++
++	// Step 3: fresh timestamp -> timed-out bit clears (FD-D34), under-current never latched -> motor flag clears
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++}
++
++// SQE-FD-24 | FD-D32F FD-D33F FD-D35F FD-D36F
++// Given: FD_ACT_EN 1; armed; ESC0 never reports current (esc_current == 0 always) with an old timestamp
++// When : update()
++// Then : no timeout flag is raised — the ESC was never "valid" (FD-D32's second operand, current > 0, is always
++//        False so valid_current_mask bit never sets), so esc_was_valid is False and FD-D33 cannot fire; FD-D35 is
++//        also False (current never > FLT_EPSILON) so the has_current latch (FD-D36) never engages either
++TEST_F(SqeFailureDetectorTest, FD24_EscNeverReportsCurrent_NoTimeoutFlag)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = hrt_absolute_time() - 400_ms; // old from the start
++	esc.esc[0].esc_current = 0.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++}
++
++// SQE-FD-25 | FD-D36T FD-D37T FD-D38T FD-D39T FD-D41T
++// Given: FD_ACT_EN 1, FD_ACT_MOT_THR 0.2, FD_ACT_MOT_C2T 2.0, FD_ACT_MOT_TOUT 10ms; armed; ESC0 warmed up with
++//        current 5A (latches has_current); then actuator control 0.5 (above 0.2 threshold) with esc_current 0.1A
++//        (below 0.5*2.0=1.0 threshold -> current_too_low True); esc timestamp kept fresh (not timed out)
++// When : update() starts the under-current timer; wait 30ms (1.5x the 10ms timeout, > 10ms so trigger fires);
++//        publish esc_status again (fresh timestamp, same low-current/high-throttle condition); update()
++// Then : motor flag becomes true and stays set (FD-D41's mask bit is latched, "never cleared" per source comment)
++TEST_F(SqeFailureDetectorTest, FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	setParamFloat("FD_ACT_MOT_THR", 0.2f);
++	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
++	setParamInt("FD_ACT_MOT_TOUT", 10);
++	FailureDetector fd{nullptr};
++
++	actuator_motors_s act{};
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.5f;
++	_act_pub.publish(act);
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f; // warm up has_current
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	ASSERT_FALSE(fd.getStatusFlags().motor);
++
++	// Low current, throttle above threshold -> starts the under-current timer
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 0.1f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(30));
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	const bool changed = fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().motor);
++	EXPECT_TRUE(changed);
++}
++
++// SQE-FD-26 | FD-D38F FD-D40T
++// Given: same isolation/params as FD25; ESC0 warmed up; under-current timer started (low current, throttle above
++//        threshold)
++// When : before the 10ms timeout elapses, publish a sample with throttle below the threshold (control 0.1, below
++//        0.2) so throttle_above_threshold becomes False; update(); then publish low current again with throttle
++//        above threshold; update()
++// Then : the timer resets to 0 when the condition is no longer met (FD-D40), so the later low-current sample must
++//        restart its own fresh 10ms wait — immediately after restarting, the flag is not yet set
++TEST_F(SqeFailureDetectorTest, FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	setParamFloat("FD_ACT_MOT_THR", 0.2f);
++	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
++	setParamInt("FD_ACT_MOT_TOUT", 10);
++	FailureDetector fd{nullptr};
++
++	actuator_motors_s act{};
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.5f;
++	_act_pub.publish(act);
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f; // warm up has_current
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 0.1f; // starts timer
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	// Drop throttle below threshold before the 10ms timeout -> resets the timer (FD-D40)
++	act.control[0] = 0.1f;
++	act.timestamp = hrt_absolute_time();
++	_act_pub.publish(act);
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	// Raise throttle again, low current again -> starts a brand-new timer
++	act.control[0] = 0.5f;
++	act.timestamp = hrt_absolute_time();
++	_act_pub.publish(act);
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++}
++
++// SQE-FD-27 | FD-D37F (NaN control treated as zero throttle)
++// Given: same isolation/params as FD25; ESC0 warmed up; actuator control[0] = NaN, esc_current low
++// When : update()
++// Then : FD-D37 is False (PX4_ISFINITE(NaN) is false), so esc_throttle is forced to 0; throttle_above_threshold
++//        (0 > 0.2) is False, so no under-current timer starts and the motor flag stays false
++TEST_F(SqeFailureDetectorTest, FD27_NanControl_TreatedAsZeroThrottle)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	setParamFloat("FD_ACT_MOT_THR", 0.2f);
++	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
++	setParamInt("FD_ACT_MOT_TOUT", 10);
++	FailureDetector fd{nullptr};
++
++	actuator_motors_s act{};
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = std::numeric_limits<float>::quiet_NaN();
++	_act_pub.publish(act);
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f; // warm up has_current
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 0.1f;
++	_esc_pub.publish(esc);
++	std::this_thread::sleep_for(std::chrono::milliseconds(30));
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++}
++
++// SQE-FD-28 | FD-D31T (unsigned wrap guard for non-motor actuator functions)
++// Given: FD_ACT_EN 1; armed; esc[0].actuator_function = 0 (not a motor function; i_esc wraps to a huge unsigned
++//        value under actuator_function - ACTUATOR_FUNCTION_MOTOR1); old timestamp, nonzero current
++// When : update()
++// Then : the ESC is skipped entirely (FD-D31's guard continues the loop before any mask uses i_esc), so no motor
++//        flag is raised and getMotorFailures() stays 0 despite the stale timestamp and nonzero current
++TEST_F(SqeFailureDetectorTest, FD28_NonMotorActuatorFunction_SkippedByUnsignedGuard)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = 0; // not ACTUATOR_FUNCTION_MOTOR1-based
++	esc.esc[0].timestamp = hrt_absolute_time() - 400_ms;
++	esc.esc[0].esc_current = 5.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++}
++
++// SQE-FD-29 | FD-D29F FD-D45
++// Given: following the FD25 under-current latch sequence (motor flag true, under_current_mask bit 0 set)
++// When : vehicle_status.arming_state is set to DISARMED and esc_status is republished to trigger the update
++// Then : motor flag becomes false and getMotorFailures() becomes 0 — the disarmed branch unconditionally resets
++//        the undercurrent timers, the under_current_mask, and the motor flag (FD-D29 False path, FD-D45 loop)
++TEST_F(SqeFailureDetectorTest, FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	setParamFloat("FD_ACT_MOT_THR", 0.2f);
++	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
++	setParamInt("FD_ACT_MOT_TOUT", 10);
++	FailureDetector fd{nullptr};
++
++	actuator_motors_s act{};
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.5f;
++	_act_pub.publish(act);
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 0.1f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(30));
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	ASSERT_TRUE(fd.getStatusFlags().motor);
++	ASSERT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++
++	_status.arming_state = vehicle_status_s::ARMING_STATE_DISARMED;
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++}
++
++// SQE-FD-30 | FD-D05F
++// Given: FD_ACT_EN 0; armed; ESC0 with an old (timed-out) timestamp and nonzero current, which would raise the
++//        motor flag if the motor-status subroutine ran
++// When : update()
++// Then : motor flag stays false and getMotorFailures() stays 0 because updateMotorStatus() is never called
++//        (FD-D05 False)
++TEST_F(SqeFailureDetectorTest, FD30_MotorCheckDisabled_MotorLogicSkipped)
++{
++	setParamInt("FD_ACT_EN", 0);
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = hrt_absolute_time() - 400_ms;
++	esc.esc[0].esc_current = 5.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures(), 0u);
++}
++
++// SQE-FD-31 | integration of FI-D10/D12 with FD-D33 (FailureInjector in FailureDetector's control path)
++// Given: SYS_FAILURE_EN 1 (enables injection, read at FailureInjector() construction, which happens inside the
++//        FailureDetector constructor); armed; ESC0 valid with fresh current, warmed up
++// When : a vehicle_command INJECT_FAILURE (SYSTEM_MOTOR, STUCK, instance 1) is published and consumed by
++//        fd.update()'s internal _failure_injector.update() call; the next esc_status publish is then blanked out
++//        by manipulateEscStatus() before updateMotorStatus() runs on it (same update() call chain, FD.cpp L73-82)
++// Then : the ESC's telemetry timestamp is zeroed by the injector (memset), which updateMotorStatus() reads as an
++//        old/zero timestamp -> esc_timed_out becomes true -> the motor timeout flag is raised, proving the
++//        injector's STUCK failure is wired into the detector's own ESC-timeout branch
++TEST_F(SqeFailureDetectorTest, FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode); // warm up has_current / valid_current_mask, no injection active yet
++	ASSERT_EQ(fd.getMotorFailures(), 0u);
++
++	vehicle_command_s cmd{};
++	cmd.timestamp = hrt_absolute_time();
++	cmd.command = vehicle_command_s::VEHICLE_CMD_INJECT_FAILURE;
++	cmd.param1 = vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR;
++	cmd.param2 = vehicle_command_s::FAILURE_TYPE_STUCK;
++	cmd.param3 = 1; // instance 1 -> ESC index 0
++	_cmd_pub.publish(cmd);
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp; // would be fresh, but the injector blanks it before updateMotorStatus() runs
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_TRUE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++}
++
++// SQE-FD-32 | update() return value (status_prev.value != _status.value)
++// Given: FD_FAIL_R_TTRI 0.02s; a fresh FailureDetector
++// When : update() with an attitude well within limits (no change expected) vs. update() sequence that flips the
++//        roll flag from false to true
++// Then : the no-change call returns false; the flipping call returns true
++TEST_F(SqeFailureDetectorTest, FD32_UpdateReturnValue_ReflectsStatusChange)
++{
++	setParamFloat("FD_FAIL_R_TTRI", 0.02f);
++	FailureDetector fd{nullptr};
++
++	publishAttitude(0.f, 0.f);
++	const bool changed_noop = fd.update(_status, _mode);
++	EXPECT_FALSE(changed_noop);
++
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(70.f, 0.f);
++	const bool changed_trip = fd.update(_status, _mode);
++
++	EXPECT_TRUE(changed_trip);
++}
++
++// SQE-FD-33 | FD-D29F — characterization (F-15)
++// Given: following the FD23 steps 1-2 sequence (ESC0 timed out via telemetry timeout, motor flag true, timed-out
++//        mask bit 0 set, under-current mask never engaged in this scenario)
++// When : vehicle_status.arming_state is set to DISARMED and esc_status is republished
++// Then : characterization (F-15) — motor flag becomes false (FD-D29F unconditionally resets it), but
++//        getMotorFailures() still reports 0x01: the disarmed reset block only clears
++//        _motor_failure_esc_under_current_mask and the undercurrent start times, never
++//        _motor_failure_esc_timed_out_mask, so the timed-out bit survives in getMotorFailures() even though the
++//        flags.motor bit the detector reports is false
++TEST_F(SqeFailureDetectorTest, FD33_DisarmAfterTimeout_MotorFlagClearsButTimedOutMaskSurvivesCharacterization)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	FailureDetector fd{nullptr};
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = hrt_absolute_time() - 400_ms;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	ASSERT_TRUE(fd.getStatusFlags().motor);
++	ASSERT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++
++	_status.arming_state = vehicle_status_s::ARMING_STATE_DISARMED;
++	esc.timestamp = hrt_absolute_time();
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor);
++	EXPECT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++}
++
++// SQE-FD-36 | FD-D38F (3rd operand — esc_timed_out True — P10 gap closure, DataValidatorGroup/FailureDetector
++//            coverage iteration IT-1: L313's branch `!esc_timed_out` had never been exercised while the first
++//            two operands (throttle_above_threshold, current_too_low) were also True). Note: both the timed-out
++//            mask and the under-current mask are indexed by the same bit `(1 << i_esc)` (FailureDetector.hpp
++//            `getMotorFailures()` ORs the two masks together), so for a single ESC (i_esc=0) they are
++//            indistinguishable by bit value alone — this test instead isolates the under-current *path* by
++//            checking it never runs via its own internal state machine (the start-time timer), using a second
++//            ESC slot (i_esc=1, untouched/healthy) as a control to confirm the overall motor flag's cause.
++// Given: FD_ACT_EN 1, FD_ACT_MOT_THR 0.2, FD_ACT_MOT_C2T 2.0; armed; ESC0 warmed up with current 5A (latches
++//        has_current); actuator control 0.5 (above 0.2 threshold, throttle_above_threshold True)
++// When : ESC0 is republished with esc_current 0.1A (low enough that current_too_low is True given the 0.5*2.0=1.0
++//        threshold) AND a stale esc[0].timestamp (set via hrt_absolute_time() - 400ms, > the fixed 300ms ESC
++//        telemetry timeout, so esc_timed_out is also True for this same sample) — all three FD-D38 operands'
++//        raw inputs are True/True/True, but `!esc_timed_out` makes the evaluated 3rd operand False, so the
++//        overall `&&` decision is False this call
++// Then : the motor flag becomes true this same call — but via the independent ESC-telemetry-timeout path
++//        (FD-D33, L288, `esc_was_valid && esc_timed_out && !flagged`, all True), not via under-current (confirmed
++//        by then clearing the timeout condition with a fresh timestamp on the next call: if the under-current
++//        timer had also been armed, the flag would stay latched past the fresh-timestamp call once its own 10ms+
++//        elapsed; here it clears immediately because only the non-latching timed-out path, FD-D19/D34, was ever
++//        active, proving the under-current branch at L313 truly took the False/else path this call)
++TEST_F(SqeFailureDetectorTest, FD36_UnderCurrentConditionButEscAlreadyTimedOut_TimeoutPathFiresNotUnderCurrent)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	setParamFloat("FD_ACT_MOT_THR", 0.2f);
++	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
++	setParamInt("FD_ACT_MOT_TOUT", 10'000); // 10s — deliberately far longer than this test's wall-clock span, so an
++	// under-current timer (if armed) could not possibly expire within this test, isolating the under-current path.
++	FailureDetector fd{nullptr};
++
++	actuator_motors_s act{};
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.5f;
++	_act_pub.publish(act);
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f; // warm up has_current / valid_current_mask
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	ASSERT_FALSE(fd.getStatusFlags().motor);
++
++	// Low current (current_too_low True), throttle above threshold (True), but timestamp already stale
++	// (esc_timed_out True) -> FD-D38's 3rd operand False -> overall decision False, under-current timer not armed.
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = hrt_absolute_time() - 400_ms;
++	esc.esc[0].esc_current = 0.1f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	// Motor flag true this call, driven by the ESC-telemetry-timeout path (FD-D33), since FD_ACT_MOT_TOUT is 10s
++	// and only ~0ms elapsed -> an armed under-current timer could not have expired yet even if it had been armed.
++	ASSERT_TRUE(fd.getStatusFlags().motor);
++
++	// Immediately republish with a fresh (non-stale) timestamp, current still low/throttle still above threshold.
++	// FD-D34 (L292, `!esc_timed_out && flagged`) clears the timed-out bit. If the under-current path had also been
++	// armed at the previous call despite FD-D38 being False (which would be the bug this test guards against), its
++	// mask bit would stay latched (under-current is "never cleared" per L330) and the flag would stay true. It does
++	// not: this proves L313 really took the else branch (L319) and never started the under-current timer.
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	EXPECT_FALSE(fd.getStatusFlags().motor) << "under-current timer must not have been armed by the FD-D38-False "
++						 "sample — only the non-latching timeout path was active";
++}
++
++// SQE-FD-37 | FD-D41F (3rd operand — mask bit already set — P10 gap closure: L326's `== 0` branch had never been
++//            exercised with the bit already latched from a prior call)
++// Given: FD_ACT_EN 1, FD_ACT_MOT_THR 0.2, FD_ACT_MOT_C2T 2.0, FD_ACT_MOT_TOUT 10ms; armed; ESC0 warmed up; the
++//        FD25-style sequence already latched the under-current mask bit (motor flag true, mask bit 0 set)
++// When : another full under-current cycle is run (timer resets to 0 since the condition momentarily breaks when
++//        republishing a sample with throttle below threshold, FD-D40 True; then low current/high throttle resumes
++//        and a new timer runs to its own expiry) — by the time L324-326's 3-operand decision is re-evaluated with
++//        the new timer having just expired, the under-current mask bit from the *first* latch is already 1, so
++//        FD-D41's 3rd operand `(mask & bit) == 0` is False this time (the opposite of FD25, which only ever
++//        exercises the bit-was-0 True case)
++// Then : getMotorFailures() still reports the bit as set (it was already set — latched, "never cleared" per the
++//        source comment at L330) and the assignment at L328 is a provable no-op on an already-1 bit (idempotent
++//        OR) — confirmed by checking the flag/mask are unchanged across the second expiry, and by the fact that
++//        the second cycle's own deliberate timer-reset step (FD-D40) proves a genuinely new timer instance ran
++//        and expired independently of the first latch
++TEST_F(SqeFailureDetectorTest, FD37_UnderCurrentMaskAlreadyLatched_SecondExpiryIsNoOp)
++{
++	setParamInt("FD_ESCS_EN", 0);
++	setParamFloat("FD_ACT_MOT_THR", 0.2f);
++	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
++	setParamInt("FD_ACT_MOT_TOUT", 10);
++	FailureDetector fd{nullptr};
++
++	actuator_motors_s act{};
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.5f;
++	_act_pub.publish(act);
++
++	esc_status_s esc{};
++	esc.timestamp = hrt_absolute_time();
++	esc.esc_count = 1;
++	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 5.f; // warm up has_current
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++	ASSERT_FALSE(fd.getStatusFlags().motor);
++
++	// First latch: low current, throttle above threshold -> start timer -> wait > timeout -> mask bit sets (FD-D41 T)
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	esc.esc[0].esc_current = 0.1f;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(30));
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	ASSERT_TRUE(fd.getStatusFlags().motor);
++	ASSERT_EQ(fd.getMotorFailures() & 0x01, 0x01u);
++	const uint16_t failures_after_first_latch = fd.getMotorFailures();
++
++	// Second cycle: throttle drops (resets the start-time timer per FD-D40), then low current resumes and a new
++	// timer runs to expiry -> FD-D41 is re-evaluated with the mask bit already 1 -> 3rd operand False this time.
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.f; // below threshold -> throttle_above_threshold False -> resets timer (FD-D40)
++	_act_pub.publish(act);
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	act.timestamp = hrt_absolute_time();
++	act.control[0] = 0.5f; // above threshold again -> restarts the under-current timer from this call
++	_act_pub.publish(act);
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(30));
++
++	esc.timestamp = hrt_absolute_time();
++	esc.esc[0].timestamp = esc.timestamp;
++	_esc_pub.publish(esc);
++	fd.update(_status, _mode);
++
++	// Mask/flag unchanged across the second expiry — idempotent OR on an already-set bit, FD-D41's False 3rd operand.
++	EXPECT_EQ(fd.getMotorFailures(), failures_after_first_latch);
++	EXPECT_TRUE(fd.getStatusFlags().motor);
++}
+diff --git a/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp b/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
+new file mode 100644
+index 0000000000..12e219dba9
+--- /dev/null
++++ b/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
+@@ -0,0 +1,410 @@
++/**
++ * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
++ * System under test : FailureInjector.cpp / FailureInjector.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
++ * Test level        : GTest functional — justification: FailureInjector reads SYS_FAILURE_EN at construction and
++ *                      subscribes/publishes uORB topics (vehicle_command, vehicle_command_ack).
++ * Decisions covered : see test_inventory.csv; each TEST names its decision IDs (FI-D01..D13, REF_05)
++ * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ */
++
++#include <gtest/gtest.h>
++
++#include <chrono>
++#include <thread>
++
++#include <parameters/param.h>
++#include <uORB/Publication.hpp>
++#include <uORB/Subscription.hpp>
++#include <uORB/topics/actuator_motors.h>
++#include <uORB/topics/esc_status.h>
++#include <uORB/topics/vehicle_command.h>
++#include <uORB/topics/vehicle_command_ack.h>
++
++#include "FailureInjector.hpp"
++
++using namespace time_literals;
++
++class SqeFailureInjectorTest : public ::testing::Test
++{
++protected:
++	void SetUp() override
++	{
++		param_control_autosave(false);
++		param_reset_all();
++		ASSERT_GT(hrt_absolute_time(), 1_s);
++
++		// Publish a neutral command so a new subscriber never sees a previous test's injection as "updated"
++		vehicle_command_s neutral{};
++		neutral.timestamp = hrt_absolute_time();
++		neutral.command = vehicle_command_s::VEHICLE_CMD_DO_SET_MODE;
++		_cmd_pub.publish(neutral);
++
++		// Drain any stale ack before acting
++		vehicle_command_ack_s ack{};
++
++		while (_ack_sub.update(&ack)) {}
++	}
++
++	static void setParamInt(const char *name, int32_t v)
++	{
++		ASSERT_EQ(param_set(param_find(name), &v), PX4_OK) << name;
++	}
++
++	void publishInject(int unit, int type, int instance)
++	{
++		vehicle_command_s cmd{};
++		cmd.timestamp = hrt_absolute_time();
++		cmd.command = vehicle_command_s::VEHICLE_CMD_INJECT_FAILURE;
++		cmd.param1 = static_cast<float>(unit);
++		cmd.param2 = static_cast<float>(type);
++		cmd.param3 = static_cast<float>(instance);
++		_cmd_pub.publish(cmd);
++	}
++
++	static esc_status_s makeEscStatus(uint8_t esc_count)
++	{
++		esc_status_s esc{};
++		esc.timestamp = hrt_absolute_time();
++		esc.esc_count = esc_count;
++		esc.esc_online_flags = 0xFF;
++
++		for (uint8_t i = 0; i < esc_count && i < esc_status_s::CONNECTED_ESC_MAX; i++) {
++			esc.esc[i].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1 + i;
++			esc.esc[i].esc_voltage = 10.f + i;
++			esc.esc[i].esc_current = 1.f + i;
++			esc.esc[i].esc_rpm = 1000 + i;
++			esc.esc[i].timestamp = esc.timestamp;
++		}
++
++		return esc;
++	}
++
++	uORB::Publication<vehicle_command_s> _cmd_pub{ORB_ID(vehicle_command)};
++	uORB::Subscription _ack_sub{ORB_ID(vehicle_command_ack)};
++};
++
++// SQE-FI-01 | FI-D01 (2nd operand False — SYS_FAILURE_EN 0) FI-D02T
++// Given: SYS_FAILURE_EN 0 (default); a FailureInjector constructed after the param is set
++// When : inject OFF for motor 1, then update()
++// Then : _failure_injection_enabled stays false (construction-time param read), so update() returns immediately
++//        (FI-D02 early return); getMotorStopMask() stays 0 and no ack is published
++TEST_F(SqeFailureInjectorTest, FI01_InjectionDisabled_NoEffectAndNoAck)
++{
++	setParamInt("SYS_FAILURE_EN", 0);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OFF, 1);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0u);
++
++	vehicle_command_ack_s ack{};
++	EXPECT_FALSE(_ack_sub.update(&ack));
++}
++
++// SQE-FI-02 | FI-D01T FI-D03 FI-D04F FI-D05 FI-D06 FI-D07(OFF) FI-D08T
++// Given: SYS_FAILURE_EN 1 (read at construction); FailureInjector constructed after the param is set
++// When : inject OFF for motor instance 1 (ESC index 0), then update()
++// Then : getMotorStopMask() == 0x01 (bit 0 set); an ack is published with command==VEHICLE_CMD_INJECT_FAILURE and
++//        result==VEHICLE_CMD_RESULT_ACCEPTED (a match was found, "supported" stays true)
++TEST_F(SqeFailureInjectorTest, FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OFF, 1);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0x01u);
++
++	vehicle_command_ack_s ack{};
++	ASSERT_TRUE(_ack_sub.update(&ack));
++	EXPECT_EQ(ack.command, static_cast<uint32_t>(vehicle_command_s::VEHICLE_CMD_INJECT_FAILURE));
++	EXPECT_EQ(ack.result, vehicle_command_ack_s::VEHICLE_CMD_RESULT_ACCEPTED);
++}
++
++// SQE-FI-03 | FI-D06 (1st operand False — instance 0 means "all ESCs")
++// Given: SYS_FAILURE_EN 1
++// When : inject OFF with instance 0 ("apply to all")
++// Then : getMotorStopMask() == 0xFF — every ESC index 0..7 matches because FI-D06's "instance != 0" guard is
++//        False, so the per-index "i != instance-1" exclusion is never evaluated (short-circuit)
++TEST_F(SqeFailureInjectorTest, FI03_InjectOffInstanceZero_AppliesToAllEscs)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OFF, 0);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0xFFu);
++}
++
++// SQE-FI-04 | FI-D07(OK)
++// Given: SYS_FAILURE_EN 1
++// When : OFF(instance 1) then OK(instance 1); STUCK(instance 2) then OK(instance 2); each pair in its own update()
++//        so the queue is processed command-by-command
++// Then : after the OK commands, motor_stop_mask bit 0 is cleared and the ESC-telemetry-blocked mask bit 1 is
++//        cleared; manipulateEscStatus() afterwards leaves a 2-ESC status completely unchanged (OK cleared the masks
++//        FI-D10 checks)
++TEST_F(SqeFailureInjectorTest, FI04_OkAfterOffAndStuck_ClearsMasksAndStopsManipulation)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OFF, 1);
++	injector.update();
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OK, 1);
++	injector.update();
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_STUCK, 2);
++	injector.update();
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OK, 2);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0u);
++
++	esc_status_s esc = makeEscStatus(2);
++	esc_status_s esc_before = esc;
++	injector.manipulateEscStatus(esc);
++
++	EXPECT_EQ(esc.esc[0].esc_voltage, esc_before.esc[0].esc_voltage);
++	EXPECT_EQ(esc.esc[1].esc_voltage, esc_before.esc[1].esc_voltage);
++	EXPECT_EQ(esc.esc_online_flags, esc_before.esc_online_flags);
++}
++
++// SQE-FI-05 | FI-D07(STUCK) FI-D10T FI-D11 FI-D12T
++// Given: SYS_FAILURE_EN 1; STUCK injected for motor instance 2 (ESC index 1); a 4-ESC status seeded by
++//        makeEscStatus() with esc_online_flags 0xFF (all bits set)
++// When : manipulateEscStatus(status) is called after update() has set the blocked mask
++// Then : esc[1] is zeroed except actuator_function (preserved per the production memset+restore pattern);
++//        esc_online_flags has bit 1 cleared (0xFF & ~(1<<1) == 0xFD); esc[0], esc[2], esc[3] are unchanged
++TEST_F(SqeFailureInjectorTest, FI05_InjectStuckMotor2_BlanksThatEscOnly)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_STUCK, 2);
++	injector.update();
++
++	esc_status_s esc = makeEscStatus(4);
++	const esc_status_s esc_before = esc;
++	injector.manipulateEscStatus(esc);
++
++	EXPECT_EQ(esc.esc[1].actuator_function, actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1 + 1);
++	EXPECT_EQ(esc.esc[1].esc_voltage, 0.f);
++	EXPECT_EQ(esc.esc[1].esc_current, 0.f);
++	EXPECT_EQ(esc.esc[1].esc_rpm, 0);
++	EXPECT_EQ(esc.esc_online_flags, 0xFDu);
++
++	EXPECT_EQ(esc.esc[0].esc_voltage, esc_before.esc[0].esc_voltage);
++	EXPECT_EQ(esc.esc[2].esc_voltage, esc_before.esc[2].esc_voltage);
++	EXPECT_EQ(esc.esc[3].esc_voltage, esc_before.esc[3].esc_voltage);
++}
++
++// SQE-FI-06 | FI-D07(WRONG) FI-D13T
++// Given: SYS_FAILURE_EN 1; WRONG injected for motor instance 1 (ESC index 0)
++// When : manipulateEscStatus(status) is called on a 1-ESC status with known voltage/current/rpm
++// Then : esc[0].esc_voltage and esc_current are scaled by 0.1, esc_rpm scaled by 10 (per FailureInjector.cpp L128-130)
++TEST_F(SqeFailureInjectorTest, FI06_InjectWrongMotor1_ScalesTelemetry)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_WRONG, 1);
++	injector.update();
++
++	esc_status_s esc = makeEscStatus(1);
++	esc.esc[0].esc_voltage = 10.f;
++	esc.esc[0].esc_current = 2.f;
++	esc.esc[0].esc_rpm = 1000;
++	injector.manipulateEscStatus(esc);
++
++	EXPECT_FLOAT_EQ(esc.esc[0].esc_voltage, 1.f);
++	EXPECT_FLOAT_EQ(esc.esc[0].esc_current, 0.2f);
++	EXPECT_EQ(esc.esc[0].esc_rpm, 10000);
++}
++
++// SQE-FI-07 | FI-D07(no case matches) FI-D08F
++// Given: SYS_FAILURE_EN 1; failure_type GARBAGE (3), which has no matching switch case
++// When : update()
++// Then : "supported" stays false for that ESC's switch, so the published ack result is UNSUPPORTED; the stop /
++//        blocked / wrong masks are all left unchanged (still 0)
++TEST_F(SqeFailureInjectorTest, FI07_InjectGarbageType_AckUnsupportedNoMaskChange)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_GARBAGE, 1);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0u);
++
++	vehicle_command_ack_s ack{};
++	ASSERT_TRUE(_ack_sub.update(&ack));
++	EXPECT_EQ(ack.result, vehicle_command_ack_s::VEHICLE_CMD_RESULT_UNSUPPORTED);
++}
++
++// SQE-FI-08 | FI-D04 (1st operand True — command mismatch)
++// Given: SYS_FAILURE_EN 1
++// When : a DO_SET_MODE command is published (not INJECT_FAILURE) and update() is called
++// Then : the command is skipped entirely (FI-D04's "command != INJECT_FAILURE" is True -> continue), so no ack is
++//        published and no mask changes
++TEST_F(SqeFailureInjectorTest, FI08_NonInjectCommand_IgnoredNoAck)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	vehicle_command_s cmd{};
++	cmd.timestamp = hrt_absolute_time();
++	cmd.command = vehicle_command_s::VEHICLE_CMD_DO_SET_MODE;
++	_cmd_pub.publish(cmd);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0u);
++
++	vehicle_command_ack_s ack{};
++	EXPECT_FALSE(_ack_sub.update(&ack));
++}
++
++// SQE-FI-09 | FI-D04 (2nd operand True — unit mismatch)
++// Given: SYS_FAILURE_EN 1
++// When : an INJECT_FAILURE command with unit 0 (FAILURE_UNIT_SENSOR_GYRO, not SYSTEM_MOTOR) is published
++// Then : the command is skipped (FI-D04's "unit != SYSTEM_MOTOR" is True -> continue), no ack published
++TEST_F(SqeFailureInjectorTest, FI09_WrongFailureUnit_IgnoredNoAck)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SENSOR_GYRO, vehicle_command_s::FAILURE_TYPE_OFF, 1);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0u);
++
++	vehicle_command_ack_s ack{};
++	EXPECT_FALSE(_ack_sub.update(&ack));
++}
++
++// SQE-FI-10 | FI-D06 all continue, FI-D08F (via no match)
++// Given: SYS_FAILURE_EN 1; OFF injected for instance 9 (1-based instance beyond CONNECTED_ESC_MAX=8, so no
++//        i in [0,8) satisfies i == instance-1 == 8)
++// When : update()
++// Then : every iteration of the FI-D05 loop hits the FI-D06 "continue" (no index matches instance 9), so
++//        "supported" stays false for the whole command -> ack UNSUPPORTED, masks unchanged
++TEST_F(SqeFailureInjectorTest, FI10_InstanceBeyondRange_AckUnsupported)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OFF, 9);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0u);
++
++	vehicle_command_ack_s ack{};
++	ASSERT_TRUE(_ack_sub.update(&ack));
++	EXPECT_EQ(ack.result, vehicle_command_ack_s::VEHICLE_CMD_RESULT_UNSUPPORTED);
++}
++
++// SQE-FI-11 | FI-D09T
++// Given: SYS_FAILURE_EN 0 (disabled); no injection ever requested
++// When : manipulateEscStatus() is called directly on a populated ESC status
++// Then : the status is completely unchanged — FI-D09's early return fires before any mask is consulted
++TEST_F(SqeFailureInjectorTest, FI11_InjectionDisabled_ManipulateIsNoOp)
++{
++	setParamInt("SYS_FAILURE_EN", 0);
++	FailureInjector injector;
++
++	esc_status_s esc = makeEscStatus(2);
++	const esc_status_s esc_before = esc;
++	injector.manipulateEscStatus(esc);
++
++	EXPECT_EQ(esc.esc[0].esc_voltage, esc_before.esc[0].esc_voltage);
++	EXPECT_EQ(esc.esc[1].esc_voltage, esc_before.esc[1].esc_voltage);
++	EXPECT_EQ(esc.esc_online_flags, esc_before.esc_online_flags);
++}
++
++// SQE-FI-12 | FI-D10F
++// Given: SYS_FAILURE_EN 1; no injection commands ever sent (both blocked_mask and wrong_mask are 0)
++// When : manipulateEscStatus() is called directly
++// Then : the status is unchanged — FI-D10's "blocked_mask != 0 || wrong_mask != 0" is False, so the per-ESC loop
++//        never runs
++TEST_F(SqeFailureInjectorTest, FI12_EnabledButNoFailuresInjected_ManipulateIsNoOp)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	esc_status_s esc = makeEscStatus(2);
++	const esc_status_s esc_before = esc;
++	injector.manipulateEscStatus(esc);
++
++	EXPECT_EQ(esc.esc[0].esc_voltage, esc_before.esc[0].esc_voltage);
++	EXPECT_EQ(esc.esc[1].esc_voltage, esc_before.esc[1].esc_voltage);
++	EXPECT_EQ(esc.esc_online_flags, esc_before.esc_online_flags);
++}
++
++// SQE-FI-13 | FI-D03 multi-iteration (while loop drains a queue of commands in one update())
++// Given: SYS_FAILURE_EN 1; OFF(instance 1) and STUCK(instance 2) both published before update() is called once
++//        (uORB queued semantics for vehicle_command's multi-instance publication queue, ORB_QUEUE_LENGTH=8)
++// When : a single update() call
++// Then : both effects are applied — motor_stop_mask bit 0 set (from OFF) and the STUCK blocked mask bit 1 set,
++//        observable via manipulateEscStatus() zeroing esc[1] — proving the while loop (FI-D03) processes every
++//        queued command in one update() call, not just the latest
++TEST_F(SqeFailureInjectorTest, FI13_TwoQueuedCommands_BothAppliedInOneUpdate)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_OFF, 1);
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_STUCK, 2);
++	injector.update();
++
++	EXPECT_EQ(injector.getMotorStopMask(), 0x01u);
++
++	esc_status_s esc = makeEscStatus(2);
++	injector.manipulateEscStatus(esc);
++	EXPECT_EQ(esc.esc[1].esc_voltage, 0.f);
++	EXPECT_EQ(esc.esc[1].esc_current, 0.f);
++}
++
++// Sanitizer-only probes (NEVER in normal builds — undefined behaviour). DISABLED by default; see P11/DECISIONS for
++// the human approval required before enabling under ASan/UBSan. Not executed in this session's normal test runs.
++
++// SQE-PRB-05 | F-07a | DISABLED — requires ASan to observe the out-of-bounds write (esc_count above CONNECTED_ESC_MAX)
++// Given: SYS_FAILURE_EN 1; STUCK injected for motor instance 1 (ESC index 0)
++// When : manipulateEscStatus() is called on a status whose esc_count (9) exceeds the fixed esc[8] array bound and
++//        FI-D11's loop (`i < status.esc_count`) has no clamp to CONNECTED_ESC_MAX unlike the sibling loop at L67
++// Then : expected behaviour under ASan is a detected heap/stack-buffer-overflow on the out-of-bounds esc[8] write
++TEST_F(SqeFailureInjectorTest, DISABLED_PRB05_EscCountAboveMax)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_STUCK, 1);
++	injector.update();
++
++	esc_status_s esc = makeEscStatus(8);
++	esc.esc_count = 9; // out-of-bounds vs. the fixed esc[8] array (F-07a)
++	injector.manipulateEscStatus(esc);
++
++	SUCCEED() << "Not run in normal builds; requires ASan to observe the overflow (F-07a).";
++}
++
++// SQE-PRB-06 | F-07b | DISABLED — requires UBSan to observe the unguarded shift (non-motor actuator_function)
++// Given: SYS_FAILURE_EN 1; STUCK injected (sets a nonzero blocked_mask)
++// When : manipulateEscStatus() is called on a status whose esc[0].actuator_function is 0 (not a motor function),
++//        so FI-D12's `i_esc = actuator_function - ACTUATOR_FUNCTION_MOTOR1` underflows to a huge unsigned value
++//        and `1 << i_esc` becomes an out-of-range shift exponent (no guard, unlike FD-D31 in FailureDetector)
++// Then : expected behaviour under UBSan is a detected "shift exponent too large" diagnostic (F-07b)
++TEST_F(SqeFailureInjectorTest, DISABLED_PRB06_NonMotorFunctionShift)
++{
++	setParamInt("SYS_FAILURE_EN", 1);
++	FailureInjector injector;
++
++	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_STUCK, 1);
++	injector.update();
++
++	esc_status_s esc = makeEscStatus(1);
++	esc.esc[0].actuator_function = 0; // not ACTUATOR_FUNCTION_MOTOR1-based (F-07b)
++	injector.manipulateEscStatus(esc);
++
++	SUCCEED() << "Not run in normal builds; requires UBSan to observe the unguarded shift (F-07b).";
++}
+diff --git a/src/modules/sensors/data_validator/CMakeLists.txt b/src/modules/sensors/data_validator/CMakeLists.txt
+index e60b18d4b3..88e77e261a 100644
+--- a/src/modules/sensors/data_validator/CMakeLists.txt
++++ b/src/modules/sensors/data_validator/CMakeLists.txt
+@@ -37,3 +37,11 @@ px4_add_library(data_validator
+ 	DataValidatorGroup.cpp
+ 	DataValidatorGroup.hpp
+ )
++
++# SQE A2 (student-authored tests)
++px4_add_unit_gtest(SRC SqeDataValidatorTest.cpp LINKLIBS data_validator
++	px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
++	work_queue parameters events perf tinybson uorb_msgs test_stubs)
++px4_add_unit_gtest(SRC SqeDataValidatorGroupTest.cpp LINKLIBS data_validator
++	px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
++	work_queue parameters events perf tinybson uorb_msgs test_stubs)
+diff --git a/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
+new file mode 100644
+index 0000000000..c3301a1a85
+--- /dev/null
++++ b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
+@@ -0,0 +1,899 @@
++/**
++ * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
++ * System under test : DataValidatorGroup.cpp / DataValidatorGroup.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
++ * Test level        : GTest unit — justification: DataValidatorGroup has no params/uORB, pure explicit-argument API
++ * Decisions covered : see test_inventory.csv; each TEST names its decision IDs (DVG-D01..D38, REF_04);
++ *                      MC/DC rows: work/mcdc/mcdc_matrix.csv (SQE-DVG-MC-01..25, gaps at 15/16/17)
++ * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ */
++
++#include <gtest/gtest.h>
++
++#include <cstdint>
++#include <string>
++
++#include "DataValidatorGroup.hpp"
++
++namespace
++{
++constexpr uint64_t T0 = 1'000'000;
++} // namespace
++
++class SqeDvgTest : public ::testing::Test
++{
++};
++
++class SqeDvgMcdcTest : public ::testing::Test
++{
++};
++
++class SqeDvgDeathTest : public ::testing::Test
++{
++};
++
++// ===========================================================================
++// Structural catalogue — SQE-DVG-nn
++// ===========================================================================
++
++// SQE-DVG-01 | DVG-D01 DVG-D02T DVG-D03T DVG-D35 DVG-D36T/F DVG-D37 DVG-D38T/F DVG-D31 DVG-D33
++// Given: a fresh DataValidatorGroup(1), never fed
++// When : get_sensor_priority(0/1), get_sensor_state(0/1), failover_index(), failover_state()
++// Then : prio(0)=0, state(0)=0 (never-put DataValidator state defaults to NO_ERROR); state(1)=UINT32_MAX
++//        (index not found); prio(1)=0 (index not found); failover_index()==-1; failover_state()==NO_ERROR
++TEST_F(SqeDvgTest, DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels)
++{
++	DataValidatorGroup g(1);
++
++	EXPECT_EQ(g.get_sensor_priority(0), 0u);
++	EXPECT_EQ(g.get_sensor_state(0), 0u);
++	EXPECT_EQ(g.get_sensor_state(1), UINT32_MAX);
++	EXPECT_EQ(g.get_sensor_priority(1), 0u);
++	EXPECT_EQ(g.failover_count(), 0u);
++	EXPECT_EQ(g.failover_index(), -1);
++	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_NO_ERROR);
++}
++
++// SQE-DVG-02 | DVG-D02F DVG-D08 DVG-D09T/F (loop exit without break)
++// Given: a fresh DataValidatorGroup(3)
++// When : put(2, T0, v, 0, 42) then an out-of-range put(7, T0, v, 0, 99)
++// Then : sensor 2's priority is 42 (found, index matches mid-loop); sensors 0/1 stay at priority 0 (never put);
++//        the out-of-range put(7,...) is silently ignored (loop runs to the end without ever matching, no crash,
++//        no state changed) — confirmed by priorities being unchanged after it
++TEST_F(SqeDvgTest, DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored)
++{
++	DataValidatorGroup g(3);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(2, T0, val, 0, 42);
++
++	EXPECT_EQ(g.get_sensor_priority(2), 42u);
++	EXPECT_EQ(g.get_sensor_priority(0), 0u);
++	EXPECT_EQ(g.get_sensor_priority(1), 0u);
++
++	g.put(7, T0, val, 0, 99);
++
++	EXPECT_EQ(g.get_sensor_priority(0), 0u);
++	EXPECT_EQ(g.get_sensor_priority(1), 0u);
++	EXPECT_EQ(g.get_sensor_priority(2), 42u);
++}
++
++// SQE-DVG-03 | DVG-D01 0-iteration DVG-D03F DVG-D06/D07/D10/D12 0-iteration
++// Given: a DataValidatorGroup(0) (no siblings constructed, _first/_last stay nullptr)
++// When : get_best(), failover_index()/failover_state(), get_sensor_state()/get_sensor_priority(), set_timeout(),
++//        set_equal_value_threshold(), print()
++// Then : get_best() returns nullptr and *index == -1 (both while loops in get_best() run zero iterations, best
++//        stays nullptr, max_index stays -1); failover_index()==-1; failover_state()==NO_ERROR; get_sensor_state()
++//        ==UINT32_MAX (not found); get_sensor_priority()==0 (not found); set_timeout()/set_equal_value_threshold()
++//        and print() do not crash on an empty group (all their while loops are 0-iteration too)
++TEST_F(SqeDvgTest, DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash)
++{
++	DataValidatorGroup g(0);
++	int idx = -99;
++
++	float *best = g.get_best(T0, &idx);
++
++	EXPECT_EQ(best, nullptr);
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(g.failover_index(), -1);
++	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_NO_ERROR);
++	EXPECT_EQ(g.get_sensor_state(0), UINT32_MAX);
++	EXPECT_EQ(g.get_sensor_priority(0), 0u);
++
++	g.set_timeout(5000);
++	g.set_equal_value_threshold(3);
++
++	testing::internal::CaptureStdout();
++	g.print();
++	const std::string out = testing::internal::GetCapturedStdout();
++	(void)out; // smoke: reaching here without crashing is the oracle for the 0-iteration print() loop
++}
++
++// SQE-DVG-04 | DVG-D05F DVG-D06
++// Given: a DataValidatorGroup(1) with default timeout; then set_timeout(250000)
++// When : add_new_validator() is called after the timeout change
++// Then : returned pointer is non-null; get_sensor_state(1) != UINT32_MAX (new sibling is found, i.e. it was
++//        actually linked in via setSibling()); the new validator inherits the group's current _timeout_interval_us
++//        (250000) — observed indirectly: it is NOT timed out at T0+240000 (within 250000) but times out at
++//        T0+250001, proving set_timeout() propagated to it even though it didn't exist yet when set_timeout() ran
++TEST_F(SqeDvgTest, DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout)
++{
++	DataValidatorGroup g(1);
++
++	g.set_timeout(250000);
++	DataValidator *added = g.add_new_validator();
++
++	ASSERT_NE(added, nullptr);
++	EXPECT_NE(g.get_sensor_state(1), UINT32_MAX);
++
++	const float val[3] = {1.f, 1.f, 1.f};
++	g.put(1, T0, val, 0, 0);
++
++	int idx = -99;
++	g.get_best(T0 + 240000, &idx);
++	EXPECT_NE(g.get_sensor_state(1), DataValidator::ERROR_FLAG_TIMEOUT);
++
++	g.get_best(T0 + 250001, &idx);
++	EXPECT_EQ(g.get_sensor_state(1), DataValidator::ERROR_FLAG_TIMEOUT);
++}
++
++// SQE-DVG-05 | DVG-D06
++// Given: a DataValidatorGroup(2) with set_timeout(10000); both sensors fed once at T0
++// When : get_best(T0 + 10001, &idx)
++// Then : idx == -1 (both sensors time out simultaneously, confidence() returns 0 for both, D13's G=confidence>0.0f
++//        is False for every sibling so max_index never advances past -1); both get_sensor_state() report TIMEOUT
++TEST_F(SqeDvgTest, DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether)
++{
++	DataValidatorGroup g(2);
++	g.set_timeout(10000);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	g.put(1, T0, val, 0, 50);
++
++	int idx = -99;
++	float *best = g.get_best(T0 + 10001, &idx);
++
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(best, nullptr);
++	EXPECT_EQ(g.get_sensor_state(0), DataValidator::ERROR_FLAG_TIMEOUT);
++	EXPECT_EQ(g.get_sensor_state(1), DataValidator::ERROR_FLAG_TIMEOUT);
++}
++
++// SQE-DVG-06 | DVG-D07
++// Given: a DataValidatorGroup(2) with set_equal_value_threshold(2); both sensors fed the identical value 3x each
++// When : get_best() after the staling puts
++// Then : idx == -1 (both sensors go STALE, confidence 0 for both, same reasoning as DVG05); both get_sensor_state()
++//        report STALE_DATA — proves set_equal_value_threshold() propagated to every sibling
++TEST_F(SqeDvgTest, DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales)
++{
++	DataValidatorGroup g(2);
++	g.set_equal_value_threshold(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	g.put(0, T0 + 1000, val, 0, 50);
++	g.put(0, T0 + 2000, val, 0, 50);
++	g.put(1, T0, val, 0, 50);
++	g.put(1, T0 + 1000, val, 0, 50);
++	g.put(1, T0 + 2000, val, 0, 50);
++
++	int idx = -99;
++	g.get_best(T0 + 2000, &idx);
++
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(g.get_sensor_state(0), DataValidator::ERROR_FLAG_STALE_DATA);
++	EXPECT_EQ(g.get_sensor_state(1), DataValidator::ERROR_FLAG_STALE_DATA);
++}
++
++// SQE-DVG-07 | DVG-D13=T twice (i=0 via A&&B, i=1 via E&&F)
++// Given: a fresh DataValidatorGroup(2); sensor 0 (prio 10) and sensor 1 (prio 20) both put with d=0 (confidence 1.0)
++//        at the same timestamp T0, as the very first get_best() call ever
++// Then : idx == 1 — with equal confidence (1.0 for both, well above MIN_REGULAR_CONFIDENCE) sensor 1's higher
++//        priority wins the tie (D13's E&&F path: |c-m|<0.01f true, priority>max_priority true)
++TEST_F(SqeDvgTest, DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 10);
++	g.put(1, T0, val, 0, 20);
++
++	int idx = -99;
++	g.get_best(T0, &idx);
++
++	EXPECT_EQ(idx, 1);
++}
++
++// SQE-DVG-08 | DVG-D19F (second failover) DVG-D22T
++// Given: continuing the MC14-style classic failover (sensor 0 silent, sensor 1 takes over, count becomes 1), then
++//        sensor 1 also goes silent and sensor 0 comes back fresh, forcing a second failover
++// Then : failover_count() == 2 after the second switch; print()'s captured stdout contains "failsafe: YES"
++//        (DataValidatorGroup.cpp L250-251, `(_toggle_count > 0) ? "YES" : "NO"`)
++TEST_F(SqeDvgTest, DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1, val, 0, 50);
++	g.get_best(T0 + 1, &idx);
++	ASSERT_EQ(idx, 0);
++
++	// sensor 0 now silent since T0, sensor 1 fresh -> first failover to sensor 1
++	g.put(1, T0 + 50000, val, 0, 50);
++	g.get_best(T0 + 50000, &idx);
++	ASSERT_EQ(idx, 1);
++	ASSERT_EQ(g.failover_count(), 1u);
++
++	// sensor 1 now goes silent since T0+50000, sensor 0 comes back fresh -> second failover to sensor 0
++	g.put(0, T0 + 100000, val, 0, 50);
++	g.get_best(T0 + 100000, &idx);
++	ASSERT_EQ(idx, 0);
++
++	EXPECT_EQ(g.failover_count(), 2u);
++
++	testing::internal::CaptureStdout();
++	g.print();
++	const std::string out = testing::internal::GetCapturedStdout();
++
++	EXPECT_NE(out.find("failsafe: YES"), std::string::npos) << "captured output: " << out;
++}
++
++// SQE-DVG-09 | DVG-D22F DVG-D23 DVG-D24T/F DVG-D25..D30 T/F
++// Given: a DataValidatorGroup(5) crafted so that: #0 is healthy (OK), #1 goes STALE (identical value put repeatedly
++//        past the equal-value threshold), #2 is put once with a huge error_count to set HIGH_ERRCOUNT, #3 is put
++//        with a huge error_count to set HIGH_ERRDENSITY, #4 is left completely unused (never put, so used()==false
++//        and print() skips it). STALE/ECNT/EDNST are deliberately on three *different* sensors: DataValidator::
++//        confidence()'s checks are an if/else-if chain (DataValidator.cpp L106-129), so a single sensor can only
++//        ever raise one of {NO_DATA, TIMEOUT, STALE_DATA, HIGH_ERRCOUNT, HIGH_ERRDENSITY} from any one confidence()
++//        evaluation — stacking STALE and ECNT onto the same sensor in one call is infeasible by construction
++//        (confirmed by re-running this test with that combination first: STALE always short-circuits ECNT because
++//        the identical value needed to trigger STALE never lets _error_count's branch execute in the same call).
++// When : print() with stdout captured
++// Then : output shows "sensor #0" with " OK", does NOT show "sensor #4" (unused sensors are skipped by the
++//        `next->used()` guard at L256), shows " STALE" for sensor #1, " ECNT" for sensor #2, " EDNST" for sensor
++//        #3, and shows "failsafe: NO" (no failover has happened in this scenario, _toggle_count stays 0)
++TEST_F(SqeDvgTest, DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags)
++{
++	DataValidatorGroup g(5);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	// #0: healthy
++	g.put(0, T0, val, 0, 0);
++
++	// #1: stale (identical value repeated past the equal-value threshold)
++	g.set_equal_value_threshold(2);
++	g.put(1, T0, val, 0, 1);
++	g.put(1, T0 + 1000, val, 0, 1);
++	g.put(1, T0 + 2000, val, 0, 1);
++
++	// #2: high error count
++	g.put(2, T0, val, 10001, 2);
++
++	// #3: high error density
++	g.put(3, T0, val, 10000, 3);
++
++	int idx = -99;
++	g.get_best(T0 + 2000, &idx);
++
++	testing::internal::CaptureStdout();
++	g.print();
++	const std::string out = testing::internal::GetCapturedStdout();
++
++	EXPECT_NE(out.find("sensor #0"), std::string::npos) << out;
++	EXPECT_NE(out.find(" OK"), std::string::npos) << out;
++	EXPECT_EQ(out.find("sensor #4"), std::string::npos) << out;
++	EXPECT_NE(out.find(" STALE"), std::string::npos) << out;
++	EXPECT_NE(out.find(" ECNT"), std::string::npos) << out;
++	EXPECT_NE(out.find(" EDNST"), std::string::npos) << out;
++	EXPECT_NE(out.find("failsafe: NO"), std::string::npos) << out;
++}
++
++// SQE-DVG-10 | DVG-D05 crash path — characterization F-03 (death test)
++// Given: a DataValidatorGroup(0) (constructed with zero siblings, _last stays nullptr)
++// When : add_new_validator() is called
++// Then : the process crashes (SIGSEGV) because add_new_validator() unconditionally dereferences `_last`
++//        (`_last->setSibling(validator)`, DataValidatorGroup.cpp L92) without checking it for null first — a
++//        genuine, independently-confirmed characterization (REF_07 F-03), not a bug invented for this test
++TEST_F(SqeDvgDeathTest, DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast)
++{
++	GTEST_FLAG_SET(death_test_style, "threadsafe");
++
++	EXPECT_DEATH({
++		DataValidatorGroup g(0);
++		g.add_new_validator();
++	}, "");
++}
++
++// SQE-DVG-11 | DVG-D14T (I&&J) DVG-D20T
++// Given: a DataValidatorGroup(2); sensor 0 becomes best, then both sensors go silent past the timeout
++// When : get_best() after both time out
++// Then : idx == -1, failover_count() == 1 (the "only sensor went bad" branch of D14, I&&J true since max_confidence
++//        < FLT_EPSILON and _curr_best >= 0); the returned pointer is non-null — characterization F-02: get_best()
++//        returns the last-known values of the previously-best sensor even though *index is -1, which contradicts
++//        the header's "pointer to the array of best values" phrasing when nothing is actually selected
++TEST_F(SqeDvgTest, DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	float *best = g.get_best(T0 + 50000, &idx);
++
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(g.failover_count(), 1u);
++	EXPECT_NE(best, nullptr);
++}
++
++// SQE-DVG-12 | DVG-D04
++// Given/When: construct and destroy DataValidatorGroup instances of sizes 0..5, calling add_new_validator() once
++//             extra on the size-3 instance before it goes out of scope
++// Then : no crash (destructor's while-loop walks and deletes every linked sibling, including the one added via
++//        add_new_validator(), for every group size including the empty one)
++TEST_F(SqeDvgTest, DVG12_ConstructDestroyVariousSizes_NoCrash)
++{
++	for (unsigned n = 0; n <= 5; n++) {
++		DataValidatorGroup g(n);
++
++		if (n == 3) {
++			g.add_new_validator();
++		}
++	}
++
++	SUCCEED();
++}
++
++// ===========================================================================
++// MC/DC catalogue — SQE-DVG-MC-nn (fixture SqeDvgMcdcTest)
++// Authoritative source: work/mcdc/mcdc_matrix.csv (22 distinct test IDs, 29 target-evaluation rows)
++// ===========================================================================
++
++// SQE-DVG-MC-01 | DVG-D13 (E,F true) · DVG-D15 (K,L true)
++// Given: sensor 0 is current best (d=5 -> conf .95, prio 50, seeded via call1); sensor 1 appears with d=5 (conf
++//        .95, identical) and prio 75
++// When : get_best() at T0+1000 (call2, target evaluation of D13 at i=1 and, in the same call, D15)
++// Then : idx == 1 (|c-m|<0.01f true (E), p>mp true (F) -> switch); failover_count() stays 0 — the switch is a
++//        same-confidence, higher-priority preference, not a failsafe (D15 true: K true, L true, M true -> true_failsafe=false)
++TEST_F(SqeDvgMcdcTest, MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 5, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 5, 75);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 1);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-02 | DVG-D13 (F false, pair of MC01 on F)
++// Given: sensor 0 is current best (d=5 -> conf .95, prio 50); sensor 1 appears with d=5 (conf .95), equal prio 50
++// When : get_best() at T0+1000
++// Then : idx == 0 (D13 false: F = p>mp = 50>50 = False, no switch); failover_count() stays 0
++TEST_F(SqeDvgMcdcTest, MC02_EqualConfidenceEqualPriority_NoSwitch)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 5, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 5, 50);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-03 | DVG-D13 (E false, pair of MC01 on E)
++// Given: sensor 0 is current best (d=5 -> conf .95, prio 50); sensor 1 appears with d=7 (conf .93), prio 75
++// When : get_best() at T0+1000
++// Then : idx == 0 (D13 false: E = |.93-.95|=.02f >= 0.01f = False; C=.93>.95 False too, CD false; AB false since
++//        neither confidence is below 0.9f)
++TEST_F(SqeDvgMcdcTest, MC03_LowerConfidenceHigherPriority_NoSwitch)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 5, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 7, 75);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++}
++
++// SQE-DVG-MC-04 | DVG-D13 (C,D true) · DVG-D15 (L false) | F-11
++// Given: sensor 0 is current best (d=5 -> conf .95, prio 50); sensor 1 appears with d=3 (conf .97), equal prio 50
++// When : get_best() at T0+1000
++// Then : idx == 1 (D13 true via C&&D: confidence strictly higher, priority equal so >= holds); failover_count()
++//        becomes 1 — D15 false (L: 50<50 is False) so true_failsafe stays True; characterization (F-11): a
++//        confidence-only, same-priority improvement is counted as a failsafe by this code, which is a semantic
++//        finding (see REF_07 F-11), not a test defect — the matrix records the real code behaviour per R4
++TEST_F(SqeDvgMcdcTest, MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 5, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 3, 50);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 1);
++	EXPECT_EQ(g.failover_count(), 1u);
++}
++
++// SQE-DVG-MC-05 | DVG-D13 (D false, pair of MC04 on D)
++// Given: sensor 0 is current best (d=5 -> conf .95, prio 50); sensor 1 appears with d=3 (conf .97), lower prio 25
++// When : get_best() at T0+1000
++// Then : idx == 0 (D13 false: C true but D=25>=50 False -> CD false; E: |.97-.95|=.02f>=.01f also False)
++TEST_F(SqeDvgMcdcTest, MC05_HigherConfidenceLowerPriority_NoSwitch)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 5, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 3, 25);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++}
++
++// SQE-DVG-MC-06 | DVG-D13 (C false, pair of MC04 on C)
++// Given: sensor 0 is current best (d=5 -> conf .95, prio 50); sensor 1 appears with d=7 (conf .93), equal prio 50
++// When : get_best() at T0+1000
++// Then : idx == 0 (D13 false: C=.93>.95 False; E: |.93-.95|=.02f>=.01f False too)
++TEST_F(SqeDvgMcdcTest, MC06_LowerConfidenceEqualPriority_NoSwitch)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 5, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 7, 50);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++}
++
++// SQE-DVG-MC-07 | DVG-D13 (A true, pair of MC08 on A)
++// Given: sensor 0 is current best (d=11 -> conf .89999998f < 0.9f, prio 50); sensor 1 appears with d=5 (conf
++//        .95 >= 0.9f), prio 25
++// When : get_best() at T0+1000
++// Then : idx == 1 (D13 true via A&&B: max_confidence below the regular-confidence threshold, candidate at/above it
++//        -> switch regardless of priority); failover_count() becomes 1 (D15 unreachable observation not asserted
++//        here; D13 is this row's target)
++TEST_F(SqeDvgMcdcTest, MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 11, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 5, 25);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 1);
++	EXPECT_EQ(g.failover_count(), 1u);
++}
++
++// SQE-DVG-MC-08 | DVG-D13 (A false, pair of MC07 on A)
++// Given: sensor 0 is current best (d=9 -> conf .91000003f >= 0.9f, prio 50); sensor 1 appears with d=5 (conf .95),
++//        prio 25
++// When : get_best() at T0+1000
++// Then : idx == 0 (D13 false: A=max_confidence<0.9f is False this time, so AB false; falls to C(.95>.91 true),
++//        D(25>=50 false) -> CD false; E(|.95-.91|=.04f>=.01f false))
++TEST_F(SqeDvgMcdcTest, MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 9, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 5, 25);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++}
++
++// SQE-DVG-MC-09 | DVG-D13 (B true, pair of MC10 on B)
++// Given: sensor 0 is current best (d=20 -> conf .80, prio 50); sensor 1 appears with d=5 (conf .95 >= 0.9f), prio 25
++// When : get_best() at T0+1000
++// Then : idx == 1 (D13 true via A&&B); failover_count() becomes 1
++TEST_F(SqeDvgMcdcTest, MC09_FarBelowThresholdReplacedByAboveThreshold_Switches)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 20, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 5, 25);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 1);
++	EXPECT_EQ(g.failover_count(), 1u);
++}
++
++// SQE-DVG-MC-10 | DVG-D13 (B false, pair of MC09 on B)
++// Given: sensor 0 is current best (d=20 -> conf .80, prio 50); sensor 1 appears with d=15 (conf .85 < 0.9f), prio 25
++// When : get_best() at T0+1000
++// Then : idx == 0 (D13 false: B=confidence>=0.9f is False this time, AB false; C(.85>.80 true), D(25>=50 false)
++//        -> CD false; E(|.85-.80|=.05f>=.01f false))
++TEST_F(SqeDvgMcdcTest, MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 20, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 15, 25);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++}
++
++// SQE-DVG-MC-11 | DVG-D13 (G false, pair of MC12 on G)
++// Given: a fresh DataValidatorGroup(2), sensor 0 never put()
++// When : get_best(T0, &idx) as the very first call ever
++// Then : idx == -1, returned pointer nullptr, failover_count() == 0 — D13's G = confidence>0.0f is False
++//        (confidence()==0, ERROR_FLAG_NO_DATA) regardless of the inner OR expression, decision forced False
++TEST_F(SqeDvgMcdcTest, MC11_FirstCallNeverPut_NoCandidateSelected)
++{
++	DataValidatorGroup g(2);
++
++	int idx = -99;
++	float *best = g.get_best(T0, &idx);
++
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(best, nullptr);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-12 | DVG-D13 (G true, pair of MC11 on G)
++// Given: a fresh DataValidatorGroup(2); sensor 0 put(d=50 -> conf .50, prio 50) just before the first-ever get_best()
++// When : get_best(T0, &idx) as the very first call ever
++// Then : idx == 0 (D13 true via C&&D: pre-loop max_confidence=-1.0f/max_priority=-1000 so C=.50>-1 true,
++//        D=50>=-1000 true; G=confidence>0.0f true)
++TEST_F(SqeDvgMcdcTest, MC12_FirstCallOneSensorPut_SelectsIt)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 50, 50);
++
++	int idx = -99;
++	g.get_best(T0, &idx);
++
++	EXPECT_EQ(idx, 0);
++}
++
++// SQE-DVG-MC-13 | DVG-D14 (H true) · DVG-D32/D34 (P,Q,R true, i=0) — real failover
++// Given: sensor 0 is current best (d=0, prio 50, call1); call2 re-confirms sensor 0 still wins over fresh sensor 1
++//        (prio 40, tie broken by priority, _prev_best stays -1 since no real switch yet); sensor 0 then goes silent
++//        past the timeout while sensor 1 stays fresh (call3)
++// When : get_best() at call3 (T0+50000); then failover_index()/failover_state()
++// Then : idx == 1 at call3 (D14 true via H alone: max_index=1 != _curr_best=0); failover_index() == 0 and
++//        failover_state() == TIMEOUT — scanning from i=0: sensor 0 used() true (P), state()==TIMEOUT!=NO_ERROR (Q),
++//        i(0)==_prev_best(0) (R) -> returns immediately without reaching sensor 1
++TEST_F(SqeDvgMcdcTest, MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1, val, 0, 40);
++	g.get_best(T0 + 1, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 50000, val, 0, 40);
++	g.get_best(T0 + 50000, &idx);
++
++	EXPECT_EQ(idx, 1);
++	EXPECT_EQ(g.failover_index(), 0);
++	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_TIMEOUT);
++}
++
++// SQE-DVG-MC-14 | DVG-D14 (H false, pair of MC13 on H)
++// Given: sensor 0 is current best (d=0, prio 50, call1 seeds _curr_best=0); sensor 1 appears fresh with lower
++//        priority 40 — same confidence (1.0), so D13's E&&F path requires F=priority>max_priority which is false
++// When : get_best() at call2 (T0+1)
++// Then : idx == 0 (D14 false: H=max_index!=_curr_best is False — sensor 0 keeps winning on priority; I is also
++//        False since max_confidence stays 1.0, not < FLT_EPSILON)
++TEST_F(SqeDvgMcdcTest, MC14_StableSensorKeepsWinningOnPriority_NoFailover)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1, val, 0, 40);
++	g.get_best(T0 + 1, &idx);
++
++	EXPECT_EQ(idx, 0);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-18 | DVG-D14 (H false, I false — single-sensor stable control row)
++// Given: a DataValidatorGroup(1); sensor 0 selected at T0 (call1), then a second fresh put before the next call
++// When : get_best() at call2 (T0+1000), same sensor still best
++// Then : idx == 0, failover_count() == 0 — D14 false: H false (max_index stays 0 == _curr_best); I false
++//        (confidence stays 1.0, not < FLT_EPSILON, so the AND short-circuits on I without evaluating J)
++TEST_F(SqeDvgMcdcTest, MC18_SingleSensorFreshDataStable_NoFailover)
++{
++	DataValidatorGroup g(1);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(0, T0 + 1000, val, 0, 50);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 0);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-19 | DVG-D14 (I true, J true — pair of MC18 on I, pair of MC20 on J) · DVG-D20T
++// Given: continuing MC18's single-sensor group, now silent for longer than the timeout
++// When : get_best() at call3, more than 40000us since the last put at T0+1000
++// Then : idx == -1, failover_count() == 1, returned pointer non-null (F-02) — D14 true via I&&J (not H): the only
++//        sibling times out so confidence()==0 and Loop2 never updates max_index away from the Loop1-reseeded value
++//        (0), so max_index==_curr_best==0 -> H false, but max_confidence<FLT_EPSILON (I true) and _curr_best>=0
++//        (J true) make the decision true through the second disjunct
++TEST_F(SqeDvgMcdcTest, MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop)
++{
++	DataValidatorGroup g(1);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(0, T0 + 1000, val, 0, 50);
++	g.get_best(T0 + 1000, &idx);
++	ASSERT_EQ(idx, 0);
++
++	float *best = g.get_best(T0 + 1000 + 41001, &idx);
++
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(g.failover_count(), 1u);
++	EXPECT_NE(best, nullptr);
++}
++
++// SQE-DVG-MC-20 | DVG-D14 (J false, control row — the only sibling never fed)
++// Given: a fresh DataValidatorGroup(1), sensor 0 never put()
++// When : get_best(T0, &idx) as the very first call ever
++// Then : idx == -1, returned pointer nullptr, failover_count() == 0 — D14 false: max_confidence==0<FLT_EPSILON so
++//        I is true, but _curr_best is still its construction value -1 (only ever written at the end of get_best())
++//        so J is false; I&&J false. H is also false (max_index stays -1 == _curr_best). This is the control row
++//        proving the infeasible vector H=F/I=F/J=F is correctly never produced: here I=T, not I=F.
++TEST_F(SqeDvgMcdcTest, MC20_SingleSensorNeverFed_NoCandidateSelected)
++{
++	DataValidatorGroup g(1);
++
++	int idx = -99;
++	float *best = g.get_best(T0, &idx);
++
++	EXPECT_EQ(idx, -1);
++	EXPECT_EQ(best, nullptr);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-21 | DVG-D15 (K false, control vector) — O3 structural-only evidence
++// Given: a DataValidatorGroup(2); sensor 0 put once (d=50 -> conf .50, prio 50)
++// When : get_best(T0, &idx) as the VERY FIRST call ever (_curr_best starts at -1, so Loop1's `i==pre_check_best`
++//        never matches and pre_check_prio stays at its init value -1)
++// Then : idx == 0, failover_count() == 0 — D14 is True here via H alone (max_index becomes 0, _curr_best was -1,
++//        0!=-1), so D15 IS reached and evaluated with K=False (pre_check_prio==-1). Per MCDC_ANALYSIS.md §2, when
++//        K=False this call's entry forces the `_curr_best<0` branch at L219 regardless of D15's outcome, so D15's
++//        value has NO observable effect on failover_count() or any other getter here — this row is O3 evidence
++//        only (structural: line 210, `true_failsafe = false;`, must NOT execute in this test, contrasted with
++//        MC01 where it does). The oracle below checks only what IS observable (idx, failover_count); the O3
++//        per-test coverage capture is recorded separately (see explain-back).
++TEST_F(SqeDvgMcdcTest, MC21_FirstCallKFalseControlVector_NoFailoverCounted)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 50, 50);
++
++	int idx = -99;
++	g.get_best(T0, &idx);
++
++	EXPECT_EQ(idx, 0);
++	EXPECT_EQ(g.failover_count(), 0u);
++}
++
++// SQE-DVG-MC-22 | DVG-D15 (M false, pair of MC01 on M)
++// Given: sensor 0 is current best (d=50 -> conf .50, prio 50, call1 seeds pre_check_prio=50/pre_check_confidence=.50);
++//        sensor 1 appears with d=5 (conf .95), prio 75 — wins D13 via A&&B (seed confidence .50<0.9f, candidate
++//        .95>=0.9f)
++// When : get_best() at call2 (T0+1000)
++// Then : idx == 1, failover_count() becomes 1 — D15 false via M: pre_check_prio=50 < max_priority=75 (K true,
++//        L true) but |pre_check_confidence(.50) - max_confidence(.95)| = 0.45f >= 0.1f (M false), so true_failsafe
++//        stays True even though priority also increased (distinguishes M from MC01's small |diff|)
++TEST_F(SqeDvgMcdcTest, MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 50, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1000, val, 5, 75);
++	g.get_best(T0 + 1000, &idx);
++
++	EXPECT_EQ(idx, 1);
++	EXPECT_EQ(g.failover_count(), 1u);
++}
++
++// SQE-DVG-MC-23 | DVG-D32/D34 (Q false, pair of MC13 on Q)
++// Given: continuing MC13's post-failover state (sensor 0 timed out, sensor 1 is best); sensor 0 sends fresh data
++//        again, which clears its error mask the moment confidence() is called on it (via the next get_best())
++// When : failover_index()/failover_state() after sensor 0's mask is reset
++// Then : failover_index() == -1, failover_state() == NO_ERROR — at i=0: used() true (P true), but state() is now
++//        NO_ERROR (Q false), so R is never evaluated and the loop continues to i=1 where Q is false too (sensor 1
++//        never errored), exiting with the function's final return
++TEST_F(SqeDvgMcdcTest, MC23_SensorZeroRecoversAfterFailover_NoFailoverReported)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1, val, 0, 40);
++	g.get_best(T0 + 1, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 50000, val, 0, 40);
++	g.get_best(T0 + 50000, &idx);
++	ASSERT_EQ(idx, 1);
++	ASSERT_EQ(g.failover_index(), 0);
++
++	g.put(0, T0 + 60000, val, 0, 50);
++	g.put(1, T0 + 60000, val, 0, 40);
++	g.get_best(T0 + 60000, &idx);
++
++	EXPECT_EQ(g.failover_index(), -1);
++	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_NO_ERROR);
++}
++
++// SQE-DVG-MC-24 | DVG-D32/D34 (R false, pair of MC13 on R)
++// Given: a DataValidatorGroup(2); the very first get_best() call (call1) has sensor 0 and sensor 1 both fresh with
++//        a priority tie (sensor 0 wins on priority) — because _curr_best started <0, the bookkeeping sets
++//        _prev_best=max_index=0 directly (not pre_check_best); sensor 1 then goes silent past the timeout while
++//        sensor 0 stays fresh and already best, so no new failover happens (_prev_best stays 0)
++// When : failover_index()/failover_state() after sensor 1 times out
++// Then : failover_index() == -1, failover_state() == NO_ERROR — scanning i=0 (used true, state NO_ERROR -> Q
++//        false, continue), i=1 (used true, state TIMEOUT!=NO_ERROR -> Q true, but i(1)==_prev_best(0) is False
++//        -> R false) -> loop exits without an early return
++TEST_F(SqeDvgMcdcTest, MC24_SensorNeverBestTimesOut_NotReportedAsFailover)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	g.put(1, T0, val, 0, 40);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(0, T0 + 50000, val, 0, 50);
++	g.get_best(T0 + 50000, &idx);
++	ASSERT_EQ(idx, 0);
++	ASSERT_EQ(g.get_sensor_state(1), DataValidator::ERROR_FLAG_TIMEOUT);
++
++	EXPECT_EQ(g.failover_index(), -1);
++	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_NO_ERROR);
++}
++
++// SQE-DVG-MC-25 | DVG-D32/D34 (P false, pair of MC13 on P) | code-feasible / domain-invalid (timestamp 0)
++// Given: continuing MC13's post-failover state (sensor 0 timed out, _prev_best=0); sensor 0 then receives a fresh
++//        put() with the domain-invalid timestamp 0 (no intervening get_best()/confidence() call)
++// When : failover_index()/failover_state() right after that put()
++// Then : failover_index() == -1, failover_state() == NO_ERROR — put(0,...) unconditionally sets _time_last=0, so
++//        used() (`_time_last>0`) becomes False for sensor 0 (P false), short-circuiting Q and R; the loop
++//        continues to i=1 where sensor 1's state is NO_ERROR (Q false) -> final return. Code-feasible (put()
++//        accepts any timestamp, no validation) but domain-invalid (real hrt_absolute_time() is never exactly 0
++//        after boot) — kept as a deliberate probe per MCDC_ANALYSIS.md's code-feasible/domain-valid distinction,
++//        not an infeasible-vector exclusion
++TEST_F(SqeDvgMcdcTest, MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 1, val, 0, 40);
++	g.get_best(T0 + 1, &idx);
++	ASSERT_EQ(idx, 0);
++
++	g.put(1, T0 + 50000, val, 0, 40);
++	g.get_best(T0 + 50000, &idx);
++	ASSERT_EQ(idx, 1);
++	ASSERT_EQ(g.failover_index(), 0);
++
++	g.put(0, 0, val, 0, 50);
++
++	EXPECT_EQ(g.failover_index(), -1);
++	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_NO_ERROR);
++}
++
++// SQE-PRB-03 | F-02 | DISABLED — awaiting human-approved oracle (SPEC_10 steps 1-6, R4)
++// Given: a DataValidatorGroup(2); sensor 0 becomes best, then both sensors time out
++// When : get_best() after both time out
++// Then : expected behaviour per a stricter reading of the header ("pointer to the array of best values") would be
++//        nullptr once nothing is actually selected (*index == -1), which contradicts DVG11's confirmed
++//        characterization (non-null pointer, F-02). Not run until a human approves which behaviour is correct.
++TEST_F(SqeDvgTest, DISABLED_PRB03_AllFailedShouldReturnNull)
++{
++	DataValidatorGroup g(2);
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	g.put(0, T0, val, 0, 50);
++	int idx = -99;
++	g.get_best(T0, &idx);
++
++	float *best = g.get_best(T0 + 50000, &idx);
++
++	EXPECT_EQ(best, nullptr);
++}
+diff --git a/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp
+new file mode 100644
+index 0000000000..b7abf50c32
+--- /dev/null
++++ b/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp
+@@ -0,0 +1,472 @@
++/**
++ * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
++ * System under test : DataValidator.cpp / DataValidator.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
++ * Test level        : GTest unit — justification: DataValidator has no params/uORB, pure explicit-argument API
++ * Decisions covered : see test_inventory.csv; each TEST names its decision IDs (DV-D01..DV-D15, REF_03)
++ * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ */
++
++#include <gtest/gtest.h>
++
++#include <cstdint>
++#include <limits>
++#include <string>
++
++#include "DataValidator.hpp"
++
++namespace
++{
++constexpr uint64_t T0 = 1'000'000;
++}
++
++class SqeDataValidatorTest : public ::testing::Test
++{
++protected:
++	DataValidator _dv;
++};
++
++// SQE-DV-01 | DV-D01F DV-D02F DV-D03 DV-D04T DV-D05T DV-D07F-D11F DV-D12T DV-D13T
++// Given: a fresh DataValidator
++// When : put(T0, {1,2,3}, error_count=0, priority=7) then confidence(T0)
++// Then : used() true; value() == {1,2,3}; priority() == 7; error_count() == 0; confidence(T0) == 1; state() == 0;
++//        rms() == {0,0,0} (first sample only initialises Welford state, never computes rms)
++TEST_F(SqeDataValidatorTest, DV01_FirstSample_InitialisesAndReportsFullConfidence)
++{
++	const float val[3] = {1.f, 2.f, 3.f};
++
++	_dv.put(T0, val, 0, 7);
++
++	EXPECT_TRUE(_dv.used());
++	EXPECT_FLOAT_EQ(_dv.value()[0], 1.f);
++	EXPECT_FLOAT_EQ(_dv.value()[1], 2.f);
++	EXPECT_FLOAT_EQ(_dv.value()[2], 3.f);
++	EXPECT_EQ(_dv.priority(), 7);
++	EXPECT_EQ(_dv.error_count(), 0u);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++	EXPECT_FLOAT_EQ(_dv.rms()[0], 0.f);
++	EXPECT_FLOAT_EQ(_dv.rms()[1], 0.f);
++	EXPECT_FLOAT_EQ(_dv.rms()[2], 0.f);
++}
++
++// SQE-DV-02 | DV-D05F DV-D06T/F
++// Given: a fresh DataValidator
++// When : put(T0,{1,0,0}) then put(T0+1000,{3,0,0})
++// Then : rms()[0] == sqrt(2) (Welford sample variance of the low-pass deviations {0,2}, derived independently of the
++//        production expression: lp0 after sample1 = 1.0, lp_val = 3-1.0 = 2.0, mean=1.0, M2=2.0, rms=sqrt(2.0/1));
++//        rms()[1] == rms()[2] == 0 (constant axis)
++TEST_F(SqeDataValidatorTest, DV02_SecondSample_ComputesWelfordRms)
++{
++	const float val1[3] = {1.f, 0.f, 0.f};
++	const float val2[3] = {3.f, 0.f, 0.f};
++
++	_dv.put(T0, val1, 0, 0);
++	_dv.put(T0 + 1000, val2, 0, 0);
++
++	EXPECT_NEAR(_dv.rms()[0], 1.41421356f, 1e-5f);
++	EXPECT_FLOAT_EQ(_dv.rms()[1], 0.f);
++	EXPECT_FLOAT_EQ(_dv.rms()[2], 0.f);
++}
++
++// SQE-DV-03 | DV-D09 boundary (F/T)
++// Given: equal-value threshold set to 6; constant value {5,5,5}
++// When : put() three times (shared equal-count reaches exactly 6) then confidence(); then a fourth put() (count 9)
++// Then : after 3 puts confidence == 1 and state == 0 (6 > 6 is False, boundary not yet stale);
++//        after the 4th put confidence == 0 and state == STALE (9 > 6 is True)
++TEST_F(SqeDataValidatorTest, DV03_EqualCountThreshold_BoundaryNotStaleThenStale)
++{
++	_dv.set_equal_value_threshold(6);
++	const float val[3] = {5.f, 5.f, 5.f};
++
++	_dv.put(T0, val, 0, 0);
++	_dv.put(T0 + 1000, val, 0, 0);
++	_dv.put(T0 + 2000, val, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 2000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++
++	_dv.put(T0 + 3000, val, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 3000), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_STALE_DATA);
++}
++
++// SQE-DV-04 | DV-D06F DV-D09T/F DV-D13T
++// Given: equal-value threshold set to 2; constant value {5,5,5} twice (goes stale), then a put that differs on axis 2
++// When : confidence() after the 2 stale puts; then put({5,5,6}) and confidence() again
++// Then : first confidence == 0 with STALE; after the differing put the shared equal-count resets to 0 at axis 2
++//        (axes 0,1 still match and increment to 4,5 but axis 2 breaks the run back to 0), so confidence == 1 and
++//        state() == 0 (error mask cleared because no critical error remains)
++TEST_F(SqeDataValidatorTest, DV04_DifferingAxisResetsEqualCountAndClearsStale)
++{
++	_dv.set_equal_value_threshold(2);
++	const float val_same[3] = {5.f, 5.f, 5.f};
++	const float val_diff[3] = {5.f, 5.f, 6.f};
++
++	_dv.put(T0, val_same, 0, 0);
++	_dv.put(T0 + 1000, val_same, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_STALE_DATA);
++
++	_dv.put(T0 + 2000, val_diff, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 2000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++}
++
++// SQE-DV-05 | DV-D06T DV-D09T/F
++// Given: default equal-value threshold (100); scalar put(t, 7.f, 0, 1) — pads axes 1,2 with 0 every call
++// When : 34 puts (shared equal-count reaches 3*33=99) then confidence(); then a 35th put (count 3*34=102)
++// Then : value()[1]==value()[2]==0 (scalar put padding, DataValidator.cpp L49); after 34 puts confidence==1,
++//        state==0 (99 > 100 False); after 35 puts confidence==0 and state==STALE (102 > 100 True).
++//        The threshold default comment states the count is "accumulated also between axes" (VALUE_EQUAL_COUNT_DEFAULT,
++//        DataValidator.hpp) — this test demonstrates exactly that shared-counter behaviour.
++TEST_F(SqeDataValidatorTest, DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes)
++{
++	for (int i = 0; i < 34; i++) {
++		_dv.put(T0 + static_cast<uint64_t>(i) * 1000, 7.f, 0, 1);
++	}
++
++	EXPECT_FLOAT_EQ(_dv.value()[1], 0.f);
++	EXPECT_FLOAT_EQ(_dv.value()[2], 0.f);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 34000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++
++	_dv.put(T0 + 34000, 7.f, 0, 1);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 34000), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_STALE_DATA);
++}
++
++// SQE-DV-06 | DV-D04F
++// Given: a fresh DataValidator; put(T0,{1,2,3})
++// When : put(T0+1000, {NaN, 5, +Inf})
++// Then : value() == {1,5,3} — non-finite axes (0 and 2) are left untouched by DV-D04's PX4_ISFINITE guard; only
++//        the finite axis (1) is updated
++TEST_F(SqeDataValidatorTest, DV06_NonFiniteAxesAreIgnoredOnUpdate)
++{
++	const float val1[3] = {1.f, 2.f, 3.f};
++	_dv.put(T0, val1, 0, 0);
++
++	const float val2[3] = {std::numeric_limits<float>::quiet_NaN(), 5.f, std::numeric_limits<float>::infinity()};
++	_dv.put(T0 + 1000, val2, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.value()[0], 1.f);
++	EXPECT_FLOAT_EQ(_dv.value()[1], 5.f);
++	EXPECT_FLOAT_EQ(_dv.value()[2], 3.f);
++}
++
++// SQE-DV-07 | DV-D04F; DV-D05 not reached
++// Given: a fresh DataValidator
++// When : put(t, {NaN,NaN,NaN}, 0, 1) ten times
++// Then : characterization (F-09) — all three axes stay non-finite on every call, so DV-D04 is False every time and
++//        the per-axis body (including DV-D05's init) never runs; value() stays {0,0,0} (default-initialised, never
++//        written); confidence() == 1 and state() == 0 because _time_last is still updated unconditionally at the
++//        end of put(), so used()/confidence() behave as if the stream were healthy despite carrying no real data.
++TEST_F(SqeDataValidatorTest, DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence)
++{
++	const float val[3] = {
++		std::numeric_limits<float>::quiet_NaN(),
++		std::numeric_limits<float>::quiet_NaN(),
++		std::numeric_limits<float>::quiet_NaN()
++	};
++
++	for (int i = 0; i < 10; i++) {
++		_dv.put(T0 + static_cast<uint64_t>(i) * 1000, val, 0, 1);
++	}
++
++	EXPECT_TRUE(_dv.used());
++	EXPECT_FLOAT_EQ(_dv.value()[0], 0.f);
++	EXPECT_FLOAT_EQ(_dv.value()[1], 0.f);
++	EXPECT_FLOAT_EQ(_dv.value()[2], 0.f);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 9000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++}
++
++// SQE-DV-08 | DV-D01T/F DV-D02T
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=10) then confidence(T0); put(T0+1000,v',error_count=10) then confidence(T0+1000)
++// Then : first confidence == 0.90 (density jumps from 0 to 10 on the increase, DV-D01 True); second confidence ==
++//        0.91 (error_count_in(10) > _error_count(10) is False, so DV-D02's "density>0" branch decrements to 9)
++TEST_F(SqeDataValidatorTest, DV08_RepeatedErrorCount_DensityDecaysByOne)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	_dv.put(T0, val, 10, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 0.90f);
++
++	_dv.put(T0 + 1000, val, 10, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 0.91f);
++}
++
++// SQE-DV-09 | DV-D02F
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=0) then confidence(T0); put(T0+1000,v',error_count=0) then confidence(T0+1000)
++// Then : confidence == 1 both times — error density is floored at 0 by DV-D02's else-if guard (never decremented
++//        below 0 since error_count_in stays at 0, so DV-D01 is False and DV-D02's "density>0" is also False)
++TEST_F(SqeDataValidatorTest, DV09_ZeroErrorCount_DensityStaysFlooredAtZero)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	_dv.put(T0, val, 0, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 1.f);
++
++	_dv.put(T0 + 1000, val, 0, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 1.f);
++}
++
++// SQE-DV-10 | DV-D01F DV-D02T
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=10); put(T0+1000,v',error_count=3)
++// Then : error_count() == 3 (unconditionally overwritten every put); confidence(T0+1000) == 0.91 — a decreasing
++//        error count is treated as "no new errors" (DV-D01 False because 3 > 10 is False) so density decays by one
++//        via DV-D02 (10 -> 9) rather than jumping to 3
++TEST_F(SqeDataValidatorTest, DV10_DecreasingErrorCount_StillDecaysDensityByOne)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	_dv.put(T0, val, 10, 0);
++	_dv.put(T0 + 1000, val, 3, 0);
++
++	EXPECT_EQ(_dv.error_count(), 3u);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 0.91f);
++}
++
++// SQE-DV-11 | DV-D07T DV-D12F
++// Given: a fresh DataValidator (no put() ever called)
++// When : confidence(T0)
++// Then : confidence == 0 and state() == NO_DATA (DV-D07 True short-circuits the whole chain; DV-D12's "ret>0" is
++//        False so the error mask is never cleared, leaving NO_DATA set)
++TEST_F(SqeDataValidatorTest, DV11_NeverPut_ReportsNoData)
++{
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_NO_DATA);
++}
++
++// SQE-DV-12 | DV-D08F/T DV-D13T
++// Given: a fresh DataValidator; put(T0,v); default timeout (40000 us)
++// When : confidence(T0+40000) and confidence(T0+40001); then set_timeout(1000); confidence(T0+1000) and
++//        confidence(T0+1001)
++// Then : at exactly the timeout boundary (40000) confidence == 1 and state == 0 (40000 > 40000 is False);
++//        one microsecond past it confidence == 0 and state == TIMEOUT; get_timeout() == 1000 after set_timeout();
++//        at the new boundary confidence == 1 again (TIMEOUT cleared because no new put was needed — the old
++//        _time_last is still within the new, shorter window) and one microsecond past that confidence == 0 + TIMEOUT
++TEST_F(SqeDataValidatorTest, DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++	_dv.put(T0, val, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 40000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 40001), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_TIMEOUT);
++
++	_dv.set_timeout(1000);
++	EXPECT_EQ(_dv.get_timeout(), 1000u);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1001), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_TIMEOUT);
++}
++
++// SQE-DV-13 | DV-D10F/T DV-D11T DV-D13F DV-D12F
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=10000) then confidence(T0); put(T0+1000,v',error_count=10001) then confidence(T0+1000)
++// Then : first confidence == 0 with state == HIGH_ERRDENSITY (density jumps to 10000, capped to 100 by DV-D11,
++//        then 1-100/100==0 so DV-D13's "ret>0" is False and the HIGH_ERRDENSITY flag survives); second confidence
++//        == 0 with state == HIGH_ERRDENSITY|HIGH_ERRCOUNT (error_count 10001 > 10000 makes DV-D10 True, which sets
++//        ret=0 directly and the mask — never cleared since ret never exceeded 0 — keeps accumulating)
++TEST_F(SqeDataValidatorTest, DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	_dv.put(T0, val, 10000, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_HIGH_ERRDENSITY);
++
++	_dv.put(T0 + 1000, val, 10001, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_HIGH_ERRDENSITY | DataValidator::ERROR_FLAG_HIGH_ERRCOUNT);
++}
++
++// SQE-DV-14 | DV-D11T/F DV-D13T
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=101) then confidence(T0); put(T0+1000,v',error_count=101) then confidence(T0+1000)
++// Then : first confidence == 0 with HIGH_ERRDENSITY (density 101 > 100 caps to 100, 1-100/100==0); second
++//        confidence ~= 0.01 with state == 0 — proves the cap exists and decays: density(100) decrements to 99
++//        (101 > 101 is False, DV-D01 False, DV-D02 "density>0" True), 99 is not > 100 so DV-D11 is False this time
++//        and the mask is cleared (1-99/100 == 0.01 > 0)
++TEST_F(SqeDataValidatorTest, DV14_DensityCapAtWindow_DecaysOnNextPut)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	_dv.put(T0, val, 101, 0);
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_HIGH_ERRDENSITY);
++
++	_dv.put(T0 + 1000, val, 101, 0);
++	EXPECT_NEAR(_dv.confidence(T0 + 1000), 0.01f, 1e-6f);
++	EXPECT_EQ(_dv.state(), 0u);
++}
++
++// SQE-DV-15 | DV-D11F DV-D12T DV-D13F
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=100) then confidence(T0)
++// Then : characterization (F-10) — confidence == 0 (1 - 100/100 == 0) but state() == 0: density lands exactly on
++//        the window boundary (100 > 100 is False) so DV-D11's HIGH_ERRDENSITY flag is never raised, even though the
++//        returned confidence is the minimum possible value. No flag is set to explain the zero confidence.
++TEST_F(SqeDataValidatorTest, DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++
++	_dv.put(T0, val, 100, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 0.f);
++	EXPECT_EQ(_dv.state(), 0u);
++}
++
++// SQE-DV-16 | DV-D08T DV-D13T
++// Given: a fresh DataValidator; put(T0,v)
++// When : confidence(T0+50000) (times out); put(T0+60000,v'); confidence(T0+60000)
++// Then : first confidence == 0 with state == TIMEOUT (T0+50000 > T0+40000); after a fresh put the stream is current
++//        again, so the second confidence == 1 and state() == 0 (TIMEOUT cleared)
++TEST_F(SqeDataValidatorTest, DV16_TimeoutThenFreshPut_RecoversFullConfidence)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++	_dv.put(T0, val, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 50000), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_TIMEOUT);
++
++	const float val2[3] = {2.f, 2.f, 2.f};
++	_dv.put(T0 + 60000, val2, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 60000), 1.f);
++	EXPECT_EQ(_dv.state(), 0u);
++}
++
++// SQE-DV-17 | DV-D07T DV-D10T
++// Given: a fresh DataValidator
++// When : confidence(T0) (never put); put(T0+1000,v,error_count=10001); confidence(T0+1000)
++// Then : first state == NO_DATA; second state == NO_DATA|HIGH_ERRCOUNT — the error mask accumulates with |= across
++//        confidence() calls while ret never exceeds 0, so the NO_DATA flag from the first call is never cleared
++TEST_F(SqeDataValidatorTest, DV17_NoDataThenHighErrorCount_FlagsAccumulate)
++{
++	EXPECT_FLOAT_EQ(_dv.confidence(T0), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_NO_DATA);
++
++	const float val[3] = {1.f, 1.f, 1.f};
++	_dv.put(T0 + 1000, val, 10001, 0);
++
++	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_NO_DATA | DataValidator::ERROR_FLAG_HIGH_ERRCOUNT);
++}
++
++// SQE-DV-18 | DV-D14T
++// Given: a fresh DataValidator (no put() ever called)
++// When : print() with stdout captured
++// Then : captured output contains "no data" (DV-D14's early-return branch; PX4_INFO_RAW resolves to printf on this
++//        SITL test platform, confirmed via platforms/common/include/px4_platform_common/log.h)
++TEST_F(SqeDataValidatorTest, DV18_PrintWithNoData_ReportsNoData)
++{
++	testing::internal::CaptureStdout();
++	_dv.print();
++	const std::string out = testing::internal::GetCapturedStdout();
++
++	EXPECT_NE(out.find("no data"), std::string::npos) << "captured output: " << out;
++}
++
++// SQE-DV-19 | DV-D14F DV-D15
++// Given: a fresh DataValidator; put(1000,v) (a timestamp far behind real hrt_absolute_time())
++// When : print() with stdout captured
++// Then : characterization (F-05) — output contains 3 occurrences of "val:" (one per axis, DV-D15's loop); print()'s
++//        per-axis confidence(hrt_absolute_time()) call is a side effect that times the stream out against the real
++//        clock (hrt_absolute_time() at test run time is far larger than 1000+40000 us), so state() afterwards is
++//        TIMEOUT
++TEST_F(SqeDataValidatorTest, DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++	_dv.put(1000, val, 0, 0);
++
++	testing::internal::CaptureStdout();
++	_dv.print();
++	const std::string out = testing::internal::GetCapturedStdout();
++
++	size_t count = 0;
++	size_t pos = 0;
++
++	while ((pos = out.find("val:", pos)) != std::string::npos) {
++		count++;
++		pos += 4;
++	}
++
++	EXPECT_EQ(count, 3u) << "captured output: " << out;
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_TIMEOUT);
++}
++
++// SQE-DV-20 | DV-D05T DV-D07T
++// Given: a fresh DataValidator
++// When : put(0,v) (timestamp 0); confidence(0); put(1000,v')
++// Then : characterization (F-12) — used() == false after put(0,v) because _time_last is set to the timestamp
++//        argument (0) at the end of put(), so the "ever saw data" check (_time_last > 0) stays False even though
++//        value() == v; confidence(0) == 0 with state == NO_DATA for the same reason; the next put() re-enters the
++//        DV-D05 init branch (because _time_last is still 0), so rms() stays {0,0,0} instead of computing a delta
++TEST_F(SqeDataValidatorTest, DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut)
++{
++	const float val1[3] = {1.f, 2.f, 3.f};
++	_dv.put(0, val1, 0, 0);
++
++	EXPECT_FALSE(_dv.used());
++	EXPECT_FLOAT_EQ(_dv.confidence(0), 0.f);
++	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_NO_DATA);
++	EXPECT_FLOAT_EQ(_dv.value()[0], 1.f);
++	EXPECT_FLOAT_EQ(_dv.value()[1], 2.f);
++	EXPECT_FLOAT_EQ(_dv.value()[2], 3.f);
++
++	const float val2[3] = {4.f, 5.f, 6.f};
++	_dv.put(1000, val2, 0, 0);
++
++	EXPECT_FLOAT_EQ(_dv.rms()[0], 0.f);
++	EXPECT_FLOAT_EQ(_dv.rms()[1], 0.f);
++	EXPECT_FLOAT_EQ(_dv.rms()[2], 0.f);
++}
++
++// SQE-PRB-01 | F-09 | DISABLED — awaiting human-approved oracle (SPEC_10 steps 1-6, R4)
++// Given: a fresh DataValidator
++// When : 10x put(t, {NaN,NaN,NaN}, 0, 1)
++// Then : expected behaviour per a stricter spec would be confidence() < 1 or a flag set to reflect that no real data
++//        was ever received, which contradicts DV07's confirmed characterization (confidence 1, state 0). Not run
++//        until a human approves which behaviour is correct.
++TEST_F(SqeDataValidatorTest, DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence)
++{
++	const float val[3] = {
++		std::numeric_limits<float>::quiet_NaN(),
++		std::numeric_limits<float>::quiet_NaN(),
++		std::numeric_limits<float>::quiet_NaN()
++	};
++
++	for (int i = 0; i < 10; i++) {
++		_dv.put(T0 + static_cast<uint64_t>(i) * 1000, val, 0, 1);
++	}
++
++	EXPECT_LT(_dv.confidence(T0 + 9000), 1.f);
++}
++
++// SQE-PRB-02 | F-10 | DISABLED — awaiting human-approved oracle (SPEC_10 steps 1-6, R4)
++// Given: a fresh DataValidator
++// When : put(T0,v,error_count=100) then confidence(T0)
++// Then : expected behaviour per a stricter spec would be a non-zero state() flag whenever confidence reaches 0,
++//        which contradicts DV15's confirmed characterization (confidence 0, state 0 at the exact window boundary).
++//        Not run until a human approves which behaviour is correct.
++TEST_F(SqeDataValidatorTest, DISABLED_PRB02_DensityAtWindowShouldSetFlag)
++{
++	const float val[3] = {1.f, 1.f, 1.f};
++	_dv.put(T0, val, 100, 0);
++
++	EXPECT_NE(_dv.confidence(T0), 0.f) << "or a non-zero state() flag should be set";
++}

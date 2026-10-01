@@ -291,3 +291,17 @@ LaTeX engine was present; pandoc 3.12 (official static Linux binary) was downloa
 (HTML→PDF) rather than attempting a LaTeX install, since no pdflatex/xelatex/lualatex/tectonic was found and a
 full TeX Live install was judged out of proportion for one PDF export. This is a tooling-environment action
 (downloading a build tool for local use), not a network upload of any project data, consistent with R9.
+
+## 2026-10-01 — P14+P15 — Claude (autonomous)
+Use: patch build + verification against a fresh v1.17.0 worktree (P14), dry-run rebuild (in progress), and viva
+question-bank corrections against the real implemented MC/DC matrix (P15).
+What the AI produced: deliverables/24i3015_24i3166_24i3158_B.patch + patch_stat.txt (7 files, allow-list respected);
+evidence/gates/G14/patch_verify.log (fresh-worktree apply confirmed clean); evidence/dryrun/ (rebuild in progress
+in a second independent worktree at /tmp/sqe-dryrun); corrections to docs/reference/REF_09_VIVA_QUESTION_BANK.md
+(work/DECISIONS.md D-011); work/viva/drill_log.md; work/explain/P15.md.
+Human verification: not yet reviewed.
+Assumptions introduced: none new.
+Accepted / revised / rejected: found and fixed 2 stale test-ID citations in REF_09 (Q19's K-pair partner, Q21's
+"MC17") that referenced an earlier MC/DC derivation draft rather than the final implemented matrix — same class of
+error P11 independently found and fixed in REF_07. Filled in 2 placeholders left in the original kit template
+(Q12 coverage numbers, Q23 F-09 classification) with real values.
