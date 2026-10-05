@@ -5,10 +5,10 @@
 	disabled="0"
 	skipped="0"
 	hostname="dns-HP-EliteBook-640-14-inch-G10-Notebook-PC"
-	time="577"
-	timestamp="2026-10-05T21:07:50"
+	time="354"
+	timestamp="2026-10-05T21:59:01"
 	>
-	<testcase name="functional-AdsbConflict" classname="functional-AdsbConflict" time="0.0340788" status="run">
+	<testcase name="functional-AdsbConflict" classname="functional-AdsbConflict" time="0.0202112" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -17,7 +17,7 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 3 tests from AdsbConflictTest
 [ RUN      ] AdsbConflictTest.detectTrafficConflict
-[       OK ] AdsbConflictTest.detectTrafficConflict (3 ms)
+[       OK ] AdsbConflictTest.detectTrafficConflict (2 ms)
 [ RUN      ] AdsbConflictTest.trafficAlerts
 adsb_conflict._traffic_state 0 
 INFO  [adsb] icao_address added. Buffer Size: 7
@@ -38,7 +38,7 @@ adsb_conflict._traffic_state 2 ...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_atmosphere" classname="unit-test_atmosphere" time="0.0307002" status="run">
+	<testcase name="unit-test_atmosphere" classname="unit-test_atmosphere" time="0.0207223" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -51,14 +51,14 @@ adsb_conflict._traffic_state 2 ...
 [       OK ] TestAtmosphere.DensityFromPressure (0 ms)
 [ RUN      ] TestAtmosphere.StandardTemperature
 [       OK ] TestAtmosphere.StandardTemperature (0 ms)
-[----------] 4 tests from TestAtmosphere (2 ms total)
+[----------] 4 tests from TestAtmosphere (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (2 ms total)
+[==========] 4 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 4 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-CollisionPrevention" classname="functional-CollisionPrevention" time="0.355493" status="run">
+	<testcase name="functional-CollisionPrevention" classname="functional-CollisionPrevention" time="0.191386" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -67,28 +67,28 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 23 tests from CollisionPreventionTest
 [ RUN      ] CollisionPreventionTest.instantiation
-[       OK ] CollisionPreventionTest.instantiation (1 ms)
+[       OK ] CollisionPreventionTest.instantiation (0 ms)
 [ RUN      ] CollisionPreventionTest.behaviorOff
-[       OK ] CollisionPreventionTest.behaviorOff (1 ms)
+[       OK ] CollisionPreventionTest.behaviorOff (0 ms)
 [ RUN      ] CollisionPreventionTest.noSensorData
 WARN  [CollisionPrevention] No obstacle data, not moving...
-[       OK ] CollisionPreventionTest.noSensorData (1 ms)
+[       OK ] CollisionPreventionTest.noSensorData (0 ms)
 [ RUN      ] CollisionPreventionTest.testBehaviorOnWithObstacleMessage
-[       OK ] CollisionPreventionTest.testBehaviorOnWithObstacleMessage (3 ms)
+[       OK ] CollisionPreventionTest.testBehaviorOnWithObstacleMessage (2 ms)
 [ RUN      ] CollisionPreventionTest.testBehaviorOnWithDistanceMessage
-[       OK ] CollisionPreventionTest.testBehaviorOnWithDistanceMessage (1 ms)
+[       OK ] CollisionPreventionTest.testBehaviorOnWithDistanceMessage (0 ms)
 [ RUN      ] CollisionPreventionTest.testPurgeOldData
 [       OK ] CollisionPre...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-ObstacleMath" classname="unit-ObstacleMath" time="0.0486589" status="run">
+	<testcase name="unit-ObstacleMath" classname="unit-ObstacleMath" time="0.0162782" status="run">
 		<properties/>
 		<system-out>[==========] Running 6 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 6 tests from ObstacleMathTest
 [ RUN      ] ObstacleMathTest.ProjectDistanceOnHorizontalPlane
-[       OK ] ObstacleMathTest.ProjectDistanceOnHorizontalPlane (1 ms)
+[       OK ] ObstacleMathTest.ProjectDistanceOnHorizontalPlane (0 ms)
 [ RUN      ] ObstacleMathTest.GetBinAtAngle
 [       OK ] ObstacleMathTest.GetBinAtAngle (0 ms)
 [ RUN      ] ObstacleMathTest.GetLowerBound
@@ -99,33 +99,33 @@ WARN  [CollisionPrevention] No obstacle data, not moving...
 [       OK ] ObstacleMathTest.WrapBin (0 ms)
 [ RUN      ] ObstacleMathTest.HandleMissedBins
 [       OK ] ObstacleMathTest.HandleMissedBins (0 ms)
-[----------] 6 tests from ObstacleMathTest (4 ms total)
+[----------] 6 tests from ObstacleMathTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (4 ms total)
+[==========] 6 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 6 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-ControlAllocationPseudoInverse" classname="unit-ControlAllocationPseudoInverse" time="0.0451246" status="run">
+	<testcase name="unit-ControlAllocationPseudoInverse" classname="unit-ControlAllocationPseudoInverse" time="0.0194414" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 2 test suites.
 [----------] Global test environment set-up.
 [----------] 1 test from ControlAllocationTest
 [ RUN      ] ControlAllocationTest.AllZeroCase
-[       OK ] ControlAllocationTest.AllZeroCase (1 ms)
-[----------] 1 test from ControlAllocationTest (1 ms total)
+[       OK ] ControlAllocationTest.AllZeroCase (0 ms)
+[----------] 1 test from ControlAllocationTest (0 ms total)
 
 [----------] 1 test from ControlAllocationMetricTest
 [ RUN      ] ControlAllocationMetricTest.AllZeroCase
 [       OK ] ControlAllocationMetricTest.AllZeroCase (0 ms)
-[----------] 1 test from ControlAllocationMetricTest (1 ms total)
+[----------] 1 test from ControlAllocationMetricTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 2 test suites ran. (2 ms total)
+[==========] 2 tests from 2 test suites ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-ControlAllocationSequentialDesaturation" classname="functional-ControlAllocationSequentialDesaturation" time="0.0819802" status="run">
+	<testcase name="functional-ControlAllocationSequentialDesaturation" classname="functional-ControlAllocationSequentialDesaturation" time="0.0289242" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -137,47 +137,47 @@ ERROR [px4_work_queue] init failed
 [       OK ] ControlAllocationSequentialDesaturationTest.AllZeroCase (0 ms)
 [ RUN      ] ControlAllocationSequentialDesaturationTest.SetGetActuatorSetpoint
 [       OK ] ControlAllocationSequentialDesaturationTest.SetGetActuatorSetpoint (0 ms)
-[----------] 2 tests from ControlAllocationSequentialDesaturationTest (1 ms total)
+[----------] 2 tests from ControlAllocationSequentialDesaturationTest (0 ms total)
 
 [----------] 17 tests from ControlAllocationSequentialDesaturationTestQuadX
 [ RUN      ] ControlAllocationSequentialDesaturationTestQuadX.Zero
-[       OK ] ControlAllocationSequentialDesaturationTestQuadX.Zero (1 ms)
+[       OK ] ControlAllocationSequentialDesaturationTestQuadX.Zero (0 ms)
 [ RUN      ] ControlAllocationSequentialDesaturationTestQuadX.CollectiveThrust
 [       OK ] ControlAllocationSequentialDesatu...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-Rotation" classname="unit-Rotation" time="0.0536957" status="run">
+	<testcase name="unit-Rotation" classname="unit-Rotation" time="0.0269554" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 2 tests from Rotations
 [ RUN      ] Rotations.matrix_vs_3f
-[       OK ] Rotations.matrix_vs_3f (1 ms)
+[       OK ] Rotations.matrix_vs_3f (0 ms)
 [ RUN      ] Rotations.duplicates
-[       OK ] Rotations.duplicates (7 ms)
-[----------] 2 tests from Rotations (9 ms total)
+[       OK ] Rotations.duplicates (4 ms)
+[----------] 2 tests from Rotations (5 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (9 ms total)
+[==========] 2 tests from 1 test suite ran. (5 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-FieldSensorBiasEstimator" classname="unit-FieldSensorBiasEstimator" time="0.0683511" status="run">
+	<testcase name="unit-FieldSensorBiasEstimator" classname="unit-FieldSensorBiasEstimator" time="0.0227208" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from MagnetometerBiasEstimatorTest
 [ RUN      ] MagnetometerBiasEstimatorTest.constantZRotation
-[       OK ] MagnetometerBiasEstimatorTest.constantZRotation (18 ms)
-[----------] 1 test from MagnetometerBiasEstimatorTest (18 ms total)
+[       OK ] MagnetometerBiasEstimatorTest.constantZRotation (6 ms)
+[----------] 1 test from MagnetometerBiasEstimatorTest (6 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (18 ms total)
+[==========] 1 test from 1 test suite ran. (6 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_geo" classname="unit-test_geo" time="0.0482583" status="run">
+	<testcase name="unit-test_geo" classname="unit-test_geo" time="0.0272015" status="run">
 		<properties/>
 		<system-out>[==========] Running 8 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -201,7 +201,7 @@ ERROR [px4_work_queue] init failed
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-Hysteresis" classname="unit-Hysteresis" time="0.0343318" status="run">
+	<testcase name="unit-Hysteresis" classname="unit-Hysteresis" time="0.0187595" status="run">
 		<properties/>
 		<system-out>[==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -220,14 +220,14 @@ ERROR [px4_work_queue] init failed
 [       OK ] Hysteresis.ChangeAfterMultipleSets (0 ms)
 [ RUN      ] Hysteresis.TakeChangeBack
 [       OK ] Hysteresis.TakeChangeBack (0 ms)
-[----------] 7 tests from Hysteresis (3 ms total)
+[----------] 7 tests from Hysteresis (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 7 tests from 1 test suite ran. (3 ms total)
+[==========] 7 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 7 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_lat_lon_alt" classname="unit-test_lat_lon_alt" time="0.0391435" status="run">
+	<testcase name="unit-test_lat_lon_alt" classname="unit-test_lat_lon_alt" time="0.02215" status="run">
 		<properties/>
 		<system-out>[==========] Running 6 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -243,15 +243,15 @@ ERROR [px4_work_queue] init failed
 [ RUN      ] TestLatLonAlt.subLatLonAlt
 [       OK ] TestLatLonAlt.subLatLonAlt (0 ms)
 [ RUN      ] TestLatLonAlt.fromAndToECEF
-[       OK ] TestLatLonAlt.fromAndToECEF (5 ms)
-[----------] 6 tests from TestLatLonAlt (8 ms total)
+[       OK ] TestLatLonAlt.fromAndToECEF (2 ms)
+[----------] 6 tests from TestLatLonAlt (4 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (9 ms total)
+[==========] 6 tests from 1 test suite ran. (4 ms total)
 [  PASSED  ] 6 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixAssignment" classname="unit-MatrixAssignment" time="0.0295981" status="run">
+	<testcase name="unit-MatrixAssignment" classname="unit-MatrixAssignment" time="0.0155576" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -276,21 +276,21 @@ ERROR [px4_work_queue] init failed
 
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixAttitude" classname="unit-MatrixAttitude" time="0.0312343" status="run">
+	<testcase name="unit-MatrixAttitude" classname="unit-MatrixAttitude" time="0.0209767" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from MatrixAttitudeTest
 [ RUN      ] MatrixAttitudeTest.Attitude
-[       OK ] MatrixAttitudeTest.Attitude (4 ms)
-[----------] 1 test from MatrixAttitudeTest (4 ms total)
+[       OK ] MatrixAttitudeTest.Attitude (3 ms)
+[----------] 1 test from MatrixAttitudeTest (3 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (4 ms total)
+[==========] 1 test from 1 test suite ran. (3 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixCopyTo" classname="unit-MatrixCopyTo" time="0.0280681" status="run">
+	<testcase name="unit-MatrixCopyTo" classname="unit-MatrixCopyTo" time="0.0155632" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -304,7 +304,7 @@ ERROR [px4_work_queue] init failed
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixDcm2" classname="unit-MatrixDcm2" time="0.0274187" status="run">
+	<testcase name="unit-MatrixDcm2" classname="unit-MatrixDcm2" time="0.0239615" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -313,14 +313,14 @@ ERROR [px4_work_queue] init failed
 [       OK ] MatrixDcm2Test.CompareToDcm (0 ms)
 [ RUN      ] MatrixDcm2Test.45DegreeRotation
 [       OK ] MatrixDcm2Test.45DegreeRotation (0 ms)
-[----------] 2 tests from MatrixDcm2Test (1 ms total)
+[----------] 2 tests from MatrixDcm2Test (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 2 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixDual" classname="unit-MatrixDual" time="0.0298518" status="run">
+	<testcase name="unit-MatrixDual" classname="unit-MatrixDual" time="0.0188695" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -334,7 +334,7 @@ ERROR [px4_work_queue] init failed
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixFilter" classname="unit-MatrixFilter" time="0.0325129" status="run">
+	<testcase name="unit-MatrixFilter" classname="unit-MatrixFilter" time="0.0156944" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -348,7 +348,7 @@ ERROR [px4_work_queue] init failed
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixHatvee" classname="unit-MatrixHatvee" time="0.0332513" status="run">
+	<testcase name="unit-MatrixHatvee" classname="unit-MatrixHatvee" time="0.0189458" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -362,53 +362,53 @@ ERROR [px4_work_queue] init failed
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixHelper" classname="unit-MatrixHelper" time="0.045393" status="run">
+	<testcase name="unit-MatrixHelper" classname="unit-MatrixHelper" time="0.0170107" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 3 tests from MatrixHelperTest
 [ RUN      ] MatrixHelperTest.SignFloat
-[       OK ] MatrixHelperTest.SignFloat (1 ms)
+[       OK ] MatrixHelperTest.SignFloat (0 ms)
 [ RUN      ] MatrixHelperTest.SignInt
 [       OK ] MatrixHelperTest.SignInt (0 ms)
 [ RUN      ] MatrixHelperTest.Helper
 [       OK ] MatrixHelperTest.Helper (0 ms)
-[----------] 3 tests from MatrixHelperTest (2 ms total)
+[----------] 3 tests from MatrixHelperTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (2 ms total)
+[==========] 3 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixIntegral" classname="unit-MatrixIntegral" time="0.0624529" status="run">
+	<testcase name="unit-MatrixIntegral" classname="unit-MatrixIntegral" time="0.0397999" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from MatrixIntegralTest
 [ RUN      ] MatrixIntegralTest.Integral
-[       OK ] MatrixIntegralTest.Integral (36 ms)
-[----------] 1 test from MatrixIntegralTest (36 ms total)
+[       OK ] MatrixIntegralTest.Integral (22 ms)
+[----------] 1 test from MatrixIntegralTest (22 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (36 ms total)
+[==========] 1 test from 1 test suite ran. (22 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixInverse" classname="unit-MatrixInverse" time="0.668067" status="run">
+	<testcase name="unit-MatrixInverse" classname="unit-MatrixInverse" time="0.323741" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from MatrixInverseTest
 [ RUN      ] MatrixInverseTest.Inverse
-[       OK ] MatrixInverseTest.Inverse (640 ms)
-[----------] 1 test from MatrixInverseTest (640 ms total)
+[       OK ] MatrixInverseTest.Inverse (309 ms)
+[----------] 1 test from MatrixInverseTest (309 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (640 ms total)
+[==========] 1 test from 1 test suite ran. (309 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixLeastSquares" classname="unit-MatrixLeastSquares" time="0.0281224" status="run">
+	<testcase name="unit-MatrixLeastSquares" classname="unit-MatrixLeastSquares" time="0.015159" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -427,14 +427,14 @@ i 0
 [ RUN      ] MatrixLeastSquaresTest.ZeroDivision
 i 1
 [       OK ] MatrixLeastSquaresTest.ZeroDivision (0 ms)
-[----------] 3 tests from MatrixLeastSquaresTest (1 ms total)
+[----------] 3 tests from MatrixLeastSquaresTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (1 ms total)
+[==========] 3 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixMultiplication" classname="unit-MatrixMultiplication" time="0.0248068" status="run">
+	<testcase name="unit-MatrixMultiplication" classname="unit-MatrixMultiplication" time="0.0191135" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -448,21 +448,21 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixPseudoInverse" classname="unit-MatrixPseudoInverse" time="0.0957723" status="run">
+	<testcase name="unit-MatrixPseudoInverse" classname="unit-MatrixPseudoInverse" time="0.055465" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from MatrixPseudoInverseTest
 [ RUN      ] MatrixPseudoInverseTest.PseudoInverse
-[       OK ] MatrixPseudoInverseTest.PseudoInverse (67 ms)
-[----------] 1 test from MatrixPseudoInverseTest (67 ms total)
+[       OK ] MatrixPseudoInverseTest.PseudoInverse (39 ms)
+[----------] 1 test from MatrixPseudoInverseTest (39 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (67 ms total)
+[==========] 1 test from 1 test suite ran. (39 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixScalarMultiplication" classname="unit-MatrixScalarMultiplication" time="0.0283076" status="run">
+	<testcase name="unit-MatrixScalarMultiplication" classname="unit-MatrixScalarMultiplication" time="0.0192347" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -476,7 +476,7 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixSetIdentity" classname="unit-MatrixSetIdentity" time="0.0434501" status="run">
+	<testcase name="unit-MatrixSetIdentity" classname="unit-MatrixSetIdentity" time="0.0164746" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -486,11 +486,11 @@ i 1
 [----------] 1 test from MatrixSetIdentityTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixSlice" classname="unit-MatrixSlice" time="0.0295894" status="run">
+	<testcase name="unit-MatrixSlice" classname="unit-MatrixSlice" time="0.0155461" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -506,11 +506,11 @@ i 1
 [----------] 4 tests from MatrixSliceTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (2 ms total)
+[==========] 4 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 4 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixSparseVector" classname="unit-MatrixSparseVector" time="0.0339322" status="run">
+	<testcase name="unit-MatrixSparseVector" classname="unit-MatrixSparseVector" time="0.0215994" status="run">
 		<properties/>
 		<system-out>[==========] Running 11 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -533,7 +533,7 @@ i 1
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixSquare" classname="unit-MatrixSquare" time="0.0259938" status="run">
+	<testcase name="unit-MatrixSquare" classname="unit-MatrixSquare" time="0.0153467" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -547,7 +547,7 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixTranspose" classname="unit-MatrixTranspose" time="0.0272291" status="run">
+	<testcase name="unit-MatrixTranspose" classname="unit-MatrixTranspose" time="0.0196616" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -561,7 +561,7 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixVector" classname="unit-MatrixVector" time="0.0292523" status="run">
+	<testcase name="unit-MatrixVector" classname="unit-MatrixVector" time="0.0198414" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -575,7 +575,7 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixUnwrap" classname="unit-MatrixUnwrap" time="0.0251721" status="run">
+	<testcase name="unit-MatrixUnwrap" classname="unit-MatrixUnwrap" time="0.0250834" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -584,14 +584,14 @@ i 1
 [       OK ] MatrixUnwrapTest.UnwrapFloats (0 ms)
 [ RUN      ] MatrixUnwrapTest.UnwrapDoubles
 [       OK ] MatrixUnwrapTest.UnwrapDoubles (0 ms)
-[----------] 2 tests from MatrixUnwrapTest (1 ms total)
+[----------] 2 tests from MatrixUnwrapTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 2 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixUpperRightTriangle" classname="unit-MatrixUpperRightTriangle" time="0.0273563" status="run">
+	<testcase name="unit-MatrixUpperRightTriangle" classname="unit-MatrixUpperRightTriangle" time="0.0165592" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -605,7 +605,7 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixVector2" classname="unit-MatrixVector2" time="0.0271903" status="run">
+	<testcase name="unit-MatrixVector2" classname="unit-MatrixVector2" time="0.0151401" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -619,21 +619,21 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixVector3" classname="unit-MatrixVector3" time="0.0417679" status="run">
+	<testcase name="unit-MatrixVector3" classname="unit-MatrixVector3" time="0.0191999" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from MatrixVector3Test
 [ RUN      ] MatrixVector3Test.Vector3
-[       OK ] MatrixVector3Test.Vector3 (1 ms)
-[----------] 1 test from MatrixVector3Test (1 ms total)
+[       OK ] MatrixVector3Test.Vector3 (0 ms)
+[----------] 1 test from MatrixVector3Test (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MatrixVectorAssignment" classname="unit-MatrixVectorAssignment" time="0.0280517" status="run">
+	<testcase name="unit-MatrixVectorAssignment" classname="unit-MatrixVectorAssignment" time="0.0162494" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -647,7 +647,7 @@ i 1
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-LowPassFilter2pVector3f" classname="unit-LowPassFilter2pVector3f" time="0.203277" status="run">
+	<testcase name="unit-LowPassFilter2pVector3f" classname="unit-LowPassFilter2pVector3f" time="0.117885" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -655,15 +655,15 @@ i 1
 [ RUN      ] LowPassFilter2pVector3fTest.setGet
 [       OK ] LowPassFilter2pVector3fTest.setGet (0 ms)
 [ RUN      ] LowPassFilter2pVector3fTest.simulate80HzCutoff
-[       OK ] LowPassFilter2pVector3fTest.simulate80HzCutoff (178 ms)
-[----------] 2 tests from LowPassFilter2pVector3fTest (179 ms total)
+[       OK ] LowPassFilter2pVector3fTest.simulate80HzCutoff (101 ms)
+[----------] 2 tests from LowPassFilter2pVector3fTest (102 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (179 ms total)
+[==========] 2 tests from 1 test suite ran. (102 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-AlphaFilter" classname="unit-AlphaFilter" time="0.0444695" status="run">
+	<testcase name="unit-AlphaFilter" classname="unit-AlphaFilter" time="0.0245187" status="run">
 		<properties/>
 		<system-out>[==========] Running 17 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -690,7 +690,7 @@ i 1
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-MedianFilter" classname="unit-MedianFilter" time="0.0298945" status="run">
+	<testcase name="unit-MedianFilter" classname="unit-MedianFilter" time="0.0158504" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -703,14 +703,14 @@ i 1
 [       OK ] MedianFilterTest.test5u_simple (0 ms)
 [ RUN      ] MedianFilterTest.test5i_100
 [       OK ] MedianFilterTest.test5i_100 (0 ms)
-[----------] 4 tests from MedianFilterTest (2 ms total)
+[----------] 4 tests from MedianFilterTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (2 ms total)
+[==========] 4 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 4 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-NotchFilter" classname="unit-NotchFilter" time="0.0510453" status="run">
+	<testcase name="unit-NotchFilter" classname="unit-NotchFilter" time="0.032161" status="run">
 		<properties/>
 		<system-out>[==========] Running 12 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -732,12 +732,12 @@ i 1
 [ RUN      ] NotchFilterTest.updateFilter
 [       OK ] NotchFilterTest.updateFilter (0 ms)
 [ RUN      ] NotchFilterTest.filterVector3f
-[       OK ] NotchFilterTest.filterVector3f (7 ms)
+[       OK ] NotchFilterTest.filterVector3f (4 ms)
 [ RUN      ] Notch...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-second_order_reference_model_test" classname="unit-second_order_reference_model_test" time="0.0351709" status="run">
+	<testcase name="unit-second_order_reference_model_test" classname="unit-second_order_reference_model_test" time="0.0251509" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -750,14 +750,14 @@ i 1
 [       OK ] SecondOrderReferenceModel.Vector3DefaultConstructorInitializesStatesToZero (0 ms)
 [ RUN      ] SecondOrderReferenceModel.Vector3Reset
 [       OK ] SecondOrderReferenceModel.Vector3Reset (0 ms)
-[----------] 4 tests from SecondOrderReferenceModel (2 ms total)
+[----------] 4 tests from SecondOrderReferenceModel (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (3 ms total)
+[==========] 4 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 4 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-Functions" classname="unit-Functions" time="0.0343417" status="run">
+	<testcase name="unit-Functions" classname="unit-Functions" time="0.018401" status="run">
 		<properties/>
 		<system-out>[==========] Running 12 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -787,7 +787,7 @@ i 1
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-Utilities" classname="unit-Utilities" time="0.0307501" status="run">
+	<testcase name="unit-Utilities" classname="unit-Utilities" time="0.0200903" status="run">
 		<properties/>
 		<system-out>[==========] Running 5 tests from 2 test suites.
 [----------] Global test environment set-up.
@@ -813,35 +813,35 @@ i 1
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-WelfordMean" classname="unit-WelfordMean" time="0.0289091" status="run">
+	<testcase name="unit-WelfordMean" classname="unit-WelfordMean" time="0.0165855" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from WelfordMeanTest
 [ RUN      ] WelfordMeanTest.NoisySignal
-[       OK ] WelfordMeanTest.NoisySignal (1 ms)
-[----------] 1 test from WelfordMeanTest (1 ms total)
+[       OK ] WelfordMeanTest.NoisySignal (0 ms)
+[----------] 1 test from WelfordMeanTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-WelfordMeanVector" classname="unit-WelfordMeanVector" time="0.0347795" status="run">
+	<testcase name="unit-WelfordMeanVector" classname="unit-WelfordMeanVector" time="0.0226333" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from WelfordMeanVectorTest
 [ RUN      ] WelfordMeanVectorTest.NoisySignal
-[       OK ] WelfordMeanVectorTest.NoisySignal (6 ms)
-[----------] 1 test from WelfordMeanVectorTest (6 ms total)
+[       OK ] WelfordMeanVectorTest.NoisySignal (5 ms)
+[----------] 1 test from WelfordMeanVectorTest (5 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (6 ms total)
+[==========] 1 test from 1 test suite ran. (5 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-MaxDistanceToCircle" classname="unit-MaxDistanceToCircle" time="0.0398605" status="run">
+	<testcase name="unit-MaxDistanceToCircle" classname="unit-MaxDistanceToCircle" time="0.0156859" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -854,14 +854,14 @@ i 1
 [       OK ] MaxDistanceToCircle.outsideCircle (0 ms)
 [ RUN      ] MaxDistanceToCircle.onCircle
 [       OK ] MaxDistanceToCircle.onCircle (0 ms)
-[----------] 4 tests from MaxDistanceToCircle (2 ms total)
+[----------] 4 tests from MaxDistanceToCircle (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (2 ms total)
+[==========] 4 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 4 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-mixer_module_tests" classname="functional-mixer_module_tests" time="0.752602" status="run">
+	<testcase name="functional-mixer_module_tests" classname="functional-mixer_module_tests" time="0.737056" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -891,7 +891,7 @@ ERROR [px4_work_queue] init...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-VelocitySmoothing" classname="unit-VelocitySmoothing" time="0.0448406" status="run">
+	<testcase name="unit-VelocitySmoothing" classname="unit-VelocitySmoothing" time="0.0207896" status="run">
 		<properties/>
 		<system-out>[==========] Running 7 tests from 2 test suites.
 [----------] Global test environment set-up.
@@ -902,7 +902,7 @@ ERROR [px4_work_queue] init...
 [       OK ] VelocitySmoothingBasicTest.DivisionByZeroComputeT1 (0 ms)
 [ RUN      ] VelocitySmoothingBasicTest.DivisionByZeroSaturateT1ForAccel
 [       OK ] VelocitySmoothingBasicTest.DivisionByZeroSaturateT1ForAccel (0 ms)
-[----------] 3 tests from VelocitySmoothingBasicTest (2 ms total)
+[----------] 3 tests from VelocitySmoothingBasicTest (1 ms total)
 
 [----------] 4 tests from VelocitySmoothingTest
 [ RUN      ] VelocitySmoothingTest.testTimeSynchronization
@@ -914,7 +914,7 @@ ERROR [px4_work_queue] init...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-PositionSmoothing" classname="unit-PositionSmoothing" time="0.0999589" status="run">
+	<testcase name="unit-PositionSmoothing" classname="unit-PositionSmoothing" time="0.057496" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 2 test suites.
 [----------] Global test environment set-up.
@@ -926,21 +926,21 @@ ERROR [px4_work_queue] init...
 [----------] 3 tests from PositionSmoothingTest
 [ RUN      ] PositionSmoothingTest.reachesTargetPositionSetpoint
 Converged in 1036 iterations
-[       OK ] PositionSmoothingTest.reachesTargetPositionSetpoint (31 ms)
+[       OK ] PositionSmoothingTest.reachesTargetPositionSetpoint (18 ms)
 [ RUN      ] PositionSmoothingTest.reachesTargetVelocityIntegration
 Converged in 962 iterations
-[       OK ] PositionSmoothingTest.reachesTargetVelocityIntegration (29 ms)
+[       OK ] PositionSmoothingTest.reachesTargetVelocityIntegration (17 ms)
 [ RUN      ] PositionSmoothingTest.reachesTargetInitialVelocity
 Converged in 302 iterations
-[       OK ] PositionSmoothingTest.reachesTargetInitialVelocity (9 ms)
-[----------] 3 tests from PositionSmoothingTest (71 ms total)
+[       OK ] PositionSmoothingTest.reachesTargetInitialVelocity (5 ms)
+[----------] 3 tests from PositionSmoothingTest (41 ms total)
 
 [----------] Global test environment tear-down
 [==========] 4 tests from 2 test suites r...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-HeadingSmoothing" classname="unit-HeadingSmoothing" time="0.0317083" status="run">
+	<testcase name="unit-HeadingSmoothing" classname="unit-HeadingSmoothing" time="0.0178313" status="run">
 		<properties/>
 		<system-out>[==========] Running 5 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -955,20 +955,20 @@ Converged in 302 iterations
 [       OK ] HeadingSmoothingTest.positive_rate (0 ms)
 [ RUN      ] HeadingSmoothingTest.negative_rate
 [       OK ] HeadingSmoothingTest.negative_rate (0 ms)
-[----------] 5 tests from HeadingSmoothingTest (2 ms total)
+[----------] 5 tests from HeadingSmoothingTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 5 tests from 1 test suite ran. (2 ms total)
+[==========] 5 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 5 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-Npfg" classname="unit-Npfg" time="0.039533" status="run">
+	<testcase name="unit-Npfg" classname="unit-Npfg" time="0.0184383" status="run">
 		<properties/>
 		<system-out>[==========] Running 8 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 8 tests from NpfgTest
 [ RUN      ] NpfgTest.NoWind
-[       OK ] NpfgTest.NoWind (1 ms)
+[       OK ] NpfgTest.NoWind (0 ms)
 [ RUN      ] NpfgTest.LightCrossWind
 [       OK ] NpfgTest.LightCrossWind (0 ms)
 [ RUN      ] NpfgTest.StrongHeadWind
@@ -983,34 +983,34 @@ Converged in 302 iterations
 [       OK ] NpfgTest.ExcessCrossWind (0 ms)
 [ RUN      ] NpfgTest.HeadingControl
 [       OK ] NpfgTest.HeadingControl (0 ms)
-[----------] 8 tests from NpfgTest (6 ms total)
+[----------] 8 tests from NpfgTest (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 8 tests from 1 test suite ran. (6 ms total)
+[==========] 8 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 8 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-PID" classname="unit-PID" time="0.0466179" status="run">
+	<testcase name="unit-PID" classname="unit-PID" time="0.0195686" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 4 tests from PIDTest
 [ RUN      ] PIDTest.AllZeroCase
-[       OK ] PIDTest.AllZeroCase (1 ms)
+[       OK ] PIDTest.AllZeroCase (0 ms)
 [ RUN      ] PIDTest.OutputLimit
 [       OK ] PIDTest.OutputLimit (0 ms)
 [ RUN      ] PIDTest.ProportinalOnly
 [       OK ] PIDTest.ProportinalOnly (0 ms)
 [ RUN      ] PIDTest.InteralOpenLoop
 [       OK ] PIDTest.InteralOpenLoop (0 ms)
-[----------] 4 tests from PIDTest (3 ms total)
+[----------] 4 tests from PIDTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (3 ms total)
+[==========] 4 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 4 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-pid_design_test" classname="unit-pid_design_test" time="0.0411196" status="run">
+	<testcase name="unit-pid_design_test" classname="unit-pid_design_test" time="0.0240439" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -1020,17 +1020,17 @@ Converged in 302 iterations
 [----------] 1 test from PidDesignTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-PurePursuit" classname="unit-PurePursuit" time="0.0480676" status="run">
+	<testcase name="unit-PurePursuit" classname="unit-PurePursuit" time="0.0164952" status="run">
 		<properties/>
 		<system-out>[==========] Running 6 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 6 tests from PurePursuitTest
 [ RUN      ] PurePursuitTest.InvalidSpeed
-[       OK ] PurePursuitTest.InvalidSpeed (1 ms)
+[       OK ] PurePursuitTest.InvalidSpeed (0 ms)
 [ RUN      ] PurePursuitTest.InvalidWaypoints
 [       OK ] PurePursuitTest.InvalidWaypoints (0 ms)
 [ RUN      ] PurePursuitTest.OutOfLookahead
@@ -1041,28 +1041,28 @@ Converged in 302 iterations
 [       OK ] PurePursuitTest.CurrAndPrevSameNorthCoordinate (0 ms)
 [ RUN      ] PurePursuitTest.CrosstrackError
 [       OK ] PurePursuitTest.CrosstrackError (0 ms)
-[----------] 6 tests from PurePursuitTest (4 ms total)
+[----------] 6 tests from PurePursuitTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (5 ms total)
+[==========] 6 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 6 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-rate_control_test" classname="unit-rate_control_test" time="0.0434308" status="run">
+	<testcase name="unit-rate_control_test" classname="unit-rate_control_test" time="0.017445" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from RateControlTest
 [ RUN      ] RateControlTest.AllZeroCase
-[       OK ] RateControlTest.AllZeroCase (1 ms)
-[----------] 1 test from RateControlTest (1 ms total)
+[       OK ] RateControlTest.AllZeroCase (0 ms)
+[----------] 1 test from RateControlTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-Ringbuffer" classname="unit-Ringbuffer" time="0.0319923" status="run">
+	<testcase name="unit-Ringbuffer" classname="unit-Ringbuffer" time="0.0187847" status="run">
 		<properties/>
 		<system-out>[==========] Running 9 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1085,13 +1085,13 @@ Converged in 302 iterations
 [       OK ] Ringbuffer.PopWithoutBuffer (0 ms)
 [ RUN      ] Ringbuffer.EmptyAndNoSpaceForHeader
 [       OK ] Ringbuffer.EmptyAndNoSpaceForHeader (0 ms)
-[----------] 9 tests from Ringbuffer (4 ms total)
+[----------] 9 tests from Ringbuffer (2 ms total)
 
 ...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-RoverControl" classname="unit-RoverControl" time="0.0432794" status="run">
+	<testcase name="unit-RoverControl" classname="unit-RoverControl" time="0.0167704" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1100,14 +1100,14 @@ Converged in 302 iterations
 [       OK ] calcWaypointTransitionAngle.invalidInputs (0 ms)
 [ RUN      ] calcWaypointTransitionAngle.validInputs
 [       OK ] calcWaypointTransitionAngle.validInputs (0 ms)
-[----------] 2 tests from calcWaypointTransitionAngle (1 ms total)
+[----------] 2 tests from calcWaypointTransitionAngle (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (1 ms total)
+[==========] 2 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-SlewRate" classname="unit-SlewRate" time="0.0404266" status="run">
+	<testcase name="unit-SlewRate" classname="unit-SlewRate" time="0.0165664" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1118,14 +1118,14 @@ Converged in 302 iterations
 [       OK ] SlewRateTest.SlewDownLimited (0 ms)
 [ RUN      ] SlewRateTest.ReachValueSlewed
 [       OK ] SlewRateTest.ReachValueSlewed (0 ms)
-[----------] 3 tests from SlewRateTest (2 ms total)
+[----------] 3 tests from SlewRateTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (2 ms total)
+[==========] 3 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-SlewRateYaw" classname="unit-SlewRateYaw" time="0.0307471" status="run">
+	<testcase name="unit-SlewRateYaw" classname="unit-SlewRateYaw" time="0.0184982" status="run">
 		<properties/>
 		<system-out>[==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1144,14 +1144,14 @@ Converged in 302 iterations
 [       OK ] SlewRateYawTest.SlewUpWrappedInput (0 ms)
 [ RUN      ] SlewRateYawTest.SlewShortWayInput
 [       OK ] SlewRateYawTest.SlewShortWayInput (0 ms)
-[----------] 7 tests from SlewRateYawTest (3 ms total)
+[----------] 7 tests from SlewRateYawTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 7 tests from 1 test suite ran. (3 ms total)
+[==========] 7 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 7 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-arx_rls_test" classname="unit-arx_rls_test" time="0.030505" status="run">
+	<testcase name="unit-arx_rls_test" classname="unit-arx_rls_test" time="0.0151111" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1166,14 +1166,14 @@ Converged in 302 iterations
 [       OK ] ArxRlsTest.test221 (0 ms)
 [ RUN      ] ArxRlsTest.resetTest
 [       OK ] ArxRlsTest.resetTest (0 ms)
-[----------] 3 tests from ArxRlsTest (1 ms total)
+[----------] 3 tests from ArxRlsTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 3 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-system_identification_test" classname="unit-system_identification_test" time="0.0544357" status="run">
+	<testcase name="unit-system_identification_test" classname="unit-system_identification_test" time="0.0477344" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1199,7 +1199,7 @@ Converged in 302 iterations
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-VariableLengthRingbuffer" classname="unit-VariableLengthRingbuffer" time="0.0308626" status="run">
+	<testcase name="unit-VariableLengthRingbuffer" classname="unit-VariableLengthRingbuffer" time="0.0238926" status="run">
 		<properties/>
 		<system-out>[==========] Running 8 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1222,7 +1222,7 @@ Converged in 302 iterations
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_airspeed_fusion" classname="unit-test_airspeed_fusion" time="0.024971" status="run">
+	<testcase name="unit-test_airspeed_fusion" classname="unit-test_airspeed_fusion" time="0.021226" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -1236,25 +1236,25 @@ Converged in 302 iterations
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_geo_lookup" classname="unit-test_geo_lookup" time="0.0607373" status="run">
+	<testcase name="unit-test_geo_lookup" classname="unit-test_geo_lookup" time="0.02252" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 3 tests from GeoLookupTest
 [ RUN      ] GeoLookupTest.declination
-[       OK ] GeoLookupTest.declination (2 ms)
+[       OK ] GeoLookupTest.declination (1 ms)
 [ RUN      ] GeoLookupTest.inclination
-[       OK ] GeoLookupTest.inclination (2 ms)
+[       OK ] GeoLookupTest.inclination (0 ms)
 [ RUN      ] GeoLookupTest.strength
-[       OK ] GeoLookupTest.strength (3 ms)
-[----------] 3 tests from GeoLookupTest (8 ms total)
+[       OK ] GeoLookupTest.strength (0 ms)
+[----------] 3 tests from GeoLookupTest (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (8 ms total)
+[==========] 3 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-lockstep_scheduler_test" classname="functional-lockstep_scheduler_test" time="2.14218" status="run">
+	<testcase name="functional-lockstep_scheduler_test" classname="functional-lockstep_scheduler_test" time="2.56631" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1277,7 +1277,7 @@ INFO  [lockst...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-board_identity_test" classname="unit-board_identity_test" time="0.0317691" status="run">
+	<testcase name="unit-board_identity_test" classname="unit-board_identity_test" time="0.0197607" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1291,11 +1291,11 @@ INFO  [lockst...
 [----------] 3 tests from BoardIdentityTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (2 ms total)
+[==========] 3 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-uORBMessageFields" classname="functional-uORBMessageFields" time="0.0516945" status="run">
+	<testcase name="functional-uORBMessageFields" classname="functional-uORBMessageFields" time="0.0298104" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1304,23 +1304,23 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 4 tests from uORBMessageFieldsTest
 [ RUN      ] uORBMessageFieldsTest.decompressed_formats_match
-[       OK ] uORBMessageFieldsTest.decompressed_formats_match (7 ms)
+[       OK ] uORBMessageFieldsTest.decompressed_formats_match (4 ms)
 [ RUN      ] uORBMessageFieldsTest.decompress_formats_iterative
-[       OK ] uORBMessageFieldsTest.decompress_formats_iterative (7 ms)
+[       OK ] uORBMessageFieldsTest.decompress_formats_iterative (4 ms)
 [ RUN      ] uORBMessageFieldsTest.decompress_formats_buffer_too_short
 ERROR [uORB] buffer too small
 [       OK ] uORBMessageFieldsTest.decompress_formats_buffer_too_short (0 ms)
 [ RUN      ] uORBMessageFieldsTest.decompress_specific_format
-[       OK ] uORBMessageFieldsTest.decompress_specific_format (3 ms)
-[----------] 4 tests from uORBMessageFieldsTest (19 ms total)
+[       OK ] uORBMessageFieldsTest.decompress_specific_format (2 ms)
+[----------] 4 tests from uORBMessageFieldsTest (11 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (19 ms total)
+[==========] 4 tests from 1 test suite ran. (11 ms total)
 [  PASSED  ] 4 tes...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-uORBSubscription" classname="functional-uORBSubscription" time="0.0310989" status="run">
+	<testcase name="functional-uORBSubscription" classname="functional-uORBSubscription" time="0.0208762" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1332,14 +1332,14 @@ ERROR [px4_work_queue] init failed
 [       OK ] uORBSubscriptionTest.updateWhenSubscribedThenNotSubscribedTwice (0 ms)
 [ RUN      ] uORBSubscriptionTest.updateWhenNotSubscribedThenSubscribed
 [       OK ] uORBSubscriptionTest.updateWhenNotSubscribedThenSubscribed (0 ms)
-[----------] 2 tests from uORBSubscriptionTest (1 ms total)
+[----------] 2 tests from uORBSubscriptionTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 2 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-septentrio_fuzz_tests" classname="functional-septentrio_fuzz_tests" time="2.05623" status="run">
+	<testcase name="functional-septentrio_fuzz_tests" classname="functional-septentrio_fuzz_tests" time="2.03755" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1353,13 +1353,13 @@ ERROR [px4_work_queue] init failed
 
 [----------] 1 test from SeptentrioTestDecoder
 [ RUN      ] SeptentrioTestDecoder.runTest
-FUZZTEST_PRNG_SEED=7ywy4sckl5M0dqAj1uMssppU1bAyAb4C09iTrDX1ti4
+FUZZTEST_PRNG_SEED=A9oo1Wy-QitH-Pd2IFHKPb4QrZC7uBuPkWz-HktjDis
 [       OK ] SeptentrioTestDecoder.runTest (1001 ms)
 [----------] 1 test from SeptentrioTestDecoder (1001 ms total)
 
 [----------] 1 test from SeptentrioTest
 [ RUN      ] SeptentrioTest.runTest
-FUZZTEST_PRNG_SEED=It4zq_6Xbrazs-Cx8pajXjJU-Pd2d9xAwGTC9DvFLEk
+FUZZTEST_PRNG_SEED=4WbeGpgz2oXhI_doJCuNmCW7I3kA8cr9p96IXkX9_uU
 [       OK ] SeptentrioTest.runTest (1002 ms)
 [----------] 1 test from SeptentrioTest (1002 ms total)
 
@@ -1368,7 +1368,7 @@ FUZZTEST_PRNG_SEED=It4zq_6Xbrazs-Cx8pajXjJU-Pd2d9xAwGTC9DvFLEk
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-MessageDisplay" classname="unit-MessageDisplay" time="0.0342468" status="run">
+	<testcase name="unit-MessageDisplay" classname="unit-MessageDisplay" time="0.0251636" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1379,33 +1379,33 @@ FUZZTEST_PRNG_SEED=It4zq_6Xbrazs-Cx8pajXjJU-Pd2d9xAwGTC9DvFLEk
 [       OK ] MessageDisplayTest.testMessageDisplayStatic (0 ms)
 [ RUN      ] MessageDisplayTest.testMessageDisplayWarning
 [       OK ] MessageDisplayTest.testMessageDisplayWarning (0 ms)
-[----------] 3 tests from MessageDisplayTest (2 ms total)
+[----------] 3 tests from MessageDisplayTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (2 ms total)
+[==========] 3 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-mag_calibration_test" classname="unit-mag_calibration_test" time="0.0676329" status="run">
+	<testcase name="unit-mag_calibration_test" classname="unit-mag_calibration_test" time="0.0475084" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 3 tests from MagCalTest
 [ RUN      ] MagCalTest.sphere2Sides
-[       OK ] MagCalTest.sphere2Sides (7 ms)
+[       OK ] MagCalTest.sphere2Sides (6 ms)
 [ RUN      ] MagCalTest.sphereRegularlySpaced
-[       OK ] MagCalTest.sphereRegularlySpaced (7 ms)
+[       OK ] MagCalTest.sphereRegularlySpaced (6 ms)
 [ RUN      ] MagCalTest.replayTestData
 Ellipsoid fit
-[       OK ] MagCalTest.replayTestData (25 ms)
-[----------] 3 tests from MagCalTest (40 ms total)
+[       OK ] MagCalTest.replayTestData (17 ms)
+[----------] 3 tests from MagCalTest (29 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (40 ms total)
+[==========] 3 tests from 1 test suite ran. (29 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-ModeManagement" classname="functional-ModeManagement" time="0.0320495" status="run">
+	<testcase name="functional-ModeManagement" classname="functional-ModeManagement" time="0.0205711" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1415,15 +1415,15 @@ ERROR [px4_work_queue] init failed
 [----------] 1 test from ModeManagementTest
 [ RUN      ] ModeManagementTest.Hashes
 WARN  [commander] Mode 'mode 3' already registered (as 'mode 3')
-[       OK ] ModeManagementTest.Hashes (1 ms)
-[----------] 1 test from ModeManagementTest (1 ms total)
+[       OK ] ModeManagementTest.Hashes (0 ms)
+[----------] 1 test from ModeManagementTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="functional-failsafe_test" classname="functional-failsafe_test" time="0.0740035" status="run">
+	<testcase name="functional-failsafe_test" classname="functional-failsafe_test" time="0.0194769" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1435,11 +1435,11 @@ ERROR [px4_work_queue] init failed
 WARN  [failsafe] Failsafe activated: entering Hold for 5 seconds	
 WARN  [failsafe] Failsafe activated	
 WARN  [failsafe] Failsafe activated	
-[       OK ] FailsafeTest.general (1 ms)
+[       OK ] FailsafeTest.general (0 ms)
 [ RUN      ] FailsafeTest.takeover
 WARN  [failsafe] Failsafe activated: entering Hold for 5 seconds	
 WARN  [failsafe] Failsafe activated	
-[       OK ] FailsafeTest.takeover (1 ms)
+[       OK ] FailsafeTest.takeover (0 ms)
 [ RUN      ] FailsafeTest.takeover_denied
 WARN  [failsafe] Failsafe activated	
 WARN  [failsafe] Failsafe activated	
@@ -1452,7 +1452,7 @@ WARN  [failsafe] Failsafe activated
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-SqeFailureDetector" classname="functional-SqeFailureDetector" time="4.67831" status="run">
+	<testcase name="functional-SqeFailureDetector" classname="functional-SqeFailureDetector" time="8.1208" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1461,19 +1461,19 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 36 tests from SqeFailureDetectorTest
 [ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
-[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (452 ms)
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
 [ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
-[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (42 ms)
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (41 ms)
 [ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
-[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (42 ms)
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (82 ms)
 [ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
-[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (41 ms)
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (83 ms)
 [ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
 [       OK ] SqeFailur...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-SqeFailureDetectorImu" classname="functional-SqeFailureDetectorImu" time="0.0472243" status="run">
+	<testcase name="functional-SqeFailureDetectorImu" classname="functional-SqeFailureDetectorImu" time="0.0233405" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1482,18 +1482,18 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 8 tests from SqeFailureDetectorImuTest
 [ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
-[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (1 ms)
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (0 ms)
 [ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
-[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (1 ms)
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (0 ms)
 [ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
-[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (1 ms)
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (0 ms)
 [ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
-[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (1 ms)
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (0 ms)
 [ RUN      ] SqeFailureDet...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-SqeFailureInjector" classname="functional-SqeFailureInjector" time="0.0465562" status="run">
+	<testcase name="functional-SqeFailureInjector" classname="functional-SqeFailureInjector" time="0.0297462" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1515,7 +1515,7 @@ INFO  [failure_detector] CMD_INJECT_FAILURE, motor 5...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-HealthAndArmingChecks" classname="functional-HealthAndArmingChecks" time="0.0354497" status="run">
+	<testcase name="functional-HealthAndArmingChecks" classname="functional-HealthAndArmingChecks" time="0.0251912" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1535,15 +1535,15 @@ ERROR [px4_work_queue] init failed
 [       OK ] ReporterTest.reporting (0 ms)
 [ RUN      ] ReporterTest.reporting_multiple
 [       OK ] ReporterTest.reporting_multiple (0 ms)
-[----------] 6 tests from ReporterTest (3 ms total)
+[----------] 6 tests from ReporterTest (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (3 ms total)
+[==========] 6 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 6...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-ActuatorEffectivenessHelicopter" classname="functional-ActuatorEffectivenessHelicopter" time="0.0323657" status="run">
+	<testcase name="functional-ActuatorEffectivenessHelicopter" classname="functional-ActuatorEffectivenessHelicopter" time="0.0190862" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1560,7 +1560,7 @@ ERROR [px4_work_queue] init failed
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="functional-ActuatorEffectivenessRotors" classname="functional-ActuatorEffectivenessRotors" time="0.0320099" status="run">
+	<testcase name="functional-ActuatorEffectivenessRotors" classname="functional-ActuatorEffectivenessRotors" time="0.0219293" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -1581,7 +1581,7 @@ ERROR [px4_work_queue] init failed
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_accelerometer" classname="unit-test_EKF_accelerometer" time="81.2005" status="run">
+	<testcase name="unit-test_EKF_accelerometer" classname="unit-test_EKF_accelerometer" time="46.7985" status="run">
 		<properties/>
 		<system-out>[==========] Running 9 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1617,7 +1617,7 @@ resetting mag I [0.000, 0.000, 0.000] -&gt; [0.218, 0.000, 0.430]
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_airspeed" classname="unit-test_EKF_airspeed" time="15.881" status="run">
+	<testcase name="unit-test_EKF_airspeed" classname="unit-test_EKF_airspeed" time="9.07658" status="run">
 		<properties/>
 		<system-out>[==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1653,7 +1653,7 @@ star...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_basics" classname="unit-test_EKF_basics" time="16.545" status="run">
+	<testcase name="unit-test_EKF_basics" classname="unit-test_EKF_basics" time="9.53051" status="run">
 		<properties/>
 		<system-out>[==========] Running 9 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1689,7 +1689,7 @@ resetting mag I [0.000, 0.000, 0.000] -&gt; [0.218, 0.000, 0.430]
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_externalVision" classname="unit-test_EKF_externalVision" time="13.0491" status="run">
+	<testcase name="unit-test_EKF_externalVision" classname="unit-test_EKF_externalVision" time="7.49092" status="run">
 		<properties/>
 		<system-out>[==========] Running 10 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1724,7 +1724,7 @@ reset to EV velocit...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_fake_pos" classname="unit-test_EKF_fake_pos" time="12.7781" status="run">
+	<testcase name="unit-test_EKF_fake_pos" classname="unit-test_EKF_fake_pos" time="7.35221" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1760,7 +1760,7 @@ resetting mag I [0.000, 0.000, 0.000] -&gt; [0.217, 0.000, 0.430]
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_flow" classname="unit-test_EKF_flow" time="15.7058" status="run">
+	<testcase name="unit-test_EKF_flow" classname="unit-test_EKF_flow" time="9.03082" status="run">
 		<properties/>
 		<system-out>[==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1797,25 +1797,25 @@ r...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_flow_generated" classname="unit-test_EKF_flow_generated" time="0.0360229" status="run">
+	<testcase name="unit-test_EKF_flow_generated" classname="unit-test_EKF_flow_generated" time="0.0205121" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 3 tests from FlowGenerated
 [ RUN      ] FlowGenerated.distBottom0xy
-[       OK ] FlowGenerated.distBottom0xy (2 ms)
+[       OK ] FlowGenerated.distBottom0xy (0 ms)
 [ RUN      ] FlowGenerated.distBottom0y
-[       OK ] FlowGenerated.distBottom0y (1 ms)
+[       OK ] FlowGenerated.distBottom0y (0 ms)
 [ RUN      ] FlowGenerated.distBottomNeg
-[       OK ] FlowGenerated.distBottomNeg (1 ms)
-[----------] 3 tests from FlowGenerated (5 ms total)
+[       OK ] FlowGenerated.distBottomNeg (0 ms)
+[----------] 3 tests from FlowGenerated (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (6 ms total)
+[==========] 3 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_gyroscope" classname="unit-test_EKF_gyroscope" time="34.8765" status="run">
+	<testcase name="unit-test_EKF_gyroscope" classname="unit-test_EKF_gyroscope" time="19.8602" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1842,16 +1842,16 @@ reset mag bias covariance
 reset mag heading -0.000 -&gt; 0.000 rad (bias:[0.000, 0.000, 0.000], declination:0.0)
 reset mag earth covariance
 resetting mag I [0.000, 0.000, 0.000] -&gt; [0.218, 0.000, 0.430]
-[       OK ] EkfGyroscopeTest.biasEstimateZero (1359 ms)
+[       OK ] EkfGyroscopeTest.biasEstimateZero (773 ms)
 [ RUN      ] EkfGyroscopeTest.biasEstimatePositive
 reset
 reset
 reset mag earth covariance
-reset mag bi...
+reset mag bia...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_fusionLogic" classname="unit-test_EKF_fusionLogic" time="46.1334" status="run">
+	<testcase name="unit-test_EKF_fusionLogic" classname="unit-test_EKF_fusionLogic" time="26.7641" status="run">
 		<properties/>
 		<system-out>[==========] Running 13 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1887,7 +1887,7 @@ stop fake po...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_gps" classname="unit-test_EKF_gps" time="38.3648" status="run">
+	<testcase name="unit-test_EKF_gps" classname="unit-test_EKF_gps" time="22.0311" status="run">
 		<properties/>
 		<system-out>[==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1924,7 +1924,7 @@ resetting mag I [0.000,...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_gnss_yaw" classname="unit-test_EKF_gnss_yaw" time="47.0685" status="run">
+	<testcase name="unit-test_EKF_gnss_yaw" classname="unit-test_EKF_gnss_yaw" time="26.6728" status="run">
 		<properties/>
 		<system-out>[==========] Running 12 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -1959,23 +1959,23 @@ starting GNSS position f...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_gnss_yaw_generated" classname="unit-test_EKF_gnss_yaw_generated" time="0.0361456" status="run">
+	<testcase name="unit-test_EKF_gnss_yaw_generated" classname="unit-test_EKF_gnss_yaw_generated" time="0.0211598" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 2 tests from GnssYawFusionGenerated
 [ RUN      ] GnssYawFusionGenerated.SingularityPitch90
-[       OK ] GnssYawFusionGenerated.SingularityPitch90 (2 ms)
+[       OK ] GnssYawFusionGenerated.SingularityPitch90 (1 ms)
 [ RUN      ] GnssYawFusionGenerated.SingularityRoll90
 [       OK ] GnssYawFusionGenerated.SingularityRoll90 (1 ms)
-[----------] 2 tests from GnssYawFusionGenerated (3 ms total)
+[----------] 2 tests from GnssYawFusionGenerated (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (3 ms total)
+[==========] 2 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_height_fusion" classname="unit-test_EKF_height_fusion" time="70.8807" status="run">
+	<testcase name="unit-test_EKF_height_fusion" classname="unit-test_EKF_height_fusion" time="40.2416" status="run">
 		<properties/>
 		<system-out>[==========] Running 9 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2010,7 +2010,7 @@ resetting mag I [0.000, 0.000, 0.000] -&gt; [0.218, 0.000, ...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_imuSampling" classname="unit-test_EKF_imuSampling" time="0.0763056" status="run">
+	<testcase name="unit-test_EKF_imuSampling" classname="unit-test_EKF_imuSampling" time="0.0431817" status="run">
 		<properties/>
 		<system-out>[==========] Running 18 tests from 2 test suites.
 [----------] Global test environment set-up.
@@ -2018,22 +2018,22 @@ resetting mag I [0.000, 0.000, 0.000] -&gt; [0.218, 0.000, ...
 [ RUN      ] EkfImuSamplingTest.accelDownSampling
 reset
 reset
-[       OK ] EkfImuSamplingTest.accelDownSampling (1 ms)
+[       OK ] EkfImuSamplingTest.accelDownSampling (0 ms)
 [ RUN      ] EkfImuSamplingTest.gyroDownSampling
 reset
 reset
 [       OK ] EkfImuSamplingTest.gyroDownSampling (0 ms)
-[----------] 2 tests from EkfImuSamplingTest (2 ms total)
+[----------] 2 tests from EkfImuSamplingTest (0 ms total)
 
 [----------] 16 tests from imuSamplingAtMultipleRates/EkfImuSamplingTest
 [ RUN      ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/0
 reset
 reset
-[       OK ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/0 (2 ms)
+[       OK ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/0 (0 ms)
 [ RUN      ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/1
 reset
 reset
-[       OK ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/1 (3 ms)
+[       OK ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/1 (1 ms)
 [ RUN      ] imuSamplingAtMultipleRates/EkfImuSamplingTest.imuSamplingAtMultipleRates/2
 reset
 reset
@@ -2041,7 +2041,7 @@ reset
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_initialization" classname="unit-test_EKF_initialization" time="14.8817" status="run">
+	<testcase name="unit-test_EKF_initialization" classname="unit-test_EKF_initialization" time="8.6363" status="run">
 		<properties/>
 		<system-out>[==========] Running 9 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2068,14 +2068,14 @@ reset mag bias covariance
 reset mag heading -0.000 -&gt; 0.000 rad (bias:[0.000, 0.000, 0.000], declination:0.0)
 reset mag earth covariance
 resetting mag I [0.000, 0.000, 0.000] -&gt; [0.218, 0.000, 0.430]
-[       OK ] EkfInitializationTest.initializeWithZeroTilt (190 ms)
+[       OK ] EkfInitializationTest.initializeWithZeroTilt (111 ms)
 [ RUN      ] EkfInitializationTest.initializeWithZeroTiltNotAtRest
 reset
 res...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_mag" classname="unit-test_EKF_mag" time="6.28761" status="run">
+	<testcase name="unit-test_EKF_mag" classname="unit-test_EKF_mag" time="3.64694" status="run">
 		<properties/>
 		<system-out>[==========] Running 5 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2111,7 +2111,7 @@ reset mag earth covariance...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_mag_declination_generated" classname="unit-test_EKF_mag_declination_generated" time="0.0318382" status="run">
+	<testcase name="unit-test_EKF_mag_declination_generated" classname="unit-test_EKF_mag_declination_generated" time="0.0267685" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2120,14 +2120,14 @@ reset mag earth covariance...
 [       OK ] MagDeclinationGenerated.declination90deg (1 ms)
 [ RUN      ] MagDeclinationGenerated.declinationUndefined
 [       OK ] MagDeclinationGenerated.declinationUndefined (1 ms)
-[----------] 2 tests from MagDeclinationGenerated (3 ms total)
+[----------] 2 tests from MagDeclinationGenerated (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (3 ms total)
+[==========] 2 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_measurementSampling" classname="unit-test_EKF_measurementSampling" time="0.0397154" status="run">
+	<testcase name="unit-test_EKF_measurementSampling" classname="unit-test_EKF_measurementSampling" time="0.0290592" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -2135,15 +2135,15 @@ reset mag earth covariance...
 [ RUN      ] EkfMeasurementSamplingTest.baroDownSampling
 reset
 reset
-[       OK ] EkfMeasurementSamplingTest.baroDownSampling (1 ms)
-[----------] 1 test from EkfMeasurementSamplingTest (1 ms total)
+[       OK ] EkfMeasurementSamplingTest.baroDownSampling (0 ms)
+[----------] 1 test from EkfMeasurementSamplingTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (1 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_ringbuffer" classname="unit-test_EKF_ringbuffer" time="0.0286143" status="run">
+	<testcase name="unit-test_EKF_ringbuffer" classname="unit-test_EKF_ringbuffer" time="0.0162907" status="run">
 		<properties/>
 		<system-out>[==========] Running 6 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2160,14 +2160,14 @@ reset
 [       OK ] EkfRingBufferTest.askingForTooNewSample (0 ms)
 [ RUN      ] EkfRingBufferTest.reallocateBuffer
 [       OK ] EkfRingBufferTest.reallocateBuffer (0 ms)
-[----------] 6 tests from EkfRingBufferTest (2 ms total)
+[----------] 6 tests from EkfRingBufferTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (2 ms total)
+[==========] 6 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 6 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_terrain" classname="unit-test_EKF_terrain" time="11.6323" status="run">
+	<testcase name="unit-test_EKF_terrain" classname="unit-test_EKF_terrain" time="6.71155" status="run">
 		<properties/>
 		<system-out>[==========] Running 5 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2203,7 +2203,7 @@ resetting mag I ...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_utils" classname="unit-test_EKF_utils" time="0.0328663" status="run">
+	<testcase name="unit-test_EKF_utils" classname="unit-test_EKF_utils" time="0.0207449" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -2213,11 +2213,11 @@ resetting mag I ...
 [----------] 1 test from eclPowfTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (1 ms total)
+[==========] 1 test from 1 test suite ran. (0 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_withReplayData" classname="unit-test_EKF_withReplayData" time="8.58727" status="run">
+	<testcase name="unit-test_EKF_withReplayData" classname="unit-test_EKF_withReplayData" time="4.99835" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2254,7 +2254,7 @@ sta...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_yaw_estimator" classname="unit-test_EKF_yaw_estimator" time="1.12978" status="run">
+	<testcase name="unit-test_EKF_yaw_estimator" classname="unit-test_EKF_yaw_estimator" time="0.603705" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -2291,21 +2291,21 @@ yaw estimator reset heading 0.000 -&gt; -2.28...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_yaw_fusion_generated" classname="unit-test_EKF_yaw_fusion_generated" time="0.0363356" status="run">
+	<testcase name="unit-test_EKF_yaw_fusion_generated" classname="unit-test_EKF_yaw_fusion_generated" time="0.0254895" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from YawFusionGenerated
 [ RUN      ] YawFusionGenerated.positiveVarianceAllOrientations
-[       OK ] YawFusionGenerated.positiveVarianceAllOrientations (6 ms)
-[----------] 1 test from YawFusionGenerated (6 ms total)
+[       OK ] YawFusionGenerated.positiveVarianceAllOrientations (4 ms)
+[----------] 1 test from YawFusionGenerated (4 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (6 ms total)
+[==========] 1 test from 1 test suite ran. (5 ms total)
 [  PASSED  ] 1 test.
 </system-out>
 	</testcase>
-	<testcase name="unit-test_SensorRangeFinder" classname="unit-test_SensorRangeFinder" time="0.0500377" status="run">
+	<testcase name="unit-test_SensorRangeFinder" classname="unit-test_SensorRangeFinder" time="0.0191486" status="run">
 		<properties/>
 		<system-out>[==========] Running 11 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2331,7 +2331,7 @@ yaw estimator reset heading 0.000 -&gt; -2.28...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_drag_fusion" classname="unit-test_EKF_drag_fusion" time="64.4238" status="run">
+	<testcase name="unit-test_EKF_drag_fusion" classname="unit-test_EKF_drag_fusion" time="36.8754" status="run">
 		<properties/>
 		<system-out>[==========] Running 5 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2367,7 +2367,7 @@ r...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-test_EKF_grounded" classname="unit-test_EKF_grounded" time="12.4496" status="run">
+	<testcase name="unit-test_EKF_grounded" classname="unit-test_EKF_grounded" time="7.14736" status="run">
 		<properties/>
 		<system-out>[==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
@@ -2397,7 +2397,7 @@ fallback to secondary ...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-StickTiltXY" classname="functional-StickTiltXY" time="0.043418" status="run">
+	<testcase name="functional-StickTiltXY" classname="functional-StickTiltXY" time="0.0222435" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2411,14 +2411,14 @@ ERROR [px4_work_queue] init failed
 [       OK ] StickTiltXYTest.NormalRollPitchCases (0 ms)
 [ RUN      ] StickTiltXYTest.90degreeCase
 [       OK ] StickTiltXYTest.90degreeCase (0 ms)
-[----------] 3 tests from StickTiltXYTest (2 ms total)
+[----------] 3 tests from StickTiltXYTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (2 ms total)
+[==========] 3 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-ManualControl" classname="functional-ManualControl" time="0.0404654" status="run">
+	<testcase name="functional-ManualControl" classname="functional-ManualControl" time="0.023626" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2430,7 +2430,7 @@ ERROR [px4_work_queue] init failed
 ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:hp_default not available
 ERROR [px4_work_queue] init failed
-[       OK ] SwitchTest.KillSwitch (1 ms)
+[       OK ] SwitchTest.KillSwitch (0 ms)
 [ RUN      ] SwitchTest.TransitionSwitch
 ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:hp_default not available
@@ -2447,7 +2447,7 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-ManualControlSelector" classname="unit-ManualControlSelector" time="0.0462133" status="run">
+	<testcase name="unit-ManualControlSelector" classname="unit-ManualControlSelector" time="0.0183426" status="run">
 		<properties/>
 		<system-out>[==========] Running 13 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2471,7 +2471,7 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-MavlinkStatustextHandler" classname="unit-MavlinkStatustextHandler" time="0.0302697" status="run">
+	<testcase name="unit-MavlinkStatustextHandler" classname="unit-MavlinkStatustextHandler" time="0.0159993" status="run">
 		<properties/>
 		<system-out>[==========] Running 7 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2490,13 +2490,13 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [       OK ] MavlinkStatustextHandler.MiddleMissing (0 ms)
 [ RUN      ] MavlinkStatustextHandler.NoGarbageAfterZeroTermination
 [       OK ] MavlinkStatustextHandler.NoGarbageAfterZeroTermination (0 ms)
-[----------] 7 tests from MavlinkStatustextHandler (3 ms total)
+[----------] 7 tests from MavlinkStatustextHandler (1 ms total)
 
 [----------] Global test environment tear-down...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-AttitudeControl" classname="unit-AttitudeControl" time="0.0995397" status="run">
+	<testcase name="unit-AttitudeControl" classname="unit-AttitudeControl" time="0.0616693" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 2 test suites.
 [----------] Global test environment set-up.
@@ -2531,7 +2531,7 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-AttitudeControlMath" classname="unit-AttitudeControlMath" time="0.0287873" status="run">
+	<testcase name="unit-AttitudeControlMath" classname="unit-AttitudeControlMath" time="0.015171" status="run">
 		<properties/>
 		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2542,14 +2542,14 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [       OK ] AttitudeControlMath.tiltCorrectionYaw180 (0 ms)
 [ RUN      ] AttitudeControlMath.tiltCorrection
 [       OK ] AttitudeControlMath.tiltCorrection (0 ms)
-[----------] 3 tests from AttitudeControlMath (1 ms total)
+[----------] 3 tests from AttitudeControlMath (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (1 ms total)
+[==========] 3 tests from 1 test suite ran. (0 ms total)
 [  PASSED  ] 3 tests.
 </system-out>
 	</testcase>
-	<testcase name="unit-zero_order_hover_thrust_ekf_test" classname="unit-zero_order_hover_thrust_ekf_test" time="0.0329734" status="run">
+	<testcase name="unit-zero_order_hover_thrust_ekf_test" classname="unit-zero_order_hover_thrust_ekf_test" time="0.0240913" status="run">
 		<properties/>
 		<system-out>[==========] Running 6 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2559,18 +2559,18 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [ RUN      ] ZeroOrderHoverThrustEkfTest.testStaticConvergence
 [       OK ] ZeroOrderHoverThrustEkfTest.testStaticConvergence (0 ms)
 [ RUN      ] ZeroOrderHoverThrustEkfTest.testStaticConvergenceWithNoise
-[       OK ] ZeroOrderHoverThrustEkfTest.testStaticConvergenceWithNoise (1 ms)
+[       OK ] ZeroOrderHoverThrustEkfTest.testStaticConvergenceWithNoise (0 ms)
 [ RUN      ] ZeroOrderHoverThrustEkfTest.testLargeAccelNoiseAndBias
-[       OK ] ZeroOrderHoverThrustEkfTest.testLargeAccelNoiseAndBias (1 ms)
+[       OK ] ZeroOrderHoverThrustEkfTest.testLargeAccelNoiseAndBias (0 ms)
 [ RUN      ] ZeroOrderHoverThrustEkfTest.testThrustAndAccelNoise
-[       OK ] ZeroOrderHoverThrustEkfTest.testThrustAndAccelNoise (1 ms)
+[       OK ] ZeroOrderHoverThrustEkfTest.testThrustAndAccelNoise (0 ms)
 [ RUN      ] ZeroOrderHoverThrustEkfTest.testHoverThrustJump
 [       OK ] ZeroOrderHoverThrustEkfTest.testHoverThrustJump (1 ms)
-[----------] 6 tests from ZeroOrderHoverThrustEkfTest (7 ms total...
+[----------] 6 tests from ZeroOrderHoverThrustEkfTest (4 ms total...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-ControlMath" classname="unit-ControlMath" time="0.0410827" status="run">
+	<testcase name="unit-ControlMath" classname="unit-ControlMath" time="0.0214572" status="run">
 		<properties/>
 		<system-out>[==========] Running 9 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2596,7 +2596,7 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-PositionControl" classname="unit-PositionControl" time="0.0530704" status="run">
+	<testcase name="unit-PositionControl" classname="unit-PositionControl" time="0.0243124" status="run">
 		<properties/>
 		<system-out>[==========] Running 17 tests from 3 test suites.
 [----------] Global test environment set-up.
@@ -2610,7 +2610,7 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [       OK ] PositionControlBasicDirectionTest.PositionDirection (0 ms)
 [ RUN      ] PositionControlBasicDirectionTest.VelocityDirection
 [       OK ] PositionControlBasicDirectionTest.VelocityDirection (0 ms)
-[----------] 2 tests from PositionControlBasicDirectionTest (1 ms total)
+[----------] 2 tests from PositionControlBasicDirectionTest (0 ms total)
 
 [----------] 14 tests from PositionControlBasicTest
 [ RUN      ] PositionControlBasicTest.TiltLimit
@@ -2621,7 +2621,7 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-Takeoff" classname="unit-Takeoff" time="0.0335008" status="run">
+	<testcase name="unit-Takeoff" classname="unit-Takeoff" time="0.0200379" status="run">
 		<properties/>
 		<system-out>[==========] Running 2 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2630,14 +2630,14 @@ ERROR [px4_work_queue] wq:hp_default not ava...
 [       OK ] TakeoffTest.Initialization (0 ms)
 [ RUN      ] TakeoffTest.RegularTakeoffRamp
 [       OK ] TakeoffTest.RegularTakeoffRamp (0 ms)
-[----------] 2 tests from TakeoffTest (1 ms total)
+[----------] 2 tests from TakeoffTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 2 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-GeofenceBreachAvoidance" classname="functional-GeofenceBreachAvoidance" time="4.05381" status="run">
+	<testcase name="functional-GeofenceBreachAvoidance" classname="functional-GeofenceBreachAvoidance" time="4.0341" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2650,7 +2650,7 @@ ERROR [px4_work_queue] init failed
 [ RUN      ] GeofenceBreachAvoidanceTest.generateLoiterPointForFixedWing
 ERROR [dataman_client] timeout after 1000 ms!
 ERROR [dataman_client] Failed to get client ID!
-[       OK ] GeofenceBreachAvoidanceTest.generateLoiterPointForFixedWing (1002 ms)
+[       OK ] GeofenceBreachAvoidanceTest.generateLoiterPointForFixedWing (1003 ms)
 [ RUN      ] GeofenceBreachAvoidanceTest.generateLoiterPointForMultirotor
 ERROR [dataman_client] timeout after 1000 ms!
 ERROR [dataman_client] Failed to get client ID!
@@ -2660,7 +2660,7 @@ ERROR [dataman_client] Failed to get client ID!
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-FeasibilityChecker" classname="functional-FeasibilityChecker" time="0.0445443" status="run">
+	<testcase name="functional-FeasibilityChecker" classname="functional-FeasibilityChecker" time="0.0240779" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2669,13 +2669,13 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 8 tests from FeasibilityCheckerTest
 [ RUN      ] FeasibilityCheckerTest.instantiation
-[       OK ] FeasibilityCheckerTest.instantiation (1 ms)
+[       OK ] FeasibilityCheckerTest.instantiation (0 ms)
 [ RUN      ] FeasibilityCheckerTest.mission_item_validity
 WARN  [mission_feasibility_checker] Mission rejected: starts with landing	
 WARN  [mission_feasibility_checker] Mission rejected: No home pos, WP 1 uses rel alt	
-[       OK ] FeasibilityCheckerTest.mission_item_validity (1 ms)
+[       OK ] FeasibilityCheckerTest.mission_item_validity (0 ms)
 [ RUN      ] FeasibilityCheckerTest.check_dist_first_waypoint
-[       OK ] FeasibilityCheckerTest.check_dist_first_waypoint (1 ms)
+[       OK ] FeasibilityCheckerTest.check_dist_first_waypoint (0 ms)
 [ RUN      ] FeasibilityCheckerTest.check_below_home
 WARN  [mission_feasibility_checker] Mission rejected: No home pos, WP 1 uses rel alt	
 WARN  [mission_feasibility_checker] Mission rejected: No home pos, WP 1 uses rel alt	
@@ -2683,7 +2683,7 @@ WARN  [mission_feasibility_checker] Mission rejected: No home pos, WP 1 uses rel
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="functional-RCUpdate" classname="functional-RCUpdate" time="0.0452011" status="run">
+	<testcase name="functional-RCUpdate" classname="functional-RCUpdate" time="0.0298562" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2712,7 +2712,7 @@ ERROR [px4_...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-SqeDataValidator" classname="unit-SqeDataValidator" time="0.0422811" status="run">
+	<testcase name="unit-SqeDataValidator" classname="unit-SqeDataValidator" time="0.0258247" status="run">
 		<properties/>
 		<system-out>[==========] Running 20 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2731,47 +2731,46 @@ ERROR [px4_...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-SqeDataValidatorGroup" classname="unit-SqeDataValidatorGroup" time="0.236236" status="run">
+	<testcase name="unit-SqeDataValidatorGroup" classname="unit-SqeDataValidatorGroup" time="0.140236" status="run">
 		<properties/>
-		<system-out>[==========] Running 34 tests from 3 test suites.
+		<system-out>[==========] Running 35 tests from 3 test suites.
 [----------] Global test environment set-up.
 [----------] 1 test from SqeDvgDeathTest
 [ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
 [/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
-[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (175 ms)
-[----------] 1 test from SqeDvgDeathTest (175 ms total)
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (99 ms)
+[----------] 1 test from SqeDvgDeathTest (99 ms total)
 
-[----------] 11 tests from SqeDvgTest
+[----------] 12 tests from SqeDvgTest
 [ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
 [       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
 [ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
 [       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
 [ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
-[       OK ]...
+[       OK ] S...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-SqeDataValidatorAllocFault" classname="unit-SqeDataValidatorAllocFault" time="0.234288" status="run">
+	<testcase name="unit-SqeDataValidatorGroupAlloc" classname="unit-SqeDataValidatorGroupAlloc" time="0.128359" status="run">
 		<properties/>
-		<system-out>[==========] Running 2 tests from 2 test suites.
+		<system-out>[==========] Running 3 tests from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from SqeDvgAllocFaultDeathTest
-[ RUN      ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
 [/home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
-[       OK ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference (180 ms)
-[----------] 1 test from SqeDvgAllocFaultDeathTest (180 ms total)
-
-[----------] 1 test from SqeDvgAllocFaultTest
-[ RUN      ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged
-[       OK ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged (1 ms)
-[----------] 1 test from SqeDvgAllocFaultTest (1 ms total)
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (98 ms)
+[----------] 3 tests from SqeDvgAllocTest (99 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 2 test suites ran. (181...
+[==========] 3 tests from 1 test suite ran. (99...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="unit-gps_blending_test" classname="unit-gps_blending_test" time="0.0301684" status="run">
+	<testcase name="unit-gps_blending_test" classname="unit-gps_blending_test" time="0.021874" status="run">
 		<properties/>
 		<system-out>[==========] Running 6 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -2788,14 +2787,14 @@ ERROR [px4_...
 [       OK ] GpsBlendingTest.dualReceiverFailover (0 ms)
 [ RUN      ] GpsBlendingTest.dualReceiverUTCTime
 [       OK ] GpsBlendingTest.dualReceiverUTCTime (0 ms)
-[----------] 6 tests from GpsBlendingTest (3 ms total)
+[----------] 6 tests from GpsBlendingTest (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (3 ms total)
+[==========] 6 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 6 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-VehicleOpticalFlow" classname="functional-VehicleOpticalFlow" time="0.0512864" status="run">
+	<testcase name="functional-VehicleOpticalFlow" classname="functional-VehicleOpticalFlow" time="0.0273192" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2807,7 +2806,7 @@ ERROR [px4_work_queue] init failed
 ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:nav_and_controllers not available
 ERROR [px4_work_queue] init failed
-[       OK ] VehicleOpticalFlowTest.CameraFacingDown (1 ms)
+[       OK ] VehicleOpticalFlowTest.CameraFacingDown (0 ms)
 [ RUN      ] VehicleOpticalFlowTest.CameraFacingForward
 ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:nav_and_controllers not available
@@ -2816,11 +2815,11 @@ ERROR [px4_work_queue] init failed
 [----------] 2 tests from VehicleOpticalFlowTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (2 ms total)
+[==========] 2 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="functional-Parameter" classname="functional-Parameter" time="0.0541051" status="run">
+	<testcase name="functional-Parameter" classname="functional-Parameter" time="0.0212931" status="run">
 		<properties/>
 		<system-out>ERROR [px4_work_queue] not running
 ERROR [px4_work_queue] wq:lp_default not available
@@ -2829,17 +2828,17 @@ ERROR [px4_work_queue] init failed
 [----------] Global test environment set-up.
 [----------] 2 tests from ParameterTest
 [ RUN      ] ParameterTest.testParamReadWrite
-[       OK ] ParameterTest.testParamReadWrite (2 ms)
+[       OK ] ParameterTest.testParamReadWrite (0 ms)
 [ RUN      ] ParameterTest.testUorbSendReceive
-[       OK ] ParameterTest.testUorbSendReceive (1 ms)
-[----------] 2 tests from ParameterTest (4 ms total)
+[       OK ] ParameterTest.testUorbSendReceive (0 ms)
+[----------] 2 tests from ParameterTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test suite ran. (4 ms total)
+[==========] 2 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 2 tests.
 </system-out>
 	</testcase>
-	<testcase name="sitl-atomic_bitset" classname="sitl-atomic_bitset" time="0.50353" status="run">
+	<testcase name="sitl-atomic_bitset" classname="sitl-atomic_bitset" time="0.252083" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -2872,7 +2871,7 @@ INFO  [tests] atomic_bitset PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-bitset" classname="sitl-bitset" time="0.446952" status="run">
+	<testcase name="sitl-bitset" classname="sitl-bitset" time="0.233144" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -2905,7 +2904,7 @@ INFO  [tests] bitset PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-bson" classname="sitl-bson" time="0.374662" status="run">
+	<testcase name="sitl-bson" classname="sitl-bson" time="0.246671" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -2931,7 +2930,7 @@ INFO  [tests] bson PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-dataman" classname="sitl-dataman" time="4.88105" status="run">
+	<testcase name="sitl-dataman" classname="sitl-dataman" time="4.53981" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -2971,7 +2970,7 @@ INFO  [tests] RUNNING TEST: testSyncReadBufferOverfl...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-file2" classname="sitl-file2" time="0.384656" status="run">
+	<testcase name="sitl-file2" classname="sitl-file2" time="0.266143" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -2995,7 +2994,7 @@ All OK
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-float" classname="sitl-float" time="0.385764" status="run">
+	<testcase name="sitl-float" classname="sitl-float" time="0.275738" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3025,7 +3024,7 @@ INFO  [tests] float PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-hrt" classname="sitl-hrt" time="5.42565" status="run">
+	<testcase name="sitl-hrt" classname="sitl-hrt" time="5.2689" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3043,16 +3042,16 @@ INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
 INFO  [tests] hrt PASSED
 start-time (hrt, sec/usec), end-time (hrt, sec/usec), microseconds per 1/10 second
-105393171432 (1791217008/988473), 105393271550 (1791217009/88591), 100119
-105393271558 (1791217009/88598), 105393371669 (1791217009/188710), 100112
-105393371675 (1791217009/188716), 105393471750 (1791217009/288791), 100076
-105393471755 (1791217009/288795), 105393571959 (1791217009/389000), 100204
-105393571964 (1791217009/389004), 105393672065 (1791217009/489106), 100102
-105393672072 (1791217009/489112), 105393772272 (...
+108245762109 (1791219861/579150), 108245862289 (1791219861/679330), 100181
+108245862294 (1791219861/679334), 108245962480 (1791219861/779521), 100187
+108245962484 (1791219861/779524), 108246062599 (1791219861/879640), 100115
+108246062602 (1791219861/879643), 108246162779 (1791219861/979819), 100177
+108246162783 (1791219861/979823), 108246262962 (1791219862/80003), 100180
+108246262967 (1791219862/80008), 108246363220 (...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-int" classname="sitl-int" time="0.353484" status="run">
+	<testcase name="sitl-int" classname="sitl-int" time="0.247863" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3082,7 +3081,7 @@ INFO  [tests] int PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-IntrusiveQueue" classname="sitl-IntrusiveQueue" time="0.440262" status="run">
+	<testcase name="sitl-IntrusiveQueue" classname="sitl-IntrusiveQueue" time="0.223458" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3115,7 +3114,7 @@ INFO  [r...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-IntrusiveSortedList" classname="sitl-IntrusiveSortedList" time="0.374926" status="run">
+	<testcase name="sitl-IntrusiveSortedList" classname="sitl-IntrusiveSortedList" time="0.243809" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3147,7 +3146,7 @@ INFO  [tests] IntrusiveSortedList PA...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-List" classname="sitl-List" time="0.355705" status="run">
+	<testcase name="sitl-List" classname="sitl-List" time="0.242754" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3184,7 +3183,7 @@ Exitin...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-mathlib" classname="sitl-mathlib" time="0.906969" status="run">
+	<testcase name="sitl-mathlib" classname="sitl-mathlib" time="0.558945" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3201,18 +3200,18 @@ INFO  [param] selected parameter default file parameters.bson
 INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
 INFO  [tests] RUNNING TEST: testVector2
-INFO  [tests] Constructor matrix::Vector2f(): 0.010667us
-INFO  [tests] Constructor matrix::Vector2f(matrix::Vector2f): 0.521933us
-INFO  [tests] Constructor matrix::Vector2f(float[]): 0.090700us
-INFO  [tests] Constructor matrix::Vector2f(float, float): 0.125233us
-INFO  [tests] matrix::Vector2f = matrix::Vector2f: 0.158767us
-INFO  [tests] matrix::Vector2f + matrix::Vector2f: 0.646667us
-INFO  [tests] matrix::Vector2f - matrix::Vector2f: 0.646867us
+INFO  [tests] Constructor matrix::Vector2f(): 0.007867us
+INFO  [tests] Constructor matrix::Vector2f(matrix::Vector2f): 0.343367us
+INFO  [tests] Constructor matrix::Vector2f(float[]): 0.052600us
+INFO  [tests] Constructor matrix::Vector2f(float, float): 0.072833us
+INFO  [tests] matrix::Vector2f = matrix::Vector2f: 0.091600us
+INFO  [tests] matrix::Vector2f + matrix::Vector2f: 0.372967us
+INFO  [tests] matrix::Vector2f - matrix::Vector2f: 0.372767us
 INFO  [tests] matrix::Vector2f += matrix...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-matrix" classname="sitl-matrix" time="0.407177" status="run">
+	<testcase name="sitl-matrix" classname="sitl-matrix" time="0.235086" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3244,7 +3243,7 @@ INFO  [tests] RUNNI...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-param" classname="sitl-param" time="0.358635" status="run">
+	<testcase name="sitl-param" classname="sitl-param" time="0.23599" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3265,7 +3264,7 @@ INFO  [tests] param PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-parameters" classname="sitl-parameters" time="1.31138" status="run">
+	<testcase name="sitl-parameters" classname="sitl-parameters" time="0.799443" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3297,7 +3296,7 @@ I...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-perf" classname="sitl-perf" time="0.349624" status="run">
+	<testcase name="sitl-perf" classname="sitl-perf" time="0.256114" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3314,14 +3313,14 @@ INFO  [param] selected parameter default file parameters.bson
 INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
 test_count: 4 events
-test_elapsed: 1 events, 18us elapsed, 18.00us avg, min 18us max 18us  -nanus rms
+test_elapsed: 1 events, 16us elapsed, 16.00us avg, min 16us max 16us  -nanus rms
 INFO  [tests] perf PASSED
 perf: expect count of 4
 perf: expect count of 1
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-search_min" classname="sitl-search_min" time="0.323242" status="run">
+	<testcase name="sitl-search_min" classname="sitl-search_min" time="0.255344" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3351,7 +3350,7 @@ INFO  [tests] ...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-sleep" classname="sitl-sleep" time="2.38399" status="run">
+	<testcase name="sitl-sleep" classname="sitl-sleep" time="2.22178" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3373,7 +3372,7 @@ INFO  [tests] sleep PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-versioning" classname="sitl-versioning" time="0.362241" status="run">
+	<testcase name="sitl-versioning" classname="sitl-versioning" time="0.238044" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3397,7 +3396,7 @@ INFO  [tests] versioning PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-controllib_test" classname="sitl-controllib_test" time="0.326357" status="run">
+	<testcase name="sitl-controllib_test" classname="sitl-controllib_test" time="0.217181" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3432,7 +3431,7 @@ Test BlockDelay			: PASS
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-lightware_laser_test" classname="sitl-lightware_laser_test" time="0.289884" status="run">
+	<testcase name="sitl-lightware_laser_test" classname="sitl-lightware_laser_test" time="0.218428" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3457,7 +3456,7 @@ INFO  [rc_tests]   Tested assertions : 3
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="sitl-rc_tests" classname="sitl-rc_tests" time="0.508602" status="run">
+	<testcase name="sitl-rc_tests" classname="sitl-rc_tests" time="0.235899" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3489,7 +3488,7 @@ INFO  [rc_tests] TEST PA...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-uorb_tests" classname="sitl-uorb_tests" time="5.06634" status="run">
+	<testcase name="sitl-uorb_tests" classname="sitl-uorb_tests" time="4.89694" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3509,10 +3508,10 @@ uORB note: PASS single-topic test
 uORB note: PASS orb SubscriptionMulti
 uORB note: try multi-topic support
 uORB note: ---------------- LATENCY TEST ------------------
-INFO  [uorb_tests] mean:     71.8870 us
-INFO  [uorb_tests] std dev:  28.9968 us
-INFO  [uorb_tests] min:      10 us
-INFO  [uorb_tests] max:     161 us
+INFO  [uorb_tests] mean:     65.6620 us
+INFO  [uorb_tests] std dev:  40.4644 us
+INFO  [uorb_tests] min:       7 us
+INFO  [uorb_tests] max:     241 us
 INFO  [uorb_tests] missed topic updates: 0
 uORB note: PASS multi-topic test
 uORB note: try multi-topic support subscribing before publishing
@@ -3523,7 +3522,7 @@ u...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="sitl-imu_filtering" classname="sitl-imu_filtering" time="11.4441" status="run">
+	<testcase name="sitl-imu_filtering" classname="sitl-imu_filtering" time="10.8743" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3540,7 +3539,7 @@ ERROR [param] importing failed (-1)
   CBRK_SUPPLY_CHK: curr: 0 -&gt; new: 894281
 INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 HW arch: PX4_SITL
-PX4 git-hash: 0b026417397db06635b62a1df46b19b92991af20
+PX4 git-hash: 512a5e21d0e301b3fac6c65a4381b97de93f9f95
 PX4 version: 1.17.0 0 (17891328)
 PX4 git-branch: sqe-a2
 OS: Linux
@@ -3552,15 +3551,15 @@ Toolchain: GNU GCC, 13.3.0
 PX4GUID: 1006554d49534954414c44494e4f30303030
 UNKNOWN MCU
   IMU_GYRO_RATEMAX: curr: 400 -&gt; new: 1000
-ERROR [parameters] param export failed (-1)
-INFO  [parameters] param auto save unavailable (-1), retrying..
   IMU_GYRO_FFT_EN: curr: 0 -&gt; new: 1
   IMU_GYRO_FFT_MIN: curr: 30.0000 -&gt; new: 10.0000
-  IMU_GYRO_F...
+  IMU_GYRO_FFT_MAX: curr: 150.0000 -&gt; new: 1000.0000
+  IMU_GYRO_DNF_EN: curr: 0 -&gt; new: 3
+ERROR [parameters] param expor...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="dyn" classname="dyn" time="0.154038" status="run">
+	<testcase name="dyn" classname="dyn" time="0.112824" status="run">
 		<properties/>
 		<system-out>INFO  [px4] assuming working directory is rootfs, no symlinks needed.
 
@@ -3581,7 +3580,7 @@ INFO  [hello]   1: PASSED
 Exiting NOW.
 </system-out>
 	</testcase>
-	<testcase name="posix_hrt_test" classname="posix_hrt_test" time="2.70593" status="run">
+	<testcase name="posix_hrt_test" classname="posix_hrt_test" time="2.45017" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3599,7 +3598,7 @@ ERROR [param] importing failed (-1)
 INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
 HW arch: PX4_SITL
-PX4 git-hash: 0b026417397db06635b62a1df46b19b92991af20
+PX4 git-hash: 512a5e21d0e301b3fac6c65a4381b97de93f9f95
 PX4 version: 1.17.0 0 (17891328)
 PX4 git-branch: sqe-a2
 OS: Linux
@@ -3610,13 +3609,12 @@ Build variant: test
 Toolchain: GNU GCC, 13.3.0
 PX4GUID: 1006554d49534954414c44494e4f30303030
 UNKNOWN MCU
-ERROR [parameters] param export failed (-1)
-INFO  [parameters] param auto save unavailable (-1), retrying..
-INFO  [mavlink] mode: Normal, data rate: 2000000 B/s on udp port ...
+INFO  [mavlink] mode: Normal, data rate: 2000000 B/s on udp port 14556 remote port 14550
+INFO  [mavlink] MAVLink only on localhost (set param MAV_{i}_BROADCAST = 1 to enable...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="posix_cdev_test" classname="posix_cdev_test" time="2.73469" status="run">
+	<testcase name="posix_cdev_test" classname="posix_cdev_test" time="2.46875" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3634,7 +3632,7 @@ ERROR [param] importing failed (-1)
 INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
 HW arch: PX4_SITL
-PX4 git-hash: 0b026417397db06635b62a1df46b19b92991af20
+PX4 git-hash: 512a5e21d0e301b3fac6c65a4381b97de93f9f95
 PX4 version: 1.17.0 0 (17891328)
 PX4 git-branch: sqe-a2
 OS: Linux
@@ -3646,12 +3644,11 @@ Toolchain: GNU GCC, 13.3.0
 PX4GUID: 1006554d49534954414c44494e4f30303030
 UNKNOWN MCU
 INFO  [mavlink] mode: Normal, data rate: 2000000 B/s on udp port 14556 remote port 14550
-ERROR [parameters] param export failed (-1)
-INFO  [parameters] param auto save unava...
+INFO  [mavlink] MAVLink only on localhost (set param MAV_{i}_BROADCAST = 1 to enable...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>
-	<testcase name="posix_wqueue_test" classname="posix_wqueue_test" time="2.76164" status="run">
+	<testcase name="posix_wqueue_test" classname="posix_wqueue_test" time="2.48388" status="run">
 		<properties/>
 		<system-out>
 ______  __   __    ___ 
@@ -3668,10 +3665,8 @@ ERROR [param] importing failed (-1)
   CBRK_SUPPLY_CHK: curr: 0 -&gt; new: 894281
 INFO  [dataman] data manager file './dataman' size is 1208528 bytes
 INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
-ERROR [parameters] param export failed (-1)
-INFO  [parameters] param auto save unavailable (-1), retrying..
 HW arch: PX4_SITL
-PX4 git-hash: 0b026417397db06635b62a1df46b19b92991af20
+PX4 git-hash: 512a5e21d0e301b3fac6c65a4381b97de93f9f95
 PX4 version: 1.17.0 0 (17891328)
 PX4 git-branch: sqe-a2
 OS: Linux
@@ -3682,7 +3677,8 @@ Build variant: test
 Toolchain: GNU GCC, 13.3.0
 PX4GUID: 1006554d49534954414c44494e4f30303030
 UNKNOWN MCU
-INFO  [mavlink] mode: Normal, data rate: 2000000 B/s on udp port ...
+INFO  [mavlink] mode: Normal, data rate: 2000000 B/s on udp port 14556 remote port 14550
+INFO  [mavlink] MAVLink only on localhost (set param MAV_{i}_BROADCAST = 1 to enable...
 [This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
 </system-out>
 	</testcase>

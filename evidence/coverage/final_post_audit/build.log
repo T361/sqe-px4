@@ -1,0 +1,11 @@
+[1/7] Building CXX object src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorGroupAlloc.dir/SqeDataValidatorGroupAllocTest.cpp.o
+[2/7] Building CXX object src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorGroup.dir/SqeDataValidatorGroupTest.cpp.o
+[3/7] Linking CXX executable unit-SqeDataValidatorGroupAlloc
+[4/7] Building CXX object src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureDetector.dir/SqeFailureDetectorTest.cpp.o
+[5/7] Linking CXX executable unit-SqeDataValidatorGroup
+[6/7] Linking CXX executable functional-SqeFailureDetector
+[6/7] Running tests
+   Site: LifeLine
+   Build name: Linux-c++
+Test project /root/audit/PX4-Autopilot/build/px4_sitl_test
+No tests were found!!!

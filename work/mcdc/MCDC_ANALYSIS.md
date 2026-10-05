@@ -122,6 +122,18 @@ observable effect on any getter** in that case (the `true_failsafe`/`best->reset
 not reached when K=F, but the outer bookkeeping at L219-220 doesn't depend on `true_failsafe` either way). This K=F
 row is therefore **O3** evidence (structural: show L210 was not executed in that test's per-test coverage), not O1/O2.
 
+**Why no API-level oracle can exist for the K pair (post-audit addition).** D15's outcome has exactly two effects:
+(1) `true_failsafe = false` (L210) and (2) `best->reset_state()` (L214). Effect (1) is read only at L226, on the
+`_curr_best >= 0` path; K=False means `pre_check_prio == -1`, which only happens when `_curr_best == -1`, so L226 is
+never reached in a K=False call and (1) cannot be seen. Effect (2) is a no-op in every reachable call: when D15 is
+True, L requires `pre_check_prio < max_priority`, so `best` was selected in Loop 2 by D13, whose G condition means
+`best->confidence(timestamp) > 0` was returned in this same call. `DataValidator::confidence()` sets
+`_error_mask = ERROR_FLAG_NO_ERROR` whenever it returns a value > 0 (DataValidator.cpp L134-138), so `reset_state()`
+writes the value the mask already has. With both effects unobservable, no getter can distinguish D15=True from
+D15=False in the K pair, and per-test structural coverage is the strongest evidence that can exist.
+**Reproduced independently:** running only MC01, then only MC21, with counters zeroed in between, gives L207 hits
+2 / 1 (D15 evaluated in both), L210 hits 1 / 0, L214 hits 1 / 0 — D15 True in MC01, False in MC21.
+
 ### DVG-D32 / DVG-D34 — `failover_index()` / `failover_state()`, L282-283 / L301-302
 ```
 if (next->used() && (next->state() != DataValidator::ERROR_FLAG_NO_ERROR) &&
@@ -177,11 +189,20 @@ float32 arithmetic (verified per-row, see notes column in `mcdc_matrix.csv`).
 ## 6. Minimum vs used evaluation count (SPEC_04 §6)
 
 D13 has 7 conditions → minimum 8 evaluations for unique-cause MC/DC; 12 are used (same count as REF_06) so that
-every independence pair differs in exactly one input dimension and is individually explainable in the viva, per
+every independence pair is individually explainable in the viva (see "Form of the independence pairs" below), per
 SPEC_04 §6's stated rationale (traceability over minimality). D14/D15/D32/D34 each have 3 conditions → minimum 4
 evaluations each; D14 uses 5 rows (REF_06's MC14/MC02/MC18c2/MC18c3/MC19 pattern, reused), D15 uses 4 rows, D32 and
 D34 each use 4 rows (sharing the same 4 underlying scenarios MC14/MC15/MC16/MC17, observed through two different
 getters).
+
+**Form of the independence pairs (corrected wording, post-audit revision).** The pairs are unique-cause **with
+short-circuit relaxation**, not strict unique-cause: within each pair the target condition flips, the outcome flips,
+and every other condition that is *evaluated in both tests* holds the same value — but a condition can be evaluated
+in one test and short-circuited (`NE(x)` in `mcdc_matrix.csv`) in the other. Example: the A pair MC07/MC08 — in MC07
+`A&&B` is true so C is never evaluated; in MC08 A is false so C is evaluated (True). No pair relies on a condition
+that is evaluated in both tests changing value, so none needs masking MC/DC. Earlier wording ("unique-cause
+throughout, no masking", "differs in exactly one input dimension") overstated this, because strict unique-cause
+would require every other condition to be identical, including the short-circuited ones.
 
 ## 7a. Test ID / gtest mapping (SPEC_01 §3) — for P08 implementation
 

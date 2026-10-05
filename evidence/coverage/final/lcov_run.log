@@ -2,108 +2,140 @@ Capturing coverage data from /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/buil
 geninfo cmd: '/home/dns/.local/bin/geninfo /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector --output-filename /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/final/run.info --gcov-tool gcov --base-directory /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test --ignore-errors mismatch --rc branch_coverage=1 --memory 0 --branch-coverage'
 Found gcov version: 13.3.0
 Using intermediate gcov format
-Writing temporary data to /tmp/geninfo_dat7y2X
+Writing temporary data to /tmp/geninfo_datjF1R
 Scanning /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator for .gcda files ...
 Found 5 data files in /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator
 Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorGroup.dir/SqeDataValidatorGroupTest.cpp.gcda
 geninfo: WARNING: using JSON module "JSON::PP" - which is much slower than some alternatives.  Consider installing one of JSON::XS or Cpanel::JSON::XS
-geninfo: WARNING: /usr/include/c++/13/bits/stl_iterator_base_types.h:240: unexecuted block on non-branch line with non-zero hit count.  Use "geninfo --rc geninfo_unexecuted_blocks=1 to set count to zero.
 geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeDvgTest_DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:43: 43 -> 54
 geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgTest_DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:62: 62 -> 78
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeDvgTest_DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:88: 88 -> 109
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeDvgTest_DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:90: 90 -> 113
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN73SqeDvgTest_DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:118: 118 -> 137
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN73SqeDvgTest_DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:122: 122 -> 141
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeDvgTest_DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:144: 160 -> 144
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeDvgTest_DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:148: 148 -> 164
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeDvgTest_DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:144: 160 -> 144
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeDvgTest_DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:171: 171 -> 190
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeDvgTest_DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:144: 160 -> 144
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN73SqeDvgTest_DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:197: 197 -> 209
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeDvgTest_DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:167: 167 -> 186
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeDvgTest_DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:216: 216 -> 248
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN73SqeDvgTest_DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:193: 193 -> 205
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeDvgTest_DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:264: 264 -> 298
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeDvgTest_DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:212: 212 -> 244
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeDvgDeathTest_DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:306: 306 -> 314
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeDvgTest_DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:260: 260 -> 294
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN86SqeDvgTest_DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:323: 323 -> 338
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeDvgDeathTest_DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:302: 302 -> 310
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeDvgTest_DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:349: 349 -> 366
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN86SqeDvgTest_DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:319: 319 -> 334
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN64SqeDvgTest_DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:374: 374 -> 392
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN58SqeDvgTest_DVG12_ConstructDestroyVariousSizes_NoCrash_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:341: 341 -> 352
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeDvgMcdcTest_MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:405: 420 -> 405
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeDvgMcdcTest_MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:365: 365 -> 380
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeDvgMcdcTest_MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:405: 420 -> 405
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC02_EqualConfidenceEqualPriority_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:386: 386 -> 401
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeDvgMcdcTest_MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:405: 420 -> 405
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC03_LowerConfidenceHigherPriority_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:408: 408 -> 422
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC02_EqualConfidenceEqualPriority_NoSwitch_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:426: 441 -> 426
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:431: 446 -> 431
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC02_EqualConfidenceEqualPriority_NoSwitch_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:426: 441 -> 426
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:431: 446 -> 431
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC02_EqualConfidenceEqualPriority_NoSwitch_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:426: 441 -> 426
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:431: 446 -> 431
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC03_LowerConfidenceHigherPriority_NoSwitch_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:448: 462 -> 448
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC05_HigherConfidenceLowerPriority_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:452: 452 -> 466
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC03_LowerConfidenceHigherPriority_NoSwitch_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:448: 462 -> 448
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC06_LowerConfidenceEqualPriority_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:472: 472 -> 486
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC03_LowerConfidenceHigherPriority_NoSwitch_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:448: 462 -> 448
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN82SqeDvgMcdcTest_MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:495: 495 -> 510
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:471: 486 -> 471
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeDvgMcdcTest_MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:518: 518 -> 532
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:471: 486 -> 471
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC09_FarBelowThresholdReplacedByAboveThreshold_Switches_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:538: 553 -> 538
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:471: 486 -> 471
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC09_FarBelowThresholdReplacedByAboveThreshold_Switches_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:538: 553 -> 538
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC05_HigherConfidenceLowerPriority_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:492: 492 -> 506
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC09_FarBelowThresholdReplacedByAboveThreshold_Switches_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:538: 553 -> 538
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC06_LowerConfidenceEqualPriority_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:512: 512 -> 526
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN74SqeDvgMcdcTest_MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:560: 560 -> 574
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN82SqeDvgMcdcTest_MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:535: 535 -> 550
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC11_FirstCallNeverPut_NoCandidateSelected_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:581: 581 -> 591
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeDvgMcdcTest_MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:558: 558 -> 572
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN56SqeDvgMcdcTest_MC12_FirstCallOneSensorPut_SelectsIt_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:598: 598 -> 609
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC09_FarBelowThresholdReplacedByAboveThreshold_Switches_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:578: 593 -> 578
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN82SqeDvgMcdcTest_MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:619: 619 -> 639
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC09_FarBelowThresholdReplacedByAboveThreshold_Switches_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:578: 593 -> 578
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgMcdcTest_MC14_StableSensorKeepsWinningOnPriority_NoFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:647: 647 -> 662
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC09_FarBelowThresholdReplacedByAboveThreshold_Switches_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:578: 593 -> 578
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC18_SingleSensorFreshDataStable_NoFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:669: 669 -> 684
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN74SqeDvgMcdcTest_MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:600: 614 -> 600
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeDvgMcdcTest_MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:693: 693 -> 712
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN74SqeDvgMcdcTest_MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:600: 614 -> 600
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeDvgMcdcTest_MC20_SingleSensorNeverFed_NoCandidateSelected_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:721: 731 -> 721
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN74SqeDvgMcdcTest_MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:600: 614 -> 600
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeDvgMcdcTest_MC20_SingleSensorNeverFed_NoCandidateSelected_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:721: 731 -> 721
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeDvgMcdcTest_MC11_FirstCallNeverPut_NoCandidateSelected_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:621: 621 -> 631
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeDvgMcdcTest_MC20_SingleSensorNeverFed_NoCandidateSelected_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:721: 731 -> 721
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN56SqeDvgMcdcTest_MC12_FirstCallOneSensorPut_SelectsIt_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:638: 638 -> 649
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeDvgMcdcTest_MC21_FirstCallKFalseControlVector_NoFailoverCounted_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:744: 744 -> 756
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN82SqeDvgMcdcTest_MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:659: 679 -> 659
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:766: 766 -> 781
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN82SqeDvgMcdcTest_MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:659: 679 -> 659
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC23_SensorZeroRecoversAfterFailover_NoFailoverReported_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:790: 790 -> 815
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN82SqeDvgMcdcTest_MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:659: 679 -> 659
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgMcdcTest_MC24_SensorNeverBestTimesOut_NotReportedAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:826: 826 -> 844
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgMcdcTest_MC14_StableSensorKeepsWinningOnPriority_NoFailover_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:687: 702 -> 687
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeDvgMcdcTest_MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:856: 856 -> 879
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgMcdcTest_MC14_StableSensorKeepsWinningOnPriority_NoFailover_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:687: 702 -> 687
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN56SqeDvgTest_DISABLED_PRB03_AllFailedShouldReturnNull_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:887: 899 -> 887
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgMcdcTest_MC14_StableSensorKeepsWinningOnPriority_NoFailover_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:687: 702 -> 687
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN56SqeDvgTest_DISABLED_PRB03_AllFailedShouldReturnNull_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:887: 899 -> 887
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC18_SingleSensorFreshDataStable_NoFailover_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:709: 724 -> 709
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN56SqeDvgTest_DISABLED_PRB03_AllFailedShouldReturnNull_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:887: 899 -> 887
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC18_SingleSensorFreshDataStable_NoFailover_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:709: 724 -> 709
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorAllocFault.dir/SqeDataValidatorAllocFaultTest.cpp.gcda
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN90SqeDvgAllocFaultTest_AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp:85: 85 -> 99
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeDvgMcdcTest_MC18_SingleSensorFreshDataStable_NoFailover_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:709: 724 -> 709
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN97SqeDvgAllocFaultDeathTest_AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp:116: 116 -> 129
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeDvgMcdcTest_MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:733: 752 -> 733
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeDvgMcdcTest_MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:733: 752 -> 733
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeDvgMcdcTest_MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:733: 752 -> 733
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeDvgMcdcTest_MC20_SingleSensorNeverFed_NoCandidateSelected_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:761: 761 -> 771
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeDvgMcdcTest_MC21_FirstCallKFalseControlVector_NoFailoverCounted_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:784: 796 -> 784
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeDvgMcdcTest_MC21_FirstCallKFalseControlVector_NoFailoverCounted_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:784: 796 -> 784
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeDvgMcdcTest_MC21_FirstCallKFalseControlVector_NoFailoverCounted_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:784: 796 -> 784
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgMcdcTest_MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:806: 806 -> 821
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeDvgMcdcTest_MC23_SensorZeroRecoversAfterFailover_NoFailoverReported_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:830: 830 -> 855
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeDvgMcdcTest_MC24_SensorNeverBestTimesOut_NotReportedAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:866: 866 -> 884
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeDvgMcdcTest_MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:896: 896 -> 919
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN56SqeDvgTest_DISABLED_PRB03_AllFailedShouldReturnNull_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp:927: 927 -> 939
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
 geninfo: WARNING: /usr/include/c++/13/ext/atomicity.h:52: unexecuted block on non-branch line with non-zero hit count.  Use "geninfo --rc geninfo_unexecuted_blocks=1 to set count to zero.
+Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorGroupAlloc.dir/SqeDataValidatorGroupAllocTest.cpp.gcda
+geninfo: WARNING: /usr/include/c++/13/bits/stl_iterator_base_types.h:240: unexecuted block on non-branch line with non-zero hit count.  Use "geninfo --rc geninfo_unexecuted_blocks=1 to set count to zero.
 	(use "geninfo --ignore-errors gcov,gcov ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN85SqeDvgAllocTest_AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp:74: 74 -> 97
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDvgAllocTest_AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp:104: 104 -> 115
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN76SqeDvgAllocTest_AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp:123: 131 -> 123
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN76SqeDvgAllocTest_AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp:123: 131 -> 123
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN76SqeDvgAllocTest_AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp:123: 131 -> 123
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
 Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidator.dir/SqeDataValidatorTest.cpp.gcda
 geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeDataValidatorTest_DV01_FirstSample_InitialisesAndReportsFullConfidence_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp:33: 33 -> 51
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
@@ -188,40 +220,8 @@ geninfo: WARNING: ('mismatch') mismatched end line for _ZN74SqeFailureDetectorIm
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
 geninfo: WARNING: ('mismatch') mismatched end line for _ZN63SqeFailureDetectorImuTest_FDI06_DeviceIdZero_NoComputation_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp:229: 229 -> 241
 	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeFailureDetectorImuTest_FDI07_NoNewImuOrSelection_MetricUnchanged_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp:249: 249 -> 264
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN97SqeFailureDetectorImuTest_FDI08_InstanceAdvertisedButNeverPublished_CopyFailsSearchContinues_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp:285: 285 -> 301
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
 Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureInjector.dir/SqeFailureInjectorTest.cpp.gcda
 geninfo: WARNING: /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/platforms/common/uORB/Subscription.hpp:80: unexecuted block on non-branch line with non-zero hit count.  Use "geninfo --rc geninfo_unexecuted_blocks=1 to set count to zero.
 	(use "geninfo --ignore-errors gcov,gcov ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeFailureInjectorTest_FI01_InjectionDisabled_NoEffectAndNoAck_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:91: 91 -> 103
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeFailureInjectorTest_FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:110: 110 -> 124
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeFailureInjectorTest_FI03_InjectOffInstanceZero_AppliesToAllEscs_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:131: 131 -> 140
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN83SqeFailureInjectorTest_FI04_OkAfterOffAndStuck_ClearsMasksAndStopsManipulation_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:149: 149 -> 172
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN68SqeFailureInjectorTest_FI05_InjectStuckMotor2_BlanksThatEscOnly_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:180: 180 -> 201
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN66SqeFailureInjectorTest_FI06_InjectWrongMotor1_ScalesTelemetry_TestD0Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:207: 224 -> 207
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN66SqeFailureInjectorTest_FI06_InjectWrongMotor1_ScalesTelemetry_TestD2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:207: 224 -> 207
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN66SqeFailureInjectorTest_FI06_InjectWrongMotor1_ScalesTelemetry_TestC2Ev at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:207: 224 -> 207
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeFailureInjectorTest_FI07_InjectGarbageType_AckUnsupportedNoMaskChange_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:231: 231 -> 244
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeFailureInjectorTest_FI08_NonInjectCommand_IgnoredNoAck_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:251: 251 -> 266
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeFailureInjectorTest_FI09_WrongFailureUnit_IgnoredNoAck_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:272: 272 -> 284
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeFailureInjectorTest_FI10_InstanceBeyondRange_AckUnsupported_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:292: 292 -> 305
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeFailureInjectorTest_FI11_InjectionDisabled_ManipulateIsNoOp_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:311: 311 -> 323
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
-geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeFailureInjectorTest_FI12_EnabledButNoFailuresInjected_ManipulateIsNoOp_Test8TestBodyEv at /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp:330: 330 -> 342
-	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
 Processing /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/px4_sitl_test/src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureDetector.dir/SqeFailureDetectorTest.cpp.gcda
 Finished .info-file creation

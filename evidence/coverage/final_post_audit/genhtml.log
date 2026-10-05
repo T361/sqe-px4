@@ -1,0 +1,15 @@
+Found 4 entries.
+Found common filename prefix "/root/audit/PX4-Autopilot/src/modules"
+Generating output.
+Processing file commander/failure_detector/FailureDetector.cpp
+  lines=153 hit=153 functions=7 hit=7 branches=254 hit=189
+Processing file sensors/data_validator/DataValidator.cpp
+  lines=58 hit=58 functions=4 hit=4 branches=30 hit=30
+Processing file sensors/data_validator/DataValidatorGroup.cpp
+  lines=155 hit=155 functions=12 hit=12 branches=116 hit=114
+Processing file commander/failure_detector/FailureInjector.cpp
+  lines=62 hit=62 functions=3 hit=3 branches=57 hit=47
+Overall coverage rate:
+  lines......: 100.0% (428 of 428 lines)
+  functions......: 100.0% (26 of 26 functions)
+  branches......: 83.2% (380 of 457 branches)

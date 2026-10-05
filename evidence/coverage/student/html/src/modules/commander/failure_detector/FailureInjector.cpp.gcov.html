@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-10-05 21:18:02</td>
+            <td class="headerValue">2026-10-05 22:05:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -114,20 +114,20 @@
 <span id="L36"><span class="lineNum">      36</span>                 :             : #include &lt;parameters/param.h&gt;</span>
 <span id="L37"><span class="lineNum">      37</span>                 :             : #include &lt;uORB/topics/actuator_motors.h&gt;</span>
 <span id="L38"><span class="lineNum">      38</span>                 :             : </span>
-<span id="L39"><span class="lineNum">      39</span>                 :<span class="tlaGNC tlaBgGNC">          60 : FailureInjector::FailureInjector()</span></span>
+<span id="L39"><span class="lineNum">      39</span>                 :<span class="tlaGNC tlaBgGNC">          65 : FailureInjector::FailureInjector()</span></span>
 <span id="L40"><span class="lineNum">      40</span>                 :             : {</span>
-<span id="L41"><span class="lineNum">      41</span>                 :<span class="tlaGNC">          60 :         int32_t param_sys_failure_en = 0;</span></span>
+<span id="L41"><span class="lineNum">      41</span>                 :<span class="tlaGNC">          65 :         int32_t param_sys_failure_en = 0;</span></span>
 <span id="L42"><span class="lineNum">      42</span>                 :             : </span>
-<span id="L43"><span class="lineNum">      43</span>   [<span class="tlaGBC" title="Branch 0 was taken 60 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 60 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">          60 :         if ((param_get(param_find(&quot;SYS_FAILURE_EN&quot;), &amp;param_sys_failure_en) == PX4_OK)</span></span>
-<span id="L44"><span class="lineNum">      44</span>   [<span class="tlaGBC" title="Branch 0 was taken 60 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 3 was taken 48 times"> + </span> :<span class="tlaGNC">          60 :             &amp;&amp; (param_sys_failure_en == 1)) {</span></span>
-<span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 5 was taken 48 times"> + </span>]
+<span id="L43"><span class="lineNum">      43</span>   [<span class="tlaGBC" title="Branch 0 was taken 65 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 65 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span>]:<span class="tlaGNC">          65 :         if ((param_get(param_find(&quot;SYS_FAILURE_EN&quot;), &amp;param_sys_failure_en) == PX4_OK)</span></span>
+<span id="L44"><span class="lineNum">      44</span>   [<span class="tlaGBC" title="Branch 0 was taken 65 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 3 was taken 53 times"> + </span> :<span class="tlaGNC">          65 :             &amp;&amp; (param_sys_failure_en == 1)) {</span></span>
+<span class="lineNum">        </span>          <span class="tlaGBC" title="Branch 4 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 5 was taken 53 times"> + </span>]
 <span id="L45"><span class="lineNum">      45</span>                 :<span class="tlaGNC">          12 :                 _failure_injection_enabled = true;</span></span>
 <span id="L46"><span class="lineNum">      46</span>                 :             :         }</span>
-<span id="L47"><span class="lineNum">      47</span>                 :<span class="tlaGNC">          60 : }</span></span>
+<span id="L47"><span class="lineNum">      47</span>                 :<span class="tlaGNC">          65 : }</span></span>
 <span id="L48"><span class="lineNum">      48</span>                 :             : </span>
-<span id="L49"><span class="lineNum">      49</span>                 :<span class="tlaGNC">         116 : void FailureInjector::update()</span></span>
+<span id="L49"><span class="lineNum">      49</span>                 :<span class="tlaGNC">         138 : void FailureInjector::update()</span></span>
 <span id="L50"><span class="lineNum">      50</span>                 :             : {</span>
-<span id="L51"><span class="lineNum">      51</span>         [<span class="tlaGBC" title="Branch 0 was taken 101 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 15 times"> + </span>]:<span class="tlaGNC">         116 :         if (!_failure_injection_enabled) { return; }</span></span>
+<span id="L51"><span class="lineNum">      51</span>         [<span class="tlaGBC" title="Branch 0 was taken 123 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 15 times"> + </span>]:<span class="tlaGNC">         138 :         if (!_failure_injection_enabled) { return; }</span></span>
 <span id="L52"><span class="lineNum">      52</span>                 :             : </span>
 <span id="L53"><span class="lineNum">      53</span>                 :             :         vehicle_command_s vehicle_command;</span>
 <span id="L54"><span class="lineNum">      54</span>                 :             : </span>
@@ -189,9 +189,9 @@
 <span id="L109"><span class="lineNum">     109</span>                 :             :         }</span>
 <span id="L110"><span class="lineNum">     110</span>                 :             : }</span>
 <span id="L111"><span class="lineNum">     111</span>                 :             : </span>
-<span id="L112"><span class="lineNum">     112</span>                 :<span class="tlaGNC">          56 : void FailureInjector::manipulateEscStatus(esc_status_s &amp;status)</span></span>
+<span id="L112"><span class="lineNum">     112</span>                 :<span class="tlaGNC">          66 : void FailureInjector::manipulateEscStatus(esc_status_s &amp;status)</span></span>
 <span id="L113"><span class="lineNum">     113</span>                 :             : {</span>
-<span id="L114"><span class="lineNum">     114</span>         [<span class="tlaGBC" title="Branch 0 was taken 49 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 7 times"> + </span>]:<span class="tlaGNC">          56 :         if (!_failure_injection_enabled) { return; }</span></span>
+<span id="L114"><span class="lineNum">     114</span>         [<span class="tlaGBC" title="Branch 0 was taken 59 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 7 times"> + </span>]:<span class="tlaGNC">          66 :         if (!_failure_injection_enabled) { return; }</span></span>
 <span id="L115"><span class="lineNum">     115</span>                 :             : </span>
 <span id="L116"><span class="lineNum">     116</span>   [<span class="tlaGBC" title="Branch 0 was taken 4 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 3 times"> + </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaGBC" title="Branch 3 was taken 3 times"> + </span>]:<span class="tlaGNC">           7 :         if (_esc_telemetry_blocked_mask != 0 || _esc_telemetry_wrong_mask != 0) {</span></span>
 <span id="L117"><span class="lineNum">     117</span>         [<span class="tlaGBC" title="Branch 0 was taken 8 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 4 times"> + </span>]:<span class="tlaGNC">          12 :                 for (int i = 0; i &lt; status.esc_count; i++) {</span></span>

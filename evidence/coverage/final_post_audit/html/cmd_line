@@ -1,0 +1,1 @@
+genhtml --branch-coverage --ignore-errors source,inconsistent,unmapped -o /root/audit/out3/html /root/audit/out3/final_scope.info

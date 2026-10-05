@@ -1,0 +1,4 @@
+# Patches must keep LF line endings byte-for-byte, or `git apply` fails against PX4 v1.17.0
+# on Windows clones with core.autocrlf=true (the CMakeLists.txt hunks stop matching).
+*.patch -text
+*.diff -text

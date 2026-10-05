@@ -4,6 +4,6 @@ Merging /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/student/initial.info.
 Merging /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/student/run.info..0 remaining
 Writing data to /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/student/all.info
 Summary coverage rate:
-  lines......: 86.7% (2614 of 3016 lines)
-  functions..: 78.2% (1016 of 1299 functions)
-  branches...: 32.0% (2109 of 6591 branches)
+  lines......: 87.1% (2729 of 3132 lines)
+  functions..: 78.2% (1024 of 1309 functions)
+  branches...: 31.8% (2248 of 7075 branches)

@@ -1,0 +1,15 @@
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (36 ms)
+[----------] 3 tests from SqeDvgAllocTest (36 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (36 ms total)
+[  PASSED  ] 3 tests.

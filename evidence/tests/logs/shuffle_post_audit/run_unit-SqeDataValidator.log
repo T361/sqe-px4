@@ -1,0 +1,53 @@
+[==========] Running 20 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 20 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ DISABLED ] SqeDataValidatorTest.DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence
+[ DISABLED ] SqeDataValidatorTest.DISABLED_PRB02_DensityAtWindowShouldSetFlag
+[----------] 20 tests from SqeDataValidatorTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 20 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 20 tests.
+
+  YOU HAVE 2 DISABLED TESTS
+

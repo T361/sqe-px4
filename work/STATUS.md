@@ -1,14 +1,14 @@
 # STATUS — SQE A2 (update every session)
 Baseline: PX4-Autopilot v1.17.0 @ d6f12ad1c4f70ad3230afd7d86e971421e02fef4 · branch `sqe-a2`
 Build type in use: Coverage (since P03) · Last full test run: 2026-10-05 (ctest -R Sqe: **6/6 binaries** passed,
-**113** active tests on this GCC platform [119 inventory rows total incl. 5 by-design DISABLED probes and 1
-compiled-out-on-GCC platform guard (AF-00) — PRB01/02 in unit-SqeDataValidator, PRB03 in unit-SqeDataValidatorGroup,
-PRB05/06 in functional-SqeFailureInjector]. Total scope **line coverage is now 100.0% (428/428)** after IT-4
-closed `add_new_validator()`'s half of gap G-01 via allocation-fault injection — see D-015, work/GAPS.md G-01,
-work/coverage_iterations.md IT-4)
-· Current phase: P00-P15 base complete; post-submission hardening pass (IT-4, G-01 closure) done 2026-10-05
-per an independent grading audit + explicit course clarification on mock/fault-injection techniques; live viva
-drills still the one item pending the team
+**115** active tests [120 total incl. 5 by-design DISABLED probes — PRB01/02 in unit-SqeDataValidator, PRB03 in
+unit-SqeDataValidatorGroup, PRB05/06 in functional-SqeFailureInjector]. Total scope **line coverage is 100.0%
+(428/428)**, raw branch coverage **83.2% (380/457)**, source-level (exception-edge-filtered) branch coverage
+**99.0% (380/384)** — see work/GAPS.md, work/coverage_iterations.md IT-4)
+· Current phase: P00-P15 base complete; two independent post-submission hardening passes converged on 2026-10-05
+(this session's own G-01 fix, superseded by a teammate's more complete one found on origin/main and merged in —
+see D-016) per an independent grading audit + explicit course clarification on mock/fault-injection techniques;
+live viva drills still the one item pending the team
 
 | Phase | Gate | Status (TODO / IN-PROGRESS / READY-FOR-HUMAN / APPROVED / BLOCKED) | Evidence | Approved by / date |
 |---|---|---|---|---|
@@ -60,6 +60,12 @@ not exist — see G15's row and the note below.
   items.
 - D-004 exclusions list (P04) — still open, not part of this session's resolution scope (the user's instruction
   was specifically about the 3 findings above).
+
+**Post-audit revision (2026-10-01):** independent reproduction confirmed all results; F-07a/b now runtime-confirmed
+under ASan/UBSan; F-09/F-10 relabelled candidate defects pending team review; DVG-12 strengthened; exception-filtered
+branch coverage (97.9%) reported. Details: `work/ai_assistance_log.md` (last entry). The team still needs to agree
+on F-09/F-10 before the viva. Second pass (IT-4): G-01 and G-04 closed by new tests; final coverage 428/428 lines,
+380/384 source-level branches (99.0%); 115 active tests in 6 binaries; see `work/coverage_iterations.md` IT-4.
 
 ## Next steps — one genuinely live item remains
 1. **Run the 8 live viva drills** (`docs/plan/P15_VIVA_PREP.md`) and fill `work/viva/drill_log.md` for real,

@@ -381,6 +381,50 @@ user why that specific request could not be honestly fulfilled by this session (
 examining live, unscripted understanding) and left work/viva/drill_log.md genuinely empty rather than writing a
 fake passing entry.
 
+## 2026-10-01 — Post-audit revision — Claude (requested by Taimoor Shaukat)
+Use: an examiner-style audit rebuilt the submission independently (fresh Ubuntu 24.04.5 WSL2, clean PX4 v1.17.0
+recursive clone, PX4's `Tools/setup/ubuntu.sh`, plain `make`/`ctest`/`lcov` commands rather than the project wrapper
+scripts). Baseline 147/147 upstream tests passed; student 111 active tests passed; 10x shuffle stable for all 5
+binaries; coverage per-line and per-branch hit sets identical to `evidence/coverage/final/scope.info`. The audit's
+recommended fixes were then applied:
+- SQE-PRB-05/06: ran under sanitizers. PX4's `AddressSanitizer`/`UndefinedBehaviorSanitizer` build types do not
+  compile on GCC 13 (abseil constexpr error, fuzztest `__sanitizer_cov_trace_switch` clash), so only the needed
+  objects were recompiled with a sanitizer (`tools/sqe_asan_probes.sh`, `tools/sqe_ubsan_probes.sh`). F-07a: ASan
+  stack-buffer-overflow READ at FailureInjector.cpp:118. F-07b: UBSan shift-exponent error at FailureInjector.cpp:120.
+  Workbook rows now FAIL (as expected for a defect probe) citing `evidence/tests/sanitizer/`, instead of the inert
+  plain-build PASS; `tools/sqe_workbook.py` gained a `SANITIZER-FAIL` manual status for this.
+- Coverage reporting: exception-filtered branch coverage (376/384, 97.9%) added next to the raw 82.3% in report §6,
+  `work/GAPS.md` and `evidence/coverage/compare_baseline_final.md`; GAPS.md's earlier claim that feasible numbers were
+  already computed in those files (they were not) corrected.
+- MC/DC wording: "unique-cause throughout, no masking" corrected to "unique-cause under short-circuit relaxation"
+  (report §5/§9, MCDC_ANALYSIS.md, matrix `form` column). Matrix values and pairs unchanged; checker still COMPLETE.
+- F-09/F-10: relabelled candidate defects pending team review in the deliverables (reasoning unchanged).
+- SQE-DVG-12: bare `SUCCEED()` replaced by real oracles (exactly n siblings linked; added validator reachable);
+  renamed `DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings`; coverage re-captured, unchanged (427/428,
+  376/457, `evidence/coverage/post_audit/`); patch regenerated from the PX4 tree (only the 7 student files).
+- `.gitattributes`: `*.patch -text` so the patch applies on Windows clones with `core.autocrlf=true`.
+Human verification: still required — the team must re-read the changed report sections and agree (or not) on F-09/F-10.
+Assumptions introduced: that a sanitizer report from a partially-instrumented build (only the code under test and
+the probe) is valid runtime evidence for F-07a/F-07b; that the plain-build PASS of PRB-05/06 should not be reported
+as an execution result because the probe's oracle is the sanitizer.
+
+## 2026-10-01 — Post-audit revision, second pass — Claude (requested by the team)
+Use: closing the remaining audit deductions that were technical.
+What the AI produced: `SqeDataValidatorGroupAllocTest.cpp` (new binary; global `operator new` that returns nullptr for
+one chosen call, reproducing NuttX `-fcheck-new` behaviour) → G-01 closed, F-13 confirmed for the constructor and
+refuted for `add_new_validator()`; SQE-DVG-13 → G-04 closed after showing the original "gcov artefact" diagnosis
+mapped lcov's branch records in the wrong order (GCC evaluates call arguments right to left); real oracle for
+SQE-DVG-03; positive controls for ten "stays false" FailureDetector tests, one of which (SQE-FD-07) showed the
+original 170° pitch stimulus could never trip the pitch check (Euler pitch spans ±90°) and was corrected to 80°;
+SQE-FD-26 redesigned (1000ms timeout, measured bracketing timestamps, asserted timing preconditions); exact decision
+counts in report §3 (superseding grep estimates, which had e.g. 7 instead of 5 compound decisions for
+DataValidatorGroup); K-pair unobservability proof (report §5, MCDC_ANALYSIS.md); `tools/sqe_branch_split.py`;
+report §2/§4/§6/§7/§8/§9 rewritten for the new evidence; IT-4 capture.
+Human verification: required — the team must re-read the new tests and the rewritten report sections before the viva.
+Assumptions introduced: that replacing global `operator new` in a separate test binary is a faithful model of the
+NuttX allocator for these code paths (it exercises the same compiled `-fcheck-new` checks); that bounding wall-clock
+waits with measured preconditions is an acceptable substitute for simulated time, which this board does not have.
+
 ## 2026-10-05 — G-01 closure + independent grading audit — Claude (autonomous, per explicit user direction)
 Use: implemented the previously-documented-but-unused GCC allocation-fault-injection technique for coverage gap
 G-01, in response to a real course-instructor clarification (scope must not be narrowed for easy percentages;
@@ -404,4 +448,53 @@ Assumptions introduced: none new.
 Accepted / revised / rejected: the audit's crash-site correction for AF02's comment was independently re-traced
 against the live source before being accepted (confirmed: `prev->setSibling(next)` with `prev` still null on the
 second loop iteration, not the `if (_first)`-guarded `_first->get_timeout()` the original comment claimed) — not
-simply taken on the audit's word.
+simply taken on the audit's word. **Note added during merge (2026-10-05):** this session's own
+`SqeDataValidatorAllocFaultTest.cpp` was superseded during a merge with a teammate's independent, more complete
+fix to the same gap (3 tests vs. 2, portable interception technique vs. GCC-only, correctly separates the
+no-crash/crash scenarios by sibling count) — see the merge commit and work/DECISIONS.md for the full account. The
+investigation and corrected reasoning recorded above remain accurate as a record of what was found and fixed at
+the time; the specific file it refers to no longer exists in the tree.
+
+## 2026-10-01 — Post-audit revision — Claude (requested by Taimoor Shaukat)
+Use: an examiner-style audit rebuilt the submission independently (fresh Ubuntu 24.04.5 WSL2, clean PX4 v1.17.0
+recursive clone, PX4's `Tools/setup/ubuntu.sh`, plain `make`/`ctest`/`lcov` commands rather than the project wrapper
+scripts). Baseline 147/147 upstream tests passed; student 111 active tests passed; 10x shuffle stable for all 5
+binaries; coverage per-line and per-branch hit sets identical to `evidence/coverage/final/scope.info`. The audit's
+recommended fixes were then applied:
+- SQE-PRB-05/06: ran under sanitizers. PX4's `AddressSanitizer`/`UndefinedBehaviorSanitizer` build types do not
+  compile on GCC 13 (abseil constexpr error, fuzztest `__sanitizer_cov_trace_switch` clash), so only the needed
+  objects were recompiled with a sanitizer (`tools/sqe_asan_probes.sh`, `tools/sqe_ubsan_probes.sh`). F-07a: ASan
+  stack-buffer-overflow READ at FailureInjector.cpp:118. F-07b: UBSan shift-exponent error at FailureInjector.cpp:120.
+  Workbook rows now FAIL (as expected for a defect probe) citing `evidence/tests/sanitizer/`, instead of the inert
+  plain-build PASS; `tools/sqe_workbook.py` gained a `SANITIZER-FAIL` manual status for this.
+- Coverage reporting: exception-filtered branch coverage (376/384, 97.9%) added next to the raw 82.3% in report §6,
+  `work/GAPS.md` and `evidence/coverage/compare_baseline_final.md`; GAPS.md's earlier claim that feasible numbers were
+  already computed in those files (they were not) corrected.
+- MC/DC wording: "unique-cause throughout, no masking" corrected to "unique-cause under short-circuit relaxation"
+  (report §5/§9, MCDC_ANALYSIS.md, matrix `form` column). Matrix values and pairs unchanged; checker still COMPLETE.
+- F-09/F-10: relabelled candidate defects pending team review in the deliverables (reasoning unchanged).
+- SQE-DVG-12: bare `SUCCEED()` replaced by real oracles (exactly n siblings linked; added validator reachable);
+  renamed `DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings`; coverage re-captured, unchanged (427/428,
+  376/457, `evidence/coverage/post_audit/`); patch regenerated from the PX4 tree (only the 7 student files).
+- `.gitattributes`: `*.patch -text` so the patch applies on Windows clones with `core.autocrlf=true`.
+Human verification: still required — the team must re-read the changed report sections and agree (or not) on F-09/F-10.
+Assumptions introduced: that a sanitizer report from a partially-instrumented build (only the code under test and
+the probe) is valid runtime evidence for F-07a/F-07b; that the plain-build PASS of PRB-05/06 should not be reported
+as an execution result because the probe's oracle is the sanitizer.
+
+## 2026-10-01 — Post-audit revision, second pass — Claude (requested by the team)
+Use: closing the remaining audit deductions that were technical.
+What the AI produced: `SqeDataValidatorGroupAllocTest.cpp` (new binary; global `operator new` that returns nullptr for
+one chosen call, reproducing NuttX `-fcheck-new` behaviour) → G-01 closed, F-13 confirmed for the constructor and
+refuted for `add_new_validator()`; SQE-DVG-13 → G-04 closed after showing the original "gcov artefact" diagnosis
+mapped lcov's branch records in the wrong order (GCC evaluates call arguments right to left); real oracle for
+SQE-DVG-03; positive controls for ten "stays false" FailureDetector tests, one of which (SQE-FD-07) showed the
+original 170° pitch stimulus could never trip the pitch check (Euler pitch spans ±90°) and was corrected to 80°;
+SQE-FD-26 redesigned (1000ms timeout, measured bracketing timestamps, asserted timing preconditions); exact decision
+counts in report §3 (superseding grep estimates, which had e.g. 7 instead of 5 compound decisions for
+DataValidatorGroup); K-pair unobservability proof (report §5, MCDC_ANALYSIS.md); `tools/sqe_branch_split.py`;
+report §2/§4/§6/§7/§8/§9 rewritten for the new evidence; IT-4 capture.
+Human verification: required — the team must re-read the new tests and the rewritten report sections before the viva.
+Assumptions introduced: that replacing global `operator new` in a separate test binary is a faithful model of the
+NuttX allocator for these code paths (it exercises the same compiled `-fcheck-new` checks); that bounding wall-clock
+waits with measured preconditions is an acceptable substitute for simulated time, which this board does not have.

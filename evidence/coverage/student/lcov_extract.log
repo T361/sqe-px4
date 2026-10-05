@@ -37,7 +37,7 @@ Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/f
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidator.hpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.hpp
-Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp
 Excluding /usr/include/c++/13/atomic
@@ -69,4 +69,4 @@ Writing data to /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/student/scope
 Summary coverage rate:
   lines......: 100.0% (428 of 428 lines)
   functions..: 100.0% (26 of 26 functions)
-  branches...: 82.7% (378 of 457 branches)
+  branches...: 83.2% (380 of 457 branches)

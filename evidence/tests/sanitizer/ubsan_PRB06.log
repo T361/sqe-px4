@@ -1,0 +1,10 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+Note: Google Test filter = *PRB06*
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeFailureInjectorTest
+[ RUN      ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+/root/audit/PX4-Autopilot/src/modules/commander/failure_detector/FailureInjector.cpp:120:41: runtime error: shift exponent 4294967195 is too large for 32-bit type 'int'

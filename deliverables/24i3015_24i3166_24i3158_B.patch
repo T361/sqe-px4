@@ -320,10 +320,10 @@ index 0000000000..5c0d68f78f
 +}
 diff --git a/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp b/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
 new file mode 100644
-index 0000000000..d70585171e
+index 0000000000..132c76c36c
 --- /dev/null
 +++ b/src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
-@@ -0,0 +1,1210 @@
+@@ -0,0 +1,1335 @@
 +/**
 + * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
 + * System under test : FailureDetector.cpp / FailureDetector.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
@@ -528,6 +528,14 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().roll);
++
++	// Positive control: same detector and timing, roll beyond the limit -> flag sets (the FALSE above is value-driven)
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(70.f, 0.f);
++	fd.update(_status, _mode);
++	EXPECT_TRUE(fd.getStatusFlags().roll);
 +}
 +
 +// SQE-FD-04 | FD-D12 (1st operand False — check disabled)
@@ -547,6 +555,16 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().roll);
++
++	// Positive control: identical stimulus with the check enabled (FD_FAIL_R 60, read at construction) -> flag sets
++	setParamInt("FD_FAIL_R", 60);
++	FailureDetector fd_enabled{nullptr};
++	publishAttitude(170.f, 0.f);
++	fd_enabled.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(170.f, 0.f);
++	fd_enabled.update(_status, _mode);
++	EXPECT_TRUE(fd_enabled.getStatusFlags().roll);
 +}
 +
 +// SQE-FD-05 | FD-D13 (pitch analogue of FD02)
@@ -583,10 +601,20 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().pitch);
++
++	// Positive control: same detector and timing, pitch beyond the limit -> flag sets
++	publishAttitude(0.f, 70.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, 70.f);
++	fd.update(_status, _mode);
++	EXPECT_TRUE(fd.getStatusFlags().pitch);
 +}
 +
 +// SQE-FD-07 | FD-D13 (pitch analogue of FD04)
-+// Given: FD_FAIL_P 0 (disables the pitch check); pitch 170°
++// Given: FD_FAIL_P 0 (disables the pitch check); pitch 80° (beyond the 60° default limit). 80° rather than 170°:
++//        Euler pitch only spans ±90°, so a 170° pitch rotation decomposes to pitch 10° / roll 180° and would never
++//        trip the pitch check even when enabled (found by this test's positive control)
 +// When : update() repeatedly past the default hysteresis time
 +// Then : pitch flag stays false regardless of the extreme pitch, because the check is disabled at the source
 +TEST_F(SqeFailureDetectorTest, FD07_PitchLimitZero_ChecksDisabled)
@@ -595,13 +623,23 @@ index 0000000000..d70585171e
 +	setParamFloat("FD_FAIL_P_TTRI", 0.02f);
 +	FailureDetector fd{nullptr};
 +
-+	publishAttitude(0.f, 170.f);
++	publishAttitude(0.f, 80.f);
 +	fd.update(_status, _mode);
 +	std::this_thread::sleep_for(std::chrono::milliseconds(40));
-+	publishAttitude(0.f, 170.f);
++	publishAttitude(0.f, 80.f);
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().pitch);
++
++	// Positive control: identical stimulus with the check enabled (FD_FAIL_P 60, read at construction) -> flag sets
++	setParamInt("FD_FAIL_P", 60);
++	FailureDetector fd_enabled{nullptr};
++	publishAttitude(0.f, 80.f);
++	fd_enabled.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(0.f, 80.f);
++	fd_enabled.update(_status, _mode);
++	EXPECT_TRUE(fd_enabled.getStatusFlags().pitch);
 +}
 +
 +// SQE-FD-08 | FD-D08F (second update without a new attitude publish)
@@ -646,6 +684,15 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().roll);
++
++	// Positive control: same tailsitter (rotary wing) once the transition ends -> the 80 degree roll is detected
++	_status.in_transition_mode = false;
++	publishAttitude(80.f, 0.f);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(40));
++	publishAttitude(80.f, 0.f);
++	fd.update(_status, _mode);
++	EXPECT_TRUE(fd.getStatusFlags().roll);
 +}
 +
 +// SQE-FD-10 | FD-D11T (FW: rotate +90° pitch)
@@ -762,6 +809,18 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().ext);
++
++	// Positive control: identical pulse with FD_EXT_ATS_EN 1 (read at construction) -> ext flag sets
++	setParamInt("FD_EXT_ATS_EN", 1);
++	FailureDetector fd_enabled{nullptr};
++	pwm.timestamp = hrt_absolute_time();
++	_pwm_pub.publish(pwm);
++	fd_enabled.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(150));
++	pwm.timestamp = hrt_absolute_time();
++	_pwm_pub.publish(pwm);
++	fd_enabled.update(_status, _mode);
++	EXPECT_TRUE(fd_enabled.getStatusFlags().ext);
 +}
 +
 +// SQE-FD-14 | FD-D14F
@@ -805,6 +864,14 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++
++	// Positive control: same detector, one ESC drops out of the armed mask (0x07) -> arm_escs sets after hysteresis
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++	EXPECT_TRUE(fd.getStatusFlags().arm_escs);
 +}
 +
 +// SQE-FD-16 | FD-D19T (300ms hysteresis)
@@ -880,6 +947,15 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++
++	// Positive control: same detector and mismatch once armed -> arm_escs sets after the 300ms hysteresis
++	_status.arming_state = vehicle_status_s::ARMING_STATE_ARMED;
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x07);
++	fd.update(_status, _mode);
++	EXPECT_TRUE(fd.getStatusFlags().arm_escs);
 +}
 +
 +// SQE-FD-20 | FD-D17 (esc_count clamp to CONNECTED_ESC_MAX=8)
@@ -911,6 +987,19 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++
++	// Positive control: same esc_count 12, but ESC 7 missing from the armed flags (0x7F) -> the clamped 8-ESC mask
++	// (0xFF) no longer matches, so arm_escs sets; shows the clamp still checks all 8 slots
++	FailureDetector fd_mismatch{nullptr};
++	esc.esc_armed_flags = 0x7F;
++	esc.timestamp = hrt_absolute_time();
++	_esc_pub.publish(esc);
++	fd_mismatch.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	esc.timestamp = hrt_absolute_time();
++	_esc_pub.publish(esc);
++	fd_mismatch.update(_status, _mode);
++	EXPECT_TRUE(fd_mismatch.getStatusFlags().arm_escs);
 +}
 +
 +// SQE-FD-21 | FD-D04F
@@ -929,6 +1018,16 @@ index 0000000000..d70585171e
 +	fd.update(_status, _mode);
 +
 +	EXPECT_FALSE(fd.getStatusFlags().arm_escs);
++
++	// Positive control: identical stimulus with FD_ESCS_EN 1 (read at construction) -> arm_escs sets
++	setParamInt("FD_ESCS_EN", 1);
++	FailureDetector fd_enabled{nullptr};
++	publishEscStatus(4, 0x00);
++	fd_enabled.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(350));
++	publishEscStatus(4, 0x00);
++	fd_enabled.update(_status, _mode);
++	EXPECT_TRUE(fd_enabled.getStatusFlags().arm_escs);
 +}
 +
 +// SQE-FD-22 | FD-D03F
@@ -1077,19 +1176,24 @@ index 0000000000..d70585171e
 +}
 +
 +// SQE-FD-26 | FD-D38F FD-D40T
-+// Given: same isolation/params as FD25; ESC0 warmed up; under-current timer started (low current, throttle above
-+//        threshold)
-+// When : before the 10ms timeout elapses, publish a sample with throttle below the threshold (control 0.1, below
-+//        0.2) so throttle_above_threshold becomes False; update(); then publish low current again with throttle
-+//        above threshold; update()
-+// Then : the timer resets to 0 when the condition is no longer met (FD-D40), so the later low-current sample must
-+//        restart its own fresh 10ms wait — immediately after restarting, the flag is not yet set
++// Given: same isolation/params as FD25 but FD_ACT_MOT_TOUT 1000ms; ESC0 warmed up; under-current timer started at
++//        t_start (low current, throttle above threshold)
++// When : after 600ms, one sample with throttle below the threshold (control 0.1 < 0.2) -> throttle_above_threshold
++//        False; then throttle back above threshold with low current -> timer restarts at t_restart; after another
++//        600ms, update() at t_check
++// Then : at t_check the flag is still false although t_check - t_start > 1000ms — which proves the original timer was
++//        reset (FD-D40); without the reset it would have fired. Then, once t - t_restart > 1000ms, the flag becomes
++//        true (positive control: the restarted timer is live).
++// Determinism: the board has no lockstep clock (CONFIG_BOARD_NOLOCKSTEP), so the test measures its own timestamps.
++//        The lower bounds (> 1000ms) always hold because sleep_for never returns early. The one upper bound
++//        (t_check - t_restart < 1000ms) has 400ms of slack and is asserted as an explicit precondition, so a scheduler
++//        stall is reported as an environment problem, never as a wrong product result.
 +TEST_F(SqeFailureDetectorTest, FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer)
 +{
 +	setParamInt("FD_ESCS_EN", 0);
 +	setParamFloat("FD_ACT_MOT_THR", 0.2f);
 +	setParamFloat("FD_ACT_MOT_C2T", 2.0f);
-+	setParamInt("FD_ACT_MOT_TOUT", 10);
++	setParamInt("FD_ACT_MOT_TOUT", 1000);
 +	FailureDetector fd{nullptr};
 +
 +	actuator_motors_s act{};
@@ -1098,39 +1202,60 @@ index 0000000000..d70585171e
 +	_act_pub.publish(act);
 +
 +	esc_status_s esc{};
-+	esc.timestamp = hrt_absolute_time();
 +	esc.esc_count = 1;
 +	esc.esc[0].actuator_function = actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1;
-+	esc.esc[0].timestamp = esc.timestamp;
-+	esc.esc[0].esc_current = 5.f; // warm up has_current
-+	_esc_pub.publish(esc);
++
++	auto publishEscCurrent = [&](float current) {
++		esc.timestamp = hrt_absolute_time();
++		esc.esc[0].timestamp = esc.timestamp;
++		esc.esc[0].esc_current = current;
++		_esc_pub.publish(esc);
++	};
++	auto publishThrottle = [&](float control) {
++		act.timestamp = hrt_absolute_time();
++		act.control[0] = control;
++		_act_pub.publish(act);
++	};
++
++	publishEscCurrent(5.f); // warm up has_current
 +	fd.update(_status, _mode);
 +
-+	esc.timestamp = hrt_absolute_time();
-+	esc.esc[0].timestamp = esc.timestamp;
-+	esc.esc[0].esc_current = 0.1f; // starts timer
-+	_esc_pub.publish(esc);
++	publishEscCurrent(0.1f); // starts the timer
++	fd.update(_status, _mode);
++	const hrt_abstime t_start = hrt_absolute_time(); // taken after the update: the real start is no later than this
++	ASSERT_FALSE(fd.getStatusFlags().motor);
++
++	std::this_thread::sleep_for(std::chrono::milliseconds(600));
++
++	// Throttle below threshold -> condition false -> timer reset (FD-D40)
++	publishThrottle(0.1f);
++	publishEscCurrent(0.1f);
++	fd.update(_status, _mode);
++	ASSERT_FALSE(fd.getStatusFlags().motor);
++
++	// Throttle above threshold again with low current -> timer restarts
++	publishThrottle(0.5f);
++	publishEscCurrent(0.1f);
++	const hrt_abstime t_restart = hrt_absolute_time(); // taken before the update: the real restart is no earlier
 +	fd.update(_status, _mode);
 +
-+	// Drop throttle below threshold before the 10ms timeout -> resets the timer (FD-D40)
-+	act.control[0] = 0.1f;
-+	act.timestamp = hrt_absolute_time();
-+	_act_pub.publish(act);
-+	esc.timestamp = hrt_absolute_time();
-+	esc.esc[0].timestamp = esc.timestamp;
-+	_esc_pub.publish(esc);
-+	fd.update(_status, _mode);
++	std::this_thread::sleep_for(std::chrono::milliseconds(600));
 +
-+	// Raise throttle again, low current again -> starts a brand-new timer
-+	act.control[0] = 0.5f;
-+	act.timestamp = hrt_absolute_time();
-+	_act_pub.publish(act);
-+	esc.timestamp = hrt_absolute_time();
-+	esc.esc[0].timestamp = esc.timestamp;
-+	_esc_pub.publish(esc);
++	publishEscCurrent(0.1f);
++	const hrt_abstime t_check_before = hrt_absolute_time();
 +	fd.update(_status, _mode);
++	const hrt_abstime t_check_after = hrt_absolute_time();
 +
++	// Bracketing the update with two timestamps makes both bounds conservative for the `now` used inside update()
++	ASSERT_GT(t_check_before - t_start, 1000_ms) << "precondition: original timer would have expired without a reset";
++	ASSERT_LT(t_check_after - t_restart, 1000_ms) << "environment: scheduler stall exceeded the 400ms timing slack";
 +	EXPECT_FALSE(fd.getStatusFlags().motor);
++
++	// Positive control: past 1000ms after the restart the timer fires
++	std::this_thread::sleep_for(std::chrono::milliseconds(500));
++	publishEscCurrent(0.1f);
++	fd.update(_status, _mode);
++	EXPECT_TRUE(fd.getStatusFlags().motor);
 +}
 +
 +// SQE-FD-27 | FD-D37F (NaN control treated as zero throttle)
@@ -1951,10 +2076,10 @@ index 0000000000..12e219dba9
 +	SUCCEED() << "Not run in normal builds; requires UBSan to observe the unguarded shift (F-07b).";
 +}
 diff --git a/src/modules/sensors/data_validator/CMakeLists.txt b/src/modules/sensors/data_validator/CMakeLists.txt
-index e60b18d4b3..14f47dc727 100644
+index e60b18d4b3..f729906ea1 100644
 --- a/src/modules/sensors/data_validator/CMakeLists.txt
 +++ b/src/modules/sensors/data_validator/CMakeLists.txt
-@@ -37,3 +37,18 @@ px4_add_library(data_validator
+@@ -37,3 +37,14 @@ px4_add_library(data_validator
  	DataValidatorGroup.cpp
  	DataValidatorGroup.hpp
  )
@@ -1966,35 +2091,29 @@ index e60b18d4b3..14f47dc727 100644
 +px4_add_unit_gtest(SRC SqeDataValidatorGroupTest.cpp LINKLIBS data_validator
 +	px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
 +	work_queue parameters events perf tinybson uorb_msgs test_stubs)
-+# Separate binary: this file overrides global operator new/delete, so it must never share a process with any
-+# other test (would corrupt their heaps). GCC-only technique (-fcheck-new); SPEC_02 S9.
-+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-+	px4_add_unit_gtest(SRC SqeDataValidatorAllocFaultTest.cpp LINKLIBS data_validator
-+		px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
-+		work_queue parameters events perf tinybson uorb_msgs test_stubs)
-+endif()
-diff --git a/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
++px4_add_unit_gtest(SRC SqeDataValidatorGroupAllocTest.cpp LINKLIBS data_validator
++	px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
++	work_queue parameters events perf tinybson uorb_msgs test_stubs)
+diff --git a/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp
 new file mode 100644
-index 0000000000..3890d184b6
+index 0000000000..5d5350abe3
 --- /dev/null
-+++ b/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
-@@ -0,0 +1,146 @@
++++ b/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp
+@@ -0,0 +1,131 @@
 +/**
 + * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
-+ * System under test : DataValidatorGroup.cpp (PX4-Autopilot v1.17.0, d6f12ad1) — allocation-fault paths
-+ * Test level        : GTest unit, separate binary — this file replaces global operator new, so it cannot share
-+ *                      a binary with any other test (that would corrupt every other test's heap).
-+ * Decisions covered : DVG-D05 (DataValidatorGroup.cpp:88 `if (!validator) return nullptr;`) and the matching
-+ *                      first-allocation-fails path in the constructor (DataValidatorGroup.cpp:55).
-+ *                      Technique documented in docs/specs/SPEC_02_TEST_CODE_STANDARD.md §9 and
-+ *                      work/GAPS.md G-01 — a GCC-only (-fcheck-new) global operator new override that returns
-+ *                      nullptr on command instead of throwing std::bad_alloc, emulating the non-throwing
-+ *                      allocator semantics real on NuttX targets (where this header's own doc comment,
-+ *                      "@return ... nullptr on error", is literally true). This was previously left
-+ *                      environment-limited (not implemented) — closed per the course's explicit clarification
-+ *                      that documented mock/fault-injection techniques must be attempted, not skipped as
-+ *                      "infeasible" by default.
++ * System under test : DataValidatorGroup.cpp — allocation-failure paths (PX4-Autopilot v1.17.0, d6f12ad1)
++ * Test level        : GTest unit, in its own binary — justification: these tests replace the global operator new
++ *                      for the whole executable, so they are isolated from every other test binary.
++ * Decisions covered : DVG-D05 T (L88 `!validator`), the compiler-emitted null checks after `new` at L55 and L86
++ *                      (gap G-01), and finding F-13 (allocation failure inside the constructor)
 + * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ *
++ * Why this is a faithful environment and not a production change: PX4 compiles all C++ with -fcheck-new
++ * (cmake/px4_add_common_flags.cmake), because on NuttX flight targets operator new returns nullptr on exhaustion
++ * instead of throwing. On the POSIX test host, operator new throws, so the null checks are dead code there. The
++ * replacement below reproduces the NuttX behaviour for a chosen allocation only; every other allocation is a plain
++ * malloc-backed new that throws std::bad_alloc on failure as usual.
 + */
 +
 +#include <gtest/gtest.h>
@@ -2005,29 +2124,21 @@ index 0000000000..3890d184b6
 +
 +#include "DataValidatorGroup.hpp"
 +
-+#if defined(__GNUC__) && !defined(__clang__)
-+
 +namespace
 +{
-+// -1 = disarmed (normal allocation). 0 = fail the *next* allocation. >0 = let that many allocations
-+// succeed first, then fail the one after.
-+int g_fail_countdown = -1;
-+} // namespace
++// 0 = never fail. N > 0 = the N-th operator new call from now returns nullptr (NuttX semantics); later calls succeed.
++int g_fail_on_call = 0;
++}
 +
-+void *operator new(std::size_t n)
++void *operator new(std::size_t size)
 +{
-+	if (g_fail_countdown == 0) {
-+		g_fail_countdown = -1;
++	if (g_fail_on_call > 0 && --g_fail_on_call == 0) {
 +		return nullptr;
 +	}
 +
-+	if (g_fail_countdown > 0) {
-+		--g_fail_countdown;
-+	}
++	void *p = std::malloc(size ? size : 1);
 +
-+	void *p = std::malloc(n ? n : 1);
-+
-+	if (!p) {
++	if (p == nullptr) {
 +		throw std::bad_alloc();
 +	}
 +
@@ -2041,96 +2152,91 @@ index 0000000000..3890d184b6
 +{
 +constexpr uint64_t T0 = 1'000'000;
 +
-+void arm(int countdown) { g_fail_countdown = countdown; }
-+void assert_disarmed() { ASSERT_EQ(g_fail_countdown, -1) << "operator new fault-injection left armed after the test"; }
-+} // namespace
-+
-+class SqeDvgAllocFaultTest : public ::testing::Test
++// Arms the hook for the n-th next allocation and disarms it again when the scope ends, so a test that fails half-way
++// can never leave the hook armed for the next test.
++class FailNthAllocation
 +{
-+protected:
-+	void TearDown() override { assert_disarmed(); }
++public:
++	explicit FailNthAllocation(int n) { g_fail_on_call = n; }
++	~FailNthAllocation() { g_fail_on_call = 0; }
 +};
-+
-+class SqeDvgAllocFaultDeathTest : public ::testing::Test
-+{
-+protected:
-+	void TearDown() override { assert_disarmed(); }
-+};
-+
-+// SQE-DVG-AF-01 | DVG-D05T (add_new_validator() first allocation fails)
-+// Given: a healthy DataValidatorGroup(1) with sensor 0 already fed
-+// When : the *next* heap allocation is armed to fail, then add_new_validator() is called
-+// Then : add_new_validator() returns nullptr (per the header's documented "@return ... nullptr on error"
-+//        contract); the group is left with exactly its original single validator — get_sensor_state(1) is
-+//        still UINT32_MAX (index 1 was never actually added), and sensor 0's state is unaffected.
-+TEST_F(SqeDvgAllocFaultTest, AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged)
-+{
-+	DataValidatorGroup g(1);
-+	const float v[3] = {1.0f, 0.0f, 0.0f};
-+	g.put(0, T0, v, 0, 50);
-+
-+	ASSERT_EQ(g.get_sensor_state(1), UINT32_MAX) << "precondition: only 1 validator exists before the fault";
-+
-+	arm(0);
-+	DataValidator *result = g.add_new_validator();
-+
-+	EXPECT_EQ(result, nullptr);
-+	EXPECT_EQ(g.get_sensor_state(1), UINT32_MAX) << "no second validator was linked in";
-+	EXPECT_EQ(g.get_sensor_priority(0), 50u) << "the existing validator 0 is untouched by the failed add";
 +}
 +
-+// SQE-DVG-AF-02 | DVG-D05 path via the constructor (DataValidatorGroup.cpp:55, first `new DataValidator()`)
-+// — characterization, newly discovered this session, distinct from F-03/DVG-10's `_last`-based crash
-+// Given: nothing constructed yet
-+// When : the very first heap allocation (the constructor's first `new DataValidator()`, i=0 of siblings=2) is
-+//        armed to fail
-+// Then : the constructor has NO null check at all after `next = new DataValidator();` (unlike
-+//        add_new_validator(), which DOES have `if (!validator) return nullptr;`, AF01). With i=0's allocation
-+//        failing, `next` is null and `_first = next;` leaves `_first` null too, but that alone does not crash —
-+//        `_first->get_timeout()` at L70 is correctly guarded by `if (_first) {...}` and is simply skipped.
-+//        The actual crash is on the i=1 loop iteration: `prev` was set to `next` (null) at the end of i=0, so
-+//        i=1 takes the `else` branch and executes `prev->setSibling(next)` (L61) with `prev` still null — THAT
-+//        is the real null-pointer dereference, confirmed by tracing the loop body directly against the source
-+//        (not the `_first->get_timeout()` line this comment incorrectly cited in an earlier draft — caught by
-+//        an independent audit pass, corrected here per R4). The death-test oracle itself was always correct
-+//        (the process genuinely crashes); only this explanatory comment was wrong and is now fixed.
-+TEST_F(SqeDvgAllocFaultDeathTest, AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference)
++class SqeDvgAllocTest : public ::testing::Test
++{
++protected:
++	void TearDown() override { g_fail_on_call = 0; }
++};
++
++// SQE-DVG-AF-01 | DVG-D05 T · G-01 (L86 null check, L88 True, L89)
++// Given: a DataValidatorGroup(1) with one working sensor (sensor 0 fed, selected by get_best())
++// When : add_new_validator() is called while the next allocation returns nullptr (NuttX out-of-memory behaviour)
++// Then : add_new_validator() returns nullptr (L88-89) without touching _last; the group still has exactly one
++//        sibling (index 1 not found) and still selects sensor 0 — the failed allocation left it intact
++TEST_F(SqeDvgAllocTest, AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged)
++{
++	DataValidatorGroup g(1);
++	const float val[3] = {1.f, 1.f, 1.f};
++	g.put(0, T0, val, 0, 50);
++
++	DataValidator *added = nullptr;
++	{
++		FailNthAllocation fail(1);
++		added = g.add_new_validator();
++	}
++
++	EXPECT_EQ(added, nullptr);
++	EXPECT_EQ(g.get_sensor_state(1), UINT32_MAX);
++
++	int idx = -99;
++	g.get_best(T0, &idx);
++	EXPECT_EQ(idx, 0);
++
++	// control: the same call succeeds once allocation works again, so the nullptr above came from the failed new
++	DataValidator *added_ok = g.add_new_validator();
++	EXPECT_NE(added_ok, nullptr);
++	EXPECT_NE(g.get_sensor_state(1), UINT32_MAX);
++}
++
++// SQE-DVG-AF-02 | G-01 (L55 null result, constructor) · DVG-D02 T · DVG-D03 F
++// Given: the only allocation in DataValidatorGroup(1)'s constructor returns nullptr
++// When : the group is constructed and queried
++// Then : construction does not crash (i==0 stores nullptr in _first, the loop ends, `if (_first)` is False); the
++//        group behaves as empty: get_sensor_state(0)==UINT32_MAX, get_best() returns nullptr with index -1
++TEST_F(SqeDvgAllocTest, AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash)
++{
++	FailNthAllocation fail(1);
++	DataValidatorGroup g(1);
++
++	EXPECT_EQ(g.get_sensor_state(0), UINT32_MAX);
++
++	int idx = -99;
++	float *best = g.get_best(T0, &idx);
++	EXPECT_EQ(best, nullptr);
++	EXPECT_EQ(idx, -1);
++}
++
++// SQE-DVG-AF-03 | F-13 (runtime evidence) · DVG-D02 F
++// Given: DataValidatorGroup(3) where the 2nd of its 3 allocations returns nullptr
++// When : the constructor runs
++// Then : the process crashes: at i=1 `prev = next` sets prev to nullptr, so at i=2 `prev->setSibling(next)` (L61)
++//        dereferences null. This is F-13: the constructor does not handle a failed allocation of a middle sibling.
++//        It can only happen with NuttX's non-throwing new under memory exhaustion at start-up.
++TEST_F(SqeDvgAllocTest, AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev)
 +{
 +	GTEST_FLAG_SET(death_test_style, "threadsafe");
 +
 +	EXPECT_DEATH({
-+		arm(0);
-+		DataValidatorGroup g(2);
-+		(void)g;
++		FailNthAllocation fail(2);
++		DataValidatorGroup g(3);
 +	}, "");
-+
-+	// death tests fork a child process for the EXPECT_DEATH body; g_fail_countdown in the PARENT process was
-+	// never touched by that forked execution, so it's still disarmed here — nothing to reset.
-+	assert_disarmed();
 +}
-+
-+#else // !(__GNUC__ && !__clang__)
-+
-+// SQE-DVG-AF-00 | platform guard, not a decision/coverage target itself
-+// This technique relies on -fcheck-new's null-check-after-new codegen, which is GCC-specific. On Clang the
-+// generated code assumes a throwing operator new unconditionally and a null return here would be undefined
-+// behaviour on the caller side (the compiler may have already assumed non-null). Per SPEC_02 §9: do not build
-+// this file's real tests on Clang; register the binary with the test engine suppressed so CI still has a named,
-+// explainable target instead of silently vanishing.
-+TEST(SqeDvgAllocFaultTest, AF00_SkippedOnNonGccCompiler)
-+{
-+	GTEST_SKIP() << "Allocation-fault injection (operator new override + -fcheck-new) is a GCC-only technique "
-+			"(SPEC_02 S9); this compiler is not GCC, so DVG-D05's allocation-fault branch remains an "
-+			"environment-limited gap on this platform (work/GAPS.md G-01).";
-+}
-+
-+#endif
 diff --git a/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
 new file mode 100644
-index 0000000000..c3301a1a85
+index 0000000000..18c27b964b
 --- /dev/null
 +++ b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
-@@ -0,0 +1,899 @@
+@@ -0,0 +1,939 @@
 +/**
 + * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
 + * System under test : DataValidatorGroup.cpp / DataValidatorGroup.hpp (PX4-Autopilot v1.17.0, d6f12ad1)
@@ -2217,7 +2323,9 @@ index 0000000000..c3301a1a85
 +// Then : get_best() returns nullptr and *index == -1 (both while loops in get_best() run zero iterations, best
 +//        stays nullptr, max_index stays -1); failover_index()==-1; failover_state()==NO_ERROR; get_sensor_state()
 +//        ==UINT32_MAX (not found); get_sensor_priority()==0 (not found); set_timeout()/set_equal_value_threshold()
-+//        and print() do not crash on an empty group (all their while loops are 0-iteration too)
++//        do not crash on an empty group (0-iteration loops); print() emits exactly its header line for the empty
++//        group — "validator: best: -1, prev best: -1, failsafe: NO (0 events)" (L250-251) — and no "sensor #" line,
++//        because its per-sensor while loop runs zero iterations (L256)
 +TEST_F(SqeDvgTest, DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash)
 +{
 +	DataValidatorGroup g(0);
@@ -2238,7 +2346,9 @@ index 0000000000..c3301a1a85
 +	testing::internal::CaptureStdout();
 +	g.print();
 +	const std::string out = testing::internal::GetCapturedStdout();
-+	(void)out; // smoke: reaching here without crashing is the oracle for the 0-iteration print() loop
++
++	EXPECT_NE(out.find("validator: best: -1, prev best: -1, failsafe: NO (0 events)"), std::string::npos) << out;
++	EXPECT_EQ(out.find("sensor #"), std::string::npos) << out;
 +}
 +
 +// SQE-DVG-04 | DVG-D05F DVG-D06
@@ -2466,22 +2576,58 @@ index 0000000000..c3301a1a85
 +	EXPECT_NE(best, nullptr);
 +}
 +
-+// SQE-DVG-12 | DVG-D04
++// SQE-DVG-12 | DVG-D01 DVG-D02 DVG-D04
 +// Given/When: construct and destroy DataValidatorGroup instances of sizes 0..5, calling add_new_validator() once
 +//             extra on the size-3 instance before it goes out of scope
-+// Then : no crash (destructor's while-loop walks and deletes every linked sibling, including the one added via
-+//        add_new_validator(), for every group size including the empty one)
-+TEST_F(SqeDvgTest, DVG12_ConstructDestroyVariousSizes_NoCrash)
++// Then : the constructor links exactly n siblings — get_sensor_state(i) is found (!= UINT32_MAX) for every i < n and
++//        not found (== UINT32_MAX) at i == n; after add_new_validator() the size-3 group has a 4th reachable sibling
++//        (index 3 found, index 4 not found). The destructor's while-loop (DVG-D04) then walks and deletes every linked
++//        sibling, including the added one, for every size including 0 — exercised here for coverage; freeing itself is
++//        not observable through the public API (a leak would need ASan/LeakSanitizer to detect), so the destructor part
++//        of this test is a smoke check, not an oracle
++TEST_F(SqeDvgTest, DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings)
 +{
 +	for (unsigned n = 0; n <= 5; n++) {
 +		DataValidatorGroup g(n);
 +
++		for (unsigned i = 0; i < n; i++) {
++			EXPECT_NE(g.get_sensor_state(i), UINT32_MAX) << "size " << n << ", index " << i;
++		}
++
++		EXPECT_EQ(g.get_sensor_state(n), UINT32_MAX) << "size " << n;
++
 +		if (n == 3) {
-+			g.add_new_validator();
++			ASSERT_NE(g.add_new_validator(), nullptr);
++			EXPECT_NE(g.get_sensor_state(3), UINT32_MAX);
++			EXPECT_EQ(g.get_sensor_state(4), UINT32_MAX);
 +		}
 +	}
++}
 +
-+	SUCCEED();
++// SQE-DVG-13 | DVG-D25 T (the " OFF" ternary, L261) — closes the former gap G-04
++// Given: a DataValidatorGroup(1) whose sensor is queried by get_best() before it has ever been fed, so confidence()
++//        sets ERROR_FLAG_NO_DATA in its error mask (DataValidator.cpp L106-108); the sensor is then fed once
++// When : print() is called before any further confidence() evaluation (the mask is only rewritten by confidence())
++// Then : the sensor is now used() (fed), so print() lists it, and its state still carries NO_DATA, so the line shows
++//        " OFF" (L261's ternary True side) and not " OK"
++TEST_F(SqeDvgTest, DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff)
++{
++	DataValidatorGroup g(1);
++	int idx = -99;
++
++	g.get_best(T0, &idx); // never fed: confidence() sets NO_DATA
++	ASSERT_EQ(idx, -1);
++	ASSERT_EQ(g.get_sensor_state(0), DataValidator::ERROR_FLAG_NO_DATA);
++
++	const float val[3] = {1.f, 1.f, 1.f};
++	g.put(0, T0 + 1000, val, 0, 50); // now used(), mask untouched until the next confidence()
++
++	testing::internal::CaptureStdout();
++	g.print();
++	const std::string out = testing::internal::GetCapturedStdout();
++
++	EXPECT_NE(out.find("sensor #0, prio: 50, state: OFF"), std::string::npos) << out;
++	EXPECT_EQ(out.find(" OK"), std::string::npos) << out;
 +}
 +
 +// ===========================================================================

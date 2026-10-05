@@ -32,7 +32,7 @@
       "lines_found": 155,
       "lines_hit": 155,
       "branches_found": 116,
-      "branches_hit": 112,
+      "branches_hit": 114,
       "functions_found": 12,
       "functions_hit": 12
     }
@@ -41,7 +41,7 @@
     "lines_found": 428,
     "lines_hit": 428,
     "branches_found": 457,
-    "branches_hit": 378,
+    "branches_hit": 380,
     "functions_found": 26,
     "functions_hit": 26
   }
