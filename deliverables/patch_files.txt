@@ -3,5 +3,6 @@ src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp
 src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp
 src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
 src/modules/sensors/data_validator/CMakeLists.txt
+src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
 src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
 src/modules/sensors/data_validator/SqeDataValidatorTest.cpp

@@ -1,12 +1,14 @@
 # STATUS — SQE A2 (update every session)
 Baseline: PX4-Autopilot v1.17.0 @ d6f12ad1c4f70ad3230afd7d86e971421e02fef4 · branch `sqe-a2`
-Build type in use: Coverage (since P03) · Last full test run: 2026-10-01 (ctest -R Sqe: 5/5 binaries passed, **111**
-active tests [116 total incl. 5 by-design DISABLED probes: PRB01/02 in unit-SqeDataValidator, PRB03 in
-unit-SqeDataValidatorGroup, PRB05/06 in functional-SqeFailureInjector] — exact count re-verified 2026-10-01 via
-`--gtest_list_tests` per binary after finding and correcting a wrong "109" figure that had propagated into this
-file and into the submitted report §10; see D-012) re-confirmed independently on a fresh v1.17.0 worktree during
-the P14 dry-run — see evidence/dryrun/DRYRUN_COMPARISON.md
-· Current phase: P00-P14 complete; P15 materials ready, live drills pending the team
+Build type in use: Coverage (since P03) · Last full test run: 2026-10-05 (ctest -R Sqe: **6/6 binaries** passed,
+**113** active tests on this GCC platform [119 inventory rows total incl. 5 by-design DISABLED probes and 1
+compiled-out-on-GCC platform guard (AF-00) — PRB01/02 in unit-SqeDataValidator, PRB03 in unit-SqeDataValidatorGroup,
+PRB05/06 in functional-SqeFailureInjector]. Total scope **line coverage is now 100.0% (428/428)** after IT-4
+closed `add_new_validator()`'s half of gap G-01 via allocation-fault injection — see D-015, work/GAPS.md G-01,
+work/coverage_iterations.md IT-4)
+· Current phase: P00-P15 base complete; post-submission hardening pass (IT-4, G-01 closure) done 2026-10-05
+per an independent grading audit + explicit course clarification on mock/fault-injection techniques; live viva
+drills still the one item pending the team
 
 | Phase | Gate | Status (TODO / IN-PROGRESS / READY-FOR-HUMAN / APPROVED / BLOCKED) | Evidence | Approved by / date |
 |---|---|---|---|---|

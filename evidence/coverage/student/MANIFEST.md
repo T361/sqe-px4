@@ -1,8 +1,8 @@
 # Coverage capture manifest — student
-UTC: 2026-10-01T15:15:11Z
-Command: tools/sqe_coverage.sh student student
-PX4 HEAD: 7b477468cf0afe8daee60d1b1aaf8ae806e530da (branch sqe-a2)
-Dirty files: 4
+UTC: 2026-10-05T16:18:02Z
+Command: tools/sqe_coverage.sh student
+PX4 HEAD: bba5a3d6e7f086201088c8db5f98c28d3d3b0630 (branch sqe-a2)
+Dirty files: 0
 CMAKE_BUILD_TYPE: Coverage
 lcov: lcov: LCOV version 2.0-1 · genhtml: genhtml: LCOV version 2.0-1 · gcov tool: gcov (gcov (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0)
 lcovrc: /etc/lcovrc · rc flags: --rc branch_coverage=1 · ignore/filter: --ignore-errors mismatch
@@ -10,5 +10,5 @@ capture dirs: --directory /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/build/p
 scope patterns: */sensors/data_validator/DataValidator.cpp */sensors/data_validator/DataValidatorGroup.cpp */commander/failure_detector/FailureDetector.cpp */commander/failure_detector/FailureInjector.cpp
 ctest args: -R Sqe
 ctest exit code: 0
-tests run: 5
+tests run: 6
 Notes: none

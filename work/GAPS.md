@@ -7,36 +7,57 @@ the live build (not merely the lcov BRDA summary) wherever a tool-artifact class
 per-item "Why" for the exact reproduction command / evidence path.
 
 Summary of outcome: of the 57 items open after IT-1, **5 genuine decisions (10 branch outcomes across FD-D25,
-FD-D38, FD-D41) were closed by 3 new tests** (SQE-FD-36, SQE-FD-37, SQE-FDI-08) in IT-2. Every remaining item is one
-of: environment-limited (1 cluster), infeasible (2 clusters, proofs below), or tool-artefact (3 clusters, proofs
-below). No item was excluded merely to raise the percentage; no `LCOV_EXCL_*` marker was added to production code.
+FD-D38, FD-D41) were closed by 3 new tests** (SQE-FD-36, SQE-FD-37, SQE-FDI-08) in IT-2. **Update 2026-10-05 (IT-4):**
+2 more branch outcomes (`DataValidatorGroup.cpp` L86, L88) plus one previously-"line not executed" statement (L89)
+were closed by implementing the allocation-fault-injection technique documented but previously unused in G-01 — see
+G-01 below for the full account, including the one remaining line (L55) that stays uncovered for a narrower,
+coverage-tooling-specific reason (death-test processes never flush gcov counters), not a reachability gap. With
+this change, `DataValidatorGroup.cpp` reaches 100.0% line coverage and total scope line coverage reaches
+**100.0%** (428/428) — see `evidence/coverage/IT-4/per_file.md`. Every remaining item is one of: environment-limited
+(G-01's one remaining line, now narrower in scope), infeasible (2 clusters, proofs below), or tool-artefact (3
+clusters, proofs below). No item was excluded merely to raise the percentage; no `LCOV_EXCL_*` marker was added to
+production code.
 
 ---
 
 ### G-01 DataValidatorGroup.cpp:88 `if (!validator)` True — and the paired `-fcheck-new` null-check edges at
 L55 branch 1 (`next = new DataValidator()`) and L86 branch 2 (`DataValidator *validator = new DataValidator()`),
 plus L89 (`return nullptr;`, "line not executed")
-Class: environment-limited
-What exactly is uncovered: L88 gcov branch `b0.0` (0 hits — the True/"validator is null" side); L55 `b0.1` (0
-hits); L86 `b0.2` (0 hits); L89 (the `return nullptr;` statement itself, 0 hits — unreachable while L88 True is
-unreached).
-Why: GCC's `-fcheck-new` emits an explicit null check after every `new T()` expression even though, under the
-default (non-`-fno-exceptions`) C++ ABI used by this build (`px4_sitl_test`, glibc/libstdc++ on Linux), `operator
-new` **throws `std::bad_alloc`** on allocation failure instead of returning `nullptr` — confirmed by reading the
-actual `CMAKE_CXX_FLAGS_COVERAGE` in `PX4-Autopilot/build/px4_sitl_test/CMakeCache.txt` (no `-fno-exceptions`) and
-by the C++ standard's `operator new(size_t)` contract (only the `nothrow` overload, `new (std::nothrow) T()`, which
-this source does *not* use at L55/L86, can return null). `add_new_validator()`'s null check at L88 is therefore
-dead code on this platform, not a reachable decision — it is PX4 flight-code written for a cross-platform build
-where some targets (e.g. certain embedded/NuttX allocator configurations, per `work/basis/INVENTORY_DataValidatorGroup.md`
-line 22) may configure a non-throwing allocator.
-What would reach it: (a) rebuild with `-fno-exceptions` and a custom non-throwing global `operator new` override
-(the technique in `docs/specs/SPEC_02_TEST_CODE_STANDARD.md` §9, GCC allocation-fault injection), or (b) run on an
-actual NuttX target where the configured allocator returns null instead of throwing. Neither was implemented this
-session — judged not worth a new sanitizer/allocator build for a single compiler-pinned branch pair, given the time
-budget; flagged here rather than silently dropped. If pursued in a later session, a dedicated
-`SqeDataValidatorAllocFaultTest.cpp` in its own binary (separate CMake target, not mixed into the existing 5
-binaries since it would need different build flags) is the documented strategy.
-Counted in feasible coverage? no (flagged, not silently excluded)
+Class: **partially closed** — `add_new_validator()`'s half (L86, L88, L89) is now covered by a real test; the
+constructor's half (L55) remains environment-limited for a gcov-specific reason, not a reachability reason.
+
+**UPDATE (2026-10-05, IT-4):** the allocation-fault injection technique previously only documented in
+`docs/specs/SPEC_02_TEST_CODE_STANDARD.md` §9 as "not implemented this session" has now been implemented —
+`PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp` (ctest
+`unit-SqeDataValidatorAllocFault`, a separate GCC-only binary since it overrides global `operator new`/`delete`
+and cannot share a process with any other test). This was done specifically because the course clarified that
+documented mock/fault-injection techniques must be attempted before a gap is called infeasible, not skipped by
+default.
+
+- **`add_new_validator()`'s branch (L86, L88, L89) — now genuinely covered**, confirmed by re-reading the fresh
+  `evidence/coverage/IT-4/scope.info` directly: `BRDA:86,0,1,9` (9 hits, was 0), `BRDA:88,0,1,10` (10 hits, was 0),
+  `DA:89,9` (9 hits, was 0 — "line not executed" is no longer true). Test `SQE-DVG-AF-01` arms the *next*
+  allocation to fail via the override, calls `add_new_validator()` on a healthy group, and asserts it returns
+  `nullptr` with the group otherwise unchanged — exactly the documented `@return ... nullptr on error` contract.
+  `DataValidatorGroup.cpp`'s own line coverage is now **100.0%** (155/155, up from 154/155) and branch coverage
+  **96.6%** (112/116, up from 110/116) — see `evidence/coverage/IT-4/per_file.md`.
+- **Constructor's branch (L55) — still 0 hits, but now for a different, narrower reason.** Test `SQE-DVG-AF-02`
+  arms the constructor's *first* allocation to fail; tracing the real control flow (not assumed — walked line by
+  line against `DataValidatorGroup.cpp:48-65`), this does NOT crash at `_first->get_timeout()` (correctly guarded
+  by `if (_first) {...}` at L69) — it crashes one iteration later at `prev->setSibling(next)` (L61), where `prev`
+  is still null because the first (failed) allocation never updated it to a real pointer. This is a genuine,
+  confirmed `SIGSEGV`, asserted correctly as a death test (`EXPECT_DEATH`). **Why L55 still shows 0 hits despite
+  the test exercising exactly that line:** gcov/gcov_dump data is written by each process's `atexit` handler;
+  `EXPECT_DEATH`'s forked child process is killed by the SIGSEGV before that handler runs, so the coverage counters
+  incremented during the crashing child's brief execution are never flushed to the `.gcda` file. This is a known,
+  general limitation of statement-coverage instrumentation on any test that intentionally crashes (the same
+  reason F-03/DVG-10's existing, pre-this-session death test also does not move any coverage number for its own
+  target line) — not a sign the test is fake or the branch is unreached; the test's PASS result and the actual
+  process-level SIGSEGV are independently verifiable (`evidence/tests/xml/unit-SqeDataValidatorAllocFault.xml`,
+  `evidence/tests/logs/unit-SqeDataValidatorAllocFault_shuffle.log`, both captured from live runs).
+Counted in feasible coverage? **L86/L88/L89: yes, now genuinely covered, not merely "feasible."** L55: no — this
+one line remains a tool-measurement limitation of coverage-vs-death-tests specifically, not an unattempted or
+unreachable branch.
 
 ### G-02 DataValidatorGroup.cpp:78 `delete (_first);` branch 1 (0 hits)
 Class: tool-artefact

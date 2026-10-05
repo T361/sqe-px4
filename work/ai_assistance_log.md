@@ -380,3 +380,28 @@ Accepted / revised / rejected: did not attempt to fabricate a live viva drill se
 user why that specific request could not be honestly fulfilled by this session (requires two real humans
 examining live, unscripted understanding) and left work/viva/drill_log.md genuinely empty rather than writing a
 fake passing entry.
+
+## 2026-10-05 — G-01 closure + independent grading audit — Claude (autonomous, per explicit user direction)
+Use: implemented the previously-documented-but-unused GCC allocation-fault-injection technique for coverage gap
+G-01, in response to a real course-instructor clarification (scope must not be narrowed for easy percentages;
+mocks/fakes/stubs/fault-injection must be genuinely attempted before calling something infeasible; MC/DC targets
+must be substantive, not easy). Dispatched an independent, adversarial grading subagent to verify the whole
+submission against the real assignment PDF (not the kit's own derived rubric) before and after this change.
+What the AI produced: PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp (new,
+committed on branch sqe-a2), +1 CMakeLists.txt block (GCC-only guard); work/GAPS.md G-01 rewritten with the real
+post-fix state; work/GRADING_AUDIT.md (the independent audit's full findings, kept as a historical record);
+deliverables/report/REPORT.md updated across S4/S6/S8/S9/S10/Appendix B with the real coverage numbers (100.0%
+total scope line coverage, up from 99.8%) and test counts; PDF re-exported (13 pages); workbook, patch, and zip
+regenerated against the new committed state; work/coverage_iterations.md IT-4 entry; work/DECISIONS.md D-015.
+Human verification: an independent subagent, briefed to be adversarial and to verify everything itself rather
+than trust any prior document, caught one real factual error (a test comment misattributing which line crashes)
+and a full staleness sweep (report/workbook/inventory/patch/zip all one commit behind PX4-Autopilot HEAD) before
+any of this was fixed — this is exactly the kind of check this log exists to document, not something to omit
+because it reflects a mistake. Both the error and the staleness were corrected in direct response to the audit's
+findings, then re-verified independently again (ctest, trace_check, mcdc_check, word_count all re-run clean after
+every edit, not just once at the end).
+Assumptions introduced: none new.
+Accepted / revised / rejected: the audit's crash-site correction for AF02's comment was independently re-traced
+against the live source before being accepted (confirmed: `prev->setSibling(next)` with `prev` still null on the
+second loop iteration, not the `if (_first)`-guarded `_first->get_timeout()` the original comment claimed) — not
+simply taken on the audit's word.

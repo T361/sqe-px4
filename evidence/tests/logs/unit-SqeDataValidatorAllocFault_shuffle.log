@@ -1,0 +1,87 @@
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 41510 .
+[==========] Running 2 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgAllocFaultDeathTest
+[ RUN      ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference
+[       OK ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference (219 ms)
+[----------] 1 test from SqeDvgAllocFaultDeathTest (219 ms total)
+
+[----------] 1 test from SqeDvgAllocFaultTest
+[ RUN      ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged
+[       OK ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged (0 ms)
+[----------] 1 test from SqeDvgAllocFaultTest (0 ms total)
+
+[==========] 2 tests from 2 test suites ran. (220 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 41511 .
+[==========] Running 2 tests from 2 test suites.
+[----------] 1 test from SqeDvgAllocFaultDeathTest
+[ RUN      ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference
+[       OK ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference (193 ms)
+[----------] 1 test from SqeDvgAllocFaultDeathTest (193 ms total)
+
+[----------] 1 test from SqeDvgAllocFaultTest
+[ RUN      ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged
+[       OK ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged (0 ms)
+[----------] 1 test from SqeDvgAllocFaultTest (0 ms total)
+
+[==========] 2 tests from 2 test suites ran. (194 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 41512 .
+[==========] Running 2 tests from 2 test suites.
+[----------] 1 test from SqeDvgAllocFaultDeathTest
+[ RUN      ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference
+[       OK ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference (167 ms)
+[----------] 1 test from SqeDvgAllocFaultDeathTest (167 ms total)
+
+[----------] 1 test from SqeDvgAllocFaultTest
+[ RUN      ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged
+[       OK ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged (0 ms)
+[----------] 1 test from SqeDvgAllocFaultTest (0 ms total)
+
+[==========] 2 tests from 2 test suites ran. (168 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 41513 .
+[==========] Running 2 tests from 2 test suites.
+[----------] 1 test from SqeDvgAllocFaultDeathTest
+[ RUN      ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference
+[       OK ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference (166 ms)
+[----------] 1 test from SqeDvgAllocFaultDeathTest (166 ms total)
+
+[----------] 1 test from SqeDvgAllocFaultTest
+[ RUN      ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged
+[       OK ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged (0 ms)
+[----------] 1 test from SqeDvgAllocFaultTest (0 ms total)
+
+[==========] 2 tests from 2 test suites ran. (167 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 41514 .
+[==========] Running 2 tests from 2 test suites.
+[----------] 1 test from SqeDvgAllocFaultDeathTest
+[ RUN      ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference
+[       OK ] SqeDvgAllocFaultDeathTest.AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference (175 ms)
+[----------] 1 test from SqeDvgAllocFaultDeathTest (175 ms total)
+
+[----------] 1 test from SqeDvgAllocFaultTest
+[ RUN      ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged
+[       OK ] SqeDvgAllocFaultTest.AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged (0 ms)
+[----------] 1 test from SqeDvgAllocFaultTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 2 test suites ran. (176 ms total)
+[  PASSED  ] 2 tests.

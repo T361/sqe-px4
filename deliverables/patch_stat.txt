@@ -2,7 +2,8 @@
  .../failure_detector/SqeFailureDetectorImuTest.cpp |  301 +++++
  .../failure_detector/SqeFailureDetectorTest.cpp    | 1210 ++++++++++++++++++++
  .../failure_detector/SqeFailureInjectorTest.cpp    |  410 +++++++
- src/modules/sensors/data_validator/CMakeLists.txt  |    8 +
+ src/modules/sensors/data_validator/CMakeLists.txt  |   15 +
+ .../SqeDataValidatorAllocFaultTest.cpp             |  146 +++
  .../data_validator/SqeDataValidatorGroupTest.cpp   |  899 +++++++++++++++
  .../data_validator/SqeDataValidatorTest.cpp        |  472 ++++++++
- 7 files changed, 3305 insertions(+)
+ 8 files changed, 3458 insertions(+)

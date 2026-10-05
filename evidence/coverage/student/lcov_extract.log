@@ -37,6 +37,7 @@ Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/f
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidator.hpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.hpp
+Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
 Excluding /home/dns/Desktop/sqe-a2-px4-kit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorTest.cpp
 Excluding /usr/include/c++/13/atomic
@@ -46,6 +47,7 @@ Excluding /usr/include/c++/13/bits/basic_string.h
 Excluding /usr/include/c++/13/bits/basic_string.tcc
 Excluding /usr/include/c++/13/bits/char_traits.h
 Excluding /usr/include/c++/13/bits/chrono.h
+Excluding /usr/include/c++/13/bits/exception.h
 Excluding /usr/include/c++/13/bits/ios_base.h
 Excluding /usr/include/c++/13/bits/move.h
 Excluding /usr/include/c++/13/bits/new_allocator.h
@@ -58,12 +60,13 @@ Excluding /usr/include/c++/13/bits/unique_ptr.h
 Excluding /usr/include/c++/13/cmath
 Excluding /usr/include/c++/13/ext/atomicity.h
 Excluding /usr/include/c++/13/limits
+Excluding /usr/include/c++/13/new
 Excluding /usr/include/c++/13/string_view
 Excluding /usr/include/c++/13/tuple
 Excluding /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
-Removed 63 files
+Removed 66 files
 Writing data to /home/dns/Desktop/sqe-a2-px4-kit/evidence/coverage/student/scope.info
 Summary coverage rate:
-  lines......: 99.8% (427 of 428 lines)
+  lines......: 100.0% (428 of 428 lines)
   functions..: 100.0% (26 of 26 functions)
-  branches...: 82.3% (376 of 457 branches)
+  branches...: 82.7% (378 of 457 branches)

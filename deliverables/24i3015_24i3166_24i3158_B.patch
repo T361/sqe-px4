@@ -1951,10 +1951,10 @@ index 0000000000..12e219dba9
 +	SUCCEED() << "Not run in normal builds; requires UBSan to observe the unguarded shift (F-07b).";
 +}
 diff --git a/src/modules/sensors/data_validator/CMakeLists.txt b/src/modules/sensors/data_validator/CMakeLists.txt
-index e60b18d4b3..88e77e261a 100644
+index e60b18d4b3..14f47dc727 100644
 --- a/src/modules/sensors/data_validator/CMakeLists.txt
 +++ b/src/modules/sensors/data_validator/CMakeLists.txt
-@@ -37,3 +37,11 @@ px4_add_library(data_validator
+@@ -37,3 +37,18 @@ px4_add_library(data_validator
  	DataValidatorGroup.cpp
  	DataValidatorGroup.hpp
  )
@@ -1966,6 +1966,165 @@ index e60b18d4b3..88e77e261a 100644
 +px4_add_unit_gtest(SRC SqeDataValidatorGroupTest.cpp LINKLIBS data_validator
 +	px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
 +	work_queue parameters events perf tinybson uorb_msgs test_stubs)
++# Separate binary: this file overrides global operator new/delete, so it must never share a process with any
++# other test (would corrupt their heaps). GCC-only technique (-fcheck-new); SPEC_02 S9.
++if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++	px4_add_unit_gtest(SRC SqeDataValidatorAllocFaultTest.cpp LINKLIBS data_validator
++		px4_layer px4_platform uORB systemlib cdev px4_work_queue px4_daemon
++		work_queue parameters events perf tinybson uorb_msgs test_stubs)
++endif()
+diff --git a/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
+new file mode 100644
+index 0000000000..3890d184b6
+--- /dev/null
++++ b/src/modules/sensors/data_validator/SqeDataValidatorAllocFaultTest.cpp
+@@ -0,0 +1,146 @@
++/**
++ * SQE A2 — student-authored tests (SE3002 Assignment 02). Not upstream code.
++ * System under test : DataValidatorGroup.cpp (PX4-Autopilot v1.17.0, d6f12ad1) — allocation-fault paths
++ * Test level        : GTest unit, separate binary — this file replaces global operator new, so it cannot share
++ *                      a binary with any other test (that would corrupt every other test's heap).
++ * Decisions covered : DVG-D05 (DataValidatorGroup.cpp:88 `if (!validator) return nullptr;`) and the matching
++ *                      first-allocation-fails path in the constructor (DataValidatorGroup.cpp:55).
++ *                      Technique documented in docs/specs/SPEC_02_TEST_CODE_STANDARD.md §9 and
++ *                      work/GAPS.md G-01 — a GCC-only (-fcheck-new) global operator new override that returns
++ *                      nullptr on command instead of throwing std::bad_alloc, emulating the non-throwing
++ *                      allocator semantics real on NuttX targets (where this header's own doc comment,
++ *                      "@return ... nullptr on error", is literally true). This was previously left
++ *                      environment-limited (not implemented) — closed per the course's explicit clarification
++ *                      that documented mock/fault-injection techniques must be attempted, not skipped as
++ *                      "infeasible" by default.
++ * Authors           : SQE A2 team — AI assistance recorded in ai_assistance_log.md
++ */
++
++#include <gtest/gtest.h>
++
++#include <cstdint>
++#include <cstdlib>
++#include <new>
++
++#include "DataValidatorGroup.hpp"
++
++#if defined(__GNUC__) && !defined(__clang__)
++
++namespace
++{
++// -1 = disarmed (normal allocation). 0 = fail the *next* allocation. >0 = let that many allocations
++// succeed first, then fail the one after.
++int g_fail_countdown = -1;
++} // namespace
++
++void *operator new(std::size_t n)
++{
++	if (g_fail_countdown == 0) {
++		g_fail_countdown = -1;
++		return nullptr;
++	}
++
++	if (g_fail_countdown > 0) {
++		--g_fail_countdown;
++	}
++
++	void *p = std::malloc(n ? n : 1);
++
++	if (!p) {
++		throw std::bad_alloc();
++	}
++
++	return p;
++}
++
++void operator delete(void *p) noexcept { std::free(p); }
++void operator delete(void *p, std::size_t) noexcept { std::free(p); }
++
++namespace
++{
++constexpr uint64_t T0 = 1'000'000;
++
++void arm(int countdown) { g_fail_countdown = countdown; }
++void assert_disarmed() { ASSERT_EQ(g_fail_countdown, -1) << "operator new fault-injection left armed after the test"; }
++} // namespace
++
++class SqeDvgAllocFaultTest : public ::testing::Test
++{
++protected:
++	void TearDown() override { assert_disarmed(); }
++};
++
++class SqeDvgAllocFaultDeathTest : public ::testing::Test
++{
++protected:
++	void TearDown() override { assert_disarmed(); }
++};
++
++// SQE-DVG-AF-01 | DVG-D05T (add_new_validator() first allocation fails)
++// Given: a healthy DataValidatorGroup(1) with sensor 0 already fed
++// When : the *next* heap allocation is armed to fail, then add_new_validator() is called
++// Then : add_new_validator() returns nullptr (per the header's documented "@return ... nullptr on error"
++//        contract); the group is left with exactly its original single validator — get_sensor_state(1) is
++//        still UINT32_MAX (index 1 was never actually added), and sensor 0's state is unaffected.
++TEST_F(SqeDvgAllocFaultTest, AF01_AddNewValidatorAllocationFails_ReturnsNullptrGroupUnchanged)
++{
++	DataValidatorGroup g(1);
++	const float v[3] = {1.0f, 0.0f, 0.0f};
++	g.put(0, T0, v, 0, 50);
++
++	ASSERT_EQ(g.get_sensor_state(1), UINT32_MAX) << "precondition: only 1 validator exists before the fault";
++
++	arm(0);
++	DataValidator *result = g.add_new_validator();
++
++	EXPECT_EQ(result, nullptr);
++	EXPECT_EQ(g.get_sensor_state(1), UINT32_MAX) << "no second validator was linked in";
++	EXPECT_EQ(g.get_sensor_priority(0), 50u) << "the existing validator 0 is untouched by the failed add";
++}
++
++// SQE-DVG-AF-02 | DVG-D05 path via the constructor (DataValidatorGroup.cpp:55, first `new DataValidator()`)
++// — characterization, newly discovered this session, distinct from F-03/DVG-10's `_last`-based crash
++// Given: nothing constructed yet
++// When : the very first heap allocation (the constructor's first `new DataValidator()`, i=0 of siblings=2) is
++//        armed to fail
++// Then : the constructor has NO null check at all after `next = new DataValidator();` (unlike
++//        add_new_validator(), which DOES have `if (!validator) return nullptr;`, AF01). With i=0's allocation
++//        failing, `next` is null and `_first = next;` leaves `_first` null too, but that alone does not crash —
++//        `_first->get_timeout()` at L70 is correctly guarded by `if (_first) {...}` and is simply skipped.
++//        The actual crash is on the i=1 loop iteration: `prev` was set to `next` (null) at the end of i=0, so
++//        i=1 takes the `else` branch and executes `prev->setSibling(next)` (L61) with `prev` still null — THAT
++//        is the real null-pointer dereference, confirmed by tracing the loop body directly against the source
++//        (not the `_first->get_timeout()` line this comment incorrectly cited in an earlier draft — caught by
++//        an independent audit pass, corrected here per R4). The death-test oracle itself was always correct
++//        (the process genuinely crashes); only this explanatory comment was wrong and is now fixed.
++TEST_F(SqeDvgAllocFaultDeathTest, AF02_FirstConstructorAllocationFails_CrashesOnNullFirstDereference)
++{
++	GTEST_FLAG_SET(death_test_style, "threadsafe");
++
++	EXPECT_DEATH({
++		arm(0);
++		DataValidatorGroup g(2);
++		(void)g;
++	}, "");
++
++	// death tests fork a child process for the EXPECT_DEATH body; g_fail_countdown in the PARENT process was
++	// never touched by that forked execution, so it's still disarmed here — nothing to reset.
++	assert_disarmed();
++}
++
++#else // !(__GNUC__ && !__clang__)
++
++// SQE-DVG-AF-00 | platform guard, not a decision/coverage target itself
++// This technique relies on -fcheck-new's null-check-after-new codegen, which is GCC-specific. On Clang the
++// generated code assumes a throwing operator new unconditionally and a null return here would be undefined
++// behaviour on the caller side (the compiler may have already assumed non-null). Per SPEC_02 §9: do not build
++// this file's real tests on Clang; register the binary with the test engine suppressed so CI still has a named,
++// explainable target instead of silently vanishing.
++TEST(SqeDvgAllocFaultTest, AF00_SkippedOnNonGccCompiler)
++{
++	GTEST_SKIP() << "Allocation-fault injection (operator new override + -fcheck-new) is a GCC-only technique "
++			"(SPEC_02 S9); this compiler is not GCC, so DVG-D05's allocation-fault branch remains an "
++			"environment-limited gap on this platform (work/GAPS.md G-01).";
++}
++
++#endif
 diff --git a/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp b/src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp
 new file mode 100644
 index 0000000000..c3301a1a85
