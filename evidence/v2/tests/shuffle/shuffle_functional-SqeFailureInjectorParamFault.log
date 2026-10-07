@@ -1,0 +1,164 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 78247 .
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 78248 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 78249 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 78250 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 78251 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 78252 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 78253 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 78254 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 78255 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 78256 .
+[==========] Running 2 tests from 1 test suite.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.

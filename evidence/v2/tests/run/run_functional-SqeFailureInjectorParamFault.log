@@ -1,0 +1,17 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.

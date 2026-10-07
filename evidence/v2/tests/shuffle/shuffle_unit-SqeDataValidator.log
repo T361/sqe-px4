@@ -1,0 +1,522 @@
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 97279 .
+[==========] Running 21 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 97280 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 97281 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 97282 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 97283 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 97284 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 97285 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 97286 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 97287 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 97288 .
+[==========] Running 21 tests from 1 test suite.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate
+[       OK ] SqeDataValidatorTest.DV17_NoDataThenHighErrorCount_FlagsAccumulate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut
+[       OK ] SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne
+[       OK ] SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag
+[       OK ] SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut
+[       OK ] SqeDataValidatorTest.DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne
+[       OK ] SqeDataValidatorTest.DV10_DecreasingErrorCount_StillDecaysDensityByOne (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual
+[       OK ] SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut
+[       OK ] SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate
+[       OK ] SqeDataValidatorTest.DV06_NonFiniteAxesAreIgnoredOnUpdate (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect
+[       OK ] SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero
+[       OK ] SqeDataValidatorTest.DV09_ZeroErrorCount_DensityStaysFlooredAtZero (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags
+[       OK ] SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData
+[       OK ] SqeDataValidatorTest.DV11_NeverPut_ReportsNoData (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV07_AllNonFiniteStream_LeavesValueAtZeroButReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence
+[       OK ] SqeDataValidatorTest.DV16_TimeoutThenFreshPut_RecoversFullConfidence (0 ms)
+[----------] 21 tests from SqeDataValidatorTest (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 21 tests from 1 test suite ran. (2 ms total)
+[  PASSED  ] 21 tests.

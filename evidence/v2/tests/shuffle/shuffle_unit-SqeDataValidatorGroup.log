@@ -1,0 +1,872 @@
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 97352 .
+[==========] Running 35 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (31 ms)
+[----------] 1 test from SqeDvgDeathTest (31 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[==========] 35 tests from 3 test suites ran. (34 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 97353 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (44 ms)
+[----------] 1 test from SqeDvgDeathTest (44 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[==========] 35 tests from 3 test suites ran. (48 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 97354 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (53 ms)
+[----------] 1 test from SqeDvgDeathTest (53 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[==========] 35 tests from 3 test suites ran. (57 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 97355 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (45 ms)
+[----------] 1 test from SqeDvgDeathTest (45 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[==========] 35 tests from 3 test suites ran. (49 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 97356 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (35 ms)
+[----------] 1 test from SqeDvgDeathTest (35 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[==========] 35 tests from 3 test suites ran. (38 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 97357 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (47 ms)
+[----------] 1 test from SqeDvgDeathTest (47 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[----------] 12 tests from SqeDvgTest (2 ms total)
+
+[==========] 35 tests from 3 test suites ran. (51 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 97358 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (42 ms)
+[----------] 1 test from SqeDvgDeathTest (42 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[==========] 35 tests from 3 test suites ran. (46 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 97359 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (41 ms)
+[----------] 1 test from SqeDvgDeathTest (41 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[==========] 35 tests from 3 test suites ran. (45 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 97360 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (46 ms)
+[----------] 1 test from SqeDvgDeathTest (46 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[==========] 35 tests from 3 test suites ran. (49 ms total)
+[  PASSED  ] 35 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 97361 .
+[==========] Running 35 tests from 3 test suites.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (41 ms)
+[----------] 1 test from SqeDvgDeathTest (41 ms total)
+
+[----------] 22 tests from SqeDvgMcdcTest
+[ RUN      ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover
+[       OK ] SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC08_AboveThresholdConfidenceLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt
+[       OK ] SqeDvgMcdcTest.MC12_FirstCallOneSensorPut_SelectsIt (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC06_LowerConfidenceEqualPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover
+[       OK ] SqeDvgMcdcTest.MC22_HigherPriorityButLargeConfidenceJump_CountsAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover
+[       OK ] SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop
+[       OK ] SqeDvgMcdcTest.MC19_SingleSensorSilentPastTimeout_FailoverViaConfidenceDrop (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover
+[       OK ] SqeDvgMcdcTest.MC24_SensorNeverBestTimesOut_NotReportedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted
+[       OK ] SqeDvgMcdcTest.MC21_FirstCallKFalseControlVector_NoFailoverCounted (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover
+[       OK ] SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported
+[       OK ] SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC11_FirstCallNeverPut_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported
+[       OK ] SqeDvgMcdcTest.MC23_SensorZeroRecoversAfterFailover_NoFailoverReported (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected
+[       OK ] SqeDvgMcdcTest.MC20_SingleSensorNeverFed_NoCandidateSelected (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch
+[       OK ] SqeDvgMcdcTest.MC10_BothBelowThresholdLowerPriorityCandidate_NoSwitch (0 ms)
+[ RUN      ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches
+[       OK ] SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches (0 ms)
+[----------] 22 tests from SqeDvgMcdcTest (2 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash (0 ms)
+[ RUN      ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings
+[       OK ] SqeDvgTest.DVG12_ConstructDestroyVariousSizes_LinksExactlyNSiblings (0 ms)
+[ RUN      ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether
+[       OK ] SqeDvgTest.DVG05_GroupTimeoutShorterThanDefault_BothSensorsTimeOutTogether (0 ms)
+[ RUN      ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull
+[       OK ] SqeDvgTest.DVG11_BothSensorsTimeOutAfterOneWasBest_IndexNegativeButPointerNonNull (0 ms)
+[ RUN      ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags
+[       OK ] SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags (0 ms)
+[ RUN      ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins
+[       OK ] SqeDvgTest.DVG07_EqualConfidenceDifferentPriority_HigherPriorityWins (0 ms)
+[ RUN      ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales
+[       OK ] SqeDvgTest.DVG06_GroupEqualValueThreshold_PropagatesToAllSiblingsAndStales (0 ms)
+[ RUN      ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff
+[       OK ] SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff (0 ms)
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes
+[       OK ] SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout
+[       OK ] SqeDvgTest.DVG04_AddNewValidatorAfterSetTimeout_InheritsGroupTimeout (0 ms)
+[----------] 12 tests from SqeDvgTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 35 tests from 3 test suites ran. (44 ms total)
+[  PASSED  ] 35 tests.

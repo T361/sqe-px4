@@ -365,6 +365,35 @@ TEST_F(SqeFailureInjectorTest, FI13_TwoQueuedCommands_BothAppliedInOneUpdate)
 	EXPECT_EQ(esc.esc[1].esc_current, 0.f);
 }
 
+// SQE-FI-14 | FI-D11 boundary (loop stops at i == esc_count) FI-D12T
+// Given: SYS_FAILURE_EN 1; STUCK injected for all motors (instance 0) so every ESC's telemetry is "blocked";
+//        an esc_status with esc_count = 2 whose slot 2 is nevertheless populated (MOTOR3, 12 V, online bit 2 set)
+// When : manipulateEscStatus(status)
+// Then : slots 0 and 1 (i < esc_count) are zeroed except actuator_function and their online bits cleared; slot 2
+//        (i == esc_count, outside the reported range) is untouched: voltage 12 V and online bit 2 still set
+TEST_F(SqeFailureInjectorTest, FI14_BlockedTelemetry_LoopStopsAtEscCount)
+{
+	setParamInt("SYS_FAILURE_EN", 1);
+	FailureInjector injector;
+
+	publishInject(vehicle_command_s::FAILURE_UNIT_SYSTEM_MOTOR, vehicle_command_s::FAILURE_TYPE_STUCK, 0);
+	injector.update();
+
+	esc_status_s status = makeEscStatus(3);
+	status.esc_count = 2;
+
+	injector.manipulateEscStatus(status);
+
+	EXPECT_FLOAT_EQ(status.esc[0].esc_voltage, 0.f);
+	EXPECT_FLOAT_EQ(status.esc[1].esc_voltage, 0.f);
+	EXPECT_EQ(status.esc[0].actuator_function, actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1);
+	EXPECT_EQ(status.esc_online_flags & 0x03u, 0u);
+
+	EXPECT_FLOAT_EQ(status.esc[2].esc_voltage, 12.f);
+	EXPECT_EQ(status.esc[2].actuator_function, actuator_motors_s::ACTUATOR_FUNCTION_MOTOR1 + 2);
+	EXPECT_NE(status.esc_online_flags & 0x04u, 0u);
+}
+
 // Sanitizer-only probes (NEVER in normal builds — undefined behaviour). DISABLED by default; see P11/DECISIONS for
 // the human approval required before enabling under ASan/UBSan. Not executed in this session's normal test runs.
 

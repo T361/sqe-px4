@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="0" disabled="0" errors="0" time="0.033" timestamp="2026-10-07T17:10:20.797" name="AllTests">
+  <testsuite name="SqeDvgAllocTest" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.033" timestamp="2026-10-07T17:10:20.797">
+    <testcase name="AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged" file="/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp" line="74" status="run" result="completed" time="0." timestamp="2026-10-07T17:10:20.797" classname="SqeDvgAllocTest" />
+    <testcase name="AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash" file="/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp" line="104" status="run" result="completed" time="0." timestamp="2026-10-07T17:10:20.797" classname="SqeDvgAllocTest" />
+    <testcase name="AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev" file="/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp" line="123" status="run" result="completed" time="0.033" timestamp="2026-10-07T17:10:20.798" classname="SqeDvgAllocTest" />
+  </testsuite>
+</testsuites>

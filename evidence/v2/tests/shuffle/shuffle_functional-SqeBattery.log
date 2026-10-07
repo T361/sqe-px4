@@ -1,0 +1,875 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 78294 .
+[==========] Running 31 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 78295 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 78296 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 78297 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 78298 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 78299 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 78300 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 78301 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 78302 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 78303 .
+[==========] Running 31 tests from 1 test suite.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop
+[       OK ] SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop (0 ms)
+[ RUN      ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained
+[       OK ] SqeBatteryTest.BAT11_VoltageScale_ComputedAndConstrained (0 ms)
+[ RUN      ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation
+[       OK ] SqeBatteryTest.BAT09_ZeroCurrent_NoLoadCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack
+[       OK ] SqeBatteryTest.BAT29_ResistanceEstimator_ConvergesToSyntheticPack (1 ms)
+[ RUN      ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter
+[       OK ] SqeBatteryTest.BAT17_PublishOnlyWhenSourceMatchesParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated
+[       OK ] SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero (0 ms)
+[ RUN      ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage
+[       OK ] SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp
+[       OK ] SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp (0 ms)
+[ RUN      ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates
+[       OK ] SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates (0 ms)
+[ RUN      ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs
+[       OK ] SqeBatteryTest.BAT30_StatusFields_MappedFromInputs (0 ms)
+[ RUN      ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped
+[       OK ] SqeBatteryTest.BAT28_EstimatorNotInitialised_SettlingResetSkipped (0 ms)
+[ RUN      ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps
+[       OK ] SqeBatteryTest.BAT04_RecognitionVoltage_BelowForcesDisconnectAtThresholdKeeps (0 ms)
+[ RUN      ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation
+[       OK ] SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation (0 ms)
+[ RUN      ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative
+[       OK ] SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict
+[       OK ] SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict (0 ms)
+[ RUN      ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt
+[       OK ] SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt (0 ms)
+[ RUN      ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage
+[       OK ] SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce
+[       OK ] SqeBatteryTest.BAT23_TransitionToFixedWing_ResetsAverageOnce (0 ms)
+[ RUN      ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN
+[       OK ] SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN (0 ms)
+[ RUN      ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter
+[       OK ] SqeBatteryTest.BAT25_NonFiniteAverage_ReseededFromParameter (0 ms)
+[ RUN      ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten
+[       OK ] SqeBatteryTest.BAT16_ExternalStateOfCharge_NotOverwritten (0 ms)
+[ RUN      ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative
+[       OK ] SqeBatteryTest.BAT08_EstimatedInternalResistance_UsedWhenParameterNegative (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault
+[       OK ] SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault (0 ms)
+[ RUN      ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator
+[       OK ] SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator (0 ms)
+[ RUN      ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage
+[       OK ] SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage (0 ms)
+[ RUN      ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback
+[       OK ] SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback (0 ms)
+[ RUN      ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied
+[       OK ] SqeBatteryTest.BAT26_VehicleStatusCopyFails_ArmingNotApplied (0 ms)
+[ RUN      ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues
+[       OK ] SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues (0 ms)
+[----------] 31 tests from SqeBatteryTest (8 ms total)
+
+[----------] Global test environment tear-down
+[==========] 31 tests from 1 test suite ran. (8 ms total)
+[  PASSED  ] 31 tests.

@@ -1,3 +1,41 @@
+# FINDINGS — revision v2 (current classification; the detailed register below is kept for traceability)
+
+**Classification changes in this revision.**
+- **F-09 and F-10 are reported as specification observations, not defects.** Both describe behaviour that is
+  internally consistent with the code and has no stated requirement it violates (all-NaN stream keeps confidence 1;
+  error density exactly at the window gives confidence 0 without a flag). The behaviour is pinned down by the
+  characterization tests SQE-DV-07 and SQE-DV-15. The disabled probes SQE-PRB-01/02, which encoded an *invented*
+  stricter oracle and therefore showed as FAIL, were removed from the suite and the workbook: a test oracle must come
+  from a specification, and the assignment forbids manufacturing failures.
+- **F-02 (non-null stale pointer when `*index == -1`) is an API-contract observation**; its invented-oracle probe
+  SQE-PRB-03 was removed for the same reason. SQE-DVG-11 / SQE-DVG-MC-19 characterize it; both production callers use
+  only `*index`.
+- **F-07a / F-07b remain confirmed defects**, reproduced again in this revision under ASan (stack-buffer-overflow READ at
+  FailureInjector.cpp:118) and UBSan (shift exponent 4294967195 at FailureInjector.cpp:120) —
+  `evidence/v2/sanitizer/`. Their probes SQE-PRB-05/06 stay DISABLED in normal builds (undefined behaviour) and are
+  reported FAIL only from the sanitizer runs.
+- F-03 (null `_last` with `DataValidatorGroup(0)`) and F-13 (constructor crash when a middle allocation fails) remain
+  confirmed, unreachable from production construction sites.
+
+**New observations from the extended scope (battery, land detector):**
+- **F-16** battery.cpp:130 — the 4th operand `_params.n_cells > 0` is implied by `_internal_resistance_initialized`
+  (G-09). Redundant guard, no behavioural effect. Evidence: SQE-BAT-27/28, proof in work/GAPS.md.
+- **F-17** LandDetector.cpp:187-199 — the flight-time counter (`LND_FLIGHT_T_*`) accumulates from the first take-off
+  until disarm, so time spent landed-but-armed between two flights is counted as flight time. Consistent with the
+  source comment ("set the flight time when disarming (not necessarily when landed …)"); characterization, not a
+  defect. Evidence: SQE-LD-03.
+- **F-18** LandDetector.cpp:187 — the 3rd operand `_previous_armed_state` can never be the deciding False operand
+  (G-10). Redundant guard.
+- **F-19** battery — the parameter store accepts a non-finite `BAT_AVRG_CURRENT` (range metadata is not enforced by
+  `param_set`); the battery then reports an average current of -1 and re-seeds correctly once the parameter is fixed.
+  Robustness observation. Evidence: SQE-BAT-25.
+
+No new defect was found in battery.cpp, LandDetector.cpp or MulticopterLandDetector.cpp: 90 tests (31 battery,
+46 multicopter incl. 21 MC/DC, 12 work-queue, 1 boot) and mutation analysis (48/58 valid mutants killed, all survivors classified) support the
+behaviour the code comments and parameter descriptions specify.
+
+---
+
 # FINDINGS (format SPEC_10 §2). Start from docs/reference/REF_07_FINDINGS_REGISTER.md; every entry needs a verdict + evidence.
 
 Walked all 15 REF_07 candidates (F-01..F-15) this session (P11, 2026-10-01). Every verdict below was produced by

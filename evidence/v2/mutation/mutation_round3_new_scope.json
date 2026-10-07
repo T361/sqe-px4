@@ -1,0 +1,891 @@
+[
+ {
+  "set": "recheck",
+  "file": "DV",
+  "line": 82,
+  "op": "< 0.000001f -> <= 0.000001f",
+  "src": "if (fabsf(_value[i] - val[i]) <= 0.000001f) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDataValidatorTest.DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual"
+  ]
+ },
+ {
+  "set": "recheck",
+  "file": "FI",
+  "line": 117,
+  "op": "i < status.esc_count -> i <= status.esc_count",
+  "src": "for (int i = 0; i <= status.esc_count; i++) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureInjectorTest.FI14_BlockedTelemetry_LoopStopsAtEscCount"
+  ]
+ },
+ {
+  "set": "recheck",
+  "file": "FI",
+  "line": 43,
+  "op": "== PX4_OK -> != PX4_OK",
+  "src": "if ((param_get(param_find(\"SYS_FAILURE_EN\"), &param_sys_failure_en) != PX4_OK)",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled"
+  ]
+ },
+ {
+  "set": "recheck",
+  "file": "FD",
+  "line": 194,
+  "op": "if (_sensor_selection_sub.copy(&selection)) -> if (!_sensor_selection_sub.copy(&selection))",
+  "src": "if (!_sensor_selection_sub.copy(&selection)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 1,
+  "file": "BAT",
+  "line": 415,
+  "op": "!=->==",
+  "src": "if (n_cells == _params.n_cells) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 2,
+  "file": "BAT",
+  "line": 144,
+  "op": "&&->||",
+  "src": "if (_connected || _battery_initialized) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict",
+   "SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 3,
+  "file": "BAT",
+  "line": 357,
+  "op": "==->!=",
+  "src": "_armed = (vehicle_status.arming_state != vehicle_status_s::ARMING_STATE_ARMED);",
+  "status": "KILLED",
+  "killers": [
+   "7",
+   "SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage",
+   "SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 4,
+  "file": "BAT",
+  "line": 61,
+  "op": "||->&&",
+  "src": "if (index > 9 && index < 1) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 5,
+  "file": "BAT",
+  "line": 53,
+  "op": "||->&&",
+  "src": "_index(index < 1 && index > 9 ? 1 : index),",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 6,
+  "file": "BAT",
+  "line": 226,
+  "op": ">=->>",
+  "src": "if (_params.r_internal > 0.f) { // Use user specified internal resistance value",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 7,
+  "file": "BAT",
+  "line": 378,
+  "op": "==->!=",
+  "src": "&& _flight_phase_estimation_sub.get().flight_phase != flight_phase_estimation_s::FLIGHT_PHASE_LEVEL)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 8,
+  "file": "BAT",
+  "line": 123,
+  "op": "||->&&",
+  "src": "if (!_connected && (_last_unconnected_timestamp == 0)) {",
+  "status": "KILLED",
+  "killers": [
+   "6",
+   "SqeBatteryTest.BAT05_WarningOnlyAfterTwoSecondSettling_BoundaryStrict",
+   "SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 9,
+  "file": "BAT",
+  "line": 279,
+  "op": ">=->>",
+  "src": "if (_params.r_internal > 0.f) { // Use user specified internal resistance value",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 10,
+  "file": "BAT",
+  "line": 204,
+  "op": ">->>=",
+  "src": "if (_dt >= FLT_EPSILON) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 11,
+  "file": "BAT",
+  "line": 130,
+  "op": "&&->||",
+  "src": "if (_connected || !_battery_initialized && _internal_resistance_initialized && _params.n_cells > 0) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 12,
+  "file": "BAT",
+  "line": 419,
+  "op": "&&->||",
+  "src": "if (!_internal_resistance_initialized || _params.n_cells > 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 13,
+  "file": "BAT",
+  "line": 253,
+  "op": "<-><=",
+  "src": "if (estimation_covariance_temp_norm <= _estimation_covariance_norm) { // Only update if estimation improves",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 14,
+  "file": "BAT",
+  "line": 290,
+  "op": ">->>=",
+  "src": "if ((_capacity_mah >= 0.f) && _battery_initialized) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 15,
+  "file": "BAT",
+  "line": 309,
+  "op": "<-><=",
+  "src": "if (state_of_charge <= _params.emergen_thr) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 16,
+  "file": "BAT",
+  "line": 215,
+  "op": "==->!=",
+  "src": "if (_params.n_cells != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "8",
+   "SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates",
+   "SqeBatteryTest.BAT07_UserInternalResistance_CompensatesLoadDrop"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 17,
+  "file": "BAT",
+  "line": 290,
+  "op": "&&->||",
+  "src": "if ((_capacity_mah > 0.f) || _battery_initialized) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeBatteryTest.BAT06_Disconnect_RestartsSettlingBeforeWarningUpdates",
+   "SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 18,
+  "file": "BAT",
+  "line": 53,
+  "op": "<-><=",
+  "src": "_index(index <= 1 || index > 9 ? 1 : index),",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 19,
+  "file": "BAT",
+  "line": 377,
+  "op": "<-><=",
+  "src": "if (!_vehicle_status_is_fw || ((hrt_absolute_time() - _flight_phase_estimation_sub.get().timestamp) <= 2_s",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 20,
+  "file": "BAT",
+  "line": 375,
+  "op": "&&->||",
+  "src": "if (_armed || PX4_ISFINITE(current_a)) {",
+  "status": "KILLED",
+  "killers": [
+   "4",
+   "SqeBatteryTest.BAT18_RemainingTime_DisarmedUsesParameterAverage",
+   "SqeBatteryTest.BAT22_ArmedNonFiniteCurrent_AverageNotUpdated"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 21,
+  "file": "BAT",
+  "line": 312,
+  "op": "<-><=",
+  "src": "} else if (state_of_charge <= _params.crit_thr) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT13_WarningThresholds_BoundaryValues"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 22,
+  "file": "BAT",
+  "line": 389,
+  "op": ">->>=",
+  "src": "if (_capacity_mah >= 0.f) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT19_RemainingTime_UnknownCapacityIsNaN"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 23,
+  "file": "BAT",
+  "line": 378,
+  "op": "&&->||",
+  "src": "|| _flight_phase_estimation_sub.get().flight_phase == flight_phase_estimation_s::FLIGHT_PHASE_LEVEL)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT24_FixedWing_OnlyRecentLevelFlightUpdatesAverage"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 24,
+  "file": "BAT",
+  "line": 328,
+  "op": "&&->||",
+  "src": "|| (_voltage_v > (_params.n_cells * _params.v_charged * 1.05f))) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback",
+   "SqeBatteryTest.BAT12_OverVoltage_ReportedAsSpikeFault"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 25,
+  "file": "BAT",
+  "line": 130,
+  "op": "&&->||",
+  "src": "if (_connected && !_battery_initialized && _internal_resistance_initialized || _params.n_cells > 0) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 26,
+  "file": "BAT",
+  "line": 195,
+  "op": "!=->==",
+  "src": "if (_last_timestamp == 0) {",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeBatteryTest.BAT14_CoulombCounting_DtGuardAndClamp",
+   "SqeBatteryTest.BAT15_CapacityKnown_CoulombCountingFusedWithVoltage"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 27,
+  "file": "BAT",
+  "line": 327,
+  "op": ">->>=",
+  "src": "if ((_params.n_cells >= 0)",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT10_NoCellCount_SocUnknownScaleFallback"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 28,
+  "file": "BAT",
+  "line": 363,
+  "op": "==->!=",
+  "src": "_vehicle_status_is_fw = (vehicle_status.vehicle_type != vehicle_status_s::VEHICLE_TYPE_FIXED_WING);",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeBatteryTest.BAT20_ArmedMulticopter_AverageCurrentFilteredWithDt",
+   "SqeBatteryTest.BAT21_ArmedWithoutDt_UsesConstructorAlphaAndClampsNegative"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 29,
+  "file": "BAT",
+  "line": 419,
+  "op": ">->>=",
+  "src": "if (!_internal_resistance_initialized && _params.n_cells >= 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT27_CellCountChange_ReinitialisesResistanceEstimator"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 30,
+  "file": "BAT",
+  "line": 371,
+  "op": "||->&&",
+  "src": "&& reset_current_avg_filter) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 31,
+  "file": "MLD",
+  "line": 296,
+  "op": "||->&&",
+  "src": "return !_armed && _maybe_landed_hysteresis.get_state();",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD22_LandedState_DisarmedOrMaybeLandedHeld"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 32,
+  "file": "MLD",
+  "line": 283,
+  "op": "<-><=",
+  "src": "const bool local_position_updated = (now - _vehicle_local_position.timestamp) <= 1_s;",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 33,
+  "file": "MLD",
+  "line": 203,
+  "op": "<-><=",
+  "src": "_below_gnd_effect_hgt = _vehicle_local_position.dist_bottom <= _param_lndmc_alt_gnd_effect.get();",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 34,
+  "file": "MLD",
+  "line": 211,
+  "op": "||->&&",
+  "src": "if (!_in_descend && hover_thrust_estimate_valid) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 35,
+  "file": "MLD",
+  "line": 251,
+  "op": "&&->||",
+  "src": "&& !_horizontal_movement || !_vertical_movement);",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 36,
+  "file": "MLD",
+  "line": 230,
+  "op": "&&->||",
+  "src": "|| (trajectory_setpoint.velocity[2] >= 1.1f * _param_lndmc_z_vel_max.get());",
+  "status": "KILLED",
+  "killers": [
+   "3",
+   "SqeMcLandDetectorTest.MLD15_ClimbRateControl_GroundContactRequiresCommandedDescent",
+   "SqeMcLandDetectorTest.MLD16_DescendThreshold_BoundaryInclusive"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 37,
+  "file": "MLD",
+  "line": 250,
+  "op": "&&->||",
+  "src": "(_close_to_ground_or_skipped_check || ground_contact",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 38,
+  "file": "MLD",
+  "line": 246,
+  "op": "||->&&",
+  "src": "_close_to_ground_or_skipped_check = _is_close_to_ground() && skip_close_to_ground_check;",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeMcLandDetectorTest.MLD15_ClimbRateControl_GroundContactRequiresCommandedDescent",
+   "SqeMcLandDetectorTest.MLD17_NoNewSetpointKeepsDescend_MaybeLandedDropsRequirement"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 39,
+  "file": "MLD",
+  "line": 309,
+  "op": "<-><=",
+  "src": "return _vehicle_local_position.dist_bottom <= DIST_FROM_GROUND_THRESHOLD;",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 40,
+  "file": "MLD",
+  "line": 202,
+  "op": ">->>=",
+  "src": "if (lpos_available && _vehicle_local_position.dist_bottom_valid && _param_lndmc_alt_gnd_effect.get() >= 0) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 41,
+  "file": "MLD",
+  "line": 177,
+  "op": "<-><=",
+  "src": "if (_vehicle_local_position.v_z_valid && (fabsf(_vehicle_local_position.vz) <= vertical_velocity_threshold)) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 42,
+  "file": "MLD",
+  "line": 177,
+  "op": "&&->||",
+  "src": "if (_vehicle_local_position.v_z_valid || (fabsf(_vehicle_local_position.vz) < vertical_velocity_threshold)) {",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeMcLandDetectorTest.MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted",
+   "SqeMcLandDetectorTest.MLD10_VerticalSpeed_FromVz"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 43,
+  "file": "MLD",
+  "line": 129,
+  "op": ">->>=",
+  "src": "if (_param_lndmc_z_vel_max.get() >= lndmc_upper_threshold) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 44,
+  "file": "MLD",
+  "line": 194,
+  "op": "&&->||",
+  "src": "if (lpos_available || _vehicle_local_position.v_xy_valid) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD13_HorizontalMovement_VelocityNormAgainstLimit"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 45,
+  "file": "MLD",
+  "line": 302,
+  "op": "&&->||",
+  "src": "(_below_gnd_effect_hgt || _takeoff_state == takeoff_status_s::TAKEOFF_STATE_FLIGHT) ||",
+  "status": "KILLED",
+  "killers": [
+   "3",
+   "SqeMcLandDetectorTest.MLD14_BelowGroundEffectHeight_RequiresValidDistanceAndPositiveParameter",
+   "SqeMcLandDetectorTest.MLDMC19_D37_BelowHeightNotInFlight_NoGroundEffect"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 46,
+  "file": "MLD",
+  "line": 234,
+  "op": "&&->||",
+  "src": "if (!_maybe_landed_hysteresis.get_state() || !_landed_hysteresis.get_state()) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD17_NoNewSetpointKeepsDescend_MaybeLandedDropsRequirement"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 47,
+  "file": "MLD",
+  "line": 180,
+  "op": "&&->||",
+  "src": "} else if (_vehicle_local_position.z_valid || (fabsf(_vehicle_local_position.z_deriv) < vertical_velocity_thre",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeMcLandDetectorTest.MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted",
+   "SqeMcLandDetectorTest.MLD10_VerticalSpeed_FromVz"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 48,
+  "file": "MLD",
+  "line": 209,
+  "op": "<-><=",
+  "src": "const bool hover_thrust_estimate_valid = ((time_now_us - _hover_thrust_estimate_last_valid) <= 1_s);",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 49,
+  "file": "MLD",
+  "line": 139,
+  "op": "==->!=",
+  "src": "_params.useHoverThrustEstimate = (use_hover_thrust_estimate != 1);",
+  "status": "KILLED",
+  "killers": [
+   "3",
+   "SqeMcLandDetectorTest.MLD06_StaleHoverThrustEstimate_StrictFactor",
+   "SqeMcLandDetectorTest.MLD07_EstimateInvalidDuringDescent_ValidityLatched"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 50,
+  "file": "MLD",
+  "line": 202,
+  "op": "&&->||",
+  "src": "if (lpos_available || _vehicle_local_position.dist_bottom_valid && _param_lndmc_alt_gnd_effect.get() > 0) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 51,
+  "file": "MLD",
+  "line": 290,
+  "op": "&&->||",
+  "src": "|| (!vertical_estimate || _minimum_thrust_8s_hysteresis.get_state())));",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeMcLandDetectorTest.MLDMC13_D35_NoVerticalEstimateMinThrustNotHeld_NotMaybeLanded",
+   "SqeMcLandDetectorTest.MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 52,
+  "file": "MLD",
+  "line": 285,
+  "op": "&&->||",
+  "src": "const bool vertical_estimate = local_position_updated || vertical_velocity_valid;",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeMcLandDetectorTest.MLDMC13_D35_NoVerticalEstimateMinThrustNotHeld_NotMaybeLanded",
+   "SqeMcLandDetectorTest.MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 53,
+  "file": "MLD",
+  "line": 219,
+  "op": "<=-><",
+  "src": "_has_low_throttle = (_vehicle_thrust_setpoint_throttle < sys_low_throttle);",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD03_LowThrottleLimit_BoundaryInclusive"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 54,
+  "file": "MLD",
+  "line": 141,
+  "op": "||->&&",
+  "src": "if (!_params.useHoverThrustEstimate && !_hover_thrust_initialized) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD05_InvalidHoverThrustEstimate_Ignored"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 55,
+  "file": "MLD",
+  "line": 289,
+  "op": "&&->||",
+  "src": "&& ((vertical_estimate || _ground_contact_hysteresis.get_state())",
+  "status": "KILLED",
+  "killers": [
+   "3",
+   "SqeMcLandDetectorTest.MLDMC12_D35_NoGroundContactHysteresis_NotMaybeLanded",
+   "SqeMcLandDetectorTest.MLDMC13_D35_NoVerticalEstimateMinThrustNotHeld_NotMaybeLanded"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 56,
+  "file": "MLD",
+  "line": 245,
+  "op": "||->&&",
+  "src": "const bool skip_close_to_ground_check = !_dist_bottom_is_observable && !_vehicle_local_position.dist_bottom_va",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD19_CloseToGroundCheck_SkippedOrEnforced"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 57,
+  "file": "LD",
+  "line": 164,
+  "op": "==->!=",
+  "src": "if (!landDetected && _land_detected.landed && _takeoff_time != 0) { /* only set take off time once, until disa",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 58,
+  "file": "LD",
+  "line": 187,
+  "op": "!=->==",
+  "src": "if (_takeoff_time == 0 && !_armed && _previous_armed_state) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 59,
+  "file": "LD",
+  "line": 223,
+  "op": "<-><=",
+  "src": "for (uint8_t imu_instance = 0; imu_instance <= 4; imu_instance++) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 60,
+  "file": "LD",
+  "line": 158,
+  "op": "!=->==",
+  "src": "(_land_detected.freefall == freefallDetected) ||",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 61,
+  "file": "LD",
+  "line": 157,
+  "op": "!=->==",
+  "src": "(_land_detected.landed == landDetected) ||",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 62,
+  "file": "LD",
+  "line": 187,
+  "op": "&&->||",
+  "src": "if (_takeoff_time != 0 && !_armed || _previous_armed_state) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 63,
+  "file": "LD",
+  "line": 246,
+  "op": ">->>=",
+  "src": "static constexpr float GYRO_VIBE_METRIC_MAX = 0.02f; // gyro_vibration_metric * dt * 4.0e4f >= is_moving_scale",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 64,
+  "file": "LD",
+  "line": 160,
+  "op": "!=->==",
+  "src": "(_land_detected.ground_contact == ground_contactDetected) ||",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 65,
+  "file": "LD",
+  "line": 250,
+  "op": "||->&&",
+  "src": "&& (imu_status.accel_vibration_metric > ACCEL_VIBE_METRIC_MAX)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 66,
+  "file": "LD",
+  "line": 159,
+  "op": "!=->==",
+  "src": "(_land_detected.maybe_landed == maybe_landedDetected) ||",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz"
+  ]
+ },
+ {
+  "set": "random",
+  "n": 67,
+  "file": "LD",
+  "line": 247,
+  "op": ">->>=",
+  "src": "static constexpr float ACCEL_VIBE_METRIC_MAX = 1.2f; // accel_vibration_metric * dt * 2.1e2f >= is_moving_scal",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 68,
+  "file": "LD",
+  "line": 156,
+  "op": ">=->>",
+  "src": "if ((hrt_elapsed_time(&_land_detected.timestamp) > 1_s) ||",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 69,
+  "file": "LD",
+  "line": 164,
+  "op": "&&->||",
+  "src": "if (!landDetected || _land_detected.landed && _takeoff_time == 0) { /* only set take off time once, until disa",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "set": "random",
+  "n": 70,
+  "file": "LD",
+  "line": 229,
+  "op": "&&->||",
+  "src": "if ((imu_status.gyro_device_id != 0) || (imu_status.gyro_device_id == sensor_selection.gyro_device_id)) {",
+  "status": "SURVIVED",
+  "killers": null
+ }
+]

@@ -1,0 +1,29 @@
+Test project /root/audit/PX4-Autopilot/build/px4_sitl_test
+      Start   4: functional-SqeBattery
+ 1/12 Test   #4: functional-SqeBattery .....................   Passed    0.03 sec
+      Start  76: functional-SqeFailureDetector
+ 2/12 Test  #76: functional-SqeFailureDetector .............   Passed    8.15 sec
+      Start  77: functional-SqeFailureDetectorImu
+ 3/12 Test  #77: functional-SqeFailureDetectorImu ..........   Passed    0.02 sec
+      Start  78: functional-SqeFailureInjector
+ 4/12 Test  #78: functional-SqeFailureInjector .............   Passed    0.02 sec
+      Start  79: functional-SqeFailureInjectorParamFault
+ 5/12 Test  #79: functional-SqeFailureInjectorParamFault ...   Passed    0.02 sec
+      Start  80: functional-SqeFailureDetectorCopyFault
+ 6/12 Test  #80: functional-SqeFailureDetectorCopyFault ....   Passed    0.02 sec
+      Start 112: functional-SqeMcLandDetector
+ 7/12 Test #112: functional-SqeMcLandDetector ..............   Passed    8.15 sec
+      Start 113: functional-SqeLandDetectorRun
+ 8/12 Test #113: functional-SqeLandDetectorRun .............   Passed   18.15 sec
+      Start 114: functional-SqeLandDetectorBoot
+ 9/12 Test #114: functional-SqeLandDetectorBoot ............   Passed    0.30 sec
+      Start 127: unit-SqeDataValidator
+10/12 Test #127: unit-SqeDataValidator .....................   Passed    0.03 sec
+      Start 128: unit-SqeDataValidatorGroup
+11/12 Test #128: unit-SqeDataValidatorGroup ................   Passed    0.06 sec
+      Start 129: unit-SqeDataValidatorGroupAlloc
+12/12 Test #129: unit-SqeDataValidatorGroupAlloc ...........   Passed    0.06 sec
+
+100% tests passed, 0 tests failed out of 12
+
+Total Test time (real) =  35.02 sec

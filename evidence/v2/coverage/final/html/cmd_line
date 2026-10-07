@@ -1,0 +1,1 @@
+genhtml --rc branch_coverage=1 --branch-coverage --ignore-errors source,unused,inconsistent,mismatch,empty,deprecated --title 'SQE A2 v2 — final' final/scope.info -o final/html

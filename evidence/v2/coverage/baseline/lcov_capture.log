@@ -1,0 +1,1330 @@
+Capturing coverage data from .
+geninfo cmd: '/usr/bin/geninfo . --output-filename /root/audit/results/final/coverage/baseline/all.info --ignore-errors mismatch --ignore-errors inconsistent --ignore-errors unused --ignore-errors negative --ignore-errors empty --ignore-errors source --ignore-errors gcov --ignore-errors deprecated --rc branch_coverage=1 --memory 0 --branch-coverage'
+Found gcov version: 13.3.0
+Using intermediate gcov format
+Writing temporary data to /tmp/geninfo_datRKtH
+Scanning . for .gcda files ...
+Found 1121 data files in .
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_blob_file.dir/blob_file.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_remote_file.dir/remote_file.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_remote_file.dir/remote_file_oss.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_bazel.dir/bazel.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_sha1.dir/sha1.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_hash.dir/hash.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_configuration.dir/configuration.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_coverage.dir/coverage.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_registry.dir/registry.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_corpus_database.dir/corpus_database.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_fixture_driver.dir/fixture_driver.cc.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/functional/internal/any_invocable.h":762: mismatched exception tag for id 1, 1: '1' -> '0'
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_runtime.dir/runtime.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_serialization.dir/serialization.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_io.dir/io.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_logging.dir/logging.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_seed_seq.dir/seed_seq.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_googletest_adaptor.dir/googletest_adaptor.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_type_support.dir/type_support.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_status.dir/status.cc.gcda
+Processing ./test/fuzztest/fuzztest/CMakeFiles/fuzztest_fuzztest_gtest_main.dir/fuzztest_gtest_main.cc.gcda
+Processing ./test/fuzztest/fuzztest/CMakeFiles/fuzztest_init_fuzztest.dir/init_fuzztest.cc.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/systemcmds/dyn/CMakeFiles/systemcmds__dyn.dir/dyn.cpp.gcda
+Processing ./src/systemcmds/work_queue/CMakeFiles/systemcmds__work_queue.dir/work_queue_main.cpp.gcda
+Processing ./src/systemcmds/failure/CMakeFiles/systemcmds__failure.dir/failure.cpp.gcda
+Processing ./src/systemcmds/uorb/CMakeFiles/systemcmds__uorb.dir/uorb.cpp.gcda
+Processing ./src/systemcmds/param/CMakeFiles/systemcmds__param.dir/param.cpp.gcda
+Processing ./src/systemcmds/led_control/CMakeFiles/systemcmds__led_control.dir/led_control.cpp.gcda
+Processing ./src/systemcmds/sd_bench/CMakeFiles/systemcmds__sd_bench.dir/sd_bench.cpp.gcda
+Processing ./src/systemcmds/ver/CMakeFiles/systemcmds__ver.dir/ver.cpp.gcda
+Processing ./src/systemcmds/system_time/CMakeFiles/systemcmds__system_time.dir/system_time.cpp.gcda
+Processing ./src/systemcmds/perf/CMakeFiles/systemcmds__perf.dir/perf.cpp.gcda
+Processing ./src/systemcmds/bsondump/CMakeFiles/systemcmds__bsondump.dir/bsondump.cpp.gcda
+Processing ./src/systemcmds/actuator_test/CMakeFiles/systemcmds__actuator_test.dir/actuator_test.cpp.gcda
+Processing ./src/systemcmds/tune_control/CMakeFiles/systemcmds__tune_control.dir/tune_control.cpp.gcda
+Processing ./src/systemcmds/topic_listener/CMakeFiles/systemcmds__topic_listener.dir/listener_main.cpp.gcda
+Processing ./src/systemcmds/tests/hrt_test/CMakeFiles/systemcmds__tests__hrt_test.dir/hrt_test_start.cpp.gcda
+Processing ./src/systemcmds/tests/hrt_test/CMakeFiles/systemcmds__tests__hrt_test.dir/hrt_test.cpp.gcda
+Processing ./src/systemcmds/tests/hrt_test/CMakeFiles/systemcmds__tests__hrt_test.dir/hrt_test_main.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_IntrusiveQueue.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_bson.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_uart_loopback.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_i2c_spi_cli.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_IntrusiveSortedList.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_parameters.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_perf.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_file2.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_hott_telemetry.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_param.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_float.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_dataman.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/tests_main.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_mathlib.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_versioning.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_rc.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_uart_send.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_ppm.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_atomic_bitset.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_List.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_int.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_matrix.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_bitset.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_sleep.c.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_hrt.cpp.gcda
+Processing ./src/systemcmds/tests/CMakeFiles/systemcmds__tests.dir/test_search_min.cpp.gcda
+Processing ./src/modules/replay/CMakeFiles/modules__replay.dir/Replay.cpp.gcda
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_uninitialized.h":119: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_uninitialized.h":119: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 9, 9: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 9, 9: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/replay/CMakeFiles/modules__replay.dir/replay_main.cpp.gcda
+Processing ./src/modules/replay/CMakeFiles/modules__replay.dir/ReplayEkf2.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialPosControl/CMakeFiles/DifferentialPosControl.dir/DifferentialPosControl.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialRateControl/CMakeFiles/DifferentialRateControl.dir/DifferentialRateControl.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialSpeedControl/CMakeFiles/DifferentialSpeedControl.dir/DifferentialSpeedControl.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialAttControl/CMakeFiles/DifferentialAttControl.dir/DifferentialAttControl.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialActControl/CMakeFiles/DifferentialActControl.dir/DifferentialActControl.cpp.gcda
+Processing ./src/modules/rover_differential/CMakeFiles/modules__rover_differential.dir/RoverDifferential.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialDriveModes/DifferentialAutoMode/CMakeFiles/DifferentialAutoMode.dir/DifferentialAutoMode.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialDriveModes/DifferentialManualMode/CMakeFiles/DifferentialManualMode.dir/DifferentialManualMode.cpp.gcda
+Processing ./src/modules/rover_differential/DifferentialDriveModes/DifferentialOffboardMode/CMakeFiles/DifferentialOffboardMode.dir/DifferentialOffboardMode.cpp.gcda
+Processing ./src/modules/mc_rate_control/CMakeFiles/modules__mc_rate_control.dir/MulticopterRateControl.cpp.gcda
+Processing ./src/modules/dataman/CMakeFiles/modules__dataman.dir/dataman.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Failsafe/CMakeFiles/FlightTaskFailsafe.dir/FlightTaskFailsafe.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/ManualAcceleration/CMakeFiles/FlightTaskManualAcceleration.dir/FlightTaskManualAcceleration.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Transition/CMakeFiles/FlightTaskTransition.dir/FlightTaskTransition.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Orbit/CMakeFiles/FlightTaskOrbit.dir/FlightTaskOrbit.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Utility/CMakeFiles/functional-StickTiltXY.dir/StickTiltXYTest.cpp.gcda
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN32StickTiltXYTest_AllZeroCase_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/flight_mode_manager/tasks/Utility/StickTiltXYTest.cpp:41: 41 -> 46
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN41StickTiltXYTest_NormalRollPitchCases_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/flight_mode_manager/tasks/Utility/StickTiltXYTest.cpp:48: 48 -> 84
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN33StickTiltXYTest_90degreeCase_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/flight_mode_manager/tasks/Utility/StickTiltXYTest.cpp:86: 86 -> 102
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/flight_mode_manager/tasks/Utility/CMakeFiles/FlightTaskUtility.dir/StickTiltXY.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Utility/CMakeFiles/FlightTaskUtility.dir/StickAccelerationXY.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Utility/CMakeFiles/FlightTaskUtility.dir/Gimbal.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/ManualAltitude/CMakeFiles/FlightTaskManualAltitude.dir/FlightTaskManualAltitude.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/AltitudeCruise/CMakeFiles/FlightTaskAltitudeCruise.dir/FlightTaskAltitudeCruise.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/ManualAccelerationSlow/CMakeFiles/FlightTaskManualAccelerationSlow.dir/FlightTaskManualAccelerationSlow.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/ManualAltitudeSmoothVel/CMakeFiles/FlightTaskManualAltitudeSmoothVel.dir/FlightTaskManualAltitudeSmoothVel.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/AutoFollowTarget/follow_target_estimator/CMakeFiles/follow_target_estimator.dir/TargetEstimator.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/AutoFollowTarget/CMakeFiles/FlightTaskAutoFollowTarget.dir/FlightTaskAutoFollowTarget.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/FlightTask/CMakeFiles/FlightTask.dir/FlightTask.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Descend/CMakeFiles/FlightTaskDescend.dir/FlightTaskDescend.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/Auto/CMakeFiles/FlightTaskAuto.dir/FlightTaskAuto.cpp.gcda
+Processing ./src/modules/flight_mode_manager/tasks/ManualPosition/CMakeFiles/FlightTaskManualPosition.dir/FlightTaskManualPosition.cpp.gcda
+Processing ./src/modules/flight_mode_manager/CMakeFiles/modules__flight_mode_manager.dir/FlightTasks_generated.cpp.gcda
+Processing ./src/modules/flight_mode_manager/CMakeFiles/modules__flight_mode_manager.dir/FlightModeManager.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/AirshipLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/LandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/RoverLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/VtolLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/land_detector_main.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/FixedwingLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/MulticopterLandDetector.cpp.gcda
+Processing ./src/modules/mc_autotune_attitude_control/CMakeFiles/mc_autotune_attitude_control.dir/mc_autotune_attitude_control.cpp.gcda
+Processing ./src/modules/uuv_pos_control/CMakeFiles/modules__uuv_pos_control.dir/uuv_pos_control.cpp.gcda
+Processing ./src/modules/ekf2/test/test_helper/CMakeFiles/ecl_test_helper.dir/comparison_helper.cpp.gcda
+Processing ./src/modules/ekf2/test/test_helper/CMakeFiles/ecl_test_helper.dir/reset_logging_checker.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/imu.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/airspeed.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/sensor_simulator.cpp.gcda
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 5, 5: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 5, 5: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_uninitialized.h":119: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_uninitialized.h":119: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/sensor.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/flow.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/range_finder.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/gps.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/mag.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/ekf_wrapper.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/baro.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/vio.cpp.gcda
+Processing ./src/modules/ekf2/test/sensor_simulator/CMakeFiles/ecl_sensor_sim.dir/ekf_logger.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_height_fusion.dir/test_EKF_height_fusion.cpp.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 5, 5: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 7, 7: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 9, 9: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN33EkfHeightFusionTest_noAiding_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:88: 88 -> 94
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN32EkfHeightFusionTest_baroRef_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:96: 96 -> 156
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN31EkfHeightFusionTest_gpsRef_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:158: 158 -> 209
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN42EkfHeightFusionTest_gpsRefNoAltFusion_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:211: 211 -> 235
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN40EkfHeightFusionTest_baroRefFailOver_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:237: 260 -> 237
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN40EkfHeightFusionTest_baroRefFailOver_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:237: 260 -> 237
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN40EkfHeightFusionTest_baroRefFailOver_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:237: 260 -> 237
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN39EkfHeightFusionTest_gpsRefFailOver_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:262: 262 -> 293
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN46EkfHeightFusionTest_gpsRefAllHgtFailReset_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:295: 295 -> 334
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN47EkfHeightFusionTest_baroRefAllHgtFailReset_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:336: 336 -> 378
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN43EkfHeightFusionTest_changeEkfOriginAlt_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:380: 417 -> 380
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN43EkfHeightFusionTest_changeEkfOriginAlt_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:380: 417 -> 380
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN43EkfHeightFusionTest_changeEkfOriginAlt_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_height_fusion.cpp:380: 417 -> 380
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_initialization.dir/test_EKF_initialization.cpp.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 5, 5: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 7, 7: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 9, 9: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN49EkfInitializationTest_initializeWithZeroTilt_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:139: 139 -> 165
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN58EkfInitializationTest_initializeWithZeroTiltNotAtRest_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:167: 167 -> 192
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN63EkfInitializationTest_initializeWithTiltNoGyroBiasEstimate_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:194: 194 -> 218
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN35EkfInitializationTest_gyroBias_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:220: 220 -> 278
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN56EkfInitializationTest_initializeHeadingWithZeroTilt_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:280: 309 -> 280
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN56EkfInitializationTest_initializeHeadingWithZeroTilt_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:280: 309 -> 280
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN56EkfInitializationTest_initializeHeadingWithZeroTilt_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:280: 309 -> 280
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN45EkfInitializationTest_initializeWithTilt_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:311: 336 -> 311
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN45EkfInitializationTest_initializeWithTilt_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:311: 336 -> 311
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN45EkfInitializationTest_initializeWithTilt_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:311: 336 -> 311
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN54EkfInitializationTest_initializeWithTiltNotAtRest_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:338: 338 -> 363
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN48EkfInitializationTest_initializeWithPitch90_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:365: 394 -> 365
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN48EkfInitializationTest_initializeWithPitch90_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:365: 394 -> 365
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN48EkfInitializationTest_initializeWithPitch90_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:365: 394 -> 365
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN47EkfInitializationTest_initializeWithRoll90_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_initialization.cpp:396: 396 -> 422
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_withReplayData.dir/test_EKF_withReplayData.cpp.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 5, 5: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 7, 7: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 9, 9: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN26EkfReplayTest_irisGps_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_withReplayData.cpp:57: 57 -> 73
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN30EkfReplayTest_ekfGsfReset_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_withReplayData.cpp:75: 75 -> 94
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_gnss_yaw_generated.dir/test_EKF_gnss_yaw_generated.cpp.gcda
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN46GnssYawFusionGenerated_SingularityPitch90_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_gnss_yaw_generated.cpp:42: 42 -> 63
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN45GnssYawFusionGenerated_SingularityRoll90_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_gnss_yaw_generated.cpp:65: 65 -> 86
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_imuSampling.dir/test_EKF_imuSampling.cpp.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 5, 5: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 7, 7: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":76: mismatched exception tag for id 9, 9: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/EKF/RingBuffer.h":176: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN50EkfImuSamplingTest_imuSamplingAtMultipleRates_Test13AddToRegistryEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_imuSampling.cpp:60: 100 -> 60
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN50EkfImuSamplingTest_imuSamplingAtMultipleRates_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_imuSampling.cpp:60: 100 -> 60
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN41EkfImuSamplingTest_accelDownSampling_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_imuSampling.cpp:123: 123 -> 150
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN40EkfImuSamplingTest_gyroDownSampling_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_imuSampling.cpp:152: 152 -> 219
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_imuSampling.cpp":102: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/stl_construct.h":119: mismatched exception tag for id 3, 3: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 13, 13: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 17, 17: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 21, 21: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 29, 29: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 31, 31: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 13, 13: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 17, 17: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 21, 21: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 29, 29: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/usr/include/c++/13/bits/new_allocator.h":191: mismatched exception tag for id 31, 31: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_ringbuffer.dir/test_EKF_ringbuffer.cpp.gcda
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN41EkfRingBufferTest_goodInitialisation_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_ringbuffer.cpp:70: 70 -> 76
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN40EkfRingBufferTest_badInitialisation_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_ringbuffer.cpp:78: 78 -> 86
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN37EkfRingBufferTest_orderOfSamples_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_ringbuffer.cpp:88: 88 -> 104
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN32EkfRingBufferTest_popSample_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/ekf2/test/test_EKF_ringbuffer.cpp:106: 106 -> 129
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_drag_fusion.dir/test_EKF_drag_fusion.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_flow.dir/test_EKF_flow.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_fake_pos.dir/test_EKF_fake_pos.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_flow_generated.dir/test_EKF_flow_generated.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_externalVision.dir/test_EKF_externalVision.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_gyroscope.dir/test_EKF_gyroscope.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_measurementSampling.dir/test_EKF_measurementSampling.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_accelerometer.dir/test_EKF_accelerometer.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_yaw_fusion_generated.dir/test_EKF_yaw_fusion_generated.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_SensorRangeFinder.dir/test_SensorRangeFinder.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_grounded.dir/test_EKF_grounded.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_mag.dir/test_EKF_mag.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_mag_declination_generated.dir/test_EKF_mag_declination_generated.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_basics.dir/test_EKF_basics.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_terrain.dir/test_EKF_terrain.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_utils.dir/test_EKF_utils.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_fusionLogic.dir/test_EKF_fusionLogic.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_gps.dir/test_EKF_gps.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_gnss_yaw.dir/test_EKF_gnss_yaw.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_yaw_estimator.dir/test_EKF_yaw_estimator.cpp.gcda
+Processing ./src/modules/ekf2/test/CMakeFiles/unit-test_EKF_airspeed.dir/test_EKF_airspeed.cpp.gcda
+Processing ./src/modules/ekf2/EKF/yaw_estimator/CMakeFiles/yaw_estimator.dir/EKFGSF_yaw.cpp.gcda
+Processing ./src/modules/ekf2/EKF/bias_estimator/CMakeFiles/bias_estimator.dir/bias_estimator.cpp.gcda
+Processing ./src/modules/ekf2/EKF/output_predictor/CMakeFiles/output_predictor.dir/output_predictor.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/ekf.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/wind.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/yaw_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/terrain_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/imu_down_sampler/imu_down_sampler.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/velocity_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/ekf_helper.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/height_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/covariance.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/estimator_interface.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/external_vision/ev_pos_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/external_vision/ev_yaw_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/external_vision/ev_height_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/external_vision/ev_vel_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/external_vision/ev_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/zero_innovation_heading_update.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/magnetometer/mag_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/magnetometer/mag_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/fake_height_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/fake_pos_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/optical_flow/optical_flow_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/optical_flow/optical_flow_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/barometer/baro_height_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/sideslip/sideslip_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/gravity/gravity_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/drag/drag_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/gnss/gnss_yaw_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/gnss/gnss_height_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/gnss/gnss_checks.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/gnss/gps_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/range_finder/range_height_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/range_finder/range_height_control.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/range_finder/range_finder_consistency_check.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/range_finder/sensor_range_finder.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/ZeroGyroUpdate.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/auxvel/auxvel_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/airspeed/airspeed_fusion.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/aid_sources/ZeroVelocityUpdate.cpp.gcda
+Processing ./src/modules/ekf2/EKF/CMakeFiles/ecl_EKF.dir/position_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF2.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF2Selector.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/ekf.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/wind.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/yaw_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/terrain_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/imu_down_sampler/imu_down_sampler.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/velocity_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/ekf_helper.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/height_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/covariance.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/estimator_interface.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/external_vision/ev_pos_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/external_vision/ev_yaw_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/external_vision/ev_height_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/external_vision/ev_vel_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/external_vision/ev_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/zero_innovation_heading_update.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/magnetometer/mag_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/magnetometer/mag_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/aux_global_position/aux_global_position.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/fake_height_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/fake_pos_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/optical_flow/optical_flow_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/optical_flow/optical_flow_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/barometer/baro_height_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/sideslip/sideslip_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/gravity/gravity_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/drag/drag_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/gnss/gnss_yaw_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/gnss/gnss_height_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/gnss/gnss_checks.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/gnss/gps_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/range_finder/range_height_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/range_finder/range_height_control.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/range_finder/range_finder_consistency_check.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/range_finder/sensor_range_finder.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/ZeroGyroUpdate.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/auxvel/auxvel_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/airspeed/airspeed_fusion.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/aid_sources/ZeroVelocityUpdate.cpp.gcda
+Processing ./src/modules/ekf2/CMakeFiles/modules__ekf2.dir/EKF/position_fusion.cpp.gcda
+Processing ./src/modules/rc_update/CMakeFiles/modules__rc_update.dir/rc_update.cpp.gcda
+Processing ./src/modules/rc_update/CMakeFiles/functional-RCUpdate.dir/RCUpdateTest.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/functional-ActuatorEffectivenessRotors.dir/ActuatorEffectivenessRotorsTest.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessCustom.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessUUV.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessHelicopter.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessSpacecraft.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessTilts.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessMultirotor.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessControlSurfaces.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessRotors.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessTailsitterVTOL.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessHelicopterCoaxial.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessTiltrotorVTOL.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessFixedWing.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessStandardVTOL.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessMCTilt.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/VehicleActuatorEffectiveness.dir/ActuatorEffectivenessRoverAckermann.cpp.gcda
+Processing ./src/modules/control_allocator/VehicleActuatorEffectiveness/CMakeFiles/functional-ActuatorEffectivenessHelicopter.dir/ActuatorEffectivenessHelicopterTest.cpp.gcda
+Processing ./src/modules/control_allocator/CMakeFiles/modules__control_allocator.dir/ControlAllocator.cpp.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/GyroFFT.cpp.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/CMSIS_5/CMSIS/DSP/Source/BasicMathFunctions/arm_mult_q15.c.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/CMSIS_5/CMSIS/DSP/Source/SupportFunctions/arm_float_to_q15.c.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/CMSIS_5/CMSIS/DSP/Source/TransformFunctions/arm_rfft_q15.c.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/CMSIS_5/CMSIS/DSP/Source/TransformFunctions/arm_bitreversal2.c.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/CMSIS_5/CMSIS/DSP/Source/TransformFunctions/arm_cfft_radix4_q15.c.gcda
+Processing ./src/modules/gyro_fft/CMakeFiles/modules__gyro_fft.dir/CMSIS_5/CMSIS/DSP/Source/TransformFunctions/arm_cfft_q15.c.gcda
+Processing ./src/modules/navigator/GeofenceBreachAvoidance/CMakeFiles/geofence_breach_avoidance.dir/geofence_breach_avoidance.cpp.gcda
+Processing ./src/modules/navigator/GeofenceBreachAvoidance/CMakeFiles/functional-GeofenceBreachAvoidance.dir/GeofenceBreachAvoidanceTest.cpp.gcda
+Processing ./src/modules/navigator/MissionFeasibility/CMakeFiles/mission_feasibility_checker.dir/FeasibilityChecker.cpp.gcda
+Processing ./src/modules/navigator/MissionFeasibility/CMakeFiles/functional-FeasibilityChecker.dir/FeasibilityCheckerTest.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/land.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/mission_base.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/rtl_direct_mission_land.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/vtol_takeoff.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/navigator_main.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/rtl_mission_fast_reverse.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/mission_block.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/geofence.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/loiter.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/takeoff.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/precland.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/mission_feasibility_checker.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/mission.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/rtl_mission_fast.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/navigator_mode.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/rtl_direct.cpp.gcda
+Processing ./src/modules/navigator/CMakeFiles/modules__navigator.dir/rtl.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/BlockLocalPositionEstimator.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/land.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/sonar.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/mocap.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/flow.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/vision.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/gps.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/landing_target.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/baro.cpp.gcda
+Processing ./src/modules/local_position_estimator/CMakeFiles/modules__local_position_estimator.dir/sensors/lidar.cpp.gcda
+Processing ./src/modules/fw_rate_control/CMakeFiles/modules__fw_rate_control.dir/FixedwingRateControl.cpp.gcda
+Processing ./src/modules/attitude_estimator_q/CMakeFiles/modules__attitude_estimator_q.dir/attitude_estimator_q_main.cpp.gcda
+Processing ./src/modules/uxrce_dds_client/CMakeFiles/modules__uxrce_dds_client.dir/uxrce_dds_client.cpp.gcda
+Processing ./src/modules/uxrce_dds_client/CMakeFiles/modules__uxrce_dds_client.dir/srv_base.cpp.gcda
+Processing ./src/modules/uxrce_dds_client/CMakeFiles/modules__uxrce_dds_client.dir/vehicle_command_srv.cpp.gcda
+Processing ./src/modules/airspeed_selector/CMakeFiles/modules__airspeed_selector.dir/airspeed_selector_main.cpp.gcda
+Processing ./src/modules/airspeed_selector/CMakeFiles/modules__airspeed_selector.dir/AirspeedValidator.cpp.gcda
+Processing ./src/modules/gyro_calibration/CMakeFiles/modules__gyro_calibration.dir/GyroCalibration.cpp.gcda
+Processing ./src/modules/load_mon/CMakeFiles/modules__load_mon.dir/LoadMon.cpp.gcda
+Processing ./src/modules/camera_feedback/CMakeFiles/modules__camera_feedback.dir/CameraFeedback.cpp.gcda
+Processing ./src/modules/fw_autotune_attitude_control/CMakeFiles/fw_autotune_attitude_control.dir/fw_autotune_attitude_control.cpp.gcda
+Processing ./src/modules/vtol_att_control/CMakeFiles/modules__vtol_att_control.dir/vtol_type.cpp.gcda
+Processing ./src/modules/vtol_att_control/CMakeFiles/modules__vtol_att_control.dir/tailsitter.cpp.gcda
+Processing ./src/modules/vtol_att_control/CMakeFiles/modules__vtol_att_control.dir/vtol_att_control_main.cpp.gcda
+Processing ./src/modules/vtol_att_control/CMakeFiles/modules__vtol_att_control.dir/standard.cpp.gcda
+Processing ./src/modules/vtol_att_control/CMakeFiles/modules__vtol_att_control.dir/tiltrotor.cpp.gcda
+Processing ./src/modules/simulation/sensor_agp_sim/CMakeFiles/modules__simulation__sensor_agp_sim.dir/SensorAgpSim.cpp.gcda
+Processing ./src/modules/simulation/battery_simulator/CMakeFiles/modules__simulation__battery_simulator.dir/BatterySimulator.cpp.gcda
+Processing ./src/modules/simulation/pwm_out_sim/CMakeFiles/modules__simulation__pwm_out_sim.dir/PWMSim.cpp.gcda
+Processing ./src/modules/simulation/simulator_sih/CMakeFiles/modules__simulation__simulator_sih.dir/sih.cpp.gcda
+Processing ./src/modules/simulation/sensor_airspeed_sim/CMakeFiles/modules__simulation__sensor_airspeed_sim.dir/SensorAirspeedSim.cpp.gcda
+Processing ./src/modules/simulation/sensor_baro_sim/CMakeFiles/modules__simulation__sensor_baro_sim.dir/SensorBaroSim.cpp.gcda
+Processing ./src/modules/simulation/system_power_simulator/CMakeFiles/modules__simulation__system_power_simulator.dir/SystemPowerSimulator.cpp.gcda
+Processing ./src/modules/simulation/simulator_mavlink/CMakeFiles/modules__simulation__simulator_mavlink.dir/SimulatorMavlink.cpp.gcda
+Processing ./src/modules/simulation/sensor_gps_sim/CMakeFiles/modules__simulation__sensor_gps_sim.dir/SensorGpsSim.cpp.gcda
+Processing ./src/modules/simulation/sensor_mag_sim/CMakeFiles/modules__simulation__senosr_mag_sim.dir/SensorMagSim.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/temperature_calibration/accel.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/temperature_calibration/task.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/temperature_calibration/mag.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/temperature_calibration/baro.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/temperature_calibration/gyro.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/TemperatureCompensation.cpp.gcda
+Processing ./src/modules/temperature_compensation/CMakeFiles/modules__temperature_compensation.dir/TemperatureCompensationModule.cpp.gcda
+Processing ./src/modules/mc_pos_control/Takeoff/CMakeFiles/unit-Takeoff.dir/TakeoffTest.cpp.gcda
+Processing ./src/modules/mc_pos_control/Takeoff/CMakeFiles/Takeoff.dir/Takeoff.cpp.gcda
+Processing ./src/modules/mc_pos_control/PositionControl/CMakeFiles/unit-ControlMath.dir/ControlMathTest.cpp.gcda
+Processing ./src/modules/mc_pos_control/PositionControl/CMakeFiles/PositionControl.dir/PositionControl.cpp.gcda
+Processing ./src/modules/mc_pos_control/PositionControl/CMakeFiles/PositionControl.dir/ControlMath.cpp.gcda
+Processing ./src/modules/mc_pos_control/PositionControl/CMakeFiles/unit-PositionControl.dir/PositionControlTest.cpp.gcda
+Processing ./src/modules/mc_pos_control/CMakeFiles/modules__mc_pos_control.dir/MulticopterPositionControl.cpp.gcda
+Processing ./src/modules/mc_pos_control/GotoControl/CMakeFiles/GotoControl.dir/GotoControl.cpp.gcda
+Processing ./src/modules/fw_mode_manager/figure_eight/CMakeFiles/figure_eight.dir/FigureEight.cpp.gcda
+Processing ./src/modules/fw_mode_manager/launchdetection/CMakeFiles/launchdetection.dir/LaunchDetector.cpp.gcda
+Processing ./src/modules/fw_mode_manager/runway_takeoff/CMakeFiles/runway_takeoff.dir/RunwayTakeoff.cpp.gcda
+Processing ./src/modules/fw_mode_manager/CMakeFiles/modules__fw_mode_manager.dir/ControllerConfigurationHandler.cpp.gcda
+Processing ./src/modules/fw_mode_manager/CMakeFiles/modules__fw_mode_manager.dir/FixedWingModeManager.cpp.gcda
+Processing ./src/modules/landing_target_estimator/CMakeFiles/modules__landing_target_estimator.dir/KalmanFilter.cpp.gcda
+Processing ./src/modules/landing_target_estimator/CMakeFiles/modules__landing_target_estimator.dir/LandingTargetEstimator.cpp.gcda
+Processing ./src/modules/landing_target_estimator/CMakeFiles/modules__landing_target_estimator.dir/landing_target_estimator_main.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/unit-MavlinkStatustextHandler.dir/MavlinkStatustextHandlerTest.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_mission.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/MavlinkStatustextHandler.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_main.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/open_drone_id_translations.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/tune_publisher.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_events.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_command_sender.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_log_handler.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_messages.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_stream.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_simple_analyzer.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_rate_limiter.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_ulog.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_timesync.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_receiver.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_parameters.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_ftp.cpp.gcda
+Processing ./src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_shell.cpp.gcda
+Processing ./src/modules/airship_att_control/CMakeFiles/modules__airship_att_control.dir/airship_att_control_main.cpp.gcda
+Processing ./src/modules/uuv_att_control/CMakeFiles/modules__uuv_att_control.dir/uuv_att_control.cpp.gcda
+Processing ./src/modules/payload_deliverer/CMakeFiles/modules__payload_deliverer.dir/gripper.cpp.gcda
+Processing ./src/modules/payload_deliverer/CMakeFiles/modules__payload_deliverer.dir/payload_deliverer.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/log_writer.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/log_writer_file.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/watchdog.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/util.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/logger.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/log_writer_mavlink.cpp.gcda
+Processing ./src/modules/logger/CMakeFiles/modules__logger.dir/logged_topics.cpp.gcda
+Processing ./src/modules/fw_att_control/CMakeFiles/modules__fw_att_control.dir/fw_yaw_controller.cpp.gcda
+Processing ./src/modules/fw_att_control/CMakeFiles/modules__fw_att_control.dir/FixedwingAttitudeControl.cpp.gcda
+Processing ./src/modules/fw_att_control/CMakeFiles/modules__fw_att_control.dir/fw_pitch_controller.cpp.gcda
+Processing ./src/modules/fw_att_control/CMakeFiles/modules__fw_att_control.dir/fw_roll_controller.cpp.gcda
+Processing ./src/modules/fw_att_control/CMakeFiles/modules__fw_att_control.dir/fw_wheel_controller.cpp.gcda
+Processing ./src/modules/fw_lateral_longitudinal_control/CMakeFiles/modules__fw_lateral_longitudinal_control.dir/FwLateralLongitudinalControl.cpp.gcda
+Processing ./src/modules/manual_control/CMakeFiles/modules__manual_control.dir/ManualControl.cpp.gcda
+Processing ./src/modules/manual_control/CMakeFiles/modules__manual_control.dir/ManualControlSelector.cpp.gcda
+Processing ./src/modules/manual_control/CMakeFiles/functional-ManualControl.dir/ManualControlTest.cpp.gcda
+Processing ./src/modules/manual_control/CMakeFiles/unit-ManualControlSelector.dir/ManualControlSelectorTest.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/Common.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/HealthAndArmingChecks.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/rcAndDataLinkCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/gyroCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/airspeedCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/opticalFlowCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/vtolCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/magnetometerCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/escCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/openDroneIDCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/missionCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/powerCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/manualControlCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/estimatorCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/baroCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/loggerCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/cpuResourceCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/accelerometerCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/externalChecks.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/batteryCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/navigatorCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/armPermissionCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/sdcardCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/modeCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/systemCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/distanceSensorChecks.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/homePositionCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/rcCalibrationCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/flightTimeCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/parachuteCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/geofenceCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/imuConsistencyCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/failureDetectorCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/offboardCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/health_and_arming_checks.dir/checks/windCheck.cpp.gcda
+Processing ./src/modules/commander/HealthAndArmingChecks/CMakeFiles/functional-HealthAndArmingChecks.dir/HealthAndArmingChecksTest.cpp.gcda
+Processing ./src/modules/commander/failsafe/CMakeFiles/functional-failsafe_test.dir/failsafe_test.cpp.gcda
+Processing ./src/modules/commander/failsafe/CMakeFiles/failsafe.dir/failsafe.cpp.gcda
+Processing ./src/modules/commander/failsafe/CMakeFiles/failsafe.dir/framework.cpp.gcda
+Processing ./src/modules/commander/Arming/ArmAuthorization/CMakeFiles/ArmAuthorization.dir/ArmAuthorization.cpp.gcda
+Processing ./src/modules/commander/ModeUtil/CMakeFiles/mode_util.dir/control_mode.cpp.gcda
+Processing ./src/modules/commander/ModeUtil/CMakeFiles/mode_util.dir/mode_requirements.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/unit-mag_calibration_test.dir/mag_calibration_test.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/functional-ModeManagement.dir/ModeManagementTest.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/rc_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/HomePosition.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/level_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/baro_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/UserModeIntention.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/calibration_routines.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/accelerometer_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/Commander.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/airspeed_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/factory_calibration_storage.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/esc_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/lm_fit.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/ModeManagement.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/gyro_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/Safety.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/worker_thread.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/mag_calibration.cpp.gcda
+Processing ./src/modules/commander/CMakeFiles/modules__commander.dir/commander_helper.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/failure_detector.dir/FailureInjector.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/failure_detector.dir/FailureDetector.cpp.gcda
+Processing ./src/modules/commander/MulticopterThrowLaunch/CMakeFiles/MulticopterThrowLaunch.dir/MulticopterThrowLaunch.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumActControl/CMakeFiles/MecanumActControl.dir/MecanumActControl.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumPosControl/CMakeFiles/MecanumPosControl.dir/MecanumPosControl.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumRateControl/CMakeFiles/MecanumRateControl.dir/MecanumRateControl.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumAttControl/CMakeFiles/MecanumAttControl.dir/MecanumAttControl.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumSpeedControl/CMakeFiles/MecanumSpeedControl.dir/MecanumSpeedControl.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumDriveModes/MecanumOffboardMode/CMakeFiles/MecanumOffboardMode.dir/MecanumOffboardMode.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumDriveModes/MecanumAutoMode/CMakeFiles/MecanumAutoMode.dir/MecanumAutoMode.cpp.gcda
+Processing ./src/modules/rover_mecanum/MecanumDriveModes/MecanumManualMode/CMakeFiles/MecanumManualMode.dir/MecanumManualMode.cpp.gcda
+Processing ./src/modules/rover_mecanum/CMakeFiles/modules__rover_mecanum.dir/RoverMecanum.cpp.gcda
+Processing ./src/modules/mc_hover_thrust_estimator/CMakeFiles/zero_order_hover_thrust_ekf.dir/zero_order_hover_thrust_ekf.cpp.gcda
+Processing ./src/modules/mc_hover_thrust_estimator/CMakeFiles/unit-zero_order_hover_thrust_ekf_test.dir/zero_order_hover_thrust_ekf_test.cpp.gcda
+Processing ./src/modules/mc_hover_thrust_estimator/CMakeFiles/modules__mc_hover_thrust_estimator.dir/MulticopterHoverThrustEstimator.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannPosControl/CMakeFiles/AckermannPosControl.dir/AckermannPosControl.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannActControl/CMakeFiles/AckermannActControl.dir/AckermannActControl.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannDriveModes/AckermannAutoMode/CMakeFiles/AckermannAutoMode.dir/AckermannAutoMode.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannDriveModes/AckermannManualMode/CMakeFiles/AckermannManualMode.dir/AckermannManualMode.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannDriveModes/AckermannOffboardMode/CMakeFiles/AckermannOffboardMode.dir/AckermannOffboardMode.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannRateControl/CMakeFiles/AckermannRateControl.dir/AckermannRateControl.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannSpeedControl/CMakeFiles/AckermannSpeedControl.dir/AckermannSpeedControl.cpp.gcda
+Processing ./src/modules/rover_ackermann/AckermannAttControl/CMakeFiles/AckermannAttControl.dir/AckermannAttControl.cpp.gcda
+Processing ./src/modules/rover_ackermann/CMakeFiles/modules__rover_ackermann.dir/RoverAckermann.cpp.gcda
+Processing ./src/modules/sensors/vehicle_optical_flow/test/CMakeFiles/functional-VehicleOpticalFlow.dir/VehicleOpticalFlowTest.cpp.gcda
+Processing ./src/modules/sensors/vehicle_optical_flow/CMakeFiles/vehicle_optical_flow.dir/VehicleOpticalFlow.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/data_validator.dir/DataValidatorGroup.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/data_validator.dir/DataValidator.cpp.gcda
+Processing ./src/modules/sensors/vehicle_acceleration/CMakeFiles/vehicle_acceleration.dir/VehicleAcceleration.cpp.gcda
+Processing ./src/modules/sensors/vehicle_imu/CMakeFiles/vehicle_imu.dir/VehicleIMU.cpp.gcda
+Processing ./src/modules/sensors/vehicle_magnetometer/CMakeFiles/vehicle_magnetometer.dir/VehicleMagnetometer.cpp.gcda
+Processing ./src/modules/sensors/vehicle_air_data/CMakeFiles/vehicle_air_data.dir/VehicleAirData.cpp.gcda
+Processing ./src/modules/sensors/vehicle_gps_position/CMakeFiles/vehicle_gps_position.dir/VehicleGPSPosition.cpp.gcda
+Processing ./src/modules/sensors/vehicle_gps_position/CMakeFiles/vehicle_gps_position.dir/gps_blending.cpp.gcda
+Processing ./src/modules/sensors/vehicle_gps_position/CMakeFiles/unit-gps_blending_test.dir/gps_blending_test.cpp.gcda
+Processing ./src/modules/sensors/CMakeFiles/modules__sensors.dir/voted_sensors_update.cpp.gcda
+Processing ./src/modules/sensors/CMakeFiles/modules__sensors.dir/sensors.cpp.gcda
+Processing ./src/modules/sensors/vehicle_angular_velocity/CMakeFiles/vehicle_angular_velocity.dir/VehicleAngularVelocity.cpp.gcda
+Processing ./src/modules/events/CMakeFiles/modules__events.dir/set_leds.cpp.gcda
+Processing ./src/modules/events/CMakeFiles/modules__events.dir/rc_loss_alarm.cpp.gcda
+Processing ./src/modules/events/CMakeFiles/modules__events.dir/status_display.cpp.gcda
+Processing ./src/modules/events/CMakeFiles/modules__events.dir/send_event.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/input.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/gimbal.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/input_rc.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/output.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/output_rc.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/output_mavlink.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/input_test.cpp.gcda
+Processing ./src/modules/gimbal/CMakeFiles/drivers__gimbal.dir/input_mavlink.cpp.gcda
+Processing ./src/modules/mc_att_control/AttitudeControl/CMakeFiles/AttitudeControl.dir/AttitudeControl.cpp.gcda
+Processing ./src/modules/mc_att_control/AttitudeControl/CMakeFiles/unit-AttitudeControl.dir/AttitudeControlTest.cpp.gcda
+Processing ./src/modules/mc_att_control/AttitudeControl/CMakeFiles/unit-AttitudeControlMath.dir/AttitudeControlMathTest.cpp.gcda
+Processing ./src/modules/mc_att_control/CMakeFiles/modules__mc_att_control.dir/mc_att_control_main.cpp.gcda
+Processing ./src/modules/mag_bias_estimator/CMakeFiles/modules__mag_bias_estimator.dir/MagBiasEstimator.cpp.gcda
+Processing ./src/drivers/gnss/septentrio/CMakeFiles/driver__septentrio.dir/septentrio.cpp.gcda
+Processing ./src/drivers/gnss/septentrio/CMakeFiles/driver__septentrio.dir/sbf/decoder.cpp.gcda
+Processing ./src/drivers/gnss/septentrio/CMakeFiles/driver__septentrio.dir/util.cpp.gcda
+Processing ./src/drivers/gnss/septentrio/CMakeFiles/driver__septentrio.dir/rtcm.cpp.gcda
+Processing ./src/drivers/gnss/septentrio/CMakeFiles/functional-septentrio_fuzz_tests.dir/septentrio_fuzz_tests.cpp.gcda
+Processing ./src/drivers/camera_trigger/CMakeFiles/drivers__camera_trigger.dir/camera_trigger.cpp.gcda
+Processing ./src/drivers/distance_sensor/lightware_laser_serial/CMakeFiles/drivers__distance_sensor__lightware_laser_serial.dir/lightware_laser_serial.cpp.gcda
+Processing ./src/drivers/distance_sensor/lightware_laser_serial/CMakeFiles/drivers__distance_sensor__lightware_laser_serial.dir/lightware_laser_serial_main.cpp.gcda
+Processing ./src/drivers/distance_sensor/lightware_laser_serial/CMakeFiles/drivers__distance_sensor__lightware_laser_serial.dir/parser.cpp.gcda
+Processing ./src/drivers/distance_sensor/lightware_laser_serial/tests/CMakeFiles/drivers__distance_sensor__lightware_laser_serial__tests.dir/lightware_laser_test.cpp.gcda
+Processing ./src/drivers/tone_alarm/CMakeFiles/drivers__tone_alarm.dir/ToneAlarm.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/gps.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/crc.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/mtk.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/nmea.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/emlid_reach.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/ubx.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/ashtech.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/unicore.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/gps_helper.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/femtomes.cpp.gcda
+Processing ./src/drivers/gps/CMakeFiles/drivers__gps.dir/devices/src/rtcm.cpp.gcda
+Processing ./src/drivers/osd/msp_osd/MessageDisplay/CMakeFiles/unit-MessageDisplay.dir/MessageDisplayTest.cpp.gcda
+Processing ./src/drivers/osd/msp_osd/MessageDisplay/CMakeFiles/message_display.dir/MessageDisplay.cpp.gcda
+Processing ./src/drivers/osd/msp_osd/CMakeFiles/drivers__osd__msp_osd.dir/msp_osd.cpp.gcda
+Processing ./src/drivers/osd/msp_osd/CMakeFiles/drivers__osd__msp_osd.dir/MspV1.cpp.gcda
+Processing ./src/drivers/osd/msp_osd/CMakeFiles/drivers__osd__msp_osd.dir/uorb_to_msp.cpp.gcda
+Processing ./src/lib/collision_prevention/CMakeFiles/unit-ObstacleMath.dir/ObstacleMathTest.cpp.gcda
+Processing ./src/lib/collision_prevention/CMakeFiles/CollisionPrevention.dir/CollisionPrevention.cpp.gcda
+Processing ./src/lib/collision_prevention/CMakeFiles/CollisionPrevention.dir/ObstacleMath.cpp.gcda
+Processing ./src/lib/collision_prevention/CMakeFiles/functional-CollisionPrevention.dir/CollisionPreventionTest.cpp.gcda
+Processing ./src/lib/version/CMakeFiles/version.dir/version.c.gcda
+Processing ./src/lib/systemlib/CMakeFiles/systemlib.dir/mavlink_log.cpp.gcda
+Processing ./src/lib/rover_control/CMakeFiles/rover_control.dir/RoverControl.cpp.gcda
+Processing ./src/lib/rover_control/CMakeFiles/unit-RoverControl.dir/RoverControlTest.cpp.gcda
+Processing ./src/lib/pure_pursuit/CMakeFiles/pure_pursuit.dir/PurePursuit.cpp.gcda
+Processing ./src/lib/pure_pursuit/CMakeFiles/unit-PurePursuit.dir/PurePursuitTest.cpp.gcda
+Processing ./src/lib/system_identification/CMakeFiles/SystemIdentification.dir/system_identification.cpp.gcda
+Processing ./src/lib/system_identification/CMakeFiles/unit-arx_rls_test.dir/arx_rls_test.cpp.gcda
+Processing ./src/lib/system_identification/CMakeFiles/unit-system_identification_test.dir/system_identification_test.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-NotchFilter.dir/math/test/NotchFilterTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-LowPassFilter2pVector3f.dir/math/test/LowPassFilter2pVector3fTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-MedianFilter.dir/math/test/MedianFilterTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-WelfordMean.dir/math/WelfordMeanTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-Utilities.dir/math/test/UtilitiesTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-AlphaFilter.dir/math/test/AlphaFilterTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-WelfordMeanVector.dir/math/WelfordMeanVectorTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-second_order_reference_model_test.dir/math/test/second_order_reference_model_test.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-Functions.dir/math/FunctionsTest.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/mathlib.dir/math/test/test.cpp.gcda
+Processing ./src/lib/mathlib/CMakeFiles/unit-MaxDistanceToCircle.dir/math/MaxDistanceToCircleTest.cpp.gcda
+Processing ./src/lib/tinybson/CMakeFiles/tinybson.dir/tinybson.cpp.gcda
+Processing ./src/lib/pid_design/CMakeFiles/unit-pid_design_test.dir/pid_design_test.cpp.gcda
+Processing ./src/lib/adsb/CMakeFiles/adsb.dir/AdsbConflict.cpp.gcda
+Processing ./src/lib/adsb/CMakeFiles/functional-AdsbConflict.dir/AdsbConflictTest.cpp.gcda
+Processing ./src/lib/dataman_client/CMakeFiles/dataman_client.dir/DatamanClient.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/motion_planning.dir/PositionSmoothing.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/motion_planning.dir/ManualVelocitySmoothingZ.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/motion_planning.dir/HeadingSmoothing.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/motion_planning.dir/VelocitySmoothing.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/unit-HeadingSmoothing.dir/HeadingSmoothingTest.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/unit-PositionSmoothing.dir/PositionSmoothingTest.cpp.gcda
+Processing ./src/lib/motion_planning/CMakeFiles/unit-VelocitySmoothing.dir/VelocitySmoothingTest.cpp.gcda
+Processing ./src/lib/control_allocation/actuator_effectiveness/CMakeFiles/ActuatorEffectiveness.dir/ActuatorEffectiveness.cpp.gcda
+Processing ./src/lib/control_allocation/control_allocation/CMakeFiles/unit-ControlAllocationPseudoInverse.dir/ControlAllocationPseudoInverseTest.cpp.gcda
+Processing ./src/lib/control_allocation/control_allocation/CMakeFiles/ControlAllocation.dir/ControlAllocationPseudoInverse.cpp.gcda
+Processing ./src/lib/control_allocation/control_allocation/CMakeFiles/ControlAllocation.dir/ControlAllocation.cpp.gcda
+Processing ./src/lib/control_allocation/control_allocation/CMakeFiles/ControlAllocation.dir/ControlAllocationSequentialDesaturation.cpp.gcda
+Processing ./src/lib/control_allocation/control_allocation/CMakeFiles/functional-ControlAllocationSequentialDesaturation.dir/ControlAllocationSequentialDesaturationTest.cpp.gcda
+Processing ./src/lib/timesync/CMakeFiles/timesync.dir/Timesync.cpp.gcda
+Processing ./src/lib/heatshrink/CMakeFiles/heatshrink.dir/heatshrink/heatshrink_decoder.c.gcda
+Processing ./src/lib/tecs/CMakeFiles/tecs.dir/TECS.cpp.gcda
+Processing ./src/lib/hysteresis/CMakeFiles/hysteresis.dir/hysteresis.cpp.gcda
+Processing ./src/lib/hysteresis/CMakeFiles/unit-Hysteresis.dir/HysteresisTest.cpp.gcda
+Processing ./src/lib/field_sensor_bias_estimator/CMakeFiles/unit-FieldSensorBiasEstimator.dir/FieldSensorBiasEstimatorTest.cpp.gcda
+Processing ./src/lib/geo/CMakeFiles/unit-test_geo.dir/test_geo.cpp.gcda
+Processing ./src/lib/geo/CMakeFiles/geo.dir/geo.cpp.gcda
+Processing ./src/lib/mixer_module/CMakeFiles/functional-mixer_module_tests.dir/mixer_module_tests.cpp.gcda
+Processing ./src/lib/mixer_module/CMakeFiles/mixer_module.dir/mixer_module.cpp.gcda
+Processing ./src/lib/mixer_module/CMakeFiles/mixer_module.dir/actuator_test.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixScalarMultiplication.dir/MatrixScalarMultiplicationTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixDual.dir/MatrixDualTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixSparseVector.dir/MatrixSparseVectorTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixVector.dir/MatrixVectorTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixHelper.dir/MatrixHelperTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixFilter.dir/MatrixFilterTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixSquare.dir/MatrixSquareTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixUpperRightTriangle.dir/MatrixUpperRightTriangleTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixSlice.dir/MatrixSliceTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixMultiplication.dir/MatrixMultiplicationTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixHatvee.dir/MatrixHatveeTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixTranspose.dir/MatrixTransposeTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixUnwrap.dir/MatrixUnwrapTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixIntegral.dir/MatrixIntegralTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixPseudoInverse.dir/MatrixPseudoInverseTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixCopyTo.dir/MatrixCopyToTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixVector3.dir/MatrixVector3Test.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixDcm2.dir/MatrixDcm2Test.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixLeastSquares.dir/MatrixLeastSquaresTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixAttitude.dir/MatrixAttitudeTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixInverse.dir/MatrixInverseTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixVectorAssignment.dir/MatrixVectorAssignmentTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixVector2.dir/MatrixVector2Test.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixSetIdentity.dir/MatrixSetIdentityTest.cpp.gcda
+Processing ./src/lib/matrix/test/CMakeFiles/unit-MatrixAssignment.dir/MatrixAssignmentTest.cpp.gcda
+Processing ./src/lib/variable_length_ringbuffer/CMakeFiles/variable_length_ringbuffer.dir/VariableLengthRingbuffer.cpp.gcda
+Processing ./src/lib/variable_length_ringbuffer/CMakeFiles/unit-VariableLengthRingbuffer.dir/VariableLengthRingbufferTest.cpp.gcda
+Processing ./src/lib/ringbuffer/CMakeFiles/unit-Ringbuffer.dir/RingbufferTest.cpp.gcda
+Processing ./src/lib/ringbuffer/CMakeFiles/ringbuffer.dir/Ringbuffer.cpp.gcda
+Processing ./src/lib/weather_vane/CMakeFiles/WeatherVane.dir/WeatherVane.cpp.gcda
+Processing ./src/lib/npfg/CMakeFiles/npfg.dir/DirectionalGuidance.cpp.gcda
+Processing ./src/lib/npfg/CMakeFiles/npfg.dir/CourseToAirspeedRefMapper.cpp.gcda
+Processing ./src/lib/npfg/CMakeFiles/npfg.dir/AirspeedDirectionController.cpp.gcda
+Processing ./src/lib/npfg/CMakeFiles/unit-Npfg.dir/NpfgTest.cpp.gcda
+Processing ./src/lib/slew_rate/CMakeFiles/unit-SlewRateYaw.dir/SlewRateYawTest.cpp.gcda
+Processing ./src/lib/slew_rate/CMakeFiles/unit-SlewRate.dir/SlewRateTest.cpp.gcda
+Processing ./src/lib/battery/CMakeFiles/battery.dir/battery.cpp.gcda
+Processing ./src/lib/drivers/magnetometer/CMakeFiles/drivers_magnetometer.dir/PX4Magnetometer.cpp.gcda
+Processing ./src/lib/drivers/rangefinder/CMakeFiles/drivers_rangefinder.dir/PX4Rangefinder.cpp.gcda
+Processing ./src/lib/drivers/accelerometer/CMakeFiles/drivers_accelerometer.dir/PX4Accelerometer.cpp.gcda
+Processing ./src/lib/drivers/gyroscope/CMakeFiles/drivers_gyroscope.dir/PX4Gyroscope.cpp.gcda
+Processing ./src/lib/world_magnetic_model/CMakeFiles/unit-test_geo_lookup.dir/test_geo_lookup.cpp.gcda
+Processing ./src/lib/world_magnetic_model/CMakeFiles/world_magnetic_model.dir/geo_mag_declination.cpp.gcda
+Processing ./src/lib/rtl/CMakeFiles/rtl_time_estimator.dir/rtl_time_estimator.cpp.gcda
+Processing ./src/lib/circuit_breaker/CMakeFiles/circuit_breaker.dir/circuit_breaker.cpp.gcda
+Processing ./src/lib/pid/CMakeFiles/unit-PID.dir/PIDTest.cpp.gcda
+Processing ./src/lib/pid/CMakeFiles/PID.dir/PID.cpp.gcda
+Processing ./src/lib/stick_yaw/CMakeFiles/StickYaw.dir/StickYaw.cpp.gcda
+Processing ./src/lib/perf/CMakeFiles/perf.dir/perf_counter.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/functional-Parameter.dir/ParameterTest.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/autosave.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/parameters.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/param_translation_unit_tests.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/atomic_transaction.cpp.gcda
+Processing ./src/lib/rc/rc_tests/CMakeFiles/lib__rc__rc_tests.dir/RCTest.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/st24.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/crsf.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/dsm.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/sumd.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/sbus.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/common_rc.cpp.gcda
+Processing ./src/lib/rc/CMakeFiles/rc.dir/ghst.cpp.gcda
+Processing ./src/lib/conversion/CMakeFiles/unit-Rotation.dir/RotationTest.cpp.gcda
+Processing ./src/lib/conversion/CMakeFiles/conversion.dir/rotation.cpp.gcda
+Processing ./src/lib/airspeed/CMakeFiles/airspeed.dir/airspeed.cpp.gcda
+Processing ./src/lib/lat_lon_alt/CMakeFiles/lat_lon_alt.dir/lat_lon_alt.cpp.gcda
+Processing ./src/lib/lat_lon_alt/CMakeFiles/unit-test_lat_lon_alt.dir/test_lat_lon_alt.cpp.gcda
+Processing ./src/lib/atmosphere/CMakeFiles/atmosphere.dir/atmosphere.cpp.gcda
+Processing ./src/lib/atmosphere/CMakeFiles/unit-test_atmosphere.dir/test_atmosphere.cpp.gcda
+Processing ./src/lib/tunes/CMakeFiles/tunes.dir/tunes.cpp.gcda
+Processing ./src/lib/sensor_calibration/CMakeFiles/sensor_calibration.dir/Utilities.cpp.gcda
+Processing ./src/lib/sensor_calibration/CMakeFiles/sensor_calibration.dir/Barometer.cpp.gcda
+Processing ./src/lib/sensor_calibration/CMakeFiles/sensor_calibration.dir/Gyroscope.cpp.gcda
+Processing ./src/lib/sensor_calibration/CMakeFiles/sensor_calibration.dir/Magnetometer.cpp.gcda
+Processing ./src/lib/sensor_calibration/CMakeFiles/sensor_calibration.dir/Accelerometer.cpp.gcda
+Processing ./src/lib/controllib/controllib_test/CMakeFiles/lib__controllib__controllib_test.dir/controllib_test_main.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/block/Block.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/block/BlockParam.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockIntegral.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockLowPass.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockLimitSym.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockLimit.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockHighPass.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockIntegralTrap.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockDerivative.cpp.gcda
+Processing ./src/lib/controllib/CMakeFiles/controllib.dir/BlockLowPass2.cpp.gcda
+Processing ./src/lib/rate_control/CMakeFiles/unit-rate_control_test.dir/rate_control_test.cpp.gcda
+Processing ./src/lib/rate_control/CMakeFiles/RateControl.dir/rate_control.cpp.gcda
+Processing ./src/lib/cdev/test/CMakeFiles/lib__cdev__test__cdev_test.dir/cdevtest_main.cpp.gcda
+Processing ./src/lib/cdev/test/CMakeFiles/lib__cdev__test__cdev_test.dir/cdevtest_start.cpp.gcda
+Processing ./src/lib/cdev/test/CMakeFiles/lib__cdev__test__cdev_test.dir/cdevtest_example.cpp.gcda
+Processing ./src/lib/cdev/CMakeFiles/cdev.dir/posix/cdev_platform.cpp.gcda
+Processing ./src/lib/cdev/CMakeFiles/cdev.dir/CDev.cpp.gcda
+Processing ./src/lib/wind_estimator/test/CMakeFiles/unit-test_airspeed_fusion.dir/test_airspeed_fusion.cpp.gcda
+Processing ./src/lib/wind_estimator/CMakeFiles/wind_estimator.dir/WindEstimator.cpp.gcda
+Processing ./src/lib/events/CMakeFiles/events.dir/events.cpp.gcda
+Processing ./src/lib/fw_performance_model/CMakeFiles/performance_model.dir/PerformanceModel.cpp.gcda
+Processing ./src/lib/sticks/CMakeFiles/Sticks.dir/Sticks.cpp.gcda
+Processing ./src/examples/px4_simple_app/CMakeFiles/examples__px4_simple_app.dir/px4_simple_app.c.gcda
+Processing ./src/examples/fake_gps/CMakeFiles/modules__fake_gps.dir/FakeGps.cpp.gcda
+Processing ./src/examples/work_item/CMakeFiles/examples__work_item.dir/WorkItemExample.cpp.gcda
+Processing ./src/examples/fake_magnetometer/CMakeFiles/examples__fake_magnetometer.dir/FakeMagnetometer.cpp.gcda
+Processing ./src/examples/hello/CMakeFiles/examples__hello.dir/hello_main.cpp.gcda
+Processing ./src/examples/hello/CMakeFiles/examples__hello.dir/hello_start.cpp.gcda
+Processing ./src/examples/hello/CMakeFiles/examples__hello.dir/hello_example.cpp.gcda
+Processing ./src/examples/dyn_hello/CMakeFiles/examples__dyn_hello.dir/hello.cpp.gcda
+Processing ./src/examples/px4_mavlink_debug/CMakeFiles/examples__px4_mavlink_debug.dir/px4_mavlink_debug.cpp.gcda
+Processing ./src/examples/fake_imu/CMakeFiles/modules__fake_imu.dir/FakeImu.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gps_inject_data.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_airflow.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/home_position.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/esc_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/trajectory_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/unregister_ext_component.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_attitude_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_operator_id.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_set_value_response.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/yaw_estimator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fuel_tank_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_mag.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_self_id.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gripper.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_reset_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orb_test.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/follow_target.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_set_used_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_array.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/iridiumsbd_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_status_flags.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gyro_fft.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_gear_wheel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/normalized_unsigned_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/transponder_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_combined.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uavcan_parameter_value.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/telemetry_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_baro.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/distance_sensor_mode_change_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/navigator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_armed.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/satellite_info.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_land_detected.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/geofence_result.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/hover_thrust_estimate.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_rate_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/internal_combustion_engine_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_update.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ulog_stream_ack.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_control_mode.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/battery_info.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/trajectory_setpoint6dof.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/arming_check_reply.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_magnetometer.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_attitude_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_servos_trim.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/wind.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uORBTopics.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_out.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/esc_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vtol_vehicle_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/camera_trigger.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/longitudinal_control_configuration.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/dronecan_node_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_accel_fifo.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensors_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/action_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_constraints.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_lateral_guidance_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/offboard_control_mode.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_value.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_aid_source2d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/px4io_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uORBMessageFieldsGenerated.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/pwm_input.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/register_ext_component_reply.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/power_button_state.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_target_pose.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_aid_source3d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/airspeed.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rate_ctrl_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/dataman_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/message_format_response.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_attitude_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rtl_time_estimate.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_command_ack.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/goto_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/logger_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rc_channels.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/log_message.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/adc_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/velocity_limits.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_imu_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/battery_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_sensor_bias.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gps_dump.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ekf2_timestamps.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_speed_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/figure_eight_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_hygrometer.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orbit_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/airspeed_wind.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_config.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_thrust_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_vect.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gyro_fifo.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_motors.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/onboard_computer_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_set_attitude.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/lateral_control_configuration.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/power_monitor.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/heater_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/collision_constraints.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/register_ext_component_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_event_flags.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_device_set_attitude.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gyro.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_rate_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_selection.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/neural_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/follow_target_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/led_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/tiltrotor_extra_controls.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rpm.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/dataman_response.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_local_position.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_optical_flow.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_optical_flow.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/flight_phase_estimation.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_system.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_accel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_key_value.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mag_worker_data.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/differential_pressure.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_global_position.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_set_value_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rtl_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orb_test_large.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_gear.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_air_data.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mavlink_log.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/system_power.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/control_allocator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mission.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ulog_stream.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/qshell_req.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/manual_control_switches.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/cellular_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_selector_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/internal_combustion_engine_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_attitude.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uavcan_parameter_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/message_format_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_local_position_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/launch_detection_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/takeoff_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/airspeed_validated.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/wheel_encoders.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/input_rc.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/pps_capture.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_position_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mount_orientation.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_outputs.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_preflight_mag.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/camera_capture.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_odometry.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_torque_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/navigator_mission_item.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/camera_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/follow_target_estimator.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/qshell_retval.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_device_information.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_target_innovations.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_angular_velocity.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mode_completed.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_bias.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_speed_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_setpoint_triplet.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/can_interface_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rc_parameter_map.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mavlink_tunnel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/radio_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/event.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_set_manual_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_throttle_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_test.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/cpuload.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_controls_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/manual_control_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gnss_relative.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/autotune_attitude_control_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ping.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_servos.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_controls.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/pure_pursuit_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/magnetometer_bias_estimate.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/health_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_arm_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/distance_sensor.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_angular_acceleration_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/obstacle_distance.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_states.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_acceleration.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mission_result.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/timesync_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/arming_check_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_lateral_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/task_stack_info.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/generator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_device_attitude_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_roi.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_gps_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/config_overrides.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensors_status_imu.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_steering_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_controller_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_innovations.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_imu.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_in.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_uwb.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/geofence_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_lateral_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_aid_source1d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_longitudinal_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_controller_landing_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/tune_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_bias3d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/button_event.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_optical_flow_vel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_information.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_correction.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/failsafe_flags.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_runway_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_rates_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_command.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/irlock_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gnss_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orb_test_medium.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/failure_detector_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gps.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/tecs_status.cpp.gcda
+Processing ./boards/px4/sitl/src/CMakeFiles/drivers_board.dir/board_shutdown.cpp.gcda
+Processing ./platforms/posix/src/px4/generic/generic/tone_alarm/CMakeFiles/arch_tone_alarm.dir/ToneAlarmInterface.cpp.gcda
+Processing ./platforms/posix/src/px4/common/gtest_runner/CMakeFiles/gtest_functional_main.dir/gtest_functional_main.cpp.gcda
+Processing ./platforms/posix/src/px4/common/test_stubs/CMakeFiles/test_stubs.dir/stub_daemon.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/server_io.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/pxh.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/client.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/sock_protocol.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/history.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/server.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/drv_hrt.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/lib_crc32.c.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/__/__/__/__/common/Serial.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/tasks.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/px4_posix_impl.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/px4_init.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/SerialImpl.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/cpuload.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/px4_sem.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/print_load.cpp.gcda
+Processing ./platforms/posix/src/px4/common/lockstep_scheduler/CMakeFiles/lockstep_scheduler.dir/src/lockstep_scheduler.cpp.gcda
+Processing ./platforms/posix/src/px4/common/lockstep_scheduler/CMakeFiles/lockstep_scheduler.dir/src/lockstep_components.cpp.gcda
+Processing ./platforms/posix/src/px4/common/lockstep_scheduler/CMakeFiles/functional-lockstep_scheduler_test.dir/test/src/lockstep_scheduler_test.cpp.gcda
+Processing ./platforms/posix/CMakeFiles/px4.dir/src/px4/common/main.cpp.gcda
+Processing ./platforms/posix/CMakeFiles/px4.dir/apps.cpp.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/work_thread.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/queue.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/hrt_work_cancel.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/dq_addlast.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/hrt_thread.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/sq_addlast.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/dq_rem.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/hrt_queue.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/sq_addafter.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/work_lock.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/work_queue.c.gcda
+Processing ./platforms/common/px4_work_queue/test/CMakeFiles/lib__work_queue__test__wqueue_test.dir/wqueue_test.cpp.gcda
+Processing ./platforms/common/px4_work_queue/test/CMakeFiles/lib__work_queue__test__wqueue_test.dir/wqueue_scheduled_test.cpp.gcda
+Processing ./platforms/common/px4_work_queue/test/CMakeFiles/lib__work_queue__test__wqueue_test.dir/wqueue_start.cpp.gcda
+Processing ./platforms/common/px4_work_queue/test/CMakeFiles/lib__work_queue__test__wqueue_test.dir/wqueue_main.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkQueue.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkQueueManager.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkItemSingleShot.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/ScheduledWorkItem.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkItem.cpp.gcda
+Processing ./platforms/common/uORB/test/CMakeFiles/functional-uORBMessageFields.dir/uORBMessageFieldsTest.cpp.gcda
+Processing ./platforms/common/uORB/test/CMakeFiles/functional-uORBSubscription.dir/uORBSubscriptionTest.cpp.gcda
+Processing ./platforms/common/uORB/uORB_tests/CMakeFiles/modules__uORB__uORB_tests.dir/uORB_tests_main.cpp.gcda
+Processing ./platforms/common/uORB/uORB_tests/CMakeFiles/modules__uORB__uORB_tests.dir/uORBTest_UnitTest.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBMessageFields.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBDeviceNode.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/Subscription.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBUtils.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/SubscriptionInterval.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBDeviceMaster.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBManager.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORB.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/module.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/px4_cli.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/external_reset_lockout.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/i2c_spi_buses.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/shutdown.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/board_identity.c.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/Serial.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/px4_log.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/px4_getopt.c.gcda
+Processing ./platforms/common/CMakeFiles/unit-board_identity_test.dir/board_identity_test.cpp.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/bitmap256.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/prog.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/regexp.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/parse.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/nfa.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/re2.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/onepass.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/bitstate.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/dfa.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/compile.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/simplify.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/tostring.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/util/rune.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/util/strutil.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/profiling/CMakeFiles/exponential_biased.dir/internal/exponential_biased.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/statusor.dir/statusor.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/status.dir/status_payload_printer.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/status.dir/internal/status_internal.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/status.dir/status.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_reflection.dir/reflection.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_commandlineflag_internal.dir/internal/commandlineflag.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_private_handle_accessor.dir/internal/private_handle_accessor.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_internal.dir/internal/flag.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_marshalling.dir/marshalling.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_config.dir/usage_config.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_usage.dir/usage.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_commandlineflag.dir/commandlineflag.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_program_name.dir/internal/program_name.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_parse.dir/parse.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_usage_internal.dir/internal/usage.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/debugging_internal.dir/internal/address_is_readable.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/debugging_internal.dir/internal/elf_mem_image.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/debugging_internal.dir/internal/vdso_support.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/utf8_for_code_point.dir/internal/utf8_for_code_point.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/failure_signal_handler.dir/failure_signal_handler.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/decode_rust_punycode.dir/internal/decode_rust_punycode.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/symbolize.dir/symbolize.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/demangle_internal.dir/internal/demangle.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/stacktrace.dir/stacktrace.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/examine_stack.dir/internal/examine_stack.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/leak_check.dir/leak_check.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/demangle_rust.dir/internal/demangle_rust.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen_slow.dir/internal/randen_slow.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_entropy_pool.dir/internal/entropy_pool.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_distributions.dir/discrete_distribution.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen_hwaes_impl.dir/internal/randen_hwaes.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_seed_gen_exception.dir/seed_gen_exception.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen.dir/internal/randen.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen_hwaes.dir/internal/randen_detect.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_seed_material.dir/internal/seed_material.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/spinlock_wait.dir/internal/spinlock_wait.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/strerror.dir/internal/strerror.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/throw_delegate.dir/internal/throw_delegate.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/sysinfo.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/cycleclock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/unscaledcycleclock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/spinlock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/thread_identity.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/malloc_internal.dir/internal/low_level_alloc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/raw_logging_internal.dir/internal/raw_logging.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/graphcycles_internal.dir/internal/graphcycles.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/per_thread_sem.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/waiter_base.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/futex_waiter.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/create_thread_identity.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/mutex.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/kernel_timeout_internal.dir/internal/kernel_timeout.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/container/CMakeFiles/raw_hash_set.dir/internal/raw_hash_set.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/container/CMakeFiles/hashtablez_sampler.dir/internal/hashtablez_sampler_force_weak_definition.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/container/CMakeFiles/hashtablez_sampler.dir/internal/hashtablez_sampler.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_posix.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/zone_info_source.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_if.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_fixed.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_impl.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_libc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_info.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_lookup.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time.dir/clock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time.dir/duration.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time.dir/time.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/hash/CMakeFiles/low_level_hash.dir/internal/low_level_hash.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/hash/CMakeFiles/hash.dir/internal/hash.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/hash/CMakeFiles/city.dir/internal/city.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/numeric/CMakeFiles/int128.dir/int128.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc_cord_state.dir/internal/crc_cord_state.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc_internal.dir/internal/crc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc_internal.dir/internal/crc_x86_arm_combined.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc32c.dir/internal/crc_memcpy_fallback.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc32c.dir/crc32c.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/float_conversion.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/bind.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/extension.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/arg.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/parser.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/output.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings_internal.dir/internal/utf8.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings_internal.dir/internal/escaping.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cordz_functions.dir/internal/cordz_functions.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/str_cat.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/charconv_parse.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/memutil.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/stringify_sink.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/damerau_levenshtein_distance.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/charconv_bigint.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/match.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/str_replace.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/escaping.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/str_split.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/numbers.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/ascii.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/charconv.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cordz_handle.dir/internal/cordz_handle.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cordz_info.dir/internal/cordz_info.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord.dir/cord.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_btree_navigator.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_btree.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_crc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_btree_reader.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_internal.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_consume.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_globals.dir/internal/globals.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_sink.dir/log_sink.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_globals.dir/globals.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_proto.dir/internal/proto.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_structured_proto.dir/internal/structured_proto.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_log_sink_set.dir/internal/log_sink_set.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_message.dir/internal/log_message.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_check_op.dir/internal/check_op.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_format.dir/internal/log_format.cc.gcda
+Processing ./_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.gcda
+Finished .info-file creation

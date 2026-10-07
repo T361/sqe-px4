@@ -7,8 +7,10 @@ import argparse, csv, glob, os, re, sys
 import xml.etree.ElementTree as ET
 
 PREFIX = [('DVG', 'SQE-DVG-'), ('DV', 'SQE-DV-'), ('MC', 'SQE-DVG-MC-'), ('AF', 'SQE-DVG-AF-'),
-          ('FDI', 'SQE-FDI-'), ('FD', 'SQE-FD-'), ('FI', 'SQE-FI-'), ('PRB', 'SQE-PRB-')]
-NAME_RE = re.compile(r'^(DISABLED_)?(DVG|DV|MC|AF|FDI|FD|FI|PRB)(\d{2})_')
+          ('FDI', 'SQE-FDI-'), ('FDC', 'SQE-FDC-'), ('FD', 'SQE-FD-'), ('FIP', 'SQE-FIP-'), ('FI', 'SQE-FI-'),
+          ('PRB', 'SQE-PRB-'), ('BAT', 'SQE-BAT-'), ('MLDMC', 'SQE-MLD-MC-'), ('MLD', 'SQE-MLD-'),
+          ('LDB', 'SQE-LDB-'), ('LD', 'SQE-LD-')]
+NAME_RE = re.compile(r'^(DISABLED_)?(DVG|DV|MC|AF|FDI|FDC|FD|FIP|FI|PRB|BAT|MLDMC|MLD|LDB|LD)(\d{2})_')
 TEST_RE = re.compile(r'\bTEST(?:_F)?\s*\(\s*(\w+)\s*,\s*(\w+)\s*\)')
 CMT_RE = re.compile(r'//\s*(SQE-[A-Z]+(?:-[A-Z]+)?-\d{2})')
 

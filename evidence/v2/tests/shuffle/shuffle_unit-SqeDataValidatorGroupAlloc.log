@@ -1,0 +1,172 @@
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 97868 .
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (43 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[----------] 3 tests from SqeDvgAllocTest (43 ms total)
+
+[==========] 3 tests from 1 test suite ran. (43 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 97869 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (34 ms)
+[----------] 3 tests from SqeDvgAllocTest (35 ms total)
+
+[==========] 3 tests from 1 test suite ran. (35 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 97870 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (39 ms)
+[----------] 3 tests from SqeDvgAllocTest (39 ms total)
+
+[==========] 3 tests from 1 test suite ran. (39 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 97871 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (33 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[----------] 3 tests from SqeDvgAllocTest (33 ms total)
+
+[==========] 3 tests from 1 test suite ran. (34 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 97872 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (45 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[----------] 3 tests from SqeDvgAllocTest (45 ms total)
+
+[==========] 3 tests from 1 test suite ran. (45 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 97873 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (46 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[----------] 3 tests from SqeDvgAllocTest (46 ms total)
+
+[==========] 3 tests from 1 test suite ran. (46 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 97874 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (32 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[----------] 3 tests from SqeDvgAllocTest (33 ms total)
+
+[==========] 3 tests from 1 test suite ran. (33 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 97875 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (45 ms)
+[----------] 3 tests from SqeDvgAllocTest (45 ms total)
+
+[==========] 3 tests from 1 test suite ran. (45 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 97876 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (39 ms)
+[----------] 3 tests from SqeDvgAllocTest (39 ms total)
+
+[==========] 3 tests from 1 test suite ran. (39 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 97877 .
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (31 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[----------] 3 tests from SqeDvgAllocTest (31 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (31 ms total)
+[  PASSED  ] 3 tests.

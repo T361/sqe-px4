@@ -1,0 +1,871 @@
+[
+ {
+  "n": 1,
+  "file": "DV",
+  "line": 67,
+  "op": "<-><=",
+  "src": "for (unsigned i = 0; i <= dimensions; i++) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "5",
+   "SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms",
+   "SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale"
+  ]
+ },
+ {
+  "n": 2,
+  "file": "DV",
+  "line": 146,
+  "op": "==->!=",
+  "src": "if (_time_last != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeDataValidatorTest.DV18_PrintWithNoData_ReportsNoData",
+   "SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect"
+  ]
+ },
+ {
+  "n": 3,
+  "file": "DV",
+  "line": 151,
+  "op": "<-><=",
+  "src": "for (unsigned i = 0; i <= dimensions; i++) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDataValidatorTest.DV19_PrintWithData_PrintsThreeLinesAndTimesOutAsSideEffect"
+  ]
+ },
+ {
+  "n": 4,
+  "file": "DV",
+  "line": 57,
+  "op": ">->>=",
+  "src": "if (error_count_in >= _error_count) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeDataValidatorTest.DV08_RepeatedErrorCount_DensityDecaysByOne",
+   "SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut"
+  ]
+ },
+ {
+  "n": 5,
+  "file": "DV",
+  "line": 115,
+  "op": ">->>=",
+  "src": "} else if (_value_equal_count >= _value_equal_count_threshold) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale"
+  ]
+ },
+ {
+  "n": 6,
+  "file": "DV",
+  "line": 120,
+  "op": ">->>=",
+  "src": "} else if (_error_count >= NORETURN_ERRCOUNT) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags",
+   "SqeDvgTest.DVG09_PrintSkipsUnusedSensorsAndShowsPerSensorFlags"
+  ]
+ },
+ {
+  "n": 7,
+  "file": "DV",
+  "line": 110,
+  "op": ">->>=",
+  "src": "} else if (timestamp >= _time_last + _timeout_interval) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDataValidatorTest.DV12_TimeoutBoundary_ExactlyAtIntervalIsNotTimedOut"
+  ]
+ },
+ {
+  "n": 8,
+  "file": "DV",
+  "line": 132,
+  "op": ">->>=",
+  "src": "if (ret >= 0.0f) {",
+  "status": "KILLED",
+  "killers": [
+   "10",
+   "20",
+   "SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale",
+   "SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale"
+  ]
+ },
+ {
+  "n": 9,
+  "file": "DV",
+  "line": 136,
+  "op": ">->>=",
+  "src": "if (ret >= 0.0f) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "2",
+   "SqeDataValidatorTest.DV13_ErrorCountAboveLimit_AccumulatesDensityAndCountFlags",
+   "SqeDataValidatorTest.DV14_DensityCapAtWindow_DecaysOnNextPut"
+  ]
+ },
+ {
+  "n": 10,
+  "file": "DV",
+  "line": 125,
+  "op": ">->>=",
+  "src": "} else if (_error_density >= ERROR_DENSITY_WINDOW) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDataValidatorTest.DV15_DensityExactlyAtWindow_ZeroConfidenceButNoFlag"
+  ]
+ },
+ {
+  "n": 11,
+  "file": "DV",
+  "line": 82,
+  "op": "<-><=",
+  "src": "if (fabsf(_value[i] - val[i]) <= 0.000001f) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 12,
+  "file": "DV",
+  "line": 60,
+  "op": ">->>=",
+  "src": "} else if (_error_density >= 0) {",
+  "status": "KILLED",
+  "killers": [
+   "8",
+   "SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence",
+   "SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale",
+   "SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale"
+  ]
+ },
+ {
+  "n": 13,
+  "file": "DV",
+  "line": 106,
+  "op": "==->!=",
+  "src": "if (_time_last != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "17",
+   "28",
+   "SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence"
+  ]
+ },
+ {
+  "n": 14,
+  "file": "DV",
+  "line": 69,
+  "op": "==->!=",
+  "src": "if (_time_last != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "6",
+   "SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence",
+   "SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms"
+  ]
+ },
+ {
+  "n": 15,
+  "file": "DVG",
+  "line": 116,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup"
+  ]
+ },
+ {
+  "n": 16,
+  "file": "DVG",
+  "line": 187,
+  "op": ">=->>",
+  "src": "if ((((max_confidence < MIN_REGULAR_CONFIDENCE) && (confidence > MIN_REGULAR_CONFIDENCE)) ||",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 17,
+  "file": "DVG",
+  "line": 301,
+  "op": "&&->||",
+  "src": "if (next->used() || (next->state() != DataValidator::ERROR_FLAG_NO_ERROR) &&",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "n": 18,
+  "file": "DVG",
+  "line": 281,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup"
+  ]
+ },
+ {
+  "n": 19,
+  "file": "DVG",
+  "line": 213,
+  "op": "!=->==",
+  "src": "if (best == nullptr) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 20,
+  "file": "DVG",
+  "line": 130,
+  "op": "==->!=",
+  "src": "if (i != index) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "27",
+   "SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged",
+   "SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover"
+  ]
+ },
+ {
+  "n": 21,
+  "file": "DVG",
+  "line": 189,
+  "op": "<-><=",
+  "src": "(fabsf(confidence - max_confidence) <= 0.01f && (next->priority() > max_priority))) &&",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 22,
+  "file": "DVG",
+  "line": 300,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup"
+  ]
+ },
+ {
+  "n": 23,
+  "file": "DVG",
+  "line": 129,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "29",
+   "SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged",
+   "SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover"
+  ]
+ },
+ {
+  "n": 24,
+  "file": "DVG",
+  "line": 189,
+  "op": ">->>=",
+  "src": "(fabsf(confidence - max_confidence) < 0.01f && (next->priority() >= max_priority))) &&",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch",
+   "SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes"
+  ]
+ },
+ {
+  "n": 25,
+  "file": "DVG",
+  "line": 234,
+  "op": "<-><=",
+  "src": "if (max_confidence <= FLT_EPSILON) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 26,
+  "file": "DVG",
+  "line": 188,
+  "op": ">->>=",
+  "src": "(confidence >= max_confidence && (next->priority() >= max_priority)) ||",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch",
+   "SqeDvgTest.DVG08_SecondFailover_CountsTwiceAndPrintShowsFailsafeYes"
+  ]
+ },
+ {
+  "n": 27,
+  "file": "DVG",
+  "line": 207,
+  "op": "&&->||",
+  "src": "if (pre_check_prio != -1 || pre_check_prio < max_priority &&",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "n": 28,
+  "file": "DVG",
+  "line": 188,
+  "op": "&&->||",
+  "src": "(confidence > max_confidence || (next->priority() >= max_priority)) ||",
+  "status": "KILLED",
+  "killers": [
+   "7",
+   "SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch",
+   "SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch",
+   "SqeDvgMcdcTest.MC05_HigherConfidenceLowerPriority_NoSwitch"
+  ]
+ },
+ {
+  "n": 29,
+  "file": "DVG",
+  "line": 256,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup"
+  ]
+ },
+ {
+  "n": 30,
+  "file": "DVG",
+  "line": 203,
+  "op": "<-><=",
+  "src": "if (max_index != _curr_best || ((max_confidence <= FLT_EPSILON) && (_curr_best >= 0))) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 31,
+  "file": "DVG",
+  "line": 103,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup"
+  ]
+ },
+ {
+  "n": 32,
+  "file": "DVG",
+  "line": 219,
+  "op": "<-><=",
+  "src": "if (_curr_best <= 0) {",
+  "status": "KILLED",
+  "killers": [
+   "10",
+   "SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover",
+   "SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches",
+   "SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches"
+  ]
+ },
+ {
+  "n": 33,
+  "file": "DVG",
+  "line": 203,
+  "op": "||->&&",
+  "src": "if (max_index != _curr_best && ((max_confidence < FLT_EPSILON) && (_curr_best >= 0))) {",
+  "status": "KILLED",
+  "killers": [
+   "10",
+   "SqeDvgMcdcTest.MC04_HigherConfidenceEqualPriority_SwitchCountedAsFailover",
+   "SqeDvgMcdcTest.MC07_BelowThresholdConfidenceReplacedByAboveThreshold_Switches",
+   "SqeDvgMcdcTest.MC09_FarBelowThresholdReplacedByAboveThreshold_Switches"
+  ]
+ },
+ {
+  "n": 34,
+  "file": "DVG",
+  "line": 207,
+  "op": "!=->==",
+  "src": "if (pre_check_prio == -1 && pre_check_prio < max_priority &&",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDvgMcdcTest.MC01_EqualConfidenceHigherPriority_SwitchNotCountedAsFailover"
+  ]
+ },
+ {
+  "n": 35,
+  "file": "DVG",
+  "line": 157,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup",
+   "unit-SqeDataValidatorGroupAlloc"
+  ]
+ },
+ {
+  "n": 36,
+  "file": "DVG",
+  "line": 57,
+  "op": "==->!=",
+  "src": "if (i != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "unit-SqeDataValidatorGroup",
+   "unit-SqeDataValidatorGroupAlloc"
+  ]
+ },
+ {
+  "n": 37,
+  "file": "DVG",
+  "line": 203,
+  "op": "&&->||",
+  "src": "if (max_index != _curr_best || ((max_confidence < FLT_EPSILON) || (_curr_best >= 0))) {",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch",
+   "SqeDvgMcdcTest.MC14_StableSensorKeepsWinningOnPriority_NoFailover",
+   "SqeDvgMcdcTest.MC18_SingleSensorFreshDataStable_NoFailover"
+  ]
+ },
+ {
+  "n": 38,
+  "file": "DVG",
+  "line": 189,
+  "op": "&&->||",
+  "src": "(fabsf(confidence - max_confidence) < 0.01f || (next->priority() > max_priority))) &&",
+  "status": "KILLED",
+  "killers": [
+   "8",
+   "SqeDvgMcdcTest.MC02_EqualConfidenceEqualPriority_NoSwitch",
+   "SqeDvgMcdcTest.MC03_LowerConfidenceHigherPriority_NoSwitch",
+   "SqeDvgMcdcTest.MC13_SensorZeroTimesOutSensorOneTakesOver_RealFailoverReported"
+  ]
+ },
+ {
+  "n": 39,
+  "file": "DVG",
+  "line": 266,
+  "op": "==->!=",
+  "src": "((flags != DataValidator::ERROR_FLAG_NO_ERROR) ? \" OK\" : \"\"));",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeDvgTest.DVG13_PrintFedSensorWithStaleNoDataFlag_ShowsOff"
+  ]
+ },
+ {
+  "n": 40,
+  "file": "DVG",
+  "line": 179,
+  "op": "!=->==",
+  "src": "while (next == nullptr) {",
+  "status": "KILLED",
+  "killers": [
+   "SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged"
+  ]
+ },
+ {
+  "n": 41,
+  "file": "FD",
+  "line": 314,
+  "op": "==->!=",
+  "src": "if (_motor_failure_undercurrent_start_time[i_esc] != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "4",
+   "SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout",
+   "SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer",
+   "SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask"
+  ]
+ },
+ {
+  "n": 42,
+  "file": "FD",
+  "line": 225,
+  "op": "&&->||",
+  "src": "|| (imu_status.accel_device_id == _selected_accel_device_id)) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection",
+   "SqeFailureDetectorImuTest.FDI06_DeviceIdZero_NoComputation"
+  ]
+ },
+ {
+  "n": 43,
+  "file": "FD",
+  "line": 213,
+  "op": "&&->||",
+  "src": "|| (imu_status.accel_device_id == _selected_accel_device_id)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch"
+  ]
+ },
+ {
+  "n": 44,
+  "file": "FD",
+  "line": 225,
+  "op": "==->!=",
+  "src": "&& (imu_status.accel_device_id != _selected_accel_device_id)) {",
+  "status": "KILLED",
+  "killers": [
+   "4",
+   "SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric",
+   "SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch",
+   "SqeFailureDetectorImuTest.FDI05_SelectedAccelOnNoInstance_NoDetection"
+  ]
+ },
+ {
+  "n": 45,
+  "file": "FD",
+  "line": 123,
+  "op": ">->>=",
+  "src": "const bool roll_status = (max_roll > FLT_EPSILON) && (fabsf(roll) >= max_roll);",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 46,
+  "file": "FD",
+  "line": 207,
+  "op": "<-><=",
+  "src": "for (unsigned i = 0; i <= ORB_MULTI_MAX_INSTANCES; i++) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 47,
+  "file": "FD",
+  "line": 123,
+  "op": "&&->||",
+  "src": "const bool roll_status = (max_roll > FLT_EPSILON) || (fabsf(roll) > max_roll);",
+  "status": "KILLED",
+  "killers": [
+   "3",
+   "SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse",
+   "SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled",
+   "SqeFailureDetectorTest.FD09_TailsitterInTransition_AttitudeCheckDisabled"
+  ]
+ },
+ {
+  "n": 48,
+  "file": "FD",
+  "line": 326,
+  "op": "==->!=",
+  "src": "&& (_motor_failure_esc_under_current_mask & (1 << i_esc)) != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "4",
+   "SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout",
+   "SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer",
+   "SqeFailureDetectorTest.FD29_DisarmAfterUnderCurrentLatch_ClearsMotorFlagAndMask"
+  ]
+ },
+ {
+  "n": 49,
+  "file": "FD",
+  "line": 313,
+  "op": "&&->||",
+  "src": "if (throttle_above_threshold || current_too_low && !esc_timed_out) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "n": 50,
+  "file": "FD",
+  "line": 147,
+  "op": "&&->||",
+  "src": "bool ats_trigger_status = (pulse_width >= (uint32_t)_param_fd_ext_ats_trig.get()) || (pulse_width < 3_ms);",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen"
+  ]
+ },
+ {
+  "n": 51,
+  "file": "FD",
+  "line": 85,
+  "op": ">->>=",
+  "src": "if (_param_fd_imb_prop_thr.get() >= 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns"
+  ]
+ },
+ {
+  "n": 52,
+  "file": "FD",
+  "line": 334,
+  "op": "!=->==",
+  "src": "bool critical_esc_failure = (_motor_failure_esc_timed_out_mask != 0 || _motor_failure_esc_under_current_mask =",
+  "status": "KILLED",
+  "killers": [
+   "9",
+   "SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag",
+   "SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag",
+   "SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout"
+  ]
+ },
+ {
+  "n": 53,
+  "file": "FD",
+  "line": 288,
+  "op": "&&->||",
+  "src": "if (esc_was_valid && esc_timed_out || !esc_timeout_currently_flagged) {",
+  "status": "BUILD_FAIL",
+  "killers": null
+ },
+ {
+  "n": 54,
+  "file": "FD",
+  "line": 325,
+  "op": ">->>=",
+  "src": "&& now >= (_motor_failure_undercurrent_start_time[i_esc] + (_param_fd_motor_time_thres.get() * 1_ms))",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 55,
+  "file": "FD",
+  "line": 213,
+  "op": "==->!=",
+  "src": "&& (imu_status.accel_device_id != _selected_accel_device_id)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch"
+  ]
+ },
+ {
+  "n": 56,
+  "file": "FD",
+  "line": 347,
+  "op": "<-><=",
+  "src": "for (int i_esc = 0; i_esc <= actuator_motors_s::NUM_CONTROLS; i_esc++) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 57,
+  "file": "FD",
+  "line": 147,
+  "op": "<-><=",
+  "src": "bool ats_trigger_status = (pulse_width >= (uint32_t)_param_fd_ext_ats_trig.get()) && (pulse_width <= 3_ms);",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorTest.FD12_PulseWidthBoundaries_WindowIsHalfOpen"
+  ]
+ },
+ {
+  "n": 58,
+  "file": "FD",
+  "line": 124,
+  "op": ">->>=",
+  "src": "const bool pitch_status = (max_pitch > FLT_EPSILON) && (fabsf(pitch) >= max_pitch);",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 59,
+  "file": "FD",
+  "line": 205,
+  "op": "!=->==",
+  "src": "if (imu_status.accel_device_id == _selected_accel_device_id) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch"
+  ]
+ },
+ {
+  "n": 60,
+  "file": "FD",
+  "line": 279,
+  "op": "&&->||",
+  "src": "if (!(_motor_failure_esc_valid_current_mask & (1 << i_esc)) || cur_esc_report.esc_current > 0.0f) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureDetectorTest.FD24_EscNeverReportsCurrent_NoTimeoutFlag"
+  ]
+ },
+ {
+  "n": 61,
+  "file": "FD",
+  "line": 124,
+  "op": "&&->||",
+  "src": "const bool pitch_status = (max_pitch > FLT_EPSILON) || (fabsf(pitch) > max_pitch);",
+  "status": "KILLED",
+  "killers": [
+   "3",
+   "SqeFailureDetectorTest.FD06_PitchWithinLimit_FlagStaysFalse",
+   "SqeFailureDetectorTest.FD07_PitchLimitZero_ChecksDisabled",
+   "SqeFailureDetectorTest.FD10_TailsitterFixedWing_RotatesAttitudeBeforeCheck"
+  ]
+ },
+ {
+  "n": 62,
+  "file": "FD",
+  "line": 259,
+  "op": "==->!=",
+  "src": "if (vehicle_status.arming_state != vehicle_status_s::ARMING_STATE_ARMED) {",
+  "status": "KILLED",
+  "killers": [
+   "8",
+   "SqeFailureDetectorTest.FD23_EscTelemetryTimeout_SetsThenClearsMotorFlag",
+   "SqeFailureDetectorTest.FD25_UnderCurrentWhileArmed_LatchesMotorFlagAfterTimeout",
+   "SqeFailureDetectorTest.FD26_ThrottleDropsBeforeTimeout_ResetsUnderCurrentTimer"
+  ]
+ },
+ {
+  "n": 63,
+  "file": "FI",
+  "line": 116,
+  "op": "!=->==",
+  "src": "if (_esc_telemetry_blocked_mask != 0 || _esc_telemetry_wrong_mask == 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureInjectorTest.FI06_InjectWrongMotor1_ScalesTelemetry"
+  ]
+ },
+ {
+  "n": 64,
+  "file": "FI",
+  "line": 117,
+  "op": "<-><=",
+  "src": "for (int i = 0; i <= status.esc_count; i++) {",
+  "status": "SURVIVED",
+  "killers": null
+ },
+ {
+  "n": 65,
+  "file": "FI",
+  "line": 44,
+  "op": "&&->||",
+  "src": "|| (param_sys_failure_en == 1)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck"
+  ]
+ },
+ {
+  "n": 66,
+  "file": "FI",
+  "line": 68,
+  "op": "!=->==",
+  "src": "if (instance == 0 && i != (instance - 1)) {",
+  "status": "KILLED",
+  "killers": [
+   "5",
+   "SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted",
+   "SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs",
+   "SqeFailureInjectorTest.FI05_InjectStuckMotor2_BlanksThatEscOnly"
+  ]
+ },
+ {
+  "n": 67,
+  "file": "FI",
+  "line": 67,
+  "op": "<-><=",
+  "src": "for (int i = 0; i <= esc_status_s::CONNECTED_ESC_MAX; i++) {",
+  "status": "KILLED",
+  "killers": [
+   "2",
+   "SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs",
+   "SqeFailureInjectorTest.FI10_InstanceBeyondRange_AckUnsupported"
+  ]
+ },
+ {
+  "n": 68,
+  "file": "FI",
+  "line": 44,
+  "op": "==->!=",
+  "src": "&& (param_sys_failure_en != 1)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "8",
+   "SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout",
+   "SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck"
+  ]
+ },
+ {
+  "n": 69,
+  "file": "FI",
+  "line": 116,
+  "op": "!=->==",
+  "src": "if (_esc_telemetry_blocked_mask == 0 || _esc_telemetry_wrong_mask != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "2",
+   "SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout",
+   "SqeFailureInjectorTest.FI05_InjectStuckMotor2_BlanksThatEscOnly"
+  ]
+ },
+ {
+  "n": 70,
+  "file": "FI",
+  "line": 68,
+  "op": "&&->||",
+  "src": "if (instance != 0 || i != (instance - 1)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "5",
+   "SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout",
+   "SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted"
+  ]
+ },
+ {
+  "n": 71,
+  "file": "FI",
+  "line": 116,
+  "op": "||->&&",
+  "src": "if (_esc_telemetry_blocked_mask != 0 && _esc_telemetry_wrong_mask != 0) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "3",
+   "SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout",
+   "SqeFailureInjectorTest.FI05_InjectStuckMotor2_BlanksThatEscOnly"
+  ]
+ },
+ {
+  "n": 72,
+  "file": "FI",
+  "line": 68,
+  "op": "!=->==",
+  "src": "if (instance != 0 && i == (instance - 1)) {",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "5",
+   "SqeFailureDetectorTest.FD31_InjectedStuckFailure_TriggersDetectorMotorTimeout",
+   "SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted"
+  ]
+ }
+]

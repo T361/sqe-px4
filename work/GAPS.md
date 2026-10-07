@@ -1,3 +1,64 @@
+# Remaining coverage gaps — revision v2 (current; supersedes the summary further down)
+
+Scope after the revision: 7 files (Areas A–F), 897 executable lines, 863 source-level branch outcomes. Final capture
+`evidence/v2/coverage/final/scope.info` (identical to `evidence/v2/coverage/student/`): **897/897 lines, 859/863
+source-level branch outcomes**; raw lcov 859/1107 because of 244 compiler-generated exception edges (G-05). Every
+uncovered item is listed below with class, proof and evidence. No `LCOV_EXCL_*` marker was added and no production
+file was changed (`work/production_change_log.md`).
+
+Following the course clarification that difficult-to-test logic must not be classified infeasible when a test double
+can reach it, the two gaps previously justified as "environment-limited / single-thread-infeasible" were attacked
+with link-time test doubles and are now **closed**:
+
+| Gap | Was | Now |
+|---|---|---|
+| G-06 FailureInjector.cpp:43-44, `param_get(...) == PX4_OK` False | "SYS_FAILURE_EN is compiled in" | **CLOSED** by SQE-FIP-01/02: binary linked with `-Wl,--wrap=param_get`; the stub fails only for the SYS_FAILURE_EN handle |
+| G-07 FailureDetector.cpp:194, `copy()` False after `updated()` True | "needs a concurrent writer" | **CLOSED** by SQE-FDC-01: binary linked with `-Wl,--wrap=` on `uORB::Manager::orb_data_copy`; one-shot failure for `sensor_selection` |
+| (new) battery.cpp:356, `vehicle_status` `copy()` False | — | covered by SQE-BAT-26 with the same orb_data_copy fake |
+
+Open items (4 source-level outcomes + G-05):
+
+### G-02 — DataValidatorGroup.cpp:78 — compiler-synthesized (unchanged)
+`delete (_first);` inside `while (_first)`. The second branch outcome is the null test the language requires for
+`delete p` (deleting a null pointer is a no-op). Evidence: `evidence/v2/gaps/G-02_delete_null_check.txt` — objdump of
+the destructor shows `test %rbx,%rbx; je` skipping the destructor call and `operator delete` at line 78. The loop
+condition guarantees `_first != nullptr`, so no input, test double or allocator can take that side.
+
+### G-03 — DataValidatorGroup.cpp:213 `best != nullptr` False — infeasible (unchanged, see below)
+D15 True requires `pre_check_prio != -1`, and `pre_check_prio` leaves -1 only in the block that also assigns `best`
+(L158-169). `best` is a local variable: no seam, stub or fake can change it between those statements without changing
+production code.
+
+### G-09 (new) — battery.cpp:130, 4th operand `_params.n_cells > 0` False — infeasible (redundant condition)
+Decision `_connected && !_battery_initialized && _internal_resistance_initialized && _params.n_cells > 0`. The 4th
+operand is only evaluated when operand 3 is True. Invariant: `_internal_resistance_initialized == true ⇒
+_params.n_cells > 0`. Proof: the flag is set to true only at L428, inside `if (!_internal_resistance_initialized &&
+_params.n_cells > 0)` (L419); `_params.n_cells` is written only by `param_get` in `updateParams()` (L403), and every
+change of it is followed in the same call by L415-416 (`if (n_cells != _params.n_cells) _internal_resistance_initialized
+= false;`). So whenever operand 3 is True, operand 4 is True. A test double of `param_get` cannot break the invariant
+either, because the invariant is re-established inside the same `updateParams()` call that reads the value. Evidence:
+BAT-27/BAT-28 exercise every transition (4→6→6→0 cells, 0 cells at construction); the operand is a redundant guard
+(finding F-16), harmless.
+
+### G-10 (new) — LandDetector.cpp:187, 3rd operand `_previous_armed_state` False — infeasible
+Decision `_takeoff_time != 0 && !_armed && _previous_armed_state`. Operand 3 False with operands 1, 2 True needs a
+non-zero take-off time while the vehicle was already disarmed in the previous cycle. `_takeoff_time` is set only at
+L166, which requires `!landDetected && _land_detected.landed` (a landed→airborne transition). While disarmed the
+landed state is requested True (`_get_landed_state()` returns `!_armed || ...`), and a hysteresis only moves towards
+its requested state, so no landed→airborne transition can occur while disarmed. Hence `_takeoff_time` can only become
+non-zero while armed; on the first disarmed cycle operand 3 is True and L188-189 reset `_takeoff_time` to 0 in that
+same cycle. Evidence: SQE-LD-03 (take-off, landing, second take-off, disarm) covers operands 1–3 True and operands 1, 2
+False; mutating operand 1 or 2 is killed (evidence/v2/mutation). Redundant guard (finding F-18).
+
+### G-05 — exception edges — compiler-synthesized
+244 branch records (FailureDetector 64, LandDetector 66, battery 69, MulticopterLandDetector 36, FailureInjector 9;
+lcov block IDs starting with `e`) are the exception-unwind edges GCC adds after calls when C++ exceptions are enabled
+in this posix test build; none was taken (no callee in the scope throws). They do not exist on flight targets: NuttX
+builds compile with `-fno-exceptions` (`platforms/nuttx/cmake/px4_impl_os.cmake:86`). Reported separately as raw vs
+source-level branch coverage (`tools/sqe_branch_split.py`, `evidence/v2/coverage/final/summary.txt`).
+
+---
+
 # Remaining coverage gaps (format SPEC_10 §4) — every uncovered item of evidence/coverage/final/scope.info must appear here
 
 Status: produced during P10 coverage iteration (IT-1, IT-2). Source captures: `evidence/coverage/IT-1/scope.info`,

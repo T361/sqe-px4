@@ -1,9 +1,17 @@
- .../commander/failure_detector/CMakeLists.txt      |    5 +
+ src/lib/battery/CMakeLists.txt                     |    6 
+ src/lib/battery/SqeBatteryTest.cpp                 |  740 +++++++++++
+ .../commander/failure_detector/CMakeLists.txt      |   14 
+ .../SqeFailureDetectorCopyFaultTest.cpp            |  155 ++
  .../failure_detector/SqeFailureDetectorImuTest.cpp |  301 +++++
  .../failure_detector/SqeFailureDetectorTest.cpp    | 1335 ++++++++++++++++++++
- .../failure_detector/SqeFailureInjectorTest.cpp    |  410 ++++++
- src/modules/sensors/data_validator/CMakeLists.txt  |   11 +
+ .../SqeFailureInjectorParamFaultTest.cpp           |  114 ++
+ .../failure_detector/SqeFailureInjectorTest.cpp    |  439 +++++++
+ src/modules/land_detector/CMakeLists.txt           |    5 
+ .../land_detector/SqeLandDetectorBootTest.cpp      |  107 ++
+ .../land_detector/SqeLandDetectorRunTest.cpp       |  584 +++++++++
+ .../land_detector/SqeMcLandDetectorTest.cpp        | 1109 +++++++++++++++++
+ src/modules/sensors/data_validator/CMakeLists.txt  |   11 
  .../SqeDataValidatorGroupAllocTest.cpp             |  131 ++
- .../data_validator/SqeDataValidatorGroupTest.cpp   |  939 ++++++++++++++
- .../data_validator/SqeDataValidatorTest.cpp        |  472 +++++++
- 8 files changed, 3604 insertions(+)
+ .../data_validator/SqeDataValidatorGroupTest.cpp   |  919 ++++++++++++++
+ .../data_validator/SqeDataValidatorTest.cpp        |  462 +++++++
+ 16 files changed, 6432 insertions(+)

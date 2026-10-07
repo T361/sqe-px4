@@ -1,0 +1,11 @@
+DataValidator.cpp            lines 58/58 (100.0%)  source-level branches 30/30 (100.0%)  raw 30/30  exc-edges 0
+DataValidatorGroup.cpp       lines 155/155 (100.0%)  source-level branches 114/116 (98.3%)  raw 114/116  exc-edges 0
+    uncovered branches (line,branch#): [(78, '1'), (213, '1')]
+FailureDetector.cpp          lines 153/153 (100.0%)  source-level branches 190/190 (100.0%)  raw 190/254  exc-edges 64
+FailureInjector.cpp          lines 62/62 (100.0%)  source-level branches 48/48 (100.0%)  raw 48/57  exc-edges 9
+LandDetector.cpp             lines 122/122 (100.0%)  source-level branches 143/144 (99.3%)  raw 143/210  exc-edges 66
+    uncovered branches (line,branch#): [(187, '5')]
+MulticopterLandDetector.cpp  lines 116/116 (100.0%)  source-level branches 156/156 (100.0%)  raw 156/192  exc-edges 36
+battery.cpp                  lines 231/231 (100.0%)  source-level branches 178/179 (99.4%)  raw 178/248  exc-edges 69
+    uncovered branches (line,branch#): [(130, '7')]
+TOTAL lines 897/897  source-level branches 859/863

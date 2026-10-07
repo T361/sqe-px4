@@ -917,23 +917,3 @@ TEST_F(SqeDvgMcdcTest, MC25_PutWithTimestampZeroResetsUsed_NotReportedAsFailover
 	EXPECT_EQ(g.failover_index(), -1);
 	EXPECT_EQ(g.failover_state(), DataValidator::ERROR_FLAG_NO_ERROR);
 }
-
-// SQE-PRB-03 | F-02 | DISABLED — awaiting human-approved oracle (SPEC_10 steps 1-6, R4)
-// Given: a DataValidatorGroup(2); sensor 0 becomes best, then both sensors time out
-// When : get_best() after both time out
-// Then : expected behaviour per a stricter reading of the header ("pointer to the array of best values") would be
-//        nullptr once nothing is actually selected (*index == -1), which contradicts DVG11's confirmed
-//        characterization (non-null pointer, F-02). Not run until a human approves which behaviour is correct.
-TEST_F(SqeDvgTest, DISABLED_PRB03_AllFailedShouldReturnNull)
-{
-	DataValidatorGroup g(2);
-	const float val[3] = {1.f, 1.f, 1.f};
-
-	g.put(0, T0, val, 0, 50);
-	int idx = -99;
-	g.get_best(T0, &idx);
-
-	float *best = g.get_best(T0 + 50000, &idx);
-
-	EXPECT_EQ(best, nullptr);
-}

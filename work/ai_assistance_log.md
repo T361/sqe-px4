@@ -498,3 +498,27 @@ Human verification: required — the team must re-read the new tests and the rew
 Assumptions introduced: that replacing global `operator new` in a separate test binary is a faithful model of the
 NuttX allocator for these code paths (it exercises the same compiled `-fcheck-new` checks); that bounding wall-clock
 waits with measured preconditions is an acceptable substitute for simulated time, which this board does not have.
+
+## 2026-10-07 — Revision v2 — Claude Code (audit + revision at a team member's request)
+Use: independent audit of the submission against the assignment PDF and the course clarification (scope must be
+substantial; difficult logic is not automatically infeasible — use mocks/fakes/stubs; MC/DC must target substantive
+decisions); fresh rebuild on a third machine (WSL2, official ubuntu.sh); scope extension to battery.cpp,
+LandDetector.cpp, MulticopterLandDetector.cpp; link-time test doubles closing G-06/G-07; mutation analysis; removal of
+invented-oracle probes; regeneration of inventory, MC/DC matrix, workbook, patch, report and zip.
+What the AI produced: SqeBatteryTest.cpp, SqeMcLandDetectorTest.cpp, SqeLandDetectorRunTest.cpp,
+SqeLandDetectorBootTest.cpp, SqeFailureInjectorParamFaultTest.cpp, SqeFailureDetectorCopyFaultTest.cpp, SQE-DV-21,
+SQE-FI-14, CMake registrations; work/basis/INVENTORY_Battery.md, INVENTORY_LandDetector.md; 95 inventory rows (generated
+from the test header comments); 21 MC/DC rows (MLD-D29/D35/D37); GAPS.md/FINDINGS.md v2 sections; REPORT.md v2;
+evidence/v2/*; tools/sqe_trace_check.py prefix table and tools/sqe_package.py paths updated.
+Human verification: NOT yet reviewed by the three team members. Every claim was checked by execution on E3
+(evidence/v2/final_run.log), but the team must read each new test and the gap proofs before submission and the viva.
+Assumptions introduced: (1) battery + land detector are the right extension (both safety-relevant, no dedicated upstream
+GTest); (2) `-Wl,--wrap` link-time doubles of param_get and uORB::Manager::orb_data_copy are acceptable test doubles;
+(3) G-02, G-03, G-09, G-10 and the exception edges are the only remaining gaps and are correctly proven; (4) F-02/F-09/F-10
+are observations, not defects, so their probes were removed; (5) the 8 s production hysteresis wait (SQE-MLD-MC-14) is
+acceptable test runtime.
+Errors made and caught during the session: two land-detector tests initially ignored that the detector boots "landed"
+(fixed); the work-queue tests initially hung because the test runner does not call hrt_init() (fixed by doing the same
+platform initialisation as px4::init_once()); SQE-LD-12 first checked at-rest after the 1 s window had expired, so it
+could not detect the fault it targeted — exposed by mutation analysis and fixed.
+Accepted / revised / rejected: pending team review.

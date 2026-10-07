@@ -1,0 +1,248 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 46 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 46 tests from SqeMcLandDetectorTest
+[ RUN      ] SqeMcLandDetectorTest.MLD01_VerticalSpeedLimitInsideBound_ParameterUnchanged
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD01_VerticalSpeedLimitInsideBound_ParameterUnchanged (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [land_detector] LNDMC_Z_VEL_MAX > MPC_LAND_CRWL or MPC_LAND_SPEED, updating 0.500 -> 0.250
+[       OK ] SqeMcLandDetectorTest.MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD03_LowThrottleLimit_BoundaryInclusive
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD03_LowThrottleLimit_BoundaryInclusive (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD04_HoverThrustEstimate_UsedAndNotOverwrittenByParameter
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD04_HoverThrustEstimate_UsedAndNotOverwrittenByParameter (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD05_InvalidHoverThrustEstimate_Ignored
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD05_InvalidHoverThrustEstimate_Ignored (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD06_StaleHoverThrustEstimate_StrictFactor
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD06_StaleHoverThrustEstimate_StrictFactor (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD07_EstimateInvalidDuringDescent_ValidityLatched
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD07_EstimateInvalidDuringDescent_ValidityLatched (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD08_Freefall_NormBelowTwoBoundaryStrict
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD08_Freefall_NormBelowTwoBoundaryStrict (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD09_StaleLocalPosition_AssumesVerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD09_StaleLocalPosition_AssumesVerticalMovement (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD10_VerticalSpeed_FromVz
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD10_VerticalSpeed_FromVz (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD11_VerticalSpeed_FallsBackToZDerivative
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD11_VerticalSpeed_FallsBackToZDerivative (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD12_LandedState_WidensVerticalThreshold
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD12_LandedState_WidensVerticalThreshold (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD13_HorizontalMovement_VelocityNormAgainstLimit
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD13_HorizontalMovement_VelocityNormAgainstLimit (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD14_BelowGroundEffectHeight_RequiresValidDistanceAndPositiveParameter
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD14_BelowGroundEffectHeight_RequiresValidDistanceAndPositiveParameter (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD15_ClimbRateControl_GroundContactRequiresCommandedDescent
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD15_ClimbRateControl_GroundContactRequiresCommandedDescent (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD16_DescendThreshold_BoundaryInclusive
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD16_DescendThreshold_BoundaryInclusive (1 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD17_NoNewSetpointKeepsDescend_MaybeLandedDropsRequirement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD17_NoNewSetpointKeepsDescend_MaybeLandedDropsRequirement (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD18_ManualThrust_InDescendFalseContactFromThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD18_ManualThrust_InDescendFalseContactFromThrottle (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD19_CloseToGroundCheck_SkippedOrEnforced
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD19_CloseToGroundCheck_SkippedOrEnforced (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC01_D29_Disarmed_GroundContact
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC01_D29_Disarmed_GroundContact (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC02_D29_AllConditionsMet_GroundContact
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC02_D29_AllConditionsMet_GroundContact (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC03_D29_NotCloseToGround_NoContact
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC03_D29_NotCloseToGround_NoContact (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC04_D29_HighThrottle_NoContact
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC04_D29_HighThrottle_NoContact (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC05_D29_HorizontalMovement_NoContact
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC05_D29_HorizontalMovement_NoContact (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC06_D29_VerticalMovement_NoContact
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC06_D29_VerticalMovement_NoContact (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC07_D35_Disarmed_MaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC07_D35_Disarmed_MaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC08_D35_ThrustAboveMinimum_NotMaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC08_D35_ThrustAboveMinimum_NotMaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC09_D35_AllConditionsWithVerticalEstimate_MaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC09_D35_AllConditionsWithVerticalEstimate_MaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC10_D35_Freefall_NotMaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC10_D35_Freefall_NotMaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC11_D35_Rotating_NotMaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC11_D35_Rotating_NotMaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC12_D35_NoGroundContactHysteresis_NotMaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC12_D35_NoGroundContactHysteresis_NotMaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC13_D35_NoVerticalEstimateMinThrustNotHeld_NotMaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC13_D35_NoVerticalEstimateMinThrustNotHeld_NotMaybeLanded (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded (8100 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD20_ClimbRateMinimumThrustLimit
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD20_ClimbRateMinimumThrustLimit (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD21_LandedState_WidensRotationThreshold
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD21_LandedState_WidensRotationThreshold (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD22_LandedState_DisarmedOrMaybeLandedHeld
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD22_LandedState_DisarmedOrMaybeLandedHeld (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC15_D37_DescendingNoDrift_GroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC15_D37_DescendingNoDrift_GroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC16_D37_NothingApplies_NoGroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC16_D37_NothingApplies_NoGroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC17_D37_DescendingWithDrift_NoGroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC17_D37_DescendingWithDrift_NoGroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC18_D37_BelowHeightInFlight_GroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC18_D37_BelowHeightInFlight_GroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC19_D37_BelowHeightNotInFlight_NoGroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC19_D37_BelowHeightNotInFlight_NoGroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC20_D37_RampUp_GroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC20_D37_RampUp_GroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLDMC21_D37_InFlightAboveHeight_NoGroundEffect
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLDMC21_D37_InFlightAboveHeight_NoGroundEffect (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD23_HysteresisFactor_ScalesLandingDelays
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD23_HysteresisFactor_ScalesLandingDelays (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD24_TopicsTakenOnceAndEstimateIgnoredWhenDisabled
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD24_TopicsTakenOnceAndEstimateIgnoredWhenDisabled (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD25_EstimateInvalidWhileNotDescending_StrictLimitImmediately
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD25_EstimateInvalidWhileNotDescending_StrictLimitImmediately (0 ms)
+[----------] 46 tests from SqeMcLandDetectorTest (8115 ms total)
+
+[----------] Global test environment tear-down
+[==========] 46 tests from 1 test suite ran. (8115 ms total)
+[  PASSED  ] 46 tests.

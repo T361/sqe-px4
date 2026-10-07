@@ -40,3 +40,12 @@ px4_add_library(failure_detector
 px4_add_functional_gtest(SRC SqeFailureDetectorTest.cpp LINKLIBS modules__commander)
 px4_add_functional_gtest(SRC SqeFailureDetectorImuTest.cpp LINKLIBS modules__commander)
 px4_add_functional_gtest(SRC SqeFailureInjectorTest.cpp LINKLIBS modules__commander)
+# link-time test doubles (fault injection) — see the header comment of each test file
+px4_add_functional_gtest(SRC SqeFailureInjectorParamFaultTest.cpp LINKLIBS modules__commander)
+if(TARGET functional-SqeFailureInjectorParamFault)
+	target_link_options(functional-SqeFailureInjectorParamFault PRIVATE -Wl,--wrap=param_get)
+endif()
+px4_add_functional_gtest(SRC SqeFailureDetectorCopyFaultTest.cpp LINKLIBS modules__commander)
+if(TARGET functional-SqeFailureDetectorCopyFault)
+	target_link_options(functional-SqeFailureDetectorCopyFault PRIVATE -Wl,--wrap=_ZN4uORB7Manager13orb_data_copyEPvS1_Rjb)
+endif()

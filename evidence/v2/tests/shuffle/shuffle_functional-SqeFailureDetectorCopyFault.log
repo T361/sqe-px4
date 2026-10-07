@@ -1,0 +1,125 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 78272 .
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 78273 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 78274 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 78275 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 78276 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 78277 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 78278 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 78279 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 78280 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 78281 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.

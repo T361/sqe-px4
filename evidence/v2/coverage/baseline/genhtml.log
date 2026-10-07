@@ -1,0 +1,21 @@
+Found 7 entries.
+Found common filename prefix "/root/audit/PX4-Autopilot/src/modules"
+Generating output.
+Processing file sensors/data_validator/DataValidator.cpp
+  lines=58 hit=43 functions=4 hit=3 branches=30 hit=21
+Processing file land_detector/LandDetector.cpp
+  lines=122 hit=0 functions=6 hit=0 branches=210 hit=0
+Processing file land_detector/MulticopterLandDetector.cpp
+  lines=116 hit=0 functions=10 hit=0 branches=192 hit=0
+Processing file sensors/data_validator/DataValidatorGroup.cpp
+  lines=155 hit=101 functions=12 hit=8 branches=116 hit=54
+Processing file commander/failure_detector/FailureInjector.cpp
+  lines=62 hit=0 functions=3 hit=0 branches=57 hit=0
+Processing file /root/audit/PX4-Autopilot/src/lib/battery/battery.cpp
+  lines=231 hit=140 functions=19 hit=15 branches=248 hit=68
+Processing file commander/failure_detector/FailureDetector.cpp
+  lines=153 hit=0 functions=7 hit=0 branches=254 hit=0
+Overall coverage rate:
+  lines......: 31.7% (284 of 897 lines)
+  functions......: 42.6% (26 of 61 functions)
+  branches......: 12.9% (143 of 1107 branches)

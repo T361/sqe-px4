@@ -35,36 +35,52 @@ def main():
     }
     trees = {  # zip dir -> repo dir
         'test_source': 'deliverables/test_source',
-        'coverage/baseline': 'evidence/coverage/baseline',
-        'coverage/final': 'evidence/coverage/final_post_audit',
-        'execution_evidence/gtest_xml': 'evidence/tests/xml',
-        'execution_evidence/run_logs': 'evidence/tests/logs/shuffle_post_audit',
-        'execution_evidence/sanitizer': 'evidence/tests/sanitizer',
-        'execution_evidence/independent_reproduction': 'evidence/repro_independent',
+        'coverage/baseline': 'evidence/v2/coverage/baseline',
+        'coverage/student': 'evidence/v2/coverage/student',
+        'coverage/final': 'evidence/v2/coverage/final',
+        'execution_evidence/gtest_xml': 'evidence/v2/tests/xml',
+        'execution_evidence/run_logs': 'evidence/v2/tests/run',
+        'execution_evidence/shuffle_logs': 'evidence/v2/tests/shuffle',
+        'execution_evidence/sanitizer': 'evidence/v2/sanitizer',
+        'execution_evidence/mutation': 'evidence/v2/mutation',
+        'execution_evidence/dryrun': 'evidence/v2/dryrun',
+        'execution_evidence/independent_reproduction_original_scope': 'evidence/repro_independent',
     }
     single = {
-        'execution_evidence/individual_runs.log': 'evidence/tests/logs/individual_post_audit.log',
+        'execution_evidence/individual_runs.log': 'evidence/v2/tests/individual.log',
+        'execution_evidence/ctest_sqe.log': 'evidence/v2/tests/ctest_sqe.log',
+        'execution_evidence/ctest_sqe_junit.xml': 'evidence/v2/tests/ctest_sqe_junit.xml',
+        'execution_evidence/final_run.log': 'evidence/v2/final_run.log',
+        'execution_evidence/environment.md': 'evidence/v2/env/environment.md',
+        'execution_evidence/G-02_delete_null_check.txt': 'evidence/v2/gaps/G-02_delete_null_check.txt',
+        'ai_assistance_log.md': 'work/ai_assistance_log.md',
         'tools/sqe_asan_probes.sh': 'tools/sqe_asan_probes.sh',
         'tools/sqe_ubsan_probes.sh': 'tools/sqe_ubsan_probes.sh',
         'tools/sqe_branch_split.py': 'tools/sqe_branch_split.py',
         'tools/sqe_mcdc_check.py': 'tools/sqe_mcdc_check.py',
+        'tools/sqe_trace_check.py': 'tools/sqe_trace_check.py',
+        'tools/sqe_workbook.py': 'tools/sqe_workbook.py',
+        'tools/sqe_reproduce.sh': 'tools/sqe_reproduce.sh',
     }
     readme = f"""SE3002 Software Quality Engineering - Assignment 02 - group {base}
 Structural testing and coverage analysis of PX4-Autopilot v1.17.0 (commit d6f12ad1c4f70ad3230afd7d86e971421e02fef4)
 
 {base}.pdf      Report (all required sections; reproduction commands in Appendix A)
-{base}.xlsx     Testing workbook: sheet 1 Test Inventory, sheet 2 MC-DC Evidence
-{base}.patch    Git patch against v1.17.0 (tests + CMake registration only; no production code changed)
-test_source/            The student test files and modified CMakeLists.txt at their PX4 paths
-coverage/baseline/      Coverage with upstream tests only (before student tests): scope.info, html/index.html
-coverage/final/         Final coverage, full suite: scope.info, summary.txt, branch_split.md, html/index.html
-                        (student/ = student tests only, identical numbers)
-execution_evidence/     gtest XML results, 10x shuffled-repeat and plain run logs, each-test-alone log,
-                        ASan/UBSan logs for the F-07 probes, independent second-machine reproduction
-tools/                  Scripts used by the commands in the report's Appendix A
+{base}.xlsx     Testing workbook: sheet 1 Test Inventory (212 rows), sheet 2 MC-DC Evidence (50 rows)
+{base}.patch    Git patch against v1.17.0 (12 test files + 4 CMakeLists.txt; no production code changed)
+test_source/            The student test files and modified CMakeLists.txt at their PX4 paths (+ README with commands)
+coverage/baseline/      Upstream tests only (before student tests): scope.info, summary.txt, html/index.html
+coverage/student/       Student tests only (ctest -R Sqe)
+coverage/final/         All tests
+execution_evidence/     gtest XML, plain and 10x shuffled runs, each-test-alone log, ctest logs, ASan/UBSan logs,
+                        mutation analysis, environment, G-02 disassembly, complete final-run log
+ai_assistance_log.md    Full AI-assistance log (the brief record is section 11 of the report)
+tools/                  Scripts used by Appendix A; tools/sqe_reproduce.sh = one-command reproduction
 
-Final coverage of the analysed scope (4 files): lines 428/428 (100%); source-level branches 380/384 (99.0%);
-raw lcov branches 380/457 (83.2%, includes 73 compiler-generated exception edges). 115 active tests, all passing.
+Scope: 7 files (DataValidator, DataValidatorGroup, FailureDetector, FailureInjector, battery, LandDetector,
+MulticopterLandDetector) - 897 executable lines, 204 decisions, 59 compound.
+Final coverage: lines 897/897 (100%); source-level branches 859/863 (99.5%); raw lcov branches 859/1107 (77.6%,
+includes 244 compiler-generated exception edges). 210 active tests in 12 binaries, all passing.
 """
     out = os.path.join(d, f'{base}.zip')
     n = 0

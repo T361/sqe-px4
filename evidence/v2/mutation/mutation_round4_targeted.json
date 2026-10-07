@@ -1,0 +1,72 @@
+[
+ {
+  "file": "battery.cpp",
+  "line": 226,
+  "op": "r_internal >= 0.f -> r_internal > 0.f",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation"
+  ]
+ },
+ {
+  "file": "battery.cpp",
+  "line": 279,
+  "op": "r_internal >= 0.f -> r_internal > 0.f",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeBatteryTest.BAT31_ZeroUserInternalResistance_NoCompensation"
+  ]
+ },
+ {
+  "file": "MulticopterLandDetector.cpp",
+  "line": 177,
+  "op": ") < vertical_velocity_threshold -> ) <= vertical_velocity_threshold",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD10_VerticalSpeed_FromVz"
+  ]
+ },
+ {
+  "file": "MulticopterLandDetector.cpp",
+  "line": 203,
+  "op": "dist_bottom < _param -> dist_bottom <= _param",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD14_BelowGroundEffectHeight_RequiresValidDistanceAndPositiveParameter"
+  ]
+ },
+ {
+  "file": "MulticopterLandDetector.cpp",
+  "line": 309,
+  "op": "dist_bottom < DIST -> dist_bottom <= DIST",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD19_CloseToGroundCheck_SkippedOrEnforced"
+  ]
+ },
+ {
+  "file": "MulticopterLandDetector.cpp",
+  "line": 211,
+  "op": "!_in_descend || hover -> !_in_descend && hover",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeMcLandDetectorTest.MLD25_EstimateInvalidWhileNotDescending_StrictLimitImmediately"
+  ]
+ },
+ {
+  "file": "LandDetector.cpp",
+  "line": 229,
+  "op": "(imu_status.gyro_device_id != 0) && ( -> (imu_status.gyro_device_id != 0) || (",
+  "status": "KILLED",
+  "killers": [
+   "1",
+   "SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu"
+  ]
+ }
+]

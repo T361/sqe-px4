@@ -1,0 +1,18 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+Note: Google Test filter = *PRB*
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from SqeFailureInjectorTest
+[ RUN      ] SqeFailureInjectorTest.DISABLED_PRB05_EscCountAboveMax
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureInjectorTest.DISABLED_PRB05_EscCountAboveMax (0 ms)
+[ RUN      ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 no esc telemetry
+[       OK ] SqeFailureInjectorTest.DISABLED_PRB06_NonMotorFunctionShift (0 ms)
+[----------] 2 tests from SqeFailureInjectorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.

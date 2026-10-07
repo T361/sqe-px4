@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="12"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="LifeLine"
+	time="34"
+	timestamp="2026-10-07T17:09:45"
+	>
+	<testcase name="functional-SqeBattery" classname="functional-SqeBattery" time="0.105452" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 31 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 31 tests from SqeBatteryTest
+[ RUN      ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 0. Defaulting to 1.
+ERROR [battery] Battery index must be between 1 and 9 (inclusive). Received 10. Defaulting to 1.
+[       OK ] SqeBatteryTest.BAT01_IndexOutOfRange_DefaultsToOne (0 ms)
+[ RUN      ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters
+[       OK ] SqeBatteryTest.BAT02_ValidIndex_ReadsItsOwnParameters (0 ms)
+[ RUN      ] SqeBatteryTest.BAT03_IndexWithoutParameters_HandlesInvalidAndCellCountZero
+ERROR [battery] Could not find parameter with name BAT4_V_EMPTY
+ERROR [battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+ERROR [battery] wrong type passed to...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureDetector" classname="functional-SqeFailureDetector" time="8.05926" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 36 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 36 tests from SqeFailureDetectorTest
+[ RUN      ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags
+[       OK ] SqeFailureDetectorTest.FD01_AttitudeControlDisabled_ResetsAllAttitudeFlags (451 ms)
+[ RUN      ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailureDetectorTest.FD02_RollBeyondLimit_FlagSetsAfterHysteresis (40 ms)
+[ RUN      ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse
+[       OK ] SqeFailureDetectorTest.FD03_RollWithinLimit_FlagStaysFalse (81 ms)
+[ RUN      ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled
+[       OK ] SqeFailureDetectorTest.FD04_RollLimitZero_ChecksDisabled (80 ms)
+[ RUN      ] SqeFailureDetectorTest.FD05_PitchBeyondLimit_FlagSetsAfterHysteresis
+[       OK ] SqeFailur...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureDetectorImu" classname="functional-SqeFailureDetectorImu" time="0.0333044" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from SqeFailureDetectorImuTest
+[ RUN      ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric
+[       OK ] SqeFailureDetectorImuTest.FDI01_ImbalancedVariance_SetsFlagWithExpectedMetric (0 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse
+[       OK ] SqeFailureDetectorImuTest.FDI02_EqualVariances_MetricZero_FlagStaysFalse (0 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns
+[       OK ] SqeFailureDetectorImuTest.FDI03_ThresholdZero_SubroutineNeverRuns (0 ms)
+[ RUN      ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch
+[       OK ] SqeFailureDetectorImuTest.FDI04_SelectedAccelOnInstance1_DetectedViaInstanceSearch (0 ms)
+[ RUN      ] SqeFailureDet...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureInjector" classname="functional-SqeFailureInjector" time="0.0361524" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 14 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 14 tests from SqeFailureInjectorTest
+[ RUN      ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck
+[       OK ] SqeFailureInjectorTest.FI01_InjectionDisabled_NoEffectAndNoAck (0 ms)
+[ RUN      ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorTest.FI02_InjectOffInstance1_SetsStopMaskAndAcksAccepted (0 ms)
+[ RUN      ] SqeFailureInjectorTest.FI03_InjectOffInstanceZero_AppliesToAllEscs
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 2 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 3 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 4 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 5...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureInjectorParamFault" classname="functional-SqeFailureInjectorParamFault" time="0.0276671" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 2 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 2 tests from SqeFailureInjectorParamFaultTest
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled
+[       OK ] SqeFailureInjectorParamFaultTest.FIP01_ParamReadFails_InjectionStaysDisabled (0 ms)
+[ RUN      ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+INFO  [failure_detector] CMD_INJECT_FAILURE, motor 1 off
+[       OK ] SqeFailureInjectorParamFaultTest.FIP02_ParamReadSucceeds_InjectionEnabled (0 ms)
+[----------] 2 tests from SqeFailureInjectorParamFaultTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 2 tests.
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeFailureDetectorCopyFault" classname="functional-SqeFailureDetectorCopyFault" time="0.0281054" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeFailureDetectorCopyFaultTest
+[ RUN      ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu
+[       OK ] SqeFailureDetectorCopyFaultTest.FDC01_SelectionCopyFails_KeepsPreviousImu (0 ms)
+[----------] 1 test from SqeFailureDetectorCopyFaultTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeMcLandDetector" classname="functional-SqeMcLandDetector" time="8.16577" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 46 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 46 tests from SqeMcLandDetectorTest
+[ RUN      ] SqeMcLandDetectorTest.MLD01_VerticalSpeedLimitInsideBound_ParameterUnchanged
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] SqeMcLandDetectorTest.MLD01_VerticalSpeedLimitInsideBound_ParameterUnchanged (0 ms)
+[ RUN      ] SqeMcLandDetectorTest.MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [land_detector] LNDMC_Z_VEL_MAX &gt; MPC_LAND_CRWL or MPC_LAND_SPEED, updating 0.500 -&gt; 0.250
+[       OK ] SqeMcLandDetectorTest.MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted (0 ms)
+[ RUN      ] SqeMcLandDetecto...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeLandDetectorRun" classname="functional-SqeLandDetectorRun" time="17.8636" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 12 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (272 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1288 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1780 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (598 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="functional-SqeLandDetectorBoot" classname="functional-SqeLandDetectorBoot" time="0.29819" status="run">
+		<properties/>
+		<system-out>ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+[       OK ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (273 ms)
+[----------] 1 test from SqeLandDetectorBootTest (273 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (273 ms total)
+[  PASSED  ] 1 test.
+</system-out>
+	</testcase>
+	<testcase name="unit-SqeDataValidator" classname="unit-SqeDataValidator" time="0.0365778" status="run">
+		<properties/>
+		<system-out>[==========] Running 21 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 21 tests from SqeDataValidatorTest
+[ RUN      ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence
+[       OK ] SqeDataValidatorTest.DV01_FirstSample_InitialisesAndReportsFullConfidence (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms
+[       OK ] SqeDataValidatorTest.DV02_SecondSample_ComputesWelfordRms (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale
+[       OK ] SqeDataValidatorTest.DV03_EqualCountThreshold_BoundaryNotStaleThenStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale
+[       OK ] SqeDataValidatorTest.DV04_DifferingAxisResetsEqualCountAndClearsStale (0 ms)
+[ RUN      ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes
+[       OK ] SqeDataValidatorTest.DV05_ScalarPut_PadsAxesAndSharesEqualCountAcrossAxes (0 ms)
+[ RUN      ] SqeDataV...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="unit-SqeDataValidatorGroup" classname="unit-SqeDataValidatorGroup" time="0.0803802" status="run">
+		<properties/>
+		<system-out>[==========] Running 35 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeDvgDeathTest
+[ RUN      ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgDeathTest.DVG10_AddNewValidatorOnEmptyGroup_CrashesOnNullLast (38 ms)
+[----------] 1 test from SqeDvgDeathTest (38 ms total)
+
+[----------] 12 tests from SqeDvgTest
+[ RUN      ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels
+[       OK ] SqeDvgTest.DVG01_FreshSingleSensor_QueriesReturnDefaultsAndNotFoundSentinels (0 ms)
+[ RUN      ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored
+[       OK ] SqeDvgTest.DVG02_PutAtValidIndexSetsPriority_OutOfRangePutIgnored (0 ms)
+[ RUN      ] SqeDvgTest.DVG03_EmptyGroup_AllQueriesReturnSentinelsNoCrash
+[       OK ] SqeDvgTest.DVG03_Empty...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="unit-SqeDataValidatorGroupAlloc" classname="unit-SqeDataValidatorGroupAlloc" time="0.0590202" status="run">
+		<properties/>
+		<system-out>[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from SqeDvgAllocTest
+[ RUN      ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged
+[       OK ] SqeDvgAllocTest.AF01_AddNewValidatorAllocationFails_ReturnsNullAndGroupUnchanged (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash
+[       OK ] SqeDvgAllocTest.AF02_ConstructorSingleAllocationFails_GroupIsEmptyNoCrash (0 ms)
+[ RUN      ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev
+[/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.cc : 145] RAW: Restore saved value of gtest_death_test_style to: fast
+[       OK ] SqeDvgAllocTest.AF03_ConstructorMiddleAllocationFails_CrashesOnNullPrev (36 ms)
+[----------] 3 tests from SqeDvgAllocTest (36 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (36 ms total)
+[  PASSED ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

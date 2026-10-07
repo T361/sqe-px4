@@ -1,3 +1,5 @@
+**REVISION v2 (2026-10-07):** scope extended to 7 files (battery, land detector added); G-06/G-07 closed with link-time test doubles; invented-oracle probes PRB-01/02/03 removed; mutation analysis added; 210 active tests in 12 binaries; final coverage 897/897 lines, 859/863 source-level branches (evidence/v2/). Judgement calls confirmed by the requesting member (D-020); review by the other two members and the live viva drills are still pending — see work/explain/P16_REVISION_V2_VIVA_GUIDE.md.
+
 # STATUS — SQE A2 (update every session)
 Baseline: PX4-Autopilot v1.17.0 @ d6f12ad1c4f70ad3230afd7d86e971421e02fef4 · branch `sqe-a2`
 Build type in use: Coverage (since P03) · Last full test run: 2026-10-05 (ctest -R Sqe: **6/6 binaries** passed,

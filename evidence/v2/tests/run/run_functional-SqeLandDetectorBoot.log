@@ -1,0 +1,13 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+[       OK ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (273 ms)
+[----------] 1 test from SqeLandDetectorBootTest (273 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (273 ms total)
+[  PASSED  ] 1 test.

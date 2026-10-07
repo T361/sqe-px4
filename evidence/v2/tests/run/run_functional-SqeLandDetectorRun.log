@@ -1,0 +1,36 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+[==========] Running 12 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (272 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1291 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1778 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (599 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (292 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2331 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1515 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1212 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2291 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1822 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2110 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2390 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (17910 ms total)
+
+[----------] Global test environment tear-down
+[==========] 12 tests from 1 test suite ran. (17921 ms total)
+[  PASSED  ] 12 tests.

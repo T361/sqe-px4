@@ -1,0 +1,278 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 37560 .
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+[       OK ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (277 ms)
+[----------] 1 test from SqeLandDetectorBootTest (277 ms total)
+
+[==========] 1 test from 1 test suite ran. (277 ms total)
+[  PASSED  ] 1 test.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 37561 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (34 ms)
+[----------] 1 test from SqeLandDetectorBootTest (34 ms total)
+
+[==========] 1 test from 1 test suite ran. (34 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 37562 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 37563 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 37564 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 37565 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 37566 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 37567 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 37568 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 37569 .
+[==========] Running 1 test from 1 test suite.
+[----------] 1 test from SqeLandDetectorBootTest
+[ RUN      ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+WARN  [px4_work_queue] already running
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:54: Failure
+Expected equality of these values:
+  px4::WorkQueueManagerStart()
+    Which is: -1
+  0
+Stack trace:
+  0x5f92408549ee: SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test::TestBody()
+  0x5f924093b9a3: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5f92408f65a9: testing::Test::Run()
+  0x5f92408f785c: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters (0 ms)
+[----------] 1 test from SqeLandDetectorBootTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorBootTest.LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters
+
+ 1 FAILED TEST

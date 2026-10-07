@@ -1,0 +1,364 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 57712 .
+[==========] Running 12 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2129 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1223 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (273 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2418 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (299 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2306 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1526 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1837 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (607 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2348 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1813 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1290 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18074 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18086 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 57713 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2410 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (3104 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2304 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1829 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1224 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (276 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1507 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1816 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (610 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (298 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1291 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2125 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18802 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18814 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 57714 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (278 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2108 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1292 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1517 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2339 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2318 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (295 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1230 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1826 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (611 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1816 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2402 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18039 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18058 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 57715 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1227 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (609 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1517 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2398 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2130 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (279 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1825 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (297 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2341 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1815 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1290 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2304 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18036 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18049 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 57716 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (273 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (295 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2297 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1225 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1518 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (605 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2119 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2416 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (3113 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1291 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1803 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1832 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18794 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18806 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 57717 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2119 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (608 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2294 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1813 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1231 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (294 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1838 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2412 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (3105 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (273 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1291 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1513 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18798 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18810 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 57718 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (278 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1524 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2127 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (297 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2408 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:266: Failure
+Expected: (second.timestamp - first.timestamp) >= (1_s), actual: 746196 vs 1000000
+Stack trace:
+  0x5d02afa3c701: SqeLandDetectorRunTest_LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz_Test::TestBody()
+
+[  FAILED  ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1055 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2303 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (608 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2351 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1832 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1806 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1236 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (17832 ms total)
+
+[==========] 12 tests from 1 test suite ran. (17844 ms total)
+[  PASSED  ] 11 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+
+ 1 FAILED TEST
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 57719 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1816 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (604 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2126 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1233 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1517 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2412 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1835 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (277 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2348 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2312 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1288 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (299 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18074 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18087 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 57720 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (296 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1522 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (278 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1830 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2118 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1293 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (604 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2300 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2412 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1232 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1809 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (2360 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18059 ms total)
+
+[==========] 12 tests from 1 test suite ran. (18072 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 57721 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from SqeLandDetectorRunTest
+[ RUN      ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing
+[       OK ] SqeLandDetectorRunTest.LD10_RequestStop_StopsPublishing (1838 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime
+[       OK ] SqeLandDetectorRunTest.LD09_ParameterUpdate_ReReadAtRuntime (2313 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished
+[       OK ] SqeLandDetectorRunTest.LD04_Airborne_FreefallPublished (607 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay
+[       OK ] SqeLandDetectorRunTest.LD08_RangeSensorInvalid_TriplesLandingDelay (1230 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed
+[       OK ] SqeLandDetectorRunTest.LD01_Start_FirstCyclePublishesLandedWhileDisarmed (277 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished
+[       OK ] SqeLandDetectorRunTest.LD05_RampUp_GroundEffectChangePublished (298 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround
+[       OK ] SqeLandDetectorRunTest.LD11_ValidRangeDistance_LandingRequiresCloseToGround (2116 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu
+[       OK ] SqeLandDetectorRunTest.LD12_AtRest_FollowsOnlySelectedGyroImu (2414 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest
+[       OK ] SqeLandDetectorRunTest.LD06_ImuVibration_ClearsAtRest (3111 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest
+WARN  [land_detector] IMU status not found for gyro 9999
+[       OK ] SqeLandDetectorRunTest.LD07_BodyRateMotion_ClearsAtRest (1524 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz
+[       OK ] SqeLandDetectorRunTest.LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz (1292 ms)
+[ RUN      ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime
+[       OK ] SqeLandDetectorRunTest.LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime (1811 ms)
+[----------] 12 tests from SqeLandDetectorRunTest (18838 ms total)
+
+[----------] Global test environment tear-down
+[==========] 12 tests from 1 test suite ran. (18850 ms total)
+[  PASSED  ] 12 tests.

@@ -1,23 +1,29 @@
 # Student-authored test sources (SE3002 Assignment 02, group 24i3015_24i3166_24i3158_B)
 
-These are the files created or modified by the group, laid out at their paths inside PX4-Autopilot v1.17.0
+Files created or modified by the group, at their paths inside PX4-Autopilot v1.17.0
 (commit `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`). They are exactly the result of applying
-`24i3015_24i3166_24i3158_B.patch` to that commit; the patch is the authoritative record of the change.
+`24i3015_24i3166_24i3158_B.patch` to that commit; the patch is the authoritative record. No production file is modified.
 
-| File | Status | Contents |
+| File | Binary (ctest name) | Tests |
 |---|---|---|
-| `src/modules/sensors/data_validator/SqeDataValidatorTest.cpp` | new | 20 unit tests + 2 disabled probes (DataValidator) |
-| `src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp` | new | 35 unit tests incl. 22 MC/DC tests + 1 disabled probe (DataValidatorGroup) |
-| `src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp` | new | 3 allocation-failure unit tests (own binary) |
-| `src/modules/sensors/data_validator/CMakeLists.txt` | modified | registers the 3 unit-test binaries above |
-| `src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp` | new | 36 functional tests (FailureDetector) |
-| `src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp` | new | 8 functional tests (imbalanced-prop / IMU path) |
-| `src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp` | new | 13 functional tests + 2 disabled sanitizer probes (FailureInjector) |
-| `src/modules/commander/failure_detector/CMakeLists.txt` | modified | registers the 3 functional-test binaries above |
+| `src/modules/sensors/data_validator/SqeDataValidatorTest.cpp` | unit-SqeDataValidator | 21 |
+| `src/modules/sensors/data_validator/SqeDataValidatorGroupTest.cpp` | unit-SqeDataValidatorGroup | 35 (22 MC/DC) |
+| `src/modules/sensors/data_validator/SqeDataValidatorGroupAllocTest.cpp` | unit-SqeDataValidatorGroupAlloc | 3 (operator new fake) |
+| `src/modules/commander/failure_detector/SqeFailureDetectorTest.cpp` | functional-SqeFailureDetector | 36 |
+| `src/modules/commander/failure_detector/SqeFailureDetectorImuTest.cpp` | functional-SqeFailureDetectorImu | 8 |
+| `src/modules/commander/failure_detector/SqeFailureDetectorCopyFaultTest.cpp` | functional-SqeFailureDetectorCopyFault | 1 (orb_data_copy fake, --wrap) |
+| `src/modules/commander/failure_detector/SqeFailureInjectorTest.cpp` | functional-SqeFailureInjector | 14 + 2 disabled sanitizer probes |
+| `src/modules/commander/failure_detector/SqeFailureInjectorParamFaultTest.cpp` | functional-SqeFailureInjectorParamFault | 2 (param_get stub, --wrap) |
+| `src/lib/battery/SqeBatteryTest.cpp` | functional-SqeBattery | 31 (seam + orb_data_copy fake) |
+| `src/modules/land_detector/SqeMcLandDetectorTest.cpp` | functional-SqeMcLandDetector | 46 (21 MC/DC, test subclass seam) |
+| `src/modules/land_detector/SqeLandDetectorRunTest.cpp` | functional-SqeLandDetectorRun | 12 (real work queue) |
+| `src/modules/land_detector/SqeLandDetectorBootTest.cpp` | functional-SqeLandDetectorBoot | 1 (first cycle, own process) |
+| 4 x `CMakeLists.txt` (data_validator, failure_detector, battery, land_detector) | — | test registration; the two fault binaries add `target_link_options(... -Wl,--wrap=...)` |
 
-No production source file is modified. To use the files instead of the patch, copy `src/` over a clean v1.17.0
-checkout, then build and run as in Appendix A of the report:
+Build and run (Ubuntu 24.04 or WSL2, after `Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools`):
 
 ```
-make tests PX4_CMAKE_BUILD_TYPE=Coverage TESTFILTER=Sqe
+git apply 24i3015_24i3166_24i3158_B.patch            # or copy src/ over a clean v1.17.0 checkout
+PX4_CMAKE_BUILD_TYPE=Coverage make tests TESTFILTER=Sqe
+cd build/px4_sitl_test && ctest -R Sqe                # 12/12 binaries, 210 tests
 ```

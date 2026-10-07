@@ -1,0 +1,25 @@
+# G-02: DataValidatorGroup.cpp:78  'delete (_first);' inside 'while (_first)'
+# objdump -dCl of ~DataValidatorGroup (Coverage build, -O0). The 'test/je' pair right before the destructor
+# call is the null check the C++ standard requires for 'delete p' (delete of a null pointer is a no-op);
+# the enclosing loop condition guarantees _first != nullptr here, so the 'null' side cannot execute.
+/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.cpp:78
+  40:	mov    0x8(%rsp),%rax
+  45:	mov    (%rax),%rbx
+  48:	test   %rbx,%rbx
+  4b:	je     74 <DataValidatorGroup::~DataValidatorGroup()+0x74>
+  4d:	lock addq $0x1,0x0(%rip)        # 56 <DataValidatorGroup::~DataValidatorGroup()+0x56>
+/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.cpp:78 (discriminator 1)
+  56:	mov    %rbx,%rdi
+  59:	call   5e <DataValidatorGroup::~DataValidatorGroup()+0x5e>
+  5e:	lock addq $0x1,0x0(%rip)        # 67 <DataValidatorGroup::~DataValidatorGroup()+0x67>
+  67:	mov    $0x70,%esi
+  6c:	mov    %rbx,%rdi
+  6f:	call   74 <DataValidatorGroup::~DataValidatorGroup()+0x74>
+/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.cpp:79
+  74:	mov    0x8(%rsp),%rax
+  79:	mov    0x18(%rsp),%rdx
+  7e:	mov    %rdx,(%rax)
+  81:	lock addq $0x1,0x0(%rip)        # 8a <DataValidatorGroup::~DataValidatorGroup()+0x8a>
+/root/audit/PX4-Autopilot/src/modules/sensors/data_validator/DataValidatorGroup.cpp:76
+  8a:	mov    0x8(%rsp),%rax
+  8f:	mov    (%rax),%rax

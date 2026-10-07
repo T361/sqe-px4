@@ -436,37 +436,27 @@ TEST_F(SqeDataValidatorTest, DV20_TimestampZero_NeverMarksUsedAndReInitsOnNextPu
 	EXPECT_FLOAT_EQ(_dv.rms()[2], 0.f);
 }
 
-// SQE-PRB-01 | F-09 | DISABLED — awaiting human-approved oracle (SPEC_10 steps 1-6, R4)
-// Given: a fresh DataValidator
-// When : 10x put(t, {NaN,NaN,NaN}, 0, 1)
-// Then : expected behaviour per a stricter spec would be confidence() < 1 or a flag set to reflect that no real data
-//        was ever received, which contradicts DV07's confirmed characterization (confidence 1, state 0). Not run
-//        until a human approves which behaviour is correct.
-TEST_F(SqeDataValidatorTest, DISABLED_PRB01_NonFiniteStreamShouldReduceConfidence)
+// SQE-DV-21 | DV-D06 boundary (F at exactly the 1e-6 threshold, then T)
+// Given: equal-value threshold 2 (stale when the shared counter exceeds 2); first sample {0,0,0}
+// When : second sample {1e-6f,1e-6f,1e-6f}: each axis differs by exactly 0.000001f (0.0f - 1e-6f is exact in
+//        float32, so the comparison sits on the boundary); third sample repeats {1e-6f,...}
+// Then : after the 2nd sample the "< 0.000001f" test is False on every axis, the counter is reset to 0 and the
+//        sensor is not stale (confidence 1, state 0); after the 3rd sample all 3 axes compare equal, the counter
+//        reaches 3 > 2 and the sensor reports STALE (positive control proving the counter path is reachable)
+TEST_F(SqeDataValidatorTest, DV21_EqualValueThresholdExactBoundary_NotCountedAsEqual)
 {
-	const float val[3] = {
-		std::numeric_limits<float>::quiet_NaN(),
-		std::numeric_limits<float>::quiet_NaN(),
-		std::numeric_limits<float>::quiet_NaN()
-	};
+	_dv.set_equal_value_threshold(2);
+	const float zero[3] = {0.f, 0.f, 0.f};
+	const float eps[3] = {0.000001f, 0.000001f, 0.000001f};
 
-	for (int i = 0; i < 10; i++) {
-		_dv.put(T0 + static_cast<uint64_t>(i) * 1000, val, 0, 1);
-	}
+	_dv.put(T0, zero, 0, 0);
+	_dv.put(T0 + 1000, eps, 0, 0);
 
-	EXPECT_LT(_dv.confidence(T0 + 9000), 1.f);
-}
+	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 1000), 1.f);
+	EXPECT_EQ(_dv.state(), 0u);
 
-// SQE-PRB-02 | F-10 | DISABLED — awaiting human-approved oracle (SPEC_10 steps 1-6, R4)
-// Given: a fresh DataValidator
-// When : put(T0,v,error_count=100) then confidence(T0)
-// Then : expected behaviour per a stricter spec would be a non-zero state() flag whenever confidence reaches 0,
-//        which contradicts DV15's confirmed characterization (confidence 0, state 0 at the exact window boundary).
-//        Not run until a human approves which behaviour is correct.
-TEST_F(SqeDataValidatorTest, DISABLED_PRB02_DensityAtWindowShouldSetFlag)
-{
-	const float val[3] = {1.f, 1.f, 1.f};
-	_dv.put(T0, val, 100, 0);
+	_dv.put(T0 + 2000, eps, 0, 0);
 
-	EXPECT_NE(_dv.confidence(T0), 0.f) << "or a non-zero state() flag should be set";
+	EXPECT_FLOAT_EQ(_dv.confidence(T0 + 2000), 0.f);
+	EXPECT_EQ(_dv.state(), DataValidator::ERROR_FLAG_STALE_DATA);
 }

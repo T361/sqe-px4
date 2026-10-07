@@ -1,0 +1,672 @@
+Capturing coverage data from .
+geninfo cmd: '/usr/bin/geninfo . --output-filename /root/audit/results/final/coverage/student/all.info --ignore-errors mismatch --ignore-errors inconsistent --ignore-errors unused --ignore-errors negative --ignore-errors empty --ignore-errors source --ignore-errors gcov --ignore-errors deprecated --rc branch_coverage=1 --memory 0 --branch-coverage'
+Found gcov version: 13.3.0
+Using intermediate gcov format
+Writing temporary data to /tmp/geninfo_dat9RM7
+Scanning . for .gcda files ...
+Found 463 data files in .
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_blob_file.dir/blob_file.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_remote_file.dir/remote_file.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_remote_file.dir/remote_file_oss.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_bazel.dir/bazel.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_sha1.dir/sha1.cc.gcda
+Processing ./test/fuzztest/common/CMakeFiles/fuzztest_hash.dir/hash.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_configuration.dir/configuration.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_coverage.dir/coverage.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_registry.dir/registry.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_corpus_database.dir/corpus_database.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_runtime.dir/runtime.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_serialization.dir/serialization.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_io.dir/io.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_logging.dir/logging.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_seed_seq.dir/seed_seq.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_googletest_adaptor.dir/googletest_adaptor.cc.gcda
+Processing ./test/fuzztest/fuzztest/internal/CMakeFiles/fuzztest_status.dir/status.cc.gcda
+Processing ./test/fuzztest/fuzztest/CMakeFiles/fuzztest_fuzztest_gtest_main.dir/fuzztest_gtest_main.cc.gcda
+Processing ./test/fuzztest/fuzztest/CMakeFiles/fuzztest_init_fuzztest.dir/init_fuzztest.cc.gcda
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/build/px4_sitl_test/_deps/abseil-cpp-src/absl/flags/internal/flag.h":834: mismatched exception tag for id 1, 1: '0' -> '1'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/AirshipLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/LandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/RoverLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/VtolLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/land_detector_main.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/FixedwingLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/modules__land_detector.dir/MulticopterLandDetector.cpp.gcda
+Processing ./src/modules/land_detector/CMakeFiles/functional-SqeLandDetectorBoot.dir/SqeLandDetectorBootTest.cpp.gcda
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN83SqeLandDetectorBootTest_LDB01_FirstCycleWithoutParameterUpdate_LoadsParameters_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorBootTest.cpp:48: 48 -> 107
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/land_detector/CMakeFiles/functional-SqeLandDetectorRun.dir/SqeLandDetectorRunTest.cpp.gcda
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeLandDetectorRunTest_LD01_Start_FirstCyclePublishesLandedWhileDisarmed_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:230: 230 -> 245
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeLandDetectorRunTest_LD02_UnchangedOutputs_RepublishedOnlyAtOneHertz_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:252: 252 -> 269
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeLandDetectorRunTest_LD03_TakeoffLandTakeoffDisarm_RecordsFlightTime_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:278: 278 -> 312
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN59SqeLandDetectorRunTest_LD04_Airborne_FreefallPublished_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:318: 318 -> 333
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeLandDetectorRunTest_LD05_RampUp_GroundEffectChangePublished_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:339: 339 -> 351
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN58SqeLandDetectorRunTest_LD06_ImuVibration_ClearsAtRest_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:359: 359 -> 392
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN60SqeLandDetectorRunTest_LD07_BodyRateMotion_ClearsAtRest_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:399: 399 -> 423
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeLandDetectorRunTest_LD08_RangeSensorInvalid_TriplesLandingDelay_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:432: 454 -> 432
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeLandDetectorRunTest_LD08_RangeSensorInvalid_TriplesLandingDelay_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:432: 454 -> 432
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeLandDetectorRunTest_LD08_RangeSensorInvalid_TriplesLandingDelay_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:432: 454 -> 432
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN64SqeLandDetectorRunTest_LD09_ParameterUpdate_ReReadAtRuntime_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:461: 461 -> 475
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN60SqeLandDetectorRunTest_LD10_RequestStop_StopsPublishing_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:482: 482 -> 497
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN80SqeLandDetectorRunTest_LD11_ValidRangeDistance_LandingRequiresCloseToGround_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:505: 505 -> 530
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN66SqeLandDetectorRunTest_LD12_AtRest_FollowsOnlySelectedGyroImu_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp:538: 538 -> 584
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":343: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":343: mismatched exception tag for id 3, 3: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":363: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":363: mismatched exception tag for id 3, 3: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":403: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":403: mismatched exception tag for id 3, 3: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":468: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":468: mismatched exception tag for id 3, 3: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":549: mismatched exception tag for id 1, 1: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') "/root/audit/PX4-Autopilot/src/modules/land_detector/SqeLandDetectorRunTest.cpp":549: mismatched exception tag for id 3, 3: '1' -> '0'
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/land_detector/CMakeFiles/functional-SqeMcLandDetector.dir/SqeMcLandDetectorTest.cpp.gcda
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeMcLandDetectorTest_MLD01_VerticalSpeedLimitInsideBound_ParameterUnchanged_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:170: 170 -> 175
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeMcLandDetectorTest_MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:182: 197 -> 182
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeMcLandDetectorTest_MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:182: 197 -> 182
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN81SqeMcLandDetectorTest_MLD02_VerticalSpeedLimitAboveBound_ClampedAndCommitted_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:182: 197 -> 182
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD03_LowThrottleLimit_BoundaryInclusive_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:203: 219 -> 203
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD03_LowThrottleLimit_BoundaryInclusive_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:203: 219 -> 203
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD03_LowThrottleLimit_BoundaryInclusive_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:203: 219 -> 203
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN85SqeMcLandDetectorTest_MLD04_HoverThrustEstimate_UsedAndNotOverwrittenByParameter_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:228: 228 -> 248
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD05_InvalidHoverThrustEstimate_Ignored_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:255: 255 -> 275
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeMcLandDetectorTest_MLD06_StaleHoverThrustEstimate_StrictFactor_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:282: 295 -> 282
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeMcLandDetectorTest_MLD06_StaleHoverThrustEstimate_StrictFactor_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:282: 295 -> 282
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeMcLandDetectorTest_MLD06_StaleHoverThrustEstimate_StrictFactor_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:282: 295 -> 282
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeMcLandDetectorTest_MLD07_EstimateInvalidDuringDescent_ValidityLatched_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:306: 340 -> 306
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeMcLandDetectorTest_MLD07_EstimateInvalidDuringDescent_ValidityLatched_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:306: 340 -> 306
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN77SqeMcLandDetectorTest_MLD07_EstimateInvalidDuringDescent_ValidityLatched_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:306: 340 -> 306
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN68SqeMcLandDetectorTest_MLD08_Freefall_NormBelowTwoBoundaryStrict_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:346: 346 -> 356
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN75SqeMcLandDetectorTest_MLD09_StaleLocalPosition_AssumesVerticalMovement_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:367: 367 -> 382
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN53SqeMcLandDetectorTest_MLD10_VerticalSpeed_FromVz_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:388: 388 -> 409
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN69SqeMcLandDetectorTest_MLD11_VerticalSpeed_FallsBackToZDerivative_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:415: 415 -> 431
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN68SqeMcLandDetectorTest_MLD12_LandedState_WidensVerticalThreshold_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:437: 437 -> 453
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN76SqeMcLandDetectorTest_MLD13_HorizontalMovement_VelocityNormAgainstLimit_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:459: 459 -> 479
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN98SqeMcLandDetectorTest_MLD14_BelowGroundEffectHeight_RequiresValidDistanceAndPositiveParameter_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:485: 485 -> 520
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN87SqeMcLandDetectorTest_MLD15_ClimbRateControl_GroundContactRequiresCommandedDescent_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:526: 526 -> 551
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD16_DescendThreshold_BoundaryInclusive_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:557: 574 -> 557
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD16_DescendThreshold_BoundaryInclusive_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:557: 574 -> 557
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLD16_DescendThreshold_BoundaryInclusive_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:557: 574 -> 557
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN86SqeMcLandDetectorTest_MLD17_NoNewSetpointKeepsDescend_MaybeLandedDropsRequirement_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:582: 582 -> 615
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeMcLandDetectorTest_MLD18_ManualThrust_InDescendFalseContactFromThrottle_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:621: 621 -> 634
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN69SqeMcLandDetectorTest_MLD19_CloseToGroundCheck_SkippedOrEnforced_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:642: 642 -> 669
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN61SqeMcLandDetectorTest_MLDMC01_D29_Disarmed_GroundContact_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:693: 693 -> 701
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN69SqeMcLandDetectorTest_MLDMC02_D29_AllConditionsMet_GroundContact_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:704: 704 -> 711
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeMcLandDetectorTest_MLDMC03_D29_NotCloseToGround_NoContact_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:715: 715 -> 725
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN61SqeMcLandDetectorTest_MLDMC04_D29_HighThrottle_NoContact_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:729: 736 -> 729
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN61SqeMcLandDetectorTest_MLDMC04_D29_HighThrottle_NoContact_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:729: 736 -> 729
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN61SqeMcLandDetectorTest_MLDMC04_D29_HighThrottle_NoContact_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:729: 736 -> 729
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN67SqeMcLandDetectorTest_MLDMC05_D29_HorizontalMovement_NoContact_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:740: 740 -> 749
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN65SqeMcLandDetectorTest_MLDMC06_D29_VerticalMovement_NoContact_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:753: 753 -> 761
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN59SqeMcLandDetectorTest_MLDMC07_D35_Disarmed_MaybeLanded_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:788: 788 -> 796
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeMcLandDetectorTest_MLDMC08_D35_ThrustAboveMinimum_NotMaybeLanded_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:799: 806 -> 799
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeMcLandDetectorTest_MLDMC08_D35_ThrustAboveMinimum_NotMaybeLanded_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:799: 806 -> 799
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN72SqeMcLandDetectorTest_MLDMC08_D35_ThrustAboveMinimum_NotMaybeLanded_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:799: 806 -> 799
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN84SqeMcLandDetectorTest_MLDMC09_D35_AllConditionsWithVerticalEstimate_MaybeLanded_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:809: 816 -> 809
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN84SqeMcLandDetectorTest_MLDMC09_D35_AllConditionsWithVerticalEstimate_MaybeLanded_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:809: 816 -> 809
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN84SqeMcLandDetectorTest_MLDMC09_D35_AllConditionsWithVerticalEstimate_MaybeLanded_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:809: 816 -> 809
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeMcLandDetectorTest_MLDMC10_D35_Freefall_NotMaybeLanded_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:819: 827 -> 819
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeMcLandDetectorTest_MLDMC10_D35_Freefall_NotMaybeLanded_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:819: 827 -> 819
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeMcLandDetectorTest_MLDMC10_D35_Freefall_NotMaybeLanded_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:819: 827 -> 819
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeMcLandDetectorTest_MLDMC11_D35_Rotating_NotMaybeLanded_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:831: 840 -> 831
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeMcLandDetectorTest_MLDMC11_D35_Rotating_NotMaybeLanded_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:831: 840 -> 831
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN62SqeMcLandDetectorTest_MLDMC11_D35_Rotating_NotMaybeLanded_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:831: 840 -> 831
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN79SqeMcLandDetectorTest_MLDMC12_D35_NoGroundContactHysteresis_NotMaybeLanded_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:844: 844 -> 852
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN88SqeMcLandDetectorTest_MLDMC13_D35_NoVerticalEstimateMinThrustNotHeld_NotMaybeLanded_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:856: 856 -> 864
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN84SqeMcLandDetectorTest_MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:870: 882 -> 870
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN84SqeMcLandDetectorTest_MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:870: 882 -> 870
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN84SqeMcLandDetectorTest_MLDMC14_D35_NoVerticalEstimateMinThrustHeld8s_MaybeLanded_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:870: 882 -> 870
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN60SqeMcLandDetectorTest_MLD20_ClimbRateMinimumThrustLimit_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:888: 888 -> 900
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN68SqeMcLandDetectorTest_MLD21_LandedState_WidensRotationThreshold_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:906: 906 -> 922
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN70SqeMcLandDetectorTest_MLD22_LandedState_DisarmedOrMaybeLandedHeld_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:927: 927 -> 939
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN69SqeMcLandDetectorTest_MLDMC15_D37_DescendingNoDrift_GroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:967: 967 -> 974
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN68SqeMcLandDetectorTest_MLDMC16_D37_NothingApplies_NoGroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:977: 977 -> 982
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN73SqeMcLandDetectorTest_MLDMC17_D37_DescendingWithDrift_NoGroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:985: 985 -> 992
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN71SqeMcLandDetectorTest_MLDMC18_D37_BelowHeightInFlight_GroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:995: 995 -> 1001
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN76SqeMcLandDetectorTest_MLDMC19_D37_BelowHeightNotInFlight_NoGroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1004: 1004 -> 1009
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN58SqeMcLandDetectorTest_MLDMC20_D37_RampUp_GroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1012: 1012 -> 1018
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN73SqeMcLandDetectorTest_MLDMC21_D37_InFlightAboveHeight_NoGroundEffect_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1021: 1021 -> 1027
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN69SqeMcLandDetectorTest_MLD23_HysteresisFactor_ScalesLandingDelays_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1034: 1034 -> 1057
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN78SqeMcLandDetectorTest_MLD24_TopicsTakenOnceAndEstimateIgnoredWhenDisabled_Test8TestBodyEv at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1065: 1065 -> 1082
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN89SqeMcLandDetectorTest_MLD25_EstimateInvalidWhileNotDescending_StrictLimitImmediately_TestC2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1090: 1109 -> 1090
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN89SqeMcLandDetectorTest_MLD25_EstimateInvalidWhileNotDescending_StrictLimitImmediately_TestD2Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1090: 1109 -> 1090
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+geninfo: WARNING: ('mismatch') mismatched end line for _ZN89SqeMcLandDetectorTest_MLD25_EstimateInvalidWhileNotDescending_StrictLimitImmediately_TestD0Ev at /root/audit/PX4-Autopilot/src/modules/land_detector/SqeMcLandDetectorTest.cpp:1090: 1109 -> 1090
+	(use "geninfo --ignore-errors mismatch,mismatch ..." to suppress this warning)
+Processing ./src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureInjector.dir/SqeFailureInjectorTest.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureDetectorCopyFault.dir/SqeFailureDetectorCopyFaultTest.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/failure_detector.dir/FailureInjector.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/failure_detector.dir/FailureDetector.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureDetectorImu.dir/SqeFailureDetectorImuTest.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureInjectorParamFault.dir/SqeFailureInjectorParamFaultTest.cpp.gcda
+Processing ./src/modules/commander/failure_detector/CMakeFiles/functional-SqeFailureDetector.dir/SqeFailureDetectorTest.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorGroupAlloc.dir/SqeDataValidatorGroupAllocTest.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/data_validator.dir/DataValidatorGroup.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/data_validator.dir/DataValidator.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidator.dir/SqeDataValidatorTest.cpp.gcda
+Processing ./src/modules/sensors/data_validator/CMakeFiles/unit-SqeDataValidatorGroup.dir/SqeDataValidatorGroupTest.cpp.gcda
+Processing ./src/lib/tinybson/CMakeFiles/tinybson.dir/tinybson.cpp.gcda
+Processing ./src/lib/heatshrink/CMakeFiles/heatshrink.dir/heatshrink/heatshrink_decoder.c.gcda
+Processing ./src/lib/hysteresis/CMakeFiles/hysteresis.dir/hysteresis.cpp.gcda
+Processing ./src/lib/geo/CMakeFiles/geo.dir/geo.cpp.gcda
+Processing ./src/lib/battery/CMakeFiles/battery.dir/battery.cpp.gcda
+Processing ./src/lib/battery/CMakeFiles/functional-SqeBattery.dir/SqeBatteryTest.cpp.gcda
+Processing ./src/lib/perf/CMakeFiles/perf.dir/perf_counter.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/autosave.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/parameters.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/param_translation_unit_tests.cpp.gcda
+Processing ./src/lib/parameters/CMakeFiles/parameters.dir/atomic_transaction.cpp.gcda
+Processing ./src/lib/cdev/CMakeFiles/cdev.dir/posix/cdev_platform.cpp.gcda
+Processing ./src/lib/cdev/CMakeFiles/cdev.dir/CDev.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gps_inject_data.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_airflow.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/home_position.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/esc_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/trajectory_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/unregister_ext_component.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_attitude_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_operator_id.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_set_value_response.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/yaw_estimator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fuel_tank_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_mag.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_self_id.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gripper.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_reset_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orb_test.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/follow_target.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_set_used_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_array.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/iridiumsbd_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_status_flags.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gyro_fft.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_gear_wheel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/normalized_unsigned_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/transponder_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_combined.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uavcan_parameter_value.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/telemetry_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_baro.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/distance_sensor_mode_change_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/navigator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_armed.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/satellite_info.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_land_detected.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/geofence_result.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/hover_thrust_estimate.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_rate_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/internal_combustion_engine_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_update.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ulog_stream_ack.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_control_mode.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/battery_info.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/trajectory_setpoint6dof.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/arming_check_reply.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_magnetometer.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_attitude_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_servos_trim.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/wind.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uORBTopics.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_out.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/esc_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vtol_vehicle_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/camera_trigger.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/longitudinal_control_configuration.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/dronecan_node_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_accel_fifo.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensors_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/action_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_constraints.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_lateral_guidance_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/offboard_control_mode.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_value.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_aid_source2d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/px4io_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uORBMessageFieldsGenerated.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/pwm_input.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/register_ext_component_reply.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/power_button_state.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_target_pose.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_aid_source3d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/airspeed.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rate_ctrl_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/dataman_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/message_format_response.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_attitude_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rtl_time_estimate.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_command_ack.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/goto_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/logger_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rc_channels.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/log_message.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/adc_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/velocity_limits.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_imu_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/battery_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_sensor_bias.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gps_dump.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ekf2_timestamps.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_speed_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/figure_eight_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_hygrometer.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orbit_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/airspeed_wind.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_config.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_thrust_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_vect.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gyro_fifo.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_motors.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/onboard_computer_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_set_attitude.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/lateral_control_configuration.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/power_monitor.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/heater_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/collision_constraints.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/register_ext_component_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_event_flags.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_device_set_attitude.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gyro.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_rate_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_selection.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/neural_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/follow_target_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/led_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/tiltrotor_extra_controls.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rpm.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/dataman_response.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_local_position.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_optical_flow.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_optical_flow.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/flight_phase_estimation.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_system.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_accel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/debug_key_value.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mag_worker_data.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/differential_pressure.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_global_position.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/parameter_set_value_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rtl_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orb_test_large.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_gear.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_air_data.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mavlink_log.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/system_power.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/control_allocator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mission.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ulog_stream.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/qshell_req.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/manual_control_switches.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/cellular_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_selector_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/internal_combustion_engine_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_attitude.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/uavcan_parameter_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/message_format_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_local_position_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/launch_detection_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/takeoff_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/airspeed_validated.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/wheel_encoders.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/input_rc.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/pps_capture.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_position_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mount_orientation.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_outputs.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_preflight_mag.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/camera_capture.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_odometry.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_torque_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/navigator_mission_item.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/camera_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/follow_target_estimator.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/qshell_retval.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_device_information.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/landing_target_innovations.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_angular_velocity.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mode_completed.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_bias.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_speed_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_setpoint_triplet.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/can_interface_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rc_parameter_map.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mavlink_tunnel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/radio_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/event.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_set_manual_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_throttle_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_test.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/cpuload.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_controls_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/manual_control_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gnss_relative.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/autotune_attitude_control_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/ping.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/actuator_servos.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_controls.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/pure_pursuit_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/magnetometer_bias_estimate.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/health_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/open_drone_id_arm_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/distance_sensor.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_angular_acceleration_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/obstacle_distance.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_states.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_acceleration.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/mission_result.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/timesync_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/arming_check_request.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_lateral_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/task_stack_info.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/generator_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_device_attitude_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_roi.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_gps_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/config_overrides.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensors_status_imu.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/rover_steering_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_controller_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_innovations.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_imu.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gpio_in.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_uwb.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/geofence_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_lateral_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_aid_source1d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_longitudinal_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/position_controller_landing_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/tune_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/estimator_bias3d.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/button_event.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_optical_flow_vel.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/gimbal_manager_information.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_correction.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/failsafe_flags.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/fixed_wing_runway_control.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_rates_setpoint.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/vehicle_command.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/irlock_report.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gnss_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/orb_test_medium.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/failure_detector_status.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/sensor_gps.cpp.gcda
+Processing ./msg/CMakeFiles/uorb_msgs.dir/topics_sources/tecs_status.cpp.gcda
+Processing ./boards/px4/sitl/src/CMakeFiles/drivers_board.dir/board_shutdown.cpp.gcda
+Processing ./platforms/posix/src/px4/common/gtest_runner/CMakeFiles/gtest_functional_main.dir/gtest_functional_main.cpp.gcda
+Processing ./platforms/posix/src/px4/common/test_stubs/CMakeFiles/test_stubs.dir/stub_daemon.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/server_io.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/pxh.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/sock_protocol.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/history.cpp.gcda
+Processing ./platforms/posix/src/px4/common/px4_daemon/CMakeFiles/px4_daemon.dir/server.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/drv_hrt.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/lib_crc32.c.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/tasks.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/px4_posix_impl.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/px4_init.cpp.gcda
+Processing ./platforms/posix/src/px4/common/CMakeFiles/px4_layer.dir/px4_sem.cpp.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/work_thread.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/queue.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/hrt_work_cancel.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/dq_addlast.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/hrt_thread.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/sq_addlast.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/dq_rem.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/hrt_queue.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/sq_addafter.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/work_lock.c.gcda
+Processing ./platforms/common/work_queue/CMakeFiles/work_queue.dir/work_queue.c.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkQueue.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkQueueManager.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/ScheduledWorkItem.cpp.gcda
+Processing ./platforms/common/px4_work_queue/CMakeFiles/px4_work_queue.dir/WorkItem.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBMessageFields.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBDeviceNode.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/Subscription.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBUtils.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/SubscriptionInterval.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBDeviceMaster.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORBManager.cpp.gcda
+Processing ./platforms/common/uORB/CMakeFiles/uORB.dir/uORB.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/module.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/external_reset_lockout.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/shutdown.cpp.gcda
+Processing ./platforms/common/CMakeFiles/px4_platform.dir/px4_log.cpp.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/bitmap256.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/prog.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/regexp.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/parse.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/nfa.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/re2.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/onepass.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/bitstate.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/dfa.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/compile.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/simplify.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/re2/tostring.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/util/rune.cc.gcda
+Processing ./_deps/re2-build/CMakeFiles/re2.dir/util/strutil.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/profiling/CMakeFiles/exponential_biased.dir/internal/exponential_biased.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/statusor.dir/statusor.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/status.dir/status_payload_printer.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/status.dir/internal/status_internal.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/status/CMakeFiles/status.dir/status.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_reflection.dir/reflection.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_commandlineflag_internal.dir/internal/commandlineflag.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_private_handle_accessor.dir/internal/private_handle_accessor.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_internal.dir/internal/flag.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_marshalling.dir/marshalling.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_config.dir/usage_config.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_usage.dir/usage.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_commandlineflag.dir/commandlineflag.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_program_name.dir/internal/program_name.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_parse.dir/parse.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/flags/CMakeFiles/flags_usage_internal.dir/internal/usage.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/debugging_internal.dir/internal/address_is_readable.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/debugging_internal.dir/internal/elf_mem_image.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/debugging_internal.dir/internal/vdso_support.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/utf8_for_code_point.dir/internal/utf8_for_code_point.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/failure_signal_handler.dir/failure_signal_handler.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/decode_rust_punycode.dir/internal/decode_rust_punycode.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/symbolize.dir/symbolize.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/demangle_internal.dir/internal/demangle.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/stacktrace.dir/stacktrace.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/examine_stack.dir/internal/examine_stack.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/leak_check.dir/leak_check.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/debugging/CMakeFiles/demangle_rust.dir/internal/demangle_rust.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen_slow.dir/internal/randen_slow.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_entropy_pool.dir/internal/entropy_pool.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_distributions.dir/discrete_distribution.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen_hwaes_impl.dir/internal/randen_hwaes.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_seed_gen_exception.dir/seed_gen_exception.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen.dir/internal/randen.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_randen_hwaes.dir/internal/randen_detect.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/random/CMakeFiles/random_internal_seed_material.dir/internal/seed_material.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/spinlock_wait.dir/internal/spinlock_wait.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/strerror.dir/internal/strerror.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/throw_delegate.dir/internal/throw_delegate.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/sysinfo.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/cycleclock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/unscaledcycleclock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/spinlock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/base.dir/internal/thread_identity.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/malloc_internal.dir/internal/low_level_alloc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/base/CMakeFiles/raw_logging_internal.dir/internal/raw_logging.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/graphcycles_internal.dir/internal/graphcycles.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/per_thread_sem.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/waiter_base.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/futex_waiter.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/internal/create_thread_identity.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/synchronization.dir/mutex.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/synchronization/CMakeFiles/kernel_timeout_internal.dir/internal/kernel_timeout.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/container/CMakeFiles/raw_hash_set.dir/internal/raw_hash_set.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/container/CMakeFiles/hashtablez_sampler.dir/internal/hashtablez_sampler_force_weak_definition.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/container/CMakeFiles/hashtablez_sampler.dir/internal/hashtablez_sampler.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_posix.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/zone_info_source.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_if.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_fixed.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_impl.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_libc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_info.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time_zone.dir/internal/cctz/src/time_zone_lookup.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time.dir/clock.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time.dir/duration.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/time/CMakeFiles/time.dir/time.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/hash/CMakeFiles/low_level_hash.dir/internal/low_level_hash.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/hash/CMakeFiles/hash.dir/internal/hash.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/hash/CMakeFiles/city.dir/internal/city.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/numeric/CMakeFiles/int128.dir/int128.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc_cord_state.dir/internal/crc_cord_state.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc_internal.dir/internal/crc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc_internal.dir/internal/crc_x86_arm_combined.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc32c.dir/internal/crc_memcpy_fallback.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/crc/CMakeFiles/crc32c.dir/crc32c.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/float_conversion.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/bind.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/extension.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/arg.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/parser.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/str_format_internal.dir/internal/str_format/output.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings_internal.dir/internal/utf8.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings_internal.dir/internal/escaping.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cordz_functions.dir/internal/cordz_functions.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/str_cat.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/charconv_parse.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/memutil.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/stringify_sink.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/damerau_levenshtein_distance.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/internal/charconv_bigint.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/match.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/str_replace.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/escaping.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/str_split.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/numbers.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/ascii.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/strings.dir/charconv.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cordz_handle.dir/internal/cordz_handle.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cordz_info.dir/internal/cordz_info.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord.dir/cord.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_btree_navigator.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_btree.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_crc.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_btree_reader.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_internal.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/strings/CMakeFiles/cord_internal.dir/internal/cord_rep_consume.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_globals.dir/internal/globals.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_sink.dir/log_sink.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_globals.dir/globals.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_proto.dir/internal/proto.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_structured_proto.dir/internal/structured_proto.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_log_sink_set.dir/internal/log_sink_set.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_message.dir/internal/log_message.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_check_op.dir/internal/check_op.cc.gcda
+Processing ./_deps/abseil-cpp-build/absl/log/CMakeFiles/log_internal_format.dir/internal/log_format.cc.gcda
+Processing ./_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.gcda
+Finished .info-file creation
